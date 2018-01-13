@@ -27,3 +27,10 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+/* Custom Classes */
+
+.main-icons {
+  font-size: 12em !important;
+  color: #fff;
+}
