@@ -11,10 +11,14 @@
     <title>Logística ECSL-2018</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
-    <!-- Custom styles for this template -->
+    <!-- Custom styles for this template-->
     <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Font Awesome-->
+    <script src="https://use.fontawesome.com/3de856f52b.js"></script>
 
 
   </head>
@@ -31,19 +35,25 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
 
-              <li class="nav-item active dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Participación
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarinformacion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Información General
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                  <a class="dropdown-item" href="index.html">Registro</a>
-                  <a class="dropdown-item" href="logistica.html">Logística</a>
-                  <a class="dropdown-item" href="faq.html">Preguntas Frecuentes</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarinformacion">
+                  <a class="dropdown-item" href="logistica.html"><i class="fa fa-info-circle" aria-hidden="true"></i> Logística</a>
+                  <a class="dropdown-item" href="faq.html"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Preguntas Frecuentes</a>
                 </div>
               </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Agenda</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarEvento" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Evento
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarEvento">
+                  <a class="dropdown-item" href="index.html"><i class="fa fa-address-card-o" aria-hidden="true"></i> Registro</a>
+                  <a class="dropdown-item" href="logistica.html"><i class="fa fa-list-ul" aria-hidden="true"></i> Ejes Temáticos</a>
+                  <a class="dropdown-item" href="faq.html"><i class="fa fa-calendar" aria-hidden="true"></i>  Agenda</a>
+                </div>
               </li>
 
               <li class="nav-item">
@@ -51,9 +61,8 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="contact.html">Sede y Contactos</a>
+                <a class="nav-link" href="contact.html">Contactos</a>
               </li>
-
             </ul>
           </div>
       </div>
