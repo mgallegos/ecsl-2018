@@ -25,27 +25,32 @@
 <body>
 
   <!-- Barra de Navegacion -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="img/Logo.png" width="70" height="40" class="d-inline-block" alt="">X Encuentro Centroamericano de Software Libre
+          X ECSL -2018
         </a>
+        <!-- <img src="img/Logo.png" width="70" height="40" class="d-inline-block" alt=""> -->
 
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarinformacion" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Información General
               </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarinformacion">
-                <a class="dropdown-item" href="logistica.html"><i class="fa fa-info-circle" aria-hidden="true"></i> Logística</a>
-                <a class="dropdown-item" href="faq.html"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Preguntas Frecuentes</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#logistica.html"><i class="fa fa-info-circle" aria-hidden="true"></i> Logística</a>
+                <a class="dropdown-item" href="#faq.html"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Preguntas Frecuentes</a>
               </div>
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarEvento" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarEvento" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
                 Evento
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarEvento">
@@ -74,7 +79,7 @@
     <!-- Barra de Ubicacion -->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="index.html">Inicio</a>
+          <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
         </li>
         <li class="breadcrumb-item active">Eventos Anteriores
         </li>
