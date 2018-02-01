@@ -34,3 +34,8 @@ body {
   font-size: 12em !important;
   color: #fff;
 }
+
+.img-height{
+  height: 150px !important;
+  width: 111px !important;
+}
