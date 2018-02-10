@@ -12,7 +12,8 @@
 
     <!-- Bootstrap core CSS -->
     <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
     <!-- Custom styles for this template-->
     <link href="css/modern-business.css" rel="stylesheet">
 
@@ -24,82 +25,44 @@
   <body>
 
     <!-- Barra de Navegacion -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
       <div class="container">
-          <a class="navbar-brand d-none d-md-block" href="index.html">X Encuentro Centroamericano de Software Libre - 2018</a>
-          <a class="navbar-brand d-md-none" href="index.html">X ECSL - 2018</a>
-          <!-- <img src="img/Logo.png" width="70" height="40" class="d-inline-block" alt=""> -->
+      <a class="navbar-brand" href="index.html">ECSL-2018</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarinfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Información General
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarinfo">
-                  <a class="dropdown-item" href="logistica.html"><i class="fa fa-info-circle" aria-hidden="true"></i> Logística</a>
-                  <a class="dropdown-item" href="faq.html"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Preguntas Frecuentes</a>
-                </div>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarEvento" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">
-                  Evento
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarEvento">
-                  <a class="dropdown-item" href="index.html"><i class="fa fa-address-card-o" aria-hidden="true"></i> Registro</a>
-                  <a class="dropdown-item" href="logistica.html"><i class="fa fa-list-ul" aria-hidden="true"></i> Ejes Temáticos</a>
-                  <a class="dropdown-item" href="faq.html"><i class="fa fa-calendar" aria-hidden="true"></i>  Agenda</a>
-                </div>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="eventos-anteriores.html">Eventos Anteriores</a>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#Contact"  role="button" >Contacto</a>
-
-              </li>
-            </ul>
-          </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
       </div>
     </nav>
 
-    <!-- Modal -->
-    <div class="modal fade" id="Contact" tabindex="-1" role="dialog" aria-labelledby="Body" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <h5 class="modal-title" id="Body">Detalles de Contacto</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-
-          <div class="modal-body">
-            <p>
-              Lic. Juan Perez
-            </p>
-            <p>
-              Telefono: (+503) 7456-7890 <br>
-              Correo Electronico: <a href="mailto:name@example.com">name@example.com</a> <br>
-              Horario: Lunes - Viernes: 9:00 AM a 5:00 PM <br>
-            </p>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- CARRUSEL SIN TOCAR -->
     <header>
@@ -109,17 +72,13 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active">
-            <img class="d-block w-100 " src="img/BannerPrincipal11.png" alt="First slide">
-
+          <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
             <div class="carousel-caption d-none d-md-block">
-             <!-- <h3>Decimo Encuentro Centroaméricano de Software Libre</h3> -->
-             <!-- <p>El Salvador - 2018</p> -->
+              <h3>First Slide</h3>
+              <p>This is a description for the first slide.</p>
             </div>
-
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
           <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
@@ -151,7 +110,7 @@
     <section class="about-us section-padding">
       <div class="jumbotron jumbotron-fluid bg-dark">
         <div class="container">
-          <h2 class="text-center text-white"><strong>X Encuentro Centroamericano de Software Libre</strong></h2>
+          <h1 class="display-5 text-center text-white"><strong>X Encuentro Centroamericano de Software Libre</strong></h1>
           <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009
             por y para la comunidad Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas y miembros de comunidades y grupos
             de usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer
@@ -213,110 +172,91 @@
             <h2 class="display-5 text-center text-white">Información General</h2><br>
             <div class="row">
               <div class="columns column-3 text-center col-md-3">
-                  <a href="logistica.html" class="text-white">
-                    <i class="fa fa-user-circle-o main-icons" aria-hidden="true"></i> <h3>Participación</h3>
-                  </a>
+                  <!-- <div class="textwidget"><img src="img/icon-registro.png"><h3><a href="index.html" class="text-white">Registro</a></h3></div> -->
+                  <div class="textwidget"><i class="fa fa-user-circle-o main-icons" aria-hidden="true"></i><h3><a href="index.html" class="text-white">Participación</a></h3></div>
              </div>
 
               <div class="columns column-3 text-center col-md-3">
-                <a href="logistica.html" class="text-white">
-                  <i class="fa fa-bed main-icons" aria-hidden="true"></i><h3>Hospedaje</h3>
-                </a>
+                  <div class="textwidget"><i class="fa fa-bed main-icons" aria-hidden="true"></i><h3><a href="index.html" class="text-white">Hospedaje</a></h3></div>
               </div>
 
               <div class="columns column-3 text-center col-md-3">
-                <a href="logistica.html" class="text-white">
-                  <i class="fa fa-university main-icons" aria-hidden="true"></i><h3>Sede</h3>
-                  </a>
+                  <div class="textwidget"><i class="fa fa-university main-icons" aria-hidden="true"></i><h3><a href="index.html" class="text-white">Sede</a></h3></div>
               </div>
 
               <div class="columns column-3 text-center col-md-3">
-                <a href="logistica.html" class="text-white">
-                <i class="fa fa-question-circle-o main-icons" aria-hidden="true"></i><h3>FAQ</h3>
-              </a>
+                <div class="textwidget"><i class="fa fa-question-circle-o main-icons" aria-hidden="true"></i><h3><a href="faq.html" class="text-white">FAQ</a></h3></div>
               </div>
             </div>
           </div>
         </div>
     </section>
 
+
     <!-- Page Content -->
     <div class="container">
-
-    <!-- Anuncio "Registrarme" -->
-    <div class="row mb-4">
-      <div class="col-md-8">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum
-          neque nemo praesentium cum alias asperiores commodi.</p>
-      </div>
-      <div class="col-md-4">
-        <a class="btn btn-lg btn-secondary btn-block bg-dark" href="#">Registrarme</a>
-      </div>
-    </div>
-
-        <hr>
 
 
       <!-- Portfolio Section -->
       <h2 class="text-center display-5">Patrocinadores</h2><br>
 
       <div class="row">
-
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item border-dark">
-          <a href="http://www.uca.edu.sv">
-          <div class="card h-100 ">
-              <img class="card-img-top rounded mx-auto d-block img-height  " src="img/UCA.png" alt="">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
               <h4 class="card-title text-center">
-                UCA El Salvador
+                <a href="http://www.uca.edu.sv">UCA El Salvador</a>
               </h4>
             </div>
           </div>
-          </a>
         </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item border-dark">
-          <a href="http://www.uca.edu.sv">
-          <div class="card h-100 ">
-              <img class="card-img-top rounded mx-auto d-block img-height  " src="img/UCA.png" alt="">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title text-center">
-                UCA El Salvador
+              <h4 class="card-title">
+                <a href="#">Project Two</a>
               </h4>
             </div>
           </div>
-          </a>
         </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item border-dark">
-          <a href="http://www.uca.edu.sv">
-          <div class="card h-100 ">
-              <img class="card-img-top rounded mx-auto d-block img-height  " src="img/UCA.png" alt="">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title text-center">
-                UCA El Salvador
+              <h4 class="card-title">
+                <a href="#">Project Three</a>
               </h4>
             </div>
           </div>
-          </a>
         </div>
-
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item border-dark">
-          <a href="http://www.uca.edu.sv">
-          <div class="card h-100 ">
-              <img class="card-img-top rounded mx-auto d-block img-height  " src="img/UCA.png" alt="">
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title text-center">
-                UCA El Salvador
+              <h4 class="card-title">
+                <a href="#">Project Four</a>
               </h4>
             </div>
           </div>
-          </a>
         </div>
-
-</div>
+      </div>
       <!-- /.row -->
 
+
+      <hr>
+
+      <!-- Anuncio "Registrarme" -->
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum
+            neque nemo praesentium cum alias asperiores commodi.</p>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-lg btn-secondary btn-block bg-dark" href="#">Registrarme</a>
+        </div>
+      </div>
 
     </div>
     <!-- /.container -->
