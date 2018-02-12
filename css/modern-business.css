@@ -8,10 +8,37 @@ body {
   padding-top: 54px;
 }
 
+
+@media (max-width: 575.98px) {
+  .main-icons {
+    font-size: 6em !important;
+    color: #fff;
+  }
+}
+
+@media (min-width: 576px) {
+  .main-icons {
+    font-size: 12em !important;
+    color: #fff;
+  }
+}
+
+@media (min-width: 768px) {
+
+}
+
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
   }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+}
+
+@media (min-width: 1200px) {
+
 }
 
 .carousel-item {
@@ -30,10 +57,7 @@ body {
 
 /* Custom Classes */
 
-.main-icons {
-  font-size: 12em !important;
-  color: #fff;
-}
+
 
 .img-height{
   height: 150px !important;
