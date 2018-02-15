@@ -53,6 +53,9 @@ body {
   background-size: cover;
 }
 
+.portafolio-item{
+  margin-bottom: 30px;
+}
 
 /* Custom Classes */
 
