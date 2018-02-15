@@ -12,13 +12,15 @@ body {
   .main-icons {
     font-size: 8em !important;
     color: #fff;
-  }
+
 }
 
 @media (min-width: 996px) {
   .main-icons {
     font-size: 12em !important;
     color: #fff;
+  }
+
   }
 }
 
