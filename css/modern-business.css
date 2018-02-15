@@ -13,6 +13,7 @@ body {
     font-size: 8em !important;
     color: #fff;
 
+  }
 }
 
 @media (min-width: 996px) {
@@ -22,7 +23,7 @@ body {
   }
 
   }
-}
+
 
 @media (min-width: 768px) {
 
@@ -52,15 +53,11 @@ body {
   background-size: cover;
 }
 
-.portfolio-item {
-  margin-bottom: 30px;
-}
 
 /* Custom Classes */
 
+.height-sponsors-img{
+  height: 120px !important;
+  width: 89px !important;
 
-
-.img-height{
-  height: 150px !important;
-  width: 111px !important;
 }
