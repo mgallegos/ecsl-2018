@@ -64,3 +64,15 @@ body {
   width: 89px !important;
 
 }
+
+.obj-container {
+  padding:  20px 20px
+}
+
+.tbl-container {
+  width:  100%;
+  height: auto;
+  position: relative;
+  padding:  0 !important;
+  padding-bottom: 0 !important;
+}
