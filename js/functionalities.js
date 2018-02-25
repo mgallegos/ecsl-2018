@@ -1,5 +1,5 @@
 
-$("a").click(function(e){
+$("a.nav-link ").click(function(e){
 
   e.stopPropagation();
 
@@ -26,3 +26,29 @@ $("a").click(function(e){
     this.setAttribute("class","nav-link font-weight-bold active");
   }
 });
+
+
+/*$(document).ready(function(){
+
+  $(window).scroll(function(){
+		if( $(this).scrollTop() > 0 ){
+			$('.back-to-top').slideDown("slow", function() {
+    // Animation complete.
+  });
+		} else {
+			$('.back-to-top').slideUp("slow", function() {
+    // Animation complete.
+  });
+		}
+	});
+
+	$('.back-to-top').click(function(){
+		$('body, html').animate({
+			scrollTop: '0px'
+		}, 300);
+	});
+
+
+
+});
+*/

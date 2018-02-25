@@ -12,7 +12,16 @@ body {
   .main-icons {
     font-size: 8em !important;
     color: #fff;
+  }
 
+  .back-to-top{
+    display:block;
+    font-size: 4em;
+    color: #000000;
+    position: fixed;
+    bottom: 5px;
+    right: 10px;
+    cursor:pointer;
   }
 }
 
@@ -20,6 +29,16 @@ body {
   .main-icons {
     font-size: 12em !important;
     color: #fff;
+  }
+
+  .back-to-top{
+    display:block;
+    font-size: 5em;
+    color: #000000;
+    position: fixed;
+    bottom: 5px;
+    right: 10px;
+    cursor:pointer;
   }
 
   }
@@ -75,4 +94,14 @@ body {
   position: relative;
   padding:  0 !important;
   padding-bottom: 0 !important;
+}
+
+
+
+.right-block:before {
+      display: block;
+      content: " ";
+      margin-top: -65px;
+      height: 65px;
+      visibility: hidden;
 }
