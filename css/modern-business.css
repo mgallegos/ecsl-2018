@@ -41,6 +41,11 @@ body {
     cursor:pointer;
   }
 
+  .side-bar{
+    position: fixed;
+    width: auto;
+  }
+
   }
 
 
@@ -95,7 +100,6 @@ body {
   padding:  0 !important;
   padding-bottom: 0 !important;
 }
-
 
 
 .right-block:before {
