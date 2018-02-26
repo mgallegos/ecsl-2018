@@ -122,28 +122,138 @@
       <!-- Sidebar Column -->
       <div class="col-lg-3 my-4 side-bar ">
           <div class="" id="sideLogistica">
+            <!-- Participacion -->
             <div class="card">
-              <div class="btn btn-lg p-2 " id="headingParticipation" data-toggle="collapse" data-target="#collapseParticipation" aria-expanded="true">
-                <p class="font-weight-bold text-primary m-0">Participación</p>
+              <div class="btn" id="headingParticipation" data-toggle="collapse" data-target="#collapseParticipation" aria-expanded="true">
+                  <div class="row">
+                    <div class="col-8 text-left">
+                      <p class="font-weight-bold text-primary m-0">Participación</p>
+                    </div>
+                    <div class="col-4 text-right">
+                      <i class="fa fa-chevron-down text-secondary "></i>
+                    </div>
+                  </div>
               </div>
 
               <div id="collapseParticipation" class="collapse show" aria-labelledby="headingParticipation" data-parent="#sideLogistica">
                 <div class="card-body p-0">
                   <div class="list-group m-0">
-                    <a href="#item-1-1" class="list-group-item list-group-item-action text-primary">Dinámica del evento</a>
-                    <a href="#" class="list-group-item list-group-item-action text-primary">Cuota de participación</a>
-                    <a href="#" class="list-group-item list-group-item-action text-primary">Paquetes en Swag</a>
-                    <a href="#" class="list-group-item list-group-item-action text-primary">Forma de pago</a>
-                    <a href="#" class="list-group-item list-group-item-action text-primary">Formas de participación</a>
+                    <a href="#participacion" class="list-group-item list-group-item-action text-primary py-2">Reseña</a>
+                    <a href="#dinamica-del-evento" class="list-group-item list-group-item-action text-primary py-2">Dinámica del evento</a>
+                    <a href="#cuota-de-participacion" class="list-group-item list-group-item-action text-primary py-2">Cuota de participación</a>
+                    <a href="#paquete-en-swag" class="list-group-item list-group-item-action text-primary py-2">Paquetes en Swag</a>
+                    <a href="#forma-de-pago" class="list-group-item list-group-item-action text-primary py-2">Forma de pago</a>
+                    <a href="#formas-de-participacion" class="list-group-item list-group-item-action text-primary py-2">Formas de participación</a>
                   </div>
                 </div>
               </div>
             </div>
 
+            <!-- Hospedaje -->
             <div class="card">
-                <a href= "#item-2" class="btn btn-lg p-2">
-                  <div class="font-weight-bold text-primary m-0" id="headingHospedaje" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="true">
-                    Hospedaje  </div>
+                <a href= "#item-2" class="btn">
+                  <div class="font-weight-bold text-primary text-left" id="headingHospedaje" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="false">
+                    Hospedaje</div>
+                </a>
+            </div>
+
+            <!-- Sede Oficial -->
+            <div class="card">
+                <a href= "#item-3" class="btn">
+                  <div class="font-weight-bold text-primary text-left" id="headingSede" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="false">
+                    Sede Oficial</div>
+                </a>
+            </div>
+
+            <!-- Opcion de Viaje -->
+            <div class="card">
+              <div class="btn" id="headingTravelInfo" data-toggle="collapse" data-target="#collapseTravelInfo" aria-expanded="false">
+                  <div class="row ">
+                    <div class="col-9 text-center">
+                      <p class="font-weight-bold text-primary my-0 text-left">Información de Viaje</p>
+                    </div>
+                    <div class="col-3 text-right">
+                      <i class="fa fa-chevron-down text-secondary "></i>
+                    </div>
+                  </div>
+              </div>
+
+              <div id="collapseTravelInfo" class="collapse" aria-labelledby="headingTravelInfo" data-parent="#sideLogistica">
+                <div class="card-body p-0">
+                  <div class="list-group m-0">
+                    <a href="#item-1-1" class="list-group-item list-group-item-action text-primary py-2">Aéreo</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-2">Terrestre</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Movilizacion -->
+            <div class="card">
+              <div class="btn" id="headingMovilizacion" data-toggle="collapse" data-target="#collapseMovilizacion" aria-expanded="false">
+                  <div class="row ">
+                    <div class="col-8 text-left">
+                      <p class="font-weight-bold text-primary my-0">Movilización</p>
+                    </div>
+                    <div class="col-4 text-right">
+                      <i class="fa fa-chevron-down text-secondary "></i>
+                    </div>
+                  </div>
+              </div>
+
+              <div id="collapseMovilizacion" class="collapse" aria-labelledby="headingMovilizacion" data-parent="#sideLogistica">
+                <div class="card-body p-0">
+                  <div class="list-group m-0">
+                    <a href="#item-1-1" class="list-group-item list-group-item-action text-primary py-2">Servicio de Autobuses</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-2">Servicio de taxis</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-2">Servicio UBER</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Informacion de El Salvador-->
+            <div class="card">
+              <div class="btn" id="headingInfoESA" data-toggle="collapse" data-target="#collapseInfoESA" aria-expanded="false">
+                  <div class="row ">
+                    <div class="col-8 text-center">
+                      <p class="font-weight-bold text-primary my-0">Acerca de El Salvador</p>
+                    </div>
+                    <div class="col-4 text-right">
+                      <i class="fa fa-chevron-down text-secondary"></i>
+                    </div>
+                  </div>
+              </div>
+
+              <div id="collapseInfoESA" class="collapse" aria-labelledby="headingInfoESA" data-parent="#sideLogistica">
+                <div class="card-body p-0">
+                  <div class="list-group m-0">
+                    <a href="#item-1-1" class="list-group-item list-group-item-action text-primary py-1">Moneda Local</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-1">Electricidad</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-1">Hospitales</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-1">Telefonía</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-1">Gastronomía</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-1">Condiciones del Clima</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-1">Fumado y Tabaco</a>
+                    <a href="#" class="list-group-item list-group-item-action text-primary py-1">Alcohol</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Opciones de Tiempo Libre-->
+            <div class="card">
+                <a href= "#item-2" class="btn">
+                  <div class="font-weight-bold text-primary text-left" id="headingFreeTime" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="false">
+                    Tiempo Libre</div>
+                </a>
+            </div>
+
+            <!-- Recomendaciones de Seguridad -->
+            <div class="card">
+                <a href= "#item-3" class="btn ">
+                  <div class="font-weight-bold text-primary text-left" id="headingInfoSecurity" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="False">
+                    Recomendaciones</div>
                 </a>
             </div>
 
@@ -166,28 +276,102 @@
             </ol>
           </div>
 
-          <div id="item-1" class="right-block">
-            <h1 class="display-4">Item 1 </h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis
-              anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat
-              mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa
-              duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis
-              necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip
-              culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure
-              maxime ducimus fugit.</p>
-
-            <div id="item-1-1" class="right-block">
-              <h1 class="display-6">Item 1-1 </h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis
-                anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat
-                mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.</p>
+          <div id="participacion" class="right-block">
+            <h3 class="font-weight-bold">Participación:</h3>
+            <p class="text-justify">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado por la Comunidad
+               Software Libre Centroamérica (SLCA). Reúne a representantes de comunidades de los siete países de la
+               región, donde se intercambian experiencias, se comparte conocimiento, se promueven proyectos gestionados
+               por las comunidades locales, se establecen objetivos comunes y se plantean estrategias para promover la
+               filosofía, la cultura, el desarrollo y el uso del Software Libre y de Código Abierto. que se realiza desde
+               el año 2009.
+               <br><br>
+               A la fecha, se ha realizado en Nicaragua (2009), Costa Rica (2010), El Salvador (2011), Guatemala (2012),
+               Belize (2013), Panamá (2014), Honduras (2015),  Nicaragua (2016) y Costa Rica (2017). En su decima edición,
+               se realizará en la ciudad de San Salvador, El Salvador los días 19, 20 y 21 de junio del 2018.
+              <br><br>
+              Es un evento abierto para todo el público interesado en el aprender y compartir sobre diversas temáticas acerca
+              de tecnologías libres pero principalmente sobre Software Libre, está es una celebración donde te encontraras con
+              entusiastas, estudiantes y profesionales; un espacio para relacionarte y hacer nuevas amistades y contactos que
+              compartirán contigo la pasión por liberar el conocimiento para el beneficio de las personas.</p>
 
             </div>
 
+            <div id="dinamica-del-evento" class="right-block">
+              <h4 class="display-6 font-italic font-weight-bold">Dinámica del Evento:</h4>
+              <p>La agenda de actividades se extiende hasta los horarios nocturnos, por lo que es indispensable que quienes se
+                inscriban sean mayores de edad o estén acompañados de sus tutores legales.</p>
+
+                <p class="font-weight-bold">Para participar es requerido completar el proceso de registro.</p>
+
+                <p>El ECSL es un evento sin fines de lucro y es por medio de las cuotas de participación que se financian los equipos,
+                herramientas, materiales, alimentación entre otras necesidades que requiere el poder realizarlo, también se cuenta
+                con el aporte que realizan diversas entidades patrocinadoras.</p>
+
+            </div>
+
+
+
+          <div id="cuota-de-participacion" class="right-block">
+            <h4 class="display-6 font-italic font-weight-bold">Cuota de Participación:</h4>
+            <!-- Content Row -->
+            <div class="row">
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <h3 class="card-header text-center">Básico</h3>
+                  <div class="card-body">
+                    <h2 class="text-center font-weight-bold">$ 10.00</h2>
+                    <div class="font-italic">per month</div>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">
+                      <a href="#" class="btn btn-primary">Sign Up!</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <h3 class="card-header text-center">Plus</h3>
+                  <div class="card-body">
+                    <h2 class="text-center font-weight-bold">$ 40.00</h2>
+                    <div class="font-italic">per month</div>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">
+                      <a href="#" class="btn btn-primary">Sign Up!</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                  <h3 class="card-header text-center">Ultra</h3>
+                  <div class="card-body">
+                    <h2 class="text-center font-weight-bold">$ 150.00</h2>
+                    <div class="font-italic">per month</div>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">
+                      <a href="#" class="btn btn-primary">Sign Up!</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /.row -->
           </div>
 
-          <div id="item-2" class="right-block">
-            <h1 class="display-4">Item 2 </h1>
+          <div id="paquete-en-swag" class="right-block">
+            <h4 class="display-6 font-italic font-weight-bold">Paquetes en Swag:</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis
               anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat
               mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa
@@ -196,15 +380,15 @@
               culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure
               maxime ducimus fugit.</p>
           </div>
-          <div id="item-3" class="right-block">
-            <h1 class="display-4">Item 3 </h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis
-              anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat
-              mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa
-              duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis
-              necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.Quis anim sit do amet fugiat dolor velit sit ea ea do reprehenderit culpa duis. Nostrud aliqua ipsum fugiat minim proident occaecat excepteur aliquip
-              culpa aute tempor reprehenderit. Deserunt tempor mollit elit ex pariatur dolore velit fugiat mollit culpa irure ullamco veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure
-              maxime ducimus fugit.</p>
+
+          <div id="forma-de-pago" class="right-block">
+            <h4 class="display-6 font-italic font-weight-bold">Forma de Pago:</h4>
+            <p>Proximamente estaremos informando sobre los medios oficiales de pago de la cuota de inscripción al evento.</p>
+          </div>
+
+          <div id="formas-de-participacion" class="right-block">
+            <h4 class="display-6 font-italic font-weight-bold">Formas de Participación:</h4>
+            <p>Proximamente estaremos informando sobre los medios oficiales de participación en el ECSL con mayor detalle..</p>
           </div>
 
         </div>
@@ -213,6 +397,11 @@
     <!-- /.row -->
   </div>
   <!-- /.container -->
+
+    <!-- back-to-top-botton-->
+    <div>
+    <span class="back-to-top"><i class="fa fa-arrow-circle-up"></i></span>
+    </div>
 
   <!-- Pie de Pagina -->
   <footer class="py-5 bg-dark">
@@ -228,7 +417,7 @@
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="./js/functionalities.js"></script>
+  <!-- <script type="text/javascript" src="./js/functionalities.js"></script> -->
 
 </body>
 
