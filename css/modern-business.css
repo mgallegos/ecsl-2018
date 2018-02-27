@@ -31,20 +31,12 @@ body {
     color: #fff;
   }
 
-  .back-to-top{
-    display:block;
-    font-size: 5em;
-    color: #000000;
-    position: fixed;
-    bottom: 5px;
-    right: 10px;
-    cursor:pointer;
-  }
 
   .side-bar{
     position: fixed;
     width: 16em;
   }
+}
 
 
 @media (min-width: 768px) {
