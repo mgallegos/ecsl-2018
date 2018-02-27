@@ -120,24 +120,27 @@
     <div class="row">
 
       <!-- Sidebar Column -->
-      <div class="col-lg-3 my-4 side-bar ">
+      <div id="ppal" class="col-lg-3 m-2 p-0 side-bar border rounded">
           <div class="" id="sideLogistica">
             <!-- Participacion -->
-            <div class="card">
-              <div class="btn" id="headingParticipation" data-toggle="collapse" data-target="#collapseParticipation" aria-expanded="true">
-                  <div class="row">
-                    <div class="col-8 text-left">
-                      <p class="font-weight-bold text-primary m-0">Participación</p>
+            <div class="card border-0">
+              <div class="card-header bg-white p-0 m-0">
+                <div class="btn w-100" id="headingParticipation" data-toggle="collapse" data-target="#collapseParticipation" aria-expanded="true">
+                    <div class="row">
+                      <div class="col-8 text-left">
+                        <p class="font-weight-bold text-primary m-0">Participación</p>
+                      </div>
+                      <div class="col-4 text-right">
+                        <i class="fa fa-chevron-down text-secondary "></i>
+                      </div>
                     </div>
-                    <div class="col-4 text-right">
-                      <i class="fa fa-chevron-down text-secondary "></i>
-                    </div>
-                  </div>
+                </div>
+
               </div>
 
               <div id="collapseParticipation" class="collapse show" aria-labelledby="headingParticipation" data-parent="#sideLogistica">
                 <div class="card-body p-0">
-                  <div class="list-group m-0">
+                  <div class="list-group list-group-flush m-0">
                     <a href="#participacion" class="list-group-item list-group-item-action text-primary py-2">Reseña</a>
                     <a href="#dinamica-del-evento" class="list-group-item list-group-item-action text-primary py-2">Dinámica del evento</a>
                     <a href="#cuota-de-participacion" class="list-group-item list-group-item-action text-primary py-2">Cuota de participación</a>
@@ -150,37 +153,46 @@
             </div>
 
             <!-- Hospedaje -->
-            <div class="card">
-                <a href= "#item-2" class="btn">
+            <div class="card border-0 ">
+              <div class="card-header border-top bg-white p-0 m-0">
+                <a href= "#item-2" class="btn w-100 rounded-0">
                   <div class="font-weight-bold text-primary text-left" id="headingHospedaje" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="false">
                     Hospedaje</div>
                 </a>
+              </div>
+
             </div>
 
             <!-- Sede Oficial -->
-            <div class="card">
-                <a href= "#item-3" class="btn">
+            <div class="card border-0">
+              <div class="card-header bg-white p-0 m-0">
+                <a href= "#item-3" class="btn w-100 rounded-0">
                   <div class="font-weight-bold text-primary text-left" id="headingSede" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="false">
                     Sede Oficial</div>
                 </a>
+              </div>
+
             </div>
 
             <!-- Opcion de Viaje -->
-            <div class="card">
-              <div class="btn" id="headingTravelInfo" data-toggle="collapse" data-target="#collapseTravelInfo" aria-expanded="false">
-                  <div class="row ">
-                    <div class="col-9 text-center">
-                      <p class="font-weight-bold text-primary my-0 text-left">Información de Viaje</p>
+            <div class="card border-0">
+              <div class="card-header bg-white p-0 m-0">
+                <div class="btn w-100" id="headingTravelInfo" data-toggle="collapse" data-target="#collapseTravelInfo" aria-expanded="false">
+                    <div class="row ">
+                      <div class="col-9 text-center">
+                        <p class="font-weight-bold text-primary my-0 text-left">Información de Viaje</p>
+                      </div>
+                      <div class="col-3 text-right">
+                        <i class="fa fa-chevron-down text-secondary "></i>
+                      </div>
                     </div>
-                    <div class="col-3 text-right">
-                      <i class="fa fa-chevron-down text-secondary "></i>
-                    </div>
-                  </div>
+                </div>
+
               </div>
 
               <div id="collapseTravelInfo" class="collapse" aria-labelledby="headingTravelInfo" data-parent="#sideLogistica">
                 <div class="card-body p-0">
-                  <div class="list-group m-0">
+                  <div class="list-group list-group-flush m-0">
                     <a href="#item-1-1" class="list-group-item list-group-item-action text-primary py-2">Aéreo</a>
                     <a href="#" class="list-group-item list-group-item-action text-primary py-2">Terrestre</a>
                   </div>
@@ -189,21 +201,24 @@
             </div>
 
             <!-- Movilizacion -->
-            <div class="card">
-              <div class="btn" id="headingMovilizacion" data-toggle="collapse" data-target="#collapseMovilizacion" aria-expanded="false">
-                  <div class="row ">
-                    <div class="col-8 text-left">
-                      <p class="font-weight-bold text-primary my-0">Movilización</p>
+            <div class="card border-0">
+              <div class="card-header bg-white p-0 m-0 border-top">
+                <div class="btn w-100" id="headingMovilizacion" data-toggle="collapse" data-target="#collapseMovilizacion" aria-expanded="false">
+                    <div class="row ">
+                      <div class="col-8 text-left">
+                        <p class="font-weight-bold text-primary my-0">Movilización</p>
+                      </div>
+                      <div class="col-4 text-right">
+                        <i class="fa fa-chevron-down text-secondary "></i>
+                      </div>
                     </div>
-                    <div class="col-4 text-right">
-                      <i class="fa fa-chevron-down text-secondary "></i>
-                    </div>
-                  </div>
+                </div>
               </div>
+
 
               <div id="collapseMovilizacion" class="collapse" aria-labelledby="headingMovilizacion" data-parent="#sideLogistica">
                 <div class="card-body p-0">
-                  <div class="list-group m-0">
+                  <div class="list-group list-group-flush m-0">
                     <a href="#item-1-1" class="list-group-item list-group-item-action text-primary py-2">Servicio de Autobuses</a>
                     <a href="#" class="list-group-item list-group-item-action text-primary py-2">Servicio de taxis</a>
                     <a href="#" class="list-group-item list-group-item-action text-primary py-2">Servicio UBER</a>
@@ -213,21 +228,24 @@
             </div>
 
             <!-- Informacion de El Salvador-->
-            <div class="card">
-              <div class="btn" id="headingInfoESA" data-toggle="collapse" data-target="#collapseInfoESA" aria-expanded="false">
-                  <div class="row ">
-                    <div class="col-8 text-center">
-                      <p class="font-weight-bold text-primary my-0">Acerca de El Salvador</p>
+            <div class="card border-0">
+              <div class="card-header bg-white p-0 m-0 border-top">
+                <div class="btn w-100" id="headingInfoESA" data-toggle="collapse" data-target="#collapseInfoESA" aria-expanded="false">
+                    <div class="row ">
+                      <div class="col-8 text-center">
+                        <p class="font-weight-bold text-primary my-0">Acerca de El Salvador</p>
+                      </div>
+                      <div class="col-4 text-right">
+                        <i class="fa fa-chevron-down text-secondary"></i>
+                      </div>
                     </div>
-                    <div class="col-4 text-right">
-                      <i class="fa fa-chevron-down text-secondary"></i>
-                    </div>
-                  </div>
+                </div>
               </div>
+
 
               <div id="collapseInfoESA" class="collapse" aria-labelledby="headingInfoESA" data-parent="#sideLogistica">
                 <div class="card-body p-0">
-                  <div class="list-group m-0">
+                  <div class="list-group list-group-flush m-0">
                     <a href="#item-1-1" class="list-group-item list-group-item-action text-primary py-1">Moneda Local</a>
                     <a href="#" class="list-group-item list-group-item-action text-primary py-1">Electricidad</a>
                     <a href="#" class="list-group-item list-group-item-action text-primary py-1">Hospitales</a>
@@ -242,19 +260,25 @@
             </div>
 
             <!-- Opciones de Tiempo Libre-->
-            <div class="card">
-                <a href= "#item-2" class="btn">
+            <div class="card border-0">
+              <div class="card-header bg-white p-0 m-0 border-top rounded-0">
+                <a href= "#item-2" class="btn w-100">
                   <div class="font-weight-bold text-primary text-left" id="headingFreeTime" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="false">
                     Tiempo Libre</div>
                 </a>
+              </div>
+
             </div>
 
             <!-- Recomendaciones de Seguridad -->
-            <div class="card">
-                <a href= "#item-3" class="btn ">
+            <div class="card border-0">
+              <div class="card-header bg-white p-0 m-0 border-top rounded-0">
+                <a href= "#item-3" class="btn w-100">
                   <div class="font-weight-bold text-primary text-left" id="headingInfoSecurity" data-toggle="collapse" data-target="#collapseHospedaje" aria-expanded="False">
                     Recomendaciones</div>
                 </a>
+              </div>
+
             </div>
 
         </div>
@@ -403,15 +427,16 @@
     <span class="back-to-top"><i class="fa fa-arrow-circle-up"></i></span>
     </div>
 
-  <!-- Pie de Pagina -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0  text-white">
-        <img src="img/Logo.png" width="70" height="40" class="d-inline-block" alt=""> X Encuentro Centroamericano de Software Libre
-      </p>
-      <p class="m-0 text-center text-white">Copyright &copy; ECSL 2018</p>
-    </div>
-  </footer>
+    <!-- Pie de Pagina -->
+    <footer id="pie" class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0  text-white">
+          <img src="img/Logo.png" width="70" height="40" class="d-inline-block" alt=""> X Encuentro Centroamericano de Software Libre
+        </p>
+        <p class="m-0 text-center text-white">Copyright &copy; ECSL 2018</p>
+      </div>
+    </footer>
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
