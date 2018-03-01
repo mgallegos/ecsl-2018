@@ -35,7 +35,7 @@
           <a class="nav-link" href="{{URL::to('cms/ecsl/eventos-anteriores')}}">Eventos Anteriores</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="modal" data-target="#Contact" role="button">Contacto</a>
+          <a class="nav-link fake-link" data-toggle="modal" data-target="#Contact" role="button">Contacto</a>
         </li>
       </ul>
     </div>
