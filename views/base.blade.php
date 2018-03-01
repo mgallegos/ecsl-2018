@@ -30,7 +30,7 @@
 	@endif
 
 </head>
-<body id='body'>
+<body  data-spy="scroll" data-target="#sideLogistica" id='body'>
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];

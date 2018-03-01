@@ -21,7 +21,7 @@
 
     <!-- Sidebar Column -->
     <div class="col-lg-3 m-2 p-0 border rounded side-bar">
-      <div class="" id="sideLogistica">
+      <div id="sideLogistica">
         <!-- Participacion -->
         <div class="card border-0">
           <div class="card-header bg-white p-0 m-0">
