@@ -69,7 +69,7 @@
 
     .side-bar{
       position: fixed;
-      width: 16em;
+      width: auto;
     }
 
 

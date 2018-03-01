@@ -10,7 +10,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+        <a href="{{URL::to('cms/ecsl')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
       </li>
       <li class="breadcrumb-item active">Logística</li>
     </ol>
@@ -769,7 +769,7 @@
 <!-- /.container -->
 <script>
   $(window).scroll(function()
-  {    
+  {
     if( $(".show").find(".active").length == 0){
        //$(".collapse").removeClass("show");
        $(".collapse").collapse('hide');

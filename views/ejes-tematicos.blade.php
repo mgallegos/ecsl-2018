@@ -9,7 +9,7 @@
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+      <a href="{{URL::to('cms/ecsl')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
     </li>
     <li class="breadcrumb-item active">Ejes Temáticos</li>
   </ol>
@@ -42,7 +42,7 @@
     <!-- Eje Uno -->
     <div class="right-block" id="main-theme-1">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #1: Aportemos al desarrollo de más y mejor software libre.</div>
+        <div class="col-md-12 border p-3">Eje Temático #1: Aportemos al desarrollo de más y mejor software libre.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-4 pb-0 mb-0 ">
@@ -91,7 +91,7 @@
     <!-- Eje Dos -->
     <div class="right-block" id="main-theme-2">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #2: Desarrollemos y conozcamos más sobre hardware libre.</div>
+        <div class="col-md-12 border p-3">Eje Temático #2: Desarrollemos y conozcamos más sobre hardware libre.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-4 pb-0 mb-0 ">
@@ -138,7 +138,7 @@
     <!-- Eje Tres -->
     <div class="right-block" id="main-theme-3">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #3: Liberemos espacios en la web con software libre.</div>
+        <div class="col-md-12 border p-3">Eje Temático #3: Liberemos espacios en la web con software libre.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-5 pb-0 mb-0 ">
@@ -185,7 +185,7 @@
     <!-- Eje Cuatro -->
     <div class="right-block" id="main-theme-4">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #4: Usemos geotecnologías libres para la gestión de información geográficas.</div>
+        <div class="col-md-12 border p-3">Eje Temático #4: Usemos geotecnologías libres para la gestión de información geográficas.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-3 pb-0 mb-0 ">
@@ -234,7 +234,7 @@
     <!-- Eje Cinco -->
     <div class="right-block" id="main-theme-5">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #5: Seamos una comunidad más inclusiva y diversa.</div>
+        <div class="col-md-12 border p-3">Eje Temático #5: Seamos una comunidad más inclusiva y diversa.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-5 pb-0 mb-0 ">
@@ -274,7 +274,7 @@
     <!-- Eje Seis -->
     <div class="right-block" id="main-theme-6">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #6: Democraticemos los medios de comunicación con el apoyo del software libre.</div>
+        <div class="col-md-12 border p-3">Eje Temático #6: Democraticemos los medios de comunicación con el apoyo del software libre.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-5 pb-0 mb-0 ">
@@ -314,7 +314,7 @@
     <!-- Eje Siete -->
     <div class="right-block" id="main-theme-7">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #7: Fortalezcamos la comunidad centroamericana de software libre.</div>
+        <div class="col-md-12 border p-3">Eje Temático #7: Fortalezcamos la comunidad centroamericana de software libre.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-4 pb-0 mb-0 ">
@@ -355,7 +355,7 @@
     <!-- Eje Ocho -->
     <div class="right-block" id="main-theme-8">
       <div class="row bg-light font-weight-bold text-center align-middle" >
-        <div class="col-md-12 border p-3">EJE TEMÁTICO #8: Abramos un espacio de desconferencia.</div>
+        <div class="col-md-12 border p-3">Eje Temático #8: Abramos un espacio de desconferencia.</div>
       </div>
       <div class="row text-center border-left border-bottom portafolio-item">
         <div class="col-md-4 align-middle border-top border-right pt-2 pb-0 mb-0 ">
