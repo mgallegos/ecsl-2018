@@ -768,7 +768,11 @@
 </div>
 <!-- /.container -->
 <script>
-var bool = false;
+
+  var bool = false;
+
+  @if (!Agent::isMobile())
+
   $(window).scroll(function()
   {
     if( $(".show").find(".active").length == 0){
@@ -789,7 +793,7 @@ var bool = false;
     // {
     //   colContent.removeClass("offset-lg-3");
     //   sideContainer.removeClass("m-2 p-0");
-    //   sideContainer.css({        
+    //   sideContainer.css({
     //     "position": "relative",
     //     "top": top
     //   });
@@ -800,11 +804,13 @@ var bool = false;
     //  sideContainer.css({
     //     "position": "fixed",
     //     "top": ""
-    //   }); 
+    //   });
 
     // }
     bool = false;
   });
+
+  @endif
 
   $("a.btn").click(function()
   {
