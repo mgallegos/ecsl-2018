@@ -17,10 +17,10 @@
   </div>
 
   <!-- Content Row -->
-  <div class="row">
+  <div id="rowContainer" class="row">
 
     <!-- Sidebar Column -->
-    <div class="col-lg-3 m-2 p-0 border rounded side-bar">
+    <div id="colSide" class="col-lg-3 m-2 p-0 border rounded side-bar"> <!--m-2 p-0-->
       <div id="sideLogistica">
         <!-- Participacion -->
         <div class="card border-0">
@@ -147,7 +147,7 @@
           <div class="card-header bg-white p-0 m-0 border-top">
             <div class="btn w-100" id="headingInfoESA" data-toggle="collapse" data-target="#collapseInfoESA" aria-expanded="false">
               <div class="row ">
-                <div class="col-8 text-center">
+                <div class="col-8 text-left">
                   <p class="font-weight-bold text-primary my-0">Acerca de El Salvador</p>
                 </div>
                 <div class="col-4 text-right">
@@ -200,7 +200,7 @@
     </div>
 
     <!-- Content Column -->
-    <div class="col-lg-9 offset-lg-3 mb-4">
+    <div id="colContent" class="col-lg-9 mb-4 offset-lg-3"> <!--offset-lg-3 mb-4-->
       <div data-spy="scroll" data-target="#sideLogistica" data-offset="0">
 
         <div class="d-none d-lg-block">
@@ -261,7 +261,7 @@
 
             <div class="col-md-4 mb-4">
               <div class="card">
-                <h3 class="card-header text-center">Plus</h3>
+                <h3 class="card-header text-center">Básico Plus</h3>
                 <div class="card-body m-0 px-0">
                   <h2 class="text-center font-weight-bold">$ 40.00</h2>
                   <div class="font-italic text-center">Incluye:</div>
@@ -277,7 +277,7 @@
             </div>
             <div class="col-md-4 mb-4">
               <div class="card">
-                <h3 class="card-header text-center">Ultra</h3>
+                <h3 class="card-header text-center">Completo</h3>
                 <div class="card-body m-0 px-0">
                   <h2 class="text-center font-weight-bold">$ 150.00</h2>
                   <div class="font-italic text-center">Incluye:</div>
@@ -768,6 +768,7 @@
 </div>
 <!-- /.container -->
 <script>
+var bool = false;
   $(window).scroll(function()
   {    
     if( $(".show").find(".active").length == 0){
@@ -775,11 +776,48 @@
        $(".collapse").collapse('hide');
     }
 
-    if( $("a.active") && !($("a.active").parents(".show").eq(2).length) ){
+    if( $("a.active") && !($("a.active").parents(".show").eq(2).length) && !bool){
       //$("a.active").parents().eq(2).addClass("show");
       $("a.active").parents().eq(2).collapse('show');
     }
+    // var windowLevel = $(window).scrollTop();
+    // var marginLevel = parseInt($(".col-lg-3").height())*0.92;
+    // var sideContainer = $("#colSide");
+    // var colContent = $("#colContent");
+    // var top = $("#rowContainer").height()*0.92;
+    // if( (windowLevel >= marginLevel))
+    // {
+    //   colContent.removeClass("offset-lg-3");
+    //   sideContainer.removeClass("m-2 p-0");
+    //   sideContainer.css({        
+    //     "position": "relative",
+    //     "top": top
+    //   });
+    // }else
+    // {
+    //  colContent.addClass("offset-lg-3");
+    //  sideContainer.addClass("m-2 p-0");
+    //  sideContainer.css({
+    //     "position": "fixed",
+    //     "top": ""
+    //   }); 
+
+    // }
+    bool = false;
   });
+
+  $("a.btn").click(function()
+  {
+    bool = true;
+    $("a.active").removeClass("active");
+    if( $("div.show").length != 0 )
+    {
+      $("div.collapse").collapse("hide");
+    }
+  });
+
+
+
 </script>
 @parent
 @stop
