@@ -1,9 +1,8 @@
 <!-- Barra de Navegacion -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand d-none d-md-block" href="{{URL::to('cms/ecsl')}}">X Encuentro Centroamericano de Software Libre - 2018</a>
-    <a class="navbar-brand d-md-none" href="{{URL::to('cms/ecsl')}}">X ECSL - 2018</a>
-    <!-- <img src="img/Logo.png" width="70" height="40" class="d-inline-block" alt=""> -->
+    <a class="navbar-brand d-none d-md-block" href="{{URL::to('cms/ecsl')}}" style="padding:0;"><img src="https://storage.googleapis.com/decimaerp/organizations/15/logo_ecsl_2018_small.png" class="d-inline-block" alt="">X Encuentro Centroamericano de Software Libre - 2018</a>
+    <a class="navbar-brand d-md-none" href="{{URL::to('cms/ecsl')}}" style="padding:0;"><img src="https://storage.googleapis.com/decimaerp/organizations/15/logo_ecsl_2018_small.png" class="d-inline-block" alt="">X ECSL - 2018</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
