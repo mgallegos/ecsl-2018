@@ -3,7 +3,7 @@
   /* @import url('https://fonts.googleapis.com/css?family=Pacifico'); */
 
   body {
-    padding-top: 54px;
+    padding-top: 86px;
   }
 
   .card-logo .card-body{
@@ -54,9 +54,6 @@
   }
 
   @media (min-width: 992px) {
-    body {
-      padding-top: 56px;
-    }
 
     #ecsl-2017-card-title {
       height: 48px;
@@ -69,7 +66,7 @@
 
     .side-bar{
       position: fixed;
-      width: 16em;
+      width: auto;
     }
 
 
@@ -123,8 +120,8 @@
   .right-block:before {
         display: block;
         content: " ";
-        margin-top: -65px;
-        height: 65px;
+        margin-top: -96px;
+        height: 96px;
         visibility: hidden;
   }
 </style>

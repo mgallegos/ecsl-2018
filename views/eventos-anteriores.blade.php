@@ -8,143 +8,164 @@
 <!-- Barra de Ubicacion -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+      <a href="{{URL::to('cms/ecsl')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
     </li>
     <li class="breadcrumb-item active">Eventos Anteriores
     </li>
   </ol>
 
-  <!--Item Principal-->
-  <div class="row container">
 
-    <div class="col-md-9  embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item " src="https://www.youtube.com/embed/gY9b9RMMqCU" allowfullscreen></iframe>
-    </div>
-
-    <div class=" align-middle col-md-3">
-      <h4 class="text-center ">
-        <p class =" text-primary">IX ECSL-2017</p>
-      </h4>
-      <h6 class=" text-center">
-        <p class =" text-primary">SAN JOSÉ, COSTA RICA</p>
-      </h6>
-    </div>
-
-  </div>
-  <br><br>
   <div class="row">
-    <!--Item 1-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2017-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card ">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">VIII ECSL-2016</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">MANAGUA, NICARAGUA</p>
-          </h6>
+          <h5 id="ecsl-2017-card-title" class="card-title text-center">IX ECSL 2017 <br> San José, Costa Rica</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="https://ecsl2017.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
       </div>
     </div>
-  </div>
-    <!--Item 2-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2016-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">VII ECSL-2015</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">SAN PEDRO SULA, HONDURAS</p>
-          </h6>
+          <h5 class="card-title text-center">VIII ECSL 2016 <br> Managua, Nicagarua</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://encuentro.softwarelibre.ca/2016/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
+        </div>
       </div>
     </div>
-  </div>
-    <!--Item 3-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2015-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">VI ECSL-2014</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">CHITRÉ, PANAMÁ</p>
-          </h6>
+          <h5 class="card-title text-center">VII ECSL 2015 <br> San Pedro Sula, Honduras</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://ecsl2015.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=zbNrq0QyLXE&feature=youtu.be" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
       </div>
     </div>
-  </div>
-    <!--Item 4-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2014-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="http://ecsl2014.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">V ECSL-2013</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">SAN IGNACIO, BELIZE</p>
-          </h6>
+          <h5 class="card-title text-center">VI ECSL 2014 <br> Chitré, Panamá</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://ecsl2014.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <a href="https://www.youtube.com/watch?v=zbNrq0QyLXE&feature=youtu.be" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
+        </div>
       </div>
     </div>
-  </div>
-    <!--Item 5-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2013-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="http://ecsl2013.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">IV ECSL-2012</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">CIUDAD DE GUATEMALA, GUATEMALA</p>
-          </h6>
+          <h5 class="card-title text-center">V ECSL 2013 <br> San Ignacio, Belize</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://ecsl2013.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
       </div>
     </div>
-  </div>
-    <!--Item 6-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2012-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">III ECSL-2011</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">SUCHITOTO, EL SALVADOR</p>
-          </h6>
+          <h5 class="card-title text-center">IV ECSL 2012 <br> Ciudad de Guatemala, Guatemala</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://ecsl2015.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
       </div>
     </div>
-  </div>
-    <!--Item 7-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2011-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2011.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">II ECSL-2010</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">PUNTARENAS, COSTA RICA</p>
-          </h6>
+          <h5 class="card-title text-center">III ECSL 2011 <br> Suchitoto, El Salvador</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://ecsl2015.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
       </div>
     </div>
-  </div>
-    <!--Item 8-->
-    <div class="col-lg-6 portfolio-item">
-      <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    <!--ECSL 2010-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="http://encuentro.softwarelibre.ca/eventos/ii-ecsl-2010/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2010.jpg" class="card-img-top img-fluid">
+        </a>
         <div class="card-body">
-          <h4 class="card-title text-center">
-            <p class =" text-primary">I ECSL-2009</p>
-          </h4>
-          <h6 class="card-title text-center">
-            <p class =" text-primary">ESTELÍ, NIGARAGUA</p>
-          </h6>
+          <h5 class="card-title text-center">II ECSL 2010 <br> Puntarenas, Costa Rica</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://encuentro.softwarelibre.ca/eventos/ii-ecsl-2010/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
       </div>
     </div>
-  </div>
+    <!--ECSL 2009-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="http://encuentro.softwarelibre.ca/eventos/i-ecsl-2009/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2009.jpg" class="card-img-top img-fluid">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title text-center">I ECSL 2009 <br> Estelí, Nicaragua</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://encuentro.softwarelibre.ca/eventos/i-ecsl-2009/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
+      </div>
+    </div>
 
 <!-- /.row -->
 </div>

@@ -10,7 +10,7 @@
   <!-- Barra de Ubicacion -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="index.html"> <i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+      <a href="{{URL::to('cms/ecsl')}}"> <i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
     </li>
     <li class="breadcrumb-item active">FAQ</li>
   </ol>
@@ -40,13 +40,13 @@
     <div class="card">
       <div class="card-header" role="tab" id="Two">
         <h5 class="mb-0">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseOne">¿En qué fecha se realizará el ECSL?</a>
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">¿En qué fecha se realizará el ECSL?</a>
         </h5>
       </div>
 
       <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="Two">
         <div class="card-body">
-          El Encuentro Centroamericano de Software Libre 2018 se realizará...
+          El Encuentro Centroamericano de Software Libre 2018 se realizará en la ciudad de San Salvador, El Salvador los días 12 y 13 de julio del 2018.
         </div>
       </div>
     </div>
@@ -55,13 +55,93 @@
     <div class="card">
       <div class="card-header" role="tab" id="Three">
         <h5 class="mb-0">
-          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThee" aria-expanded="false" aria-controls="collapseOne">¿Cuales serán los temas a tratar en el evento?</a>
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThee" aria-expanded="false" aria-controls="collapseThree">¿Cuales serán los temas a tratar en el evento?</a>
         </h5>
       </div>
 
       <div id="collapseThee" class="collapse" role="tabpanel" aria-labelledby="Thee">
         <div class="card-body">
-          Holas...
+          Puede consultar los temas a tratar en el apartado de  <a href="{{URL::to('cms/ecsl/ejes-tematicos')}}">Ejes Tematicos.</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pregunta #4 -->
+    <div class="card">
+      <div class="card-header" role="tab" id="Four">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">¿Cómo me registro?</a>
+        </h5>
+      </div>
+
+      <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="Four">
+        <div class="card-body">
+          El registro aún no está abierto.
+        </div>
+      </div>
+    </div>
+
+    <!-- Pregunta #5 -->
+    <div class="card">
+      <div class="card-header" role="tab" id="Five">
+        <h5 class="mb-0">
+          <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">¿Tiene un costo la participación al X ECSL?</a>
+        </h5>
+      </div>
+
+      <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="Five">
+        <div class="card-body">
+          Sí, los costos de participación al evento son los siguientes:
+            <div class="row">
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <h3 class="card-header text-center">Básico</h3>
+                <div class="card-body">
+                  <h2 class="text-center font-weight-bold">$ 10.00</h2>
+                  <div class="font-italic text-center">Incluye:</div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Ingreso al evento</li>
+                  <li class="list-group-item">Swag Completo</li>
+                  <li class="list-group-item">Diploma de participación</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <h3 class="card-header text-center">Básico Plus</h3>
+                <div class="card-body m-0 px-0">
+                  <h2 class="text-center font-weight-bold">$ 40.00</h2>
+                  <div class="font-italic text-center">Incluye:</div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item ">Ingreso al evento</li>
+                  <li class="list-group-item ">Swag Completo</li>
+                  <li class="list-group-item ">Diploma de participación</li>
+                  <li class="list-group-item ">Almuerzos</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <h3 class="card-header text-center">Completo</h3>
+                <div class="card-body m-0 px-0">
+                  <h2 class="text-center font-weight-bold">$ 150.00</h2>
+                  <div class="font-italic text-center">Incluye:</div>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item ">Ingreso al evento</li>
+                  <li class="list-group-item ">Swag Completo</li>
+                  <li class="list-group-item ">Diploma de participación</li>
+                  <li class="list-group-item ">Comida [Tres Tiempos]</li>
+                  <li class="list-group-item ">Hospedaje</li>
+                  <li class="list-group-item ">Transporte</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
