@@ -1,17 +1,55 @@
-/*!
- * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
- * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
- */
 
 body {
   padding-top: 54px;
+}
+
+@media (max-width: 995.98px) {
+  .main-icons {
+    font-size: 8em !important;
+    color: #fff;
+  }
+
+  .back-to-top{
+    display:block;
+    font-size: 4em;
+    color: #000000;
+    position: fixed;
+    bottom: 5px;
+    right: 10px;
+    cursor:pointer;
+  }
+}
+
+@media (min-width: 996px) {
+  .main-icons {
+    font-size: 12em !important;
+    color: #fff;
+  }
+
+
+  .side-bar{
+    position: fixed;
+    width: 16em;
+  }
+}
+
+
+@media (min-width: 768px) {
+
 }
 
 @media (min-width: 992px) {
   body {
     padding-top: 56px;
   }
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+
+}
+
+@media (min-width: 1200px) {
+
 }
 
 .carousel-item {
@@ -24,18 +62,35 @@ body {
   background-size: cover;
 }
 
-.portfolio-item {
+.portafolio-item{
   margin-bottom: 30px;
 }
 
 /* Custom Classes */
 
-.main-icons {
-  font-size: 12em !important;
-  color: #fff;
+.height-sponsors-img{
+  height: 120px !important;
+  width: 89px !important;
+
 }
 
-.img-height{
-  height: 150px !important;
-  width: 111px !important;
+.obj-container {
+  padding:  20px 20px
+}
+
+.tbl-container {
+  width:  100%;
+  height: auto;
+  position: relative;
+  padding:  0 !important;
+  padding-bottom: 0 !important;
+}
+
+
+.right-block:before {
+      display: block;
+      content: " ";
+      margin-top: -65px;
+      height: 65px;
+      visibility: hidden;
 }
