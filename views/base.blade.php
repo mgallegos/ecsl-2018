@@ -82,8 +82,8 @@
 					<ul>
 						<li><strong>Coordinación General:</strong> Carlos Juan Martín Pérez <<a href="mailto:name@example.com">name@example.com</a>></li>
 						<li><strong>Comisión de Soporte y sistemas informáticos:</strong> Mario Gallegos <<a href="mailto:name@example.com">name@example.com</a>></li>
-						<li><strong>Comunicación y divulgación:</strong> Keyla Merino <<a href="mailto:name@example.com">name@example.com</a>></li>
-						<li><strong>Actividades recreativas y culturales:</strong> Karla Hernández <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Comunicación y divulgación:</strong> Karla Hernández <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Actividades recreativas y culturales:</strong> Keyla Merino <<a href="mailto:name@example.com">name@example.com</a>></li>
 						<li><strong>Logística:</strong> Víctor Manuel Salmerón <<a href="mailto:name@example.com">name@example.com</a>></li>
 						<li><strong>Finanzas:</strong> Moises Larín <<a href="mailto:name@example.com">name@example.com</a>></li>
 						<li><strong>Comisión de Metodología y coordinación de voluntariado:</strong> Oscar Aguilar <<a href="mailto:name@example.com">name@example.com</a>></li>
