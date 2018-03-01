@@ -3,33 +3,6 @@
 @section('container')
 @include('decima-cms::blog-css')
 @include('decima-cms::blog-post')
-<!-- Modal -->
-<div class="modal fade" id="Contact" tabindex="-1" role="dialog" aria-labelledby="Body" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h5 class="modal-title" id="Body">Detalles de Contacto</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-
-      <div class="modal-body">
-        <p>
-          Lic. Juan Perez
-        </p>
-        <p>
-          Telefono: (+503) 7456-7890 <br> Correo Electronico: <a href="mailto:name@example.com">name@example.com</a> <br> Horario: Lunes - Viernes: 9:00 AM a 5:00 PM <br>
-        </p>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- CARRUSEL-->
 <header>
@@ -42,10 +15,10 @@
 
     <div class="carousel-inner" role="listbox">
       <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+      <div class="carousel-item active" style="background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/carousel1.jpg')">
       <!-- <div class="carousel-item active" style="background-image: url('img/BannerPrincipal11.png')"> -->
 
-        <div class="carousel-caption  ">
+        <div class="carousel-caption">
           <h3 class="d-none d-lg-block font-weight-bold">X Encuentro Centroaméricano de Software Libre</h3>
           <h4 class="d-none d-md-block d-lg-none font-weight-bold">X Encuentro Centroaméricano de Software Libre</h4>
           <h6 class="d-md-none font-weight-bold">X Encuentro Centroaéricano de Software Libre</h6>
@@ -99,6 +72,51 @@
   <!-- Marketing Icons Section -->
   <div class="row">
     <div class="col-lg-4 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
+        <div class="card-body">
+          <h5 id="ecsl-2017-card-title" class="card-title">IX ECSL 2017 San José, Costa Rica</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="https://ecsl2017.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">VIII ECSL 2016 Managua, Nicagarua</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://encuentro.softwarelibre.ca/2016/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card">
+        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
+        </a> -->
+        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">VII ECSL 2015 San Pedro Sula, Honduras</h5>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <a href="http://ecsl2015.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+        </div>
+      </div>
+    </div>
+    <!-- <div class="col-lg-4 mb-4">
       <div class="card h-100">
         <h4 class="card-header">Card Title</h4>
         <div class="card-body">
@@ -108,31 +126,20 @@
           <a href="#" class="btn btn-primary">Learn More</a>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
-        <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
-        <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-      </div>
-    </div>
+    </div> -->
+
   </div>
   <!-- /.row -->
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <p class="text-center">Conoce los países y lugares en los que el Encuentro Centroamericano de Software Libre se ha venido realizando desde al año 2009 y no pierdas la oportunidad de participar en la décima edición del evento El Salvador 2018!</p>
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-lg btn-secondary btn-block bg-dark" href="{{URL::to('cms/ecsl/eventos-anteriores')}}">Ver todos los eventos anteriores</a>
+    </div>
+  </div>
+
+  <hr>
 </div>
 <!-- /.container -->
 
@@ -145,27 +152,27 @@
       <h2 class="display-5 text-center text-white">Información General</h2><br>
       <div class="row">
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="logistica.html" class="text-white">
+          <a href="{{URL::to('cms/ecsl/logistica')}}" class="text-white">
                   <i class="fa fa-user-circle-o main-icons" aria-hidden="true"></i> <h3>Participación</h3>
                 </a>
         </div>
 
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="logistica.html" class="text-white">
+          <a href="{{URL::to('cms/ecsl/logistica')}}" class="text-white">
                 <i class="fa fa-bed main-icons" aria-hidden="true"></i><h3>Hospedaje</h3>
               </a>
         </div>
 
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="logistica.html" class="text-white">
+          <a href="{{URL::to('cms/ecsl/logistica')}}" class="text-white">
                 <i class="fa fa-university main-icons" aria-hidden="true"></i><h3>Sede</h3>
                 </a>
         </div>
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="logistica.html" class="text-white">
+          <a href="{{URL::to('cms/ecsl/faq')}}" class="text-white">
               <i class="fa fa-question-circle-o main-icons" aria-hidden="true"></i><h3>FAQ</h3>
             </a>
         </div>
@@ -178,7 +185,8 @@
 <div class="container">
 
   <!-- Anuncio "Registrarme" -->
-  <div class="row mb-4">
+
+  <!-- <div class="row mb-4">
     <div class="col-md-8">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
     </div>
@@ -187,56 +195,76 @@
     </div>
   </div>
 
-  <hr>
+  <hr> -->
 
 
   <!-- Portfolio Section -->
   <h2 class="text-center display-5">Patrocinadores</h2><br>
 
   <div class="row">
-
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 portafolio-item">
-      <a href="http://www.uca.edu.sv">
-        <div class="card">
-          <img class="card-img-top mx-auto  height-sponsors-img  " src="img/UCA.png" alt="">
-          <div class="card-body">
-            <h5 class="card-title text-center">UCA El Salvador</h5>
-          </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo card-header-logo-padding">
+          <a href="http://www.uca.edu.sv" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_uca.png">
+          </a>
         </div>
-      </a>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://www.uca.edu.sv" target="_blank" class="card-logo-title">
+              Universidad Centroamericana José Simeón Cañas
+            </a>
+          </h6>
+        </div>
+      </div>
     </div>
-
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 portafolio-item">
-      <a href="http://www.uca.edu.sv">
-        <div class="card">
-          <img class="card-img-top mx-auto  height-sponsors-img  " src="img/UCA.png" alt="">
-          <div class="card-body">
-            <h5 class="card-title text-center">UCA El Salvador</h5>
-          </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo card-header-logo-padding">
+          <a href="http://www.slsv.org/" target="_blank">
+            <img class="card-img-top img-fluid" src="http://www.slsv.org/sites/default/files/color/business-4a3de5b4/logo.png">
+          </a>
         </div>
-      </a>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://www.slsv.org/" target="_blank" class="card-logo-title">
+              Comunidad Salvadoreña de Software Libre
+            </a>
+          </h6>
+        </div>
+      </div>
     </div>
-
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 portafolio-item">
-      <a href="http://www.uca.edu.sv">
-        <div class="card">
-          <img class="card-img-top mx-auto  height-sponsors-img  " src="img/UCA.png" alt="">
-          <div class="card-body">
-            <h5 class="card-title text-center">UCA El Salvador</h5>
-          </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="http://www.salud.gob.sv/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_minsal.png">
+          </a>
         </div>
-      </a>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://www.salud.gob.sv/" target="_blank" class="card-logo-title">
+              Comunidad Salvadoreña de Software Libre
+            </a>
+          </h6>
+        </div>
+      </div>
     </div>
-
-    <div class="col-lg-3 col-md-4 col-sm-6 col-12 portafolio-item">
-      <a href="http://www.uca.edu.sv">
-        <div class="card">
-          <img class="card-img-top mx-auto  height-sponsors-img  " src="img/UCA.png" alt="">
-          <div class="card-body">
-            <h5 class="card-title text-center">UCA El Salvador</h5>
-          </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="http://www.decimaerp.com/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_decimaerp_.png">
+          </a>
         </div>
-      </a>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://www.decimaerp.com/" target="_blank" class="card-logo-title">
+              DecimaERP
+            </a>
+          </h6>
+        </div>
+      </div>
     </div>
   </div>
   <!-- /.row -->

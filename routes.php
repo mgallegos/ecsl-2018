@@ -20,6 +20,27 @@
 */
 
 //https://laravel.com/docs/5.1/controllers
+
+Route::get('/cms/ecsl/logistica', function()
+{
+	return View::make('ecsl-2018::logistica');
+});
+
+Route::get('/cms/ecsl/ejes-tematicos', function()
+{
+	return View::make('ecsl-2018::ejes-tematicos');
+});
+
+Route::get('/cms/ecsl/faq', function()
+{
+	return View::make('ecsl-2018::faq');
+});
+
+Route::get('/cms/ecsl/eventos-anteriores', function()
+{
+	return View::make('ecsl-2018::eventos-anteriores');
+});
+
 // Route::put('/cms/decimaerp/{id}', 'Mgallegos\DecimaWeb\Controllers\GestorCms@getIndex');
 
 // Route::controller('/cms/sfd2017/login', 'Mgallegos\ECSL2018\Controllers\LoginManager');

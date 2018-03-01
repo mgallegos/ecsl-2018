@@ -67,6 +67,33 @@
 			{!! Form::hidden('app-kwaai', '', array('id' => 'app-kwaai')) !!}
 		</fieldset>
 	</div>
+	<!-- Modal -->
+	<div class="modal fade" id="Contact" tabindex="-1" role="dialog" aria-labelledby="Body" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="Body">Detalles de Contacto</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	            <span aria-hidden="true">&times;</span>
+	          </button>
+	      </div>
+
+	      <div class="modal-body">
+	        <p>
+	          Lic. Juan Perez
+	        </p>
+	        <p>
+	          Telefono: (+503) 7456-7890 <br> Correo Electronico: <a href="mailto:name@example.com">name@example.com</a> <br> Horario: Lunes - Viernes: 9:00 AM a 5:00 PM <br>
+	        </p>
+	      </div>
+
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<div class="site-background-color footer-margin"></div>
   @include('ecsl-2018::footer')
 	@include('ecsl-2018::terminosycondiciones')
@@ -77,7 +104,7 @@
 			{!! FormJavascript::getCode() !!}
 		});
 	</script>
-	<button id="back-to-top" type="button" class="btn btn-dark" style="top: inherit;"><i class="fa fa-chevron-up"></i></button>
+	<button id="back-to-top" type="button" class="btn btn btn-success" style="top: inherit;"><i class="fa fa-chevron-up"></i></button>
 	<!-- <button id="obs-login" type="button" class="btn btn-default"><i class="fa fa-user"></i></button> -->
 </body>
 </html>

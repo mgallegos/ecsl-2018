@@ -6,7 +6,37 @@
     padding-top: 54px;
   }
 
-  @media (max-width: 995.98px) {
+  .card-logo .card-body{
+    padding: .4rem !important;
+  }
+
+  .card-logo-title{
+    color: #343a40 !important;
+  }
+
+  .card-header-logo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .card-header-logo-padding {
+    padding: 0 3rem;
+  }
+
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .card-header-logo {
+      height: 192px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .card-header-logo {
+      height: 152px;
+    }
+  }
+
+  @media (max-width: 991px) {
     .main-icons {
       font-size: 8em !important;
       color: #fff;
@@ -23,28 +53,26 @@
     }
   }
 
-  @media (min-width: 996px) {
+  @media (min-width: 992px) {
+    body {
+      padding-top: 56px;
+    }
+
+    #ecsl-2017-card-title {
+      height: 48px;
+    }
+
     .main-icons {
       font-size: 12em !important;
       color: #fff;
     }
 
-
     .side-bar{
       position: fixed;
       width: 16em;
     }
-  }
 
 
-  @media (min-width: 768px) {
-
-  }
-
-  @media (min-width: 992px) {
-    body {
-      padding-top: 56px;
-    }
   }
 
   @media (min-width: 992px) and (max-width: 1199px){
@@ -52,7 +80,9 @@
   }
 
   @media (min-width: 1200px) {
-
+    .card-header-logo {
+      height: 213px;
+    }
   }
 
   .carousel-item {

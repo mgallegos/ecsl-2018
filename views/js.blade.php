@@ -8,6 +8,12 @@
 	{
 		$('#ob-fa-form, #registration-form').jqMgVal('addFormFieldsValidations');
 
+		$('[data-toggle="lightbox"]').click(function()
+		{
+			event.preventDefault();
+ 			$(this).ekkoLightbox();
+		});
+
 		$('#ob-fa-btn').click(function()
 		{
 			var data = $('#ob-fa-form').formToObject('ob-fa-');
