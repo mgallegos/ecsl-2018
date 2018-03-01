@@ -38,7 +38,7 @@
 
           </div>
 
-          <div id="collapseParticipation" class="collapse show" aria-labelledby="headingParticipation" data-parent="#sideLogistica">
+          <div id="collapseParticipation" class="collapse {{ !Agent::isMobile()?'show':'' }}" aria-labelledby="headingParticipation" data-parent="#sideLogistica">
             <div class="card-body p-0">
               <div class="list-group list-group-flush m-0">
                 <a href="#participacion" class="list-group-item list-group-item-action py-2">Reseña</a>
