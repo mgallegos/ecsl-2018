@@ -8,29 +8,29 @@
 	@include('layouts.header-javascript-cdn-b4-latest')
 	@include('ecsl-2018::css')
 	@include('ecsl-2018::js')
-	<!-- <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23678568-10"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
 
-  ga('create', 'UA-23678568-9', 'auto');
-  ga('send', 'pageview');
-</script> -->
+	  gtag('config', 'UA-23678568-10');
+	</script>
 	@yield('javascript')
-	<title>ECSL2018</title>
+	<title>ECSL 2018</title>
 	<!-- for Google -->
-	<!-- <meta name="description" content="{{isset($ogDescription)?$ogDescription:'Ob\'s World es el primer webcomic creado en El Salvador por Oscar Bladimir Hernández Sandoval conocido como Ob Sandoval y publicado por primera vez en Facebook en julio del 2013.'}}" />
-	<meta name="keywords" content="ECOMMERCE,TIENDA,SV,ecsl-2018,ecsl-2018SV,COMPRALOCAL,COMPRALOCALSV"/> -->
+	<meta name="description" content="{{isset($ogDescription)?$ogDescription:'El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas y miembros de comunidades y grupos de usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en la región.'}}" />
+	<meta name="keywords" content="ECSL2018,SLSV,SV,ecsl-2018,ecsl-2018SV"/>
 	<!-- for Facebook -->
-	<!-- <meta property="og:title" content="{{isset($ogTitle)?$ogTitle:'Ob\'s World'}}" />
-	<meta property="og:description" content="{{isset($ogDescription)?$ogDescription:'Ob\'s World es el primer webcomic creado en El Salvador por Oscar Bladimir Hernández Sandoval conocido como Ob Sandoval y publicado por primera vez en Facebook en julio del 2013.'}}" /> -->
+	<meta property="og:title" content="{{isset($ogTitle)?$ogTitle:'Encuentro Centroamericano de Software Libre 2018'}}" />
+	<meta property="og:description" content="{{isset($ogDescription)?$ogDescription:'El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas y miembros de comunidades y grupos de usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en la región.'}}" />
 	@if(isset($ogImage))
-		<!-- <meta property="og:image" content="{{$ogImage}}" /> -->
+		<meta property="og:image" content="{{$ogImage}}" />
 	@endif
 
 </head>
-<body id='body'>
+<body  data-spy="scroll" data-target="#sideLogistica" id='body'>
 	<div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -69,27 +69,28 @@
 	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="Contact" tabindex="-1" role="dialog" aria-labelledby="Body" aria-hidden="true">
-	  <div class="modal-dialog" role="document">
+  	<div class="modal-dialog modal-lg" role="document">
 	    <div class="modal-content">
-
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="Body">Detalles de Contacto</h5>
+	        <h5 class="modal-title" id="Body">Contáctanos</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	            <span aria-hidden="true">&times;</span>
 	          </button>
 	      </div>
-
 	      <div class="modal-body">
-	        <p>
-	          Lic. Juan Perez
-	        </p>
-	        <p>
-	          Telefono: (+503) 7456-7890 <br> Correo Electronico: <a href="mailto:name@example.com">name@example.com</a> <br> Horario: Lunes - Viernes: 9:00 AM a 5:00 PM <br>
-	        </p>
+	        <p>Respresentantes por comisión:</p>
+					<ul>
+						<li><strong>Coordinación General:</strong> Carlos Juan Martín Pérez <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Comisión de Soporte y sistemas informáticos:</strong> Mario Gallegos <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Comunicación y divulgación:</strong> Karla Hernández <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Actividades recreativas y culturales:</strong> Keyla Merino <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Logística:</strong> Víctor Manuel Salmerón <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Finanzas:</strong> Moises Larín <<a href="mailto:name@example.com">name@example.com</a>></li>
+						<li><strong>Comisión de Metodología y coordinación de voluntariado:</strong> Oscar Aguilar <<a href="mailto:name@example.com">name@example.com</a>></li>
+					</ul>
 	      </div>
-
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 	      </div>
 	    </div>
 	  </div>
