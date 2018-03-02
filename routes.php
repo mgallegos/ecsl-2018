@@ -25,11 +25,6 @@
 
 $ecslsv =  function ()
 {
-	Route::get('/', function()
-	{
-		return Redirect::to('cms/inicio');
-	});
-
 	// Route::get('/cms/ecsl/logistica', function()
 	Route::get('/cms/logistica', function()
 	{

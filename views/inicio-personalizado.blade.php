@@ -138,7 +138,7 @@
       <p class="text-center">Conoce los países y lugares en los que el Encuentro Centroamericano de Software Libre se ha venido realizando desde al año 2009 y no pierdas la oportunidad de participar en la décima edición del evento El Salvador 2018!</p>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-lg btn-secondary btn-block bg-dark" href="{{URL::to('cms/eventos-anteriores')}}">Ver todos los eventos anteriores</a>
+      <a class="btn btn-lg btn-secondary btn-block" href="{{URL::to('cms/eventos-anteriores')}}">Ver todos los eventos anteriores</a>
     </div>
   </div>
 
