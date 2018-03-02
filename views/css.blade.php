@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    margin: 0 auto;
   }
 
   .card-header-logo-padding {
