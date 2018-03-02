@@ -20,8 +20,11 @@
 
         <div class="carousel-caption">
           <h3 class="d-none d-lg-block font-weight-bold">X Encuentro Centroaméricano de Software Libre</h3>
+          <h3 class="d-none d-lg-block font-weight-bold">12 y 13 de julio del 2018</h3>
           <h4 class="d-none d-md-block d-lg-none font-weight-bold">X Encuentro Centroaméricano de Software Libre</h4>
+          <h4 class="d-none d-md-block d-lg-none font-weight-bold">12 y 13 de julio del 2018</h4>
           <h6 class="d-md-none font-weight-bold">X Encuentro Centroaéricano de Software Libre</h6>
+          <h6 class="d-md-none font-weight-bold">12 y 13 de julio del 2018</h6>
           <p class="font-italic font-weight-bold">El Salvador - 2018</p>
         </div>
 

@@ -209,7 +209,7 @@
 
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+              <a href="{{URL::to('cms/ecsl')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
             </li>
             <li class="breadcrumb-item active">Logística</li>
           </ol>
@@ -329,12 +329,12 @@
 
         <div id="forma-de-pago" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Forma de Pago</h4>
-          <p>Proximamente estaremos informando sobre los medios oficiales de pago de la cuota de inscripción al evento.</p>
+          <p>Proximamente se estará informando sobre los medios oficiales de pago de la cuota de inscripción al evento.</p>
         </div>
 
         <div id="formas-de-participacion" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Formas de Participación</h4>
-          <p>Proximamente estaremos informando sobre los medios oficiales de participación en el ECSL con mayor detalle..</p>
+          <p>Proximamente se estará informando sobre los medios oficiales de participación en el ECSL con mayor detalle..</p>
         </div>
 
         <hr>
@@ -359,15 +359,14 @@
           </div>
           <br>
           <p>
-            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2227-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com </a>.<br> Sitio web: <a href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a href="https://www.facebook.com/centroloyola.elsalvador">Centro Loyola El Salvador</a> <br>
+            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2227-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com </a>.<br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
           </p>
         </div>
 
         <div id="hospedaje-alternativo" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Hospedajes Alternativos</h4>
-          <p class="text-justify">Si desea reservar un lugar de alojamiento por su cuenta, se le recomienda las siguientes alternativas:</p>
-
-          <p>Proximamente...</p>
+          <!-- <p class="text-justify">Si desea reservar un lugar de alojamiento por su cuenta, se le recomienda las siguientes alternativas:</p> -->
+          <p>Proximamente se estará informando sobre hoteles alternativos.</p>
         </div>
 
         <hr>
@@ -378,7 +377,7 @@
             <br><br> La Universidad Centroamericana “José Simeon Cañas” (UCA) cuenta con un campus de 148,351.20 metros cuadrados, aproximadamente 21 manzanas.</p>
 
           <p>
-            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2210-6600 <br> Correo electrónico: <a href="direccion.comunicaciones@uca.edu.sv">direccion.comunicaciones@uca.edu.sv</a>.<br> Sitio web: <a href="http://www.uca.edu.sv/">Universidad Centroamericana “José Simeon Cañas”</a>              <br> Fans Page: <a href="https://www.facebook.com/UCA.ElSalvador">UCA El Salvador</a> <br>
+            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2210-6600 <br> Correo electrónico: <a href="direccion.comunicaciones@uca.edu.sv">direccion.comunicaciones@uca.edu.sv</a>.<br> Sitio web: <a target="_blank" href="http://www.uca.edu.sv/">Universidad Centroamericana “José Simeon Cañas”</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/UCA.ElSalvador">UCA El Salvador</a> <br>
           </p>
 
         </div>
@@ -407,19 +406,19 @@
             <li class="text-justify">
               <p class="font-weight-bold mb-0">Platinum:</p>
               <p class="">Tiene un servicio de transporte con atención de primera clase hacia San Salvador, El Salvador y tiene sus puertos de salida en Guatemala, Honduras y Nicaragua posee rutas clase Platinum, King y Quality los precios van desde $69.00 USD.
-                Más información en el <a href="http://www.platinumcentroamerica.com/">sitio web de Platinum.</a></p>
+                Más información en el <a target="_blank" href="http://www.platinumcentroamerica.com/">sitio web de Platinum.</a></p>
             </li>
 
             <li class="text-justify">
               <p class="font-weight-bold mb-0">TicaBus:</p>
               <p class="">Tiene servicio de transporte de mediano costo hacia San Salvador, El Salvador y tiene puertos de salida en Guatemala, Honduras, NIcaragua y Costa Rica posee rutas turistica y ejecutiva los precio van desde $72.00 USD. hasta $131.00 USD.
-                Más información en el <a href="http://ticabus.com/ ">sitio web de Ticabus.</a></p>
+                Más información en el <a target="_blank" href="http://ticabus.com/ ">sitio web de Ticabus.</a></p>
             </li>
 
             <li class="text-justify">
               <p class="font-weight-bold mb-0">Transportes del Sol:</p>
               <p class="">Tes una de las opciones más económicas para viajar a San Salvador, El Salvador poseen cuota diferencial entre adultos y menores de edad sus puertos de salida están ubicados unicamente en Guatemala, Nicaragua y Costa Rica; los precio van
-                desde $50.00 USD. hasta $120.00 USD. <a href="http://www.transportedelsol.com/">sitio web de Transportes del Sol.</a></p>
+                desde $50.00 USD. hasta $120.00 USD. <a target="_blank" href="http://www.transportedelsol.com/">sitio web de Transportes del Sol.</a></p>
             </li>
           </ul>
 
@@ -440,9 +439,8 @@
             <br><br> La rutas que llegan a la Universidad Centroamericana “José Simeón Cañas” (UCA):
             <ul>
               <li>Ruta 44</li>
-              <li>...</li>
-              <li>...</li>
-              <li>...</li>
+              <li>Por completar...</li>
+              <li>Por completar...</li>
             </ul>
           </p>
         </div>
@@ -457,10 +455,10 @@
 
         <div id="servicio-de-UBER" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Servicio UBER</h4>
-          <p class="text-justify">También puede optar por el servicio <a href="https://www.uber.com/es-ES/cities/san-salvador/">Uber</a>, para lo cual previamente debe instalar la respectiva app y configurar una cuenta. En El Salvador se ofrece la opción de UberX (4 personas).
+          <p class="text-justify">También puede optar por el servicio <a target="_blank" href="https://www.uber.com/es-ES/cities/san-salvador/">Uber</a>, para lo cual previamente debe instalar la respectiva app y configurar una cuenta. En El Salvador se ofrece la opción de UberX (4 personas).
             Puede pagar el servicio con tarjeta de débito/crédito o con dinero en efectivo en dólares.</p>
           <p>
-            Para consultar estimación de tarifas, puede dirigirse a <a href="https://www.uber.com/es-ES/fare-estimate/">este enlace.</a>
+            Para consultar estimación de tarifas, puede dirigirse a <a target="_blank" href="https://www.uber.com/es-ES/fare-estimate/">este enlace.</a>
           </p>
         </div>
 
@@ -533,28 +531,28 @@
             <li class="text-justify">
               <p class="font-weight-bold mb-0">Claro El Salvador:</p>
               <p class="">
-                Más información en el <a href="http://www.claro.com.sv/personas/">sitio web de Claro.</a>
+                Más información en el <a target="_blank" href="http://www.claro.com.sv/personas/">sitio web de Claro.</a>
               </p>
             </li>
 
             <li class="text-justify">
               <p class="font-weight-bold mb-0">Tigo El Salvador</p>
               <p class="">
-                Más información en el <a href="https://www.tigo.com.sv/">sitio web de Tigo.</a>
+                Más información en el <a target="_blank" href="https://www.tigo.com.sv/">sitio web de Tigo.</a>
               </p>
             </li>
 
             <li class="text-justify">
               <p class="font-weight-bold mb-0">Digicel El Salvador</p>
               <p class="">
-                Más información en el <a href="https://www.digicelgroup.com/sv/es/mobile.html">sitio web de Digicel.</a>
+                Más información en el <a target="_blank" href="https://www.digicelgroup.com/sv/es/mobile.html">sitio web de Digicel.</a>
               </p>
             </li>
 
             <li class="text-justify">
               <p class="font-weight-bold mb-0">Movistar El Salvador</p>
               <p class="">
-                Más información en el <a href="https://www.movistar.com.sv/">sitio web de Movistar.</a>
+                Más información en el <a target="_blank" href="https://www.movistar.com.sv/">sitio web de Movistar.</a>
               </p>
             </li>
           </ul>
@@ -582,10 +580,10 @@
             clima de El Salvador en los siguientes enlaces:
             <ul>
               <li>
-                <a href="http://www.snet.gob.sv/ver/meteorologia/pronostico/48+horas/">SNET El Salvador</a>
+                <a target="_blank" href="http://www.snet.gob.sv/ver/meteorologia/pronostico/48+horas/">SNET El Salvador</a>
               </li>
               <li>
-                <a href="https://weather.com/es-SV/tiempo/hoy/l/13.73,-89.16">Weather.com</a>
+                <a target="_blank" href="https://weather.com/es-SV/tiempo/hoy/l/13.73,-89.16">Weather.com</a>
               </li>
             </ul>
           </p>
@@ -631,7 +629,7 @@
                     foodcourt, cine, bancos y muchas opciones de entretenimiento. Además, puedes disfrutar de
                     promociones y eventos especiales. Cuenta con un amplio parqueo y seguridad. Se localiza
                     sobre carretera Panamericana.
-                    Más información en el <a href="http://www.multiplaza.com/m/multiplaza-san-salvador">sitio web de Multiplaza.</a>
+                    Más información en el <a target="_blank" href="http://www.multiplaza.com/m/multiplaza-san-salvador">sitio web de Multiplaza.</a>
                   </p>
               </li>
 
@@ -643,7 +641,7 @@
                   espacio seguro, elegante y muy moderno. Cuenta con un espacio abierto para que puedas disfrutar
                   de tomar un café al aire libre o caminar. Encontrarás un área solo de tiendas exclusivas, bancos,
                   foodcourt y cine. Su parqueo es muy amplio. Dispone de cámara de vigilancia y servicio de seguridad.
-                  Más información en el <a href="http://www.lagranvia.com.sv/">sitio web de La Gran Via.</a>
+                  Más información en el <a target="_blank" href="http://www.lagranvia.com.sv/">sitio web de La Gran Via.</a>
                 </p>
               </li>
 
@@ -656,7 +654,7 @@
                   tiendas de ropa, bancos, cajeros automáticos y otros. Tiene una capacidad de parqueo para un
                   promedio de 2 mil 285 vehículos. En su infraestructura disponen de salas de cine y otros
                   atractivos. Visítalos en Boulevard De Los Héroes, San Salvador.
-                  Más información en el <a href="http://metrocentro.com/m/metrocentro-san-salvador">sitio web de Metrocentro.</a>
+                  Más información en el <a target="_blank" href="http://metrocentro.com/m/metrocentro-san-salvador">sitio web de Metrocentro.</a>
                 </p>
               </li>
 
@@ -669,7 +667,7 @@
                   y una plaza de comida gourmet. Otro de sus atractivos es La Casona, que fue una casa construida
                   en 1950 y fue restaurada para que fuera parte de la construcción del centro comercial.
 
-                  Más información en el <a href="http://www.galerias.com.sv/">sitio web de Galerias.</a>
+                  Más información en el <a target="_blank" href="http://www.galerias.com.sv/">sitio web de Galerias.</a>
                 </p>
               </li>
 
@@ -751,8 +749,8 @@
               <li>En caso de emergencia llame a:
                   <ul>
                     <li>911: Sistema de emergencias de El Salvador (no requiere línea telefónica activa).</li>
-                    <li>...</li>
-                    <li>...</li>
+                    <li>Por completar...</li>
+                    <li>Por completar...</li>
                   </ul>
               </li>
             </ul>
