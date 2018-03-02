@@ -105,7 +105,7 @@
 			{!! FormJavascript::getCode() !!}
 		});
 	</script>
-	<button id="back-to-top" type="button" class="btn btn btn-success" style="top: inherit;"><i class="fa fa-chevron-up"></i></button>
+	<button id="back-to-top" type="button" class="btn btn btn-success" style="top: inherit;padding: .375rem .75rem;"><i class="fa fa-chevron-up"></i></button>
 	<!-- <button id="obs-login" type="button" class="btn btn-default"><i class="fa fa-user"></i></button> -->
 </body>
 </html>
