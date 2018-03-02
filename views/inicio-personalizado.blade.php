@@ -239,7 +239,7 @@
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card card-logo">
-        <div class="card-header-logo">
+        <div class="card-header-logo mt-1">
           <a href="http://www.salud.gob.sv/" target="_blank">
             <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_minsal.png">
           </a>
