@@ -10,7 +10,7 @@
   <!-- Barra de Ubicacion -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="{{URL::to('cms/ecsl')}}"> <i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+      <a href="{{URL::to('cms/inicio')}}"> <i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
     </li>
     <li class="breadcrumb-item active">FAQ</li>
   </ol>
@@ -61,7 +61,7 @@
 
       <div id="collapseThee" class="collapse" role="tabpanel" aria-labelledby="Thee">
         <div class="card-body">
-          Puede consultar los temas a tratar en el apartado de  <a href="{{URL::to('cms/ecsl/ejes-tematicos')}}">Ejes Tematicos.</a>
+          Puede consultar los temas a tratar en el apartado de  <a href="{{URL::to('cms/ejes-tematicos')}}">Ejes Tematicos.</a>
         </div>
       </div>
     </div>

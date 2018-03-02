@@ -138,7 +138,7 @@
       <p class="text-center">Conoce los países y lugares en los que el Encuentro Centroamericano de Software Libre se ha venido realizando desde al año 2009 y no pierdas la oportunidad de participar en la décima edición del evento El Salvador 2018!</p>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-lg btn-secondary btn-block bg-dark" href="{{URL::to('cms/ecsl/eventos-anteriores')}}">Ver todos los eventos anteriores</a>
+      <a class="btn btn-lg btn-secondary btn-block bg-dark" href="{{URL::to('cms/eventos-anteriores')}}">Ver todos los eventos anteriores</a>
     </div>
   </div>
 
@@ -155,27 +155,27 @@
       <h2 class="display-5 text-center text-white">Información General</h2><br>
       <div class="row">
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/ecsl/logistica')}}" class="text-white">
+          <a href="{{URL::to('cms/logistica')}}" class="text-white">
                   <i class="fa fa-user-circle-o main-icons" aria-hidden="true"></i> <h3>Participación</h3>
                 </a>
         </div>
 
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/ecsl/logistica')}}" class="text-white">
+          <a href="{{URL::to('cms/logistica')}}" class="text-white">
                 <i class="fa fa-bed main-icons" aria-hidden="true"></i><h3>Hospedaje</h3>
               </a>
         </div>
 
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/ecsl/logistica')}}" class="text-white">
+          <a href="{{URL::to('cms/logistica')}}" class="text-white">
                 <i class="fa fa-university main-icons" aria-hidden="true"></i><h3>Sede</h3>
                 </a>
         </div>
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/ecsl/faq')}}" class="text-white">
+          <a href="{{URL::to('cms/faq')}}" class="text-white">
               <i class="fa fa-question-circle-o main-icons" aria-hidden="true"></i><h3>FAQ</h3>
             </a>
         </div>

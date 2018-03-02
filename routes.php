@@ -21,30 +21,48 @@
 
 //https://laravel.com/docs/5.1/controllers
 
-Route::get('/cms/ecsl/logistica', function()
+// var_dump(Request::getHost());
+
+$ecslsv =  function ()
 {
-	return View::make('ecsl-2018::logistica');
-});
+	Route::get('/', function()
+	{
+		return Redirect::to('cms/inicio');
+	});
 
-Route::get('/cms/ecsl/ejes-tematicos', function()
-{
-	return View::make('ecsl-2018::ejes-tematicos');
-});
+	// Route::get('/cms/ecsl/logistica', function()
+	Route::get('/cms/logistica', function()
+	{
+		return View::make('ecsl-2018::logistica');
+	});
 
-Route::get('/cms/ecsl/faq', function()
-{
-	return View::make('ecsl-2018::faq');
-});
+	// Route::get('/cms/ecsl/ejes-tematicos', function()
+	Route::get('/cms/ejes-tematicos', function()
+	{
+		return View::make('ecsl-2018::ejes-tematicos');
+	});
 
-Route::get('/cms/ecsl/eventos-anteriores', function()
-{
-	return View::make('ecsl-2018::eventos-anteriores');
-});
+	// Route::get('/cms/ecsl/faq', function()
+	Route::get('/cms/faq', function()
+	{
+		return View::make('ecsl-2018::faq');
+	});
 
-// Route::put('/cms/decimaerp/{id}', 'Mgallegos\DecimaWeb\Controllers\GestorCms@getIndex');
+	// Route::get('/cms/ecsl/eventos-anteriores', function()
+	Route::get('/cms/eventos-anteriores', function()
+	{
+		return View::make('ecsl-2018::eventos-anteriores');
+	});
 
-// Route::controller('/cms/sfd2017/login', 'Mgallegos\ECSL2018\Controllers\LoginManager');
+	// Route::put('/cms/decimaerp/{id}', 'Mgallegos\DecimaWeb\Controllers\GestorCms@getIndex');
 
-Route::controller('/cms/ecsl', 'Mgallegos\ECSL2018\Controllers\InicioManager');
+	// Route::controller('/cms/sfd2017/login', 'Mgallegos\ECSL2018\Controllers\LoginManager');
 
-// Route::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');
+	// Route::controller('/cms/ecsl', 'Mgallegos\ECSL2018\Controllers\InicioManager');
+	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
+
+	// Route::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');
+};
+
+Route::group(['domain' => 'localhost'], $ecslsv);
+Route::group(['domain' => 'ecsl2018.softwarelibre.ca'], $ecslsv);

@@ -10,7 +10,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{URL::to('cms/ecsl')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+        <a href="{{URL::to('cms/inicio')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
       </li>
       <li class="breadcrumb-item active">Logística</li>
     </ol>
@@ -209,7 +209,7 @@
 
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="{{URL::to('cms/ecsl')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
+              <a href="{{URL::to('cms/inicio')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
             </li>
             <li class="breadcrumb-item active">Logística</li>
           </ol>
