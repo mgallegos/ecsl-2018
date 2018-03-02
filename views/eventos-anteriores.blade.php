@@ -22,13 +22,13 @@
         <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
           <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
         </a> -->
-        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+        <a href="http://ecsl2017.softwarelibre.ca/" target="_blank">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
           <h5 id="ecsl-2017-card-title" class="card-title text-center">IX ECSL 2017 <br> San José, Costa Rica</h5>
           <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <a href="https://ecsl2017.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <a href="http://ecsl2017.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
           <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
         </div>
       </div>
@@ -53,7 +53,7 @@
         <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
           <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
         </a> -->
-        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+        <a href="https://ecsl2015.softwarelibre.ca/" target="_blank">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
@@ -71,7 +71,7 @@
           <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
         </a> -->
         <a href="http://ecsl2014.softwarelibre.ca/" target="_blank">
-          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2014.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
           <h5 class="card-title text-center">VI ECSL 2014 <br> Chitré, Panamá</h5>
@@ -88,7 +88,7 @@
           <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
         </a> -->
         <a href="http://ecsl2013.softwarelibre.ca/" target="_blank">
-          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2013.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
           <h5 class="card-title text-center">V ECSL 2013 <br> San Ignacio, Belize</h5>
@@ -104,13 +104,13 @@
         <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
           <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
         </a> -->
-        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
-          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
+        <a href="https://ecsl2012.softwarelibre.ca/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2012.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
           <h5 class="card-title text-center">IV ECSL 2012 <br> Ciudad de Guatemala, Guatemala</h5>
           <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <a href="http://ecsl2015.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <a href="http://ecsl2012.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
           <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
         </div>
       </div>
@@ -121,13 +121,13 @@
         <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
           <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
         </a> -->
-        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+        <a href="https://ecsl2011.softwarelibre.ca/" target="_blank">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2011.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
           <h5 class="card-title text-center">III ECSL 2011 <br> Suchitoto, El Salvador</h5>
           <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <a href="http://ecsl2015.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
+          <a href="http://ecsl2011.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
           <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
         </div>
       </div>
