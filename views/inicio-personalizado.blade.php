@@ -247,7 +247,7 @@
         <div class="card-body">
           <h6 class="card-title text-center">
             <a href="http://www.salud.gob.sv/" target="_blank" class="card-logo-title">
-              Comunidad Salvadoreña de Software Libre
+              Ministerio de Salud
             </a>
           </h6>
         </div>
