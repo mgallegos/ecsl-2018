@@ -19,21 +19,21 @@
   <div class="portafolio-item d-lg-none">
     <div id="main-theme" class="list-group">
       <a class="list-group-item font-weight-bold" href="#main-theme-1">
-        EJE TEMÁTICO #1: Aportemos al desarrollo de más y mejor software libre.</a>
+        Ejes Temático #1: Aportemos al desarrollo de más y mejor software libre.</a>
       <a class="list-group-item font-weight-bold" href="#main-theme-2">
-        EJE TEMÁTICO #2: Desarrollemos y conozcamos más sobre hardware libre.</a>
+        Ejes Temático #2: Desarrollemos y conozcamos más sobre hardware libre.</a>
       <a class="list-group-item font-weight-bold" href="#main-theme-3">
-        EJE TEMÁTICO #3: Liberemos espacios en la web con software libre.</a>
+        Ejes Temático #3: Liberemos espacios en la web con software libre.</a>
       <a class="list-group-item font-weight-bold" href="#main-theme-4">
-        EJE TEMÁTICO #4: Usemos geotecnologías libres para la gestión de información geográficas.</a>
+        Ejes Temático #4: Usemos geotecnologías libres para la gestión de información geográficas.</a>
       <a class="list-group-item font-weight-bold" href="#main-theme-5">
-        EJE TEMÁTICO #5: Seamos una comunidad más inclusiva y diversa.</a>
+        Ejes Temático #5: Seamos una comunidad más inclusiva y diversa.</a>
       <a class="list-group-item font-weight-bold" href="#main-theme-6">
-        EJE TEMÁTICO #6: Democraticemos los medios de comunicación con el apoyo del software libre.</a>
+        Ejes Temático #6: Democraticemos los medios de comunicación con el apoyo del software libre.</a>
       <a class="list-group-item font-weight-bold" href="#main-theme-7">
-        EJE TEMÁTICO #7: Fortalezcamos la comunidad centroamericana de software libre.</a>
+        Ejes Temático #7: Fortalezcamos la comunidad centroamericana de software libre.</a>
       <a class="list-group-item font-weight-bold" href="#main-theme-8">
-        EJE TEMÁTICO #8: Abramos un espacio de desconferencia.</a>
+        Ejes Temático #8: Abramos un espacio de desconferencia.</a>
     </div>
   </div>
 
