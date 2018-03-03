@@ -179,7 +179,7 @@
           <div class="card-header bg-white p-0 m-0 border-top ">
             <a href="#free-time" class="btn w-100 rounded-0">
               <div class="font-weight-bold text-primary text-left"  aria-expanded="false">
-                Tiempo Libre</div>
+                Opciones de Tiempo Libre</div>
             </a>
           </div>
 
@@ -217,6 +217,7 @@
 
         <div id="participacion" class="right-block">
           <h3 class="font-weight-bold">Participación</h3>
+          <h4 class="display-6 font-italic font-weight-bold">Reseña</h4>
           <p class="text-justify">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado por la Comunidad Software Libre Centroamérica (SLCA). Reúne a representantes de comunidades de los siete países de la región, donde se intercambian experiencias,
             se comparte conocimiento, se promueven proyectos gestionados por las comunidades locales, se establecen objetivos comunes y se plantean estrategias para promover la filosofía, la cultura, el desarrollo y el uso del Software Libre y de Código
             Abierto. que se realiza desde el año 2009.
@@ -243,70 +244,21 @@
         <div id="cuota-de-participacion" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Cuota de Participación</h4>
           <!-- Content Row -->
-          <div class="row">
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <h3 class="card-header text-center">Básico</h3>
-                <div class="card-body">
-                  <h2 class="text-center font-weight-bold">$ 10.00</h2>
-                  <div class="font-italic text-center">Incluye:</div>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Ingreso al evento</li>
-                  <li class="list-group-item">Swag Completo</li>
-                  <li class="list-group-item">Diploma de participación</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <h3 class="card-header text-center">Básico Plus</h3>
-                <div class="card-body m-0 px-0">
-                  <h2 class="text-center font-weight-bold">$ 40.00</h2>
-                  <div class="font-italic text-center">Incluye:</div>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Ingreso al evento</li>
-                  <li class="list-group-item ">Swag Completo</li>
-                  <li class="list-group-item ">Diploma de participación</li>
-                  <li class="list-group-item ">Almuerzos</li>
-
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-4 mb-4">
-              <div class="card">
-                <h3 class="card-header text-center">Completo</h3>
-                <div class="card-body m-0 px-0">
-                  <h2 class="text-center font-weight-bold">$ 150.00</h2>
-                  <div class="font-italic text-center">Incluye:</div>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Ingreso al evento</li>
-                  <li class="list-group-item ">Swag Completo</li>
-                  <li class="list-group-item ">Diploma de participación</li>
-                  <li class="list-group-item ">Comida [Tres Tiempos]</li>
-                  <li class="list-group-item ">Hospedaje</li>
-                  <li class="list-group-item ">Transporte</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          @include('ecsl-2018::paquetes-participacion')
           <p class="text-justify">La organización brindará información sobre hoteles cercanos a la sede para quienes la requieran, como una cortesía. Sin embargo, no se hará responsable de traslados ni depósitos de garantía que deban realizar quienes elijan la cuota parcial.</p>
           <!-- /.row -->
         </div>
 
         <div id="paquete-en-swag" class="right-block">
-          <h4 class="display-6 font-italic font-weight-bold">Paquetes en Swag</h4>
+          <h4 class="display-6 font-italic font-weight-bold">Paquete promocional</h4>
           <div class="row">
 
             <div class="col-md-6 mb-4">
               <div class="card">
                 <h3 class="card-header text-center">Básico</h3>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Camiseta.</li>
-                  <li class="list-group-item ">Gafete con NFC.</li>
+                  <li class="list-group-item">Camiseta</li>
+                  <li class="list-group-item">Gafete con NFC</li>
                 </ul>
               </div>
             </div>
@@ -315,10 +267,10 @@
               <div class="card">
                 <h3 class="card-header text-center">Completo</h3>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Camiseta.</li>
-                  <li class="list-group-item ">Gafete con NFC.</li>
-                  <li class="list-group-item ">Sticker en vinil del evento.</li>
-                  <li class="list-group-item ">Recuerdo de evento (Artesania nacional).</li>
+                  <li class="list-group-item ">Camiseta</li>
+                  <li class="list-group-item ">Gafete con NFC</li>
+                  <li class="list-group-item ">Sticker en vinil del evento</li>
+                  <li class="list-group-item ">Recuerdo del evento (artesanía nacional)</li>
                 </ul>
               </div>
 
@@ -340,6 +292,7 @@
         <hr>
 
         <div id="hospedaje-oficial" class="right-block">
+          <h3 class="font-weight-bold">Hospedaje</h3>
           <h4 class="display-6 font-italic font-weight-bold">Hospedaje Oficial (Centro Loyola)</h4>
           <p class="text-justify">El Centro Loyola es el lugar donde se hospedaran los participantes que adquirieron su paquete completo de participación al ECSL está ubicado en Calle Teotl No.35, Colonia Altos de Guadalupe, Antiguo Cuscatlán, La Libertad, El Salvador a 20
             minutos caminando de la Universidad Centroamericana “José Simeon Cañas” (UCA) sede del ECSL 2018.
@@ -359,7 +312,7 @@
           </div>
           <br>
           <p>
-            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2227-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com </a>.<br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
+            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2227-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
           </p>
         </div>
 
@@ -385,6 +338,7 @@
         <hr>
 
         <div id="aereo" class="right-block">
+          <h3 class="font-weight-bold">Información de viaje</h3>
           <h4 class="display-6 font-italic font-weight-bold">Aérea</h4>
           <p class="text-justify">La forma más rápida para llegar a El Salvador es por avión. El Salvador cuenta con el aeropuerto Internacional Monseñor Romero que se encuentra a 45 minutos de la sede del evento en cualquier automovil.
             <br><br> Del aeropuerto puede tomar un taxi hacia el Centro Loyola. Los taxis en El Salvador no cuentan con taxímetro y la tarifa se negocia con el taxista antes de abordar el vehículo. También puede optar por el servicio de UBER para dirigirse
@@ -425,7 +379,7 @@
         </div>
         <hr>
         <div id="movilizacion" class="right-block">
-          <h3 class="font-weight-bold">Movilizacion</h3>
+          <h3 class="font-weight-bold">Movilización</h3>
           <div class="embed-responsive embed-responsive-16by9">
             <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9220.383720812502!2d-89.24185015400008!3d13.67637323291067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x8f6331cfc77882f9%3A0xdbc6907706f0e897!2sCentro+de+Retiro+San+Ignacio+de+Loyola%2C+Santa+Tecla!3m2!1d13.671825799999999!2d-89.2360495!4m5!1s0x8f6331cd305c735b%3A0x3d2a75b3761d4ded!2sUniversidad+Centroamericana+Jos%C3%A9+Sime%C3%B3n+Ca%C3%B1as%2C+Bulevar+Los+Proceres%2C+San+Salvador!3m2!1d13.6810526!2d-89.2357263!5e0!3m2!1ses!2ssv!4v1519789042093"
               width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -439,7 +393,6 @@
             <br><br> La rutas que llegan a la Universidad Centroamericana “José Simeón Cañas” (UCA):
             <ul>
               <li>Ruta 44</li>
-              <li>Por completar...</li>
               <li>Por completar...</li>
             </ul>
           </p>
@@ -463,7 +416,7 @@
         </div>
 
         <hr>
-        <h3 class="font-weight-bold">Información General de El Salvador</h3>
+        <h3 class="font-weight-bold">Acerca de El Salvador</h3>
 
         <div id="moneda-local" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Moneda local</h4>
@@ -618,7 +571,7 @@
         <div id="free-time" class="right-block">
           <h3 class="font-weight-bold">Opciones de Tiempo Libre</h3>
           <p class="text-justify">
-
+            Se recomienda visitar los siguientes lugares:
             <ul>
               <li class="text-justify">
                 <p class="font-weight-bold mb-0">Multiplaza.</p>
@@ -749,7 +702,6 @@
               <li>En caso de emergencia llame a:
                   <ul>
                     <li>911: Sistema de emergencias de El Salvador (no requiere línea telefónica activa).</li>
-                    <li>Por completar...</li>
                     <li>Por completar...</li>
                   </ul>
               </li>
