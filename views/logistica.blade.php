@@ -44,7 +44,7 @@
                 <a href="#participacion" class="list-group-item list-group-item-action py-2">Reseña</a>
                 <a href="#dinamica-del-evento" class="list-group-item list-group-item-action py-2">Dinámica del evento</a>
                 <a href="#cuota-de-participacion" class="list-group-item list-group-item-action py-2">Cuota de participación</a>
-                <a href="#paquete-en-swag" class="list-group-item list-group-item-action py-2">Paquetes en Swag</a>
+                <a href="#paquete-en-swag" class="list-group-item list-group-item-action py-2">Paquete promocional</a>
                 <a href="#forma-de-pago" class="list-group-item list-group-item-action py-2">Forma de pago</a>
                 <a href="#formas-de-participacion" class="list-group-item list-group-item-action py-2">Formas de participación</a>
               </div>
