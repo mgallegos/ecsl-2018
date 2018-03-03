@@ -108,7 +108,7 @@
         <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
           <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
         </a> -->
-        <a href="https://ecsl2017.softwarelibre.ca/" target="_blank">
+        <a href="https://ecsl2015.softwarelibre.ca/" target="_blank">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
