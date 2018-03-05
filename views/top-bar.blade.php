@@ -1,8 +1,7 @@
 <!-- Barra de Navegacion -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand d-none d-md-block" href="{{URL::to('cms/inicio')}}" style="padding:0;"><img src="https://storage.googleapis.com/decimaerp/organizations/15/logo_ecsl_2018_small.png" class="d-inline-block" alt="">X Encuentro Centroamericano de Software Libre - 2018</a>
-    <a class="navbar-brand d-md-none" href="{{URL::to('cms/inicio')}}" style="padding:0;"><img src="https://storage.googleapis.com/decimaerp/organizations/15/logo_ecsl_2018_small.png" class="d-inline-block" alt="">X ECSL - 2018</a>
+    <a class="navbar-brand" href="{{URL::to('cms/inicio')}}" style="padding:0;"><img src="https://storage.googleapis.com/decimaerp/organizations/15/logo_header.png" class="" alt=""></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

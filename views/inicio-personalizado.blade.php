@@ -6,49 +6,29 @@
 
 <!-- CARRUSEL-->
 <header>
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+      <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselIndicators" data-slide-to="1"></li>
+      <!-- <li data-target="#carouselIndicators" data-slide-to="2"></li> -->
     </ol>
 
     <div class="carousel-inner" role="listbox">
-      <!-- Slide One - Set the background image for this slide in the line below -->
-      <div class="carousel-item active" style="background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/carousel1.jpg')">
-      <!-- <div class="carousel-item active" style="background-image: url('img/BannerPrincipal11.png')"> -->
+      <!-- Slide One-->
+      <div class="carousel-item active" style="background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/carousel2.jpg')"></div>
 
-        <div class="carousel-caption">
-          <h3 class="d-none d-lg-block font-weight-bold">X Encuentro Centroaméricano de Software Libre</h3>
-          <h3 class="d-none d-lg-block font-weight-bold">12 y 13 de julio del 2018</h3>
-          <h4 class="d-none d-md-block d-lg-none font-weight-bold">X Encuentro Centroaméricano de Software Libre</h4>
-          <h4 class="d-none d-md-block d-lg-none font-weight-bold">12 y 13 de julio del 2018</h4>
-          <h6 class="d-md-none font-weight-bold">X Encuentro Centroaéricano de Software Libre</h6>
-          <h6 class="d-md-none font-weight-bold">12 y 13 de julio del 2018</h6>
-          <p class="font-italic font-weight-bold">El Salvador - 2018</p>
-        </div>
+      <!-- Slide Two-->
+      <div class="carousel-item" style="background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/carousel3.jpg')"></div>
 
-      </div>
-      <!-- Slide Two - Set the background image for this slide in the line below -->
-      <!-- <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-        <div class="carousel-caption d-none d-md-block">
-          <h3>Second Slide</h3>
-          <p>This is a description for the second slide.</p>
-        </div>
-      </div> -->
-      <!-- Slide Three - Set the background image for this slide in the line below -->
-      <!-- <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-        <div class="carousel-caption d-none d-md-block">
-          <h3>Third Slide</h3>
-          <p>This is a description for the third slide.</p>
-        </div>
-      </div> -->
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+
+
+
+    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -56,10 +36,11 @@
 </header>
 
 <!--Acerca de-->
-<section class="about-us section-padding">
+<section class="">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
       <h2 class="text-center text-white"><strong>X Encuentro Centroamericano de Software Libre</strong></h2>
+      <h4 class="text-center text-white font-weight-bold">12 y 13 de julio del 2018</h4>
       <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas y miembros de comunidades y grupos de
         usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
         la región.</p>

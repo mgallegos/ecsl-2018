@@ -461,14 +461,54 @@
           <p class="text-justify">
           Hospitales Nacionales:
             <ul>
-              <li>Hospital Nacional San Rafael</li>
-              <li>Hospital Nacional Rosales</li>
+              <li>
+                <p class="font-weight-bold mb-0">Hospital Nacional San Rafael</p>
+                <p class="">
+                  Teléfono: (+503) 2523-9500.<br>
+                  Dirección: Final 4° Calle Oriente 9-2 Santa Tecla, El Salvador, C.A.
+                  <a target="_blank" href="https://www.google.com.sv/maps/place/Hospital+Nacional+San+Rafael/@13.6709622,-89.2804583,17z/data=!3m1!4b1!4m5!3m4!1s0x8f632e5091bf2ec5:0x68b4bed2ba9cda53!8m2!3d13.670957!4d-89.2782696?hl=es&authuser=0">Ver mapa.</a>
+                  <br>Atención Emergencias 24 horas.
+                </p>
+              </li>
+
+              <li>
+                <p class="font-weight-bold mb-0">Hospital Nacional Rosales</p>
+                <p class="">
+                  Teléfono: (+503) 2231-9200.<br>
+                  Dirección: 25 Avenida Norte, entre 1a. Calle Poniente y Alameda Roosevelt, San Salvador.
+                  <a target="_blank" href="https://www.google.com.sv/maps/place/Hospital+Nacional+Rosales/@13.700507,-89.2081898,17z/data=!3m1!4b1!4m5!3m4!1s0x8f6330f44f2e7fa9:0x1ec72f9c5f736841!8m2!3d13.7005018!4d-89.2060011?hl=es&authuser=0">Ver mapa.</a>
+                  <br>Atención Emergencias 24 horas.
+                </p>
+              </li>
             </ul>
-          Hospitales Privados:
+          Hospitales Privados: <br><br>
             <ul>
-              <li>Hospital de Diagnostico</li>
-              <li>Hospital de La Mujer</li>
-              <li>Hospital Médico Quirúrgico</li>
+              <li>
+                <p class="font-weight-bold mb-0">Hospital Diagnostico</p>
+                  <p class="font-italic mb-0">Colonia Médica:</p>
+                  <p class="">
+                  Teléfono: (+503) 2505-5700 <br>
+                  Dirección: Diagonal Luis E. Vázquez N, 429, San Salvador.
+                  <a target="_blank" href="https://www.google.com.sv/maps/place/Hospital+de+Diagn%C3%B3stico/@13.7140042,-89.215297,15.5z/data=!4m5!3m4!1s0x8f63308c21dbbaf5:0x51b1d55e0cb30705!8m2!3d13.7101855!4d-89.2025052?hl=es&authuser=0">Ver mapa.</a>
+                  <br>Atención Emergencias 24 horas. <br>
+                  </p>
+                  <p class="font-italic mb-0">Colonia Escalón:</p>
+                  <p class="">
+                  Teléfono: (+503) 2506-2000 <br>
+                  Dirección: Paseo General Escalón, 99 avenida norte, Plaza Villavicencio, San Salvador.
+                  <a target="_blank" href="https://www.google.com.sv/maps/@13.7038167,-89.2467053,18z">Ver mapa.</a>
+                  <br>Atención Emergencias 24 horas.
+                </p>
+              </li>
+              <li>
+                <p class="font-weight-bold mb-0">Hospital de La Mujer</p>
+                <p class="">
+                  Teléfono: (+503) 2555 – 1215.<br>
+                  Dirección: 81 Avenida Sur y Calle Juan José Cañas, Colonia Escalón, San Salvador, El Salvador
+                  <a target="_blank" href="https://www.google.com.sv/maps/place/Hospital+de+la+Mujer/@13.701907,-89.237921,15z/data=!4m5!3m4!1s0x0:0x88ecec26420e18e7!8m2!3d13.701907!4d-89.237921">Ver mapa.</a>
+                  <br>Atención Emergencias 24 horas.
+                </p>
+              </li>
             </ul>
           Cabe mencionar que dentro de las instalaciones de la Universidad Centroamericana
           “José Simeón Cañas”, sede del evento, se encuentra una clínica asistencial y servicio

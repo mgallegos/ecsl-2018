@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<!-- <link rel="icon" href="https://storage.googleapis.com/decimaerp/organizations/8/Cabeza_Ob_vectorx16.ico"> -->
-	<link rel="shortcut icon" href="http://www.slsv.org/sites/all/themes/business/favicon.ico" type="image/vnd.microsoft.icon" />
+	<link rel="shortcut icon" href="https://storage.googleapis.com/decimaerp/organizations/15/favico.png" type="image/vnd.microsoft.icon" />
 	<meta charset="utf-8">
 	@include('layouts.header-css-cdn-b4-latest')
 	@include('layouts.header-javascript-cdn-b4-latest')
@@ -84,7 +84,7 @@
 						<li><strong>Comisión de Soporte y sistemas informáticos:</strong> Mario Gallegos <<a href="mailto:mgallegos@decimaerp.com">mgallegos@decimaerp.com</a>></li>
 						<li><strong>Comunicación y divulgación:</strong> Karla Hernández <<a href="mailto:karla.hdz4@gmail.com">karla.hdz4@gmail.com</a>></li>
 						<li><strong>Actividades recreativas y culturales:</strong> Keyla Merino <<a href="mailto:keyla.merino@gmail.com">keyla.merino@gmail.com</a>></li>
-						 <li><strong>Logística:</strong> Víctor Manuel Salmerón <!--<<a href="mailto:name@example.com">name@example.com</a>>--></li> 
+						 <li><strong>Logística:</strong> Víctor Manuel Salmerón <!--<<a href="mailto:name@example.com">name@example.com</a>>--></li>
 						<li><strong>Finanzas:</strong> Moises Larín <<a href="mailto:info@delfos-cloud.com">info@delfos-cloud.com</a>></li>
 						<li><strong>Comisión de Metodología y coordinación de voluntariado:</strong> Oscar Aguilar <<a href="mailto:oaguilar@ieproes.edu.sv">oaguilar@ieproes.edu.sv</a>></li>
 					</ul>
