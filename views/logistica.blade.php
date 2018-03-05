@@ -20,7 +20,10 @@
   <div id="rowContainer" class="row">
 
     <!-- Sidebar Column -->
-    <div id="colSide" class="col-lg-3 m-2 p-0 border rounded side-bar"> <!--m-2 p-0-->
+
+    <!-- <div class="col-lg-3 m-2 p-0 border rounded"> -->
+      <div id="prueba" class="col-lg-3" style="display: block"></div>
+      <div id="colSide" class="col-lg-3 m-2 p-0 rounded side-bar"> <!--m-2 p-0-->
       <div id="sideLogistica">
         <!-- Participacion -->
         <div class="card border-0">
@@ -82,7 +85,7 @@
         <div class="card border-0">
           <div class="card-header bg-white p-0 m-0 border-top">
             <a href="#sede-oficial" class="btn w-100 rounded-0">
-              <div class="font-weight-bold text-primary text-left" data-target="#collapseHospedaje" aria-expanded="false">
+              <div class="font-weight-bold text-primary text-left" aria-expanded="false">
                 Sede Oficial</div>
             </a>
           </div>
@@ -197,7 +200,8 @@
         </div>
 
       </div>
-    </div>
+      </div>
+    <!-- </div>   -->
 
     <!-- Content Column -->
     <div id="colContent" class="col-lg-9 mb-4 offset-lg-3"> <!--offset-lg-3 mb-4-->
@@ -720,7 +724,9 @@
 <script>
 
   var bool = false;
-
+  var documentHeight = $(document).height();
+  var partialHeight  =  documentHeight -(documentHeight * 0.10);
+  var partialHeight2 = documentHeight -(documentHeight * 0.05);
   @if (!Agent::isMobile())
 
   $(window).scroll(function()
@@ -730,10 +736,40 @@
        $(".collapse").collapse('hide');
     }
 
-    if( $("a.active") && !($("a.active").parents(".show").eq(2).length) && !bool){
+    if( $("a.active").length != 0 && !($("a.active").parents(".show").eq(2).length) && !bool){
       //$("a.active").parents().eq(2).addClass("show");
+      
       $("a.active").parents().eq(2).collapse('show');
     }
+
+   
+    var windowScroll = $(window).scrollTop();
+    console.log($("#prueba").css("width"));
+    if( windowScroll >=  partialHeight ){
+      $("#colSide").removeClass("side-bar m-2 p-0").addClass("side-bar-sticky");
+      $("#colContent").removeClass("offset-lg-3 mb-4");
+
+      $("#colSide").css({
+        "margin-top": partialHeight,
+        "width": "auto"
+      });
+
+      $("#prueba").css({
+        "display": "none"
+      });
+
+    }else{
+      $("#colSide").removeClass("side-bar-sticky").addClass("side-bar m-2 p-0");      
+      $("#colContent").addClass("offset-lg-3 mb-4");
+      $("#prueba").css({
+        "display": "block"
+      });
+
+      $("#colSide").css({
+        "width": $("#prueba").width()
+      });
+    }
+
     // var windowLevel = $(window).scrollTop();
     // var marginLevel = parseInt($(".col-lg-3").height())*0.92;
     // var sideContainer = $("#colSide");
@@ -760,7 +796,18 @@
     bool = false;
   });
 
+
+  $(window).resize(function()
+  {
+    var widthCol = $("#prueba").width();
+    $("#colSide").css({
+      "width": widthCol
+    });
+  });
+
   @endif
+
+
 
   $("a.btn").click(function()
   {
@@ -768,8 +815,11 @@
     $("a.active").removeClass("active");
     if( $("div.show").length != 0 )
     {
-      $("div.collapse").collapse("hide");
+      //$(this).addClass("active");
+      $("div.collapse").collapse("hide");      
     }
+
+    $("a.active").removeClass("active");
   });
 
 

@@ -70,6 +70,12 @@
       width: auto;
     }
 
+    .side-bar-sticky{
+      position: sticky;
+      width: auto;
+      top: 0px;
+    }
+
 
   }
 
