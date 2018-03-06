@@ -27,8 +27,9 @@
 	<meta property="og:description" content="{{isset($ogDescription)?$ogDescription:'El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas y miembros de comunidades y grupos de usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en la región.'}}" />
 	@if(isset($ogImage))
 		<meta property="og:image" content="{{$ogImage}}" />
+	@else
+		<meta property="og:image" content="https://storage.googleapis.com/decimaerp/organizations/15/carousel3.jpg" />
 	@endif
-
 </head>
 <body  data-spy="scroll" data-target="#sideLogistica" id='body'>
 	<div id="fb-root"></div>
