@@ -44,14 +44,15 @@
       <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas, miembros de comunidades y grupos de
         usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
         la región.</p>
+      <div id="btn-registration" class="text-center" style="margin:0 auto;">
+        <a class="btn btn-lg btn-secondary btn-block disabled" href="">Registrarme (abierto a partir del mes de abril)</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Page Content -->
 <div class="container">
-
-  <h1 class="my-4 text-center"></h1>
 
   <!-- Marketing Icons Section -->
   <div class="row">
@@ -123,11 +124,9 @@
     </div>
   </div>
 
-  <hr>
+  <!-- <hr> -->
 </div>
 <!-- /.container -->
-
-
 
 <!--Informacion General-->
 <section class="about-us section-padding">
@@ -167,19 +166,6 @@
 
 <!-- Page Content -->
 <div class="container">
-
-  <!-- Anuncio "Registrarme" -->
-
-  <!-- <div class="row mb-4">
-    <div class="col-md-8">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-    </div>
-    <div class="col-md-4">
-      <a class="btn btn-lg btn-secondary btn-block bg-dark" href="#">Registrarme</a>
-    </div>
-  </div>
-
-  <hr> -->
 
 
   <!-- Portfolio Section -->

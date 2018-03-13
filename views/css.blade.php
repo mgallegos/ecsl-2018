@@ -38,6 +38,14 @@
   }
 
   @media (max-width: 991px) {
+    #btn-registration {
+      width: 100%;
+    }
+
+    #btn-registration > a{
+      white-space: normal;
+    }
+
     .main-icons {
       font-size: 8em !important;
       color: #fff;
@@ -74,10 +82,17 @@
   }
 
   @media (min-width: 992px) and (max-width: 1199px){
-
+    #btn-registration {
+      width: 45%;
+    }
   }
 
   @media (min-width: 1200px) {
+
+    #btn-registration {
+      width: 40%;
+    }
+
     .card-header-logo {
       height: 213px;
     }
