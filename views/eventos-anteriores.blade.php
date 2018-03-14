@@ -135,17 +135,17 @@
     <!--ECSL 2010-->
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card">
-        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
-          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
-        </a> -->
-        <a href="http://encuentro.softwarelibre.ca/eventos/ii-ecsl-2010/" target="_blank">
+        <a href="https://www.youtube.com/watch?v=LBDMKwzgOWs" data-toggle="lightbox" data-gallery="youtubevideos">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2010.jpg" class="card-img-top img-fluid">
         </a>
+        <!-- <a href="http://encuentro.softwarelibre.ca/eventos/ii-ecsl-2010/" target="_blank">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ecsl_2010.jpg" class="card-img-top img-fluid">
+        </a> -->
         <div class="card-body">
           <h5 class="card-title text-center">II ECSL 2010 <br> Puntarenas, Costa Rica</h5>
           <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
           <a href="http://encuentro.softwarelibre.ca/eventos/ii-ecsl-2010/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
-          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
+          <a href="https://www.youtube.com/watch?v=LBDMKwzgOWs" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
         </div>
       </div>
     </div>

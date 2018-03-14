@@ -41,7 +41,7 @@
     <div class="container">
       <h2 class="text-center text-white"><strong>X Encuentro Centroamericano de Software Libre</strong></h2>
       <h4 class="text-center text-white font-weight-bold">12 y 13 de julio del 2018</h4>
-      <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas, miembros de comunidades y grupos de
+      <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
         usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
         la región.</p>
       <div id="btn-registration" class="text-center" style="margin:0 auto;">
@@ -231,6 +231,55 @@
           <h6 class="card-title text-center">
             <a href="http://www.decimaerp.com/" target="_blank" class="card-logo-title">
               DecimaERP
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="https://uls.edu.sv/sitioweb/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_luterana.jpg">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="https://uls.edu.sv/sitioweb/" target="_blank" class="card-logo-title">
+              Universidad Luterana Salvadoreña
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="http://delfos-cloud.com/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_delfos_cloud.jpg">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://delfos-cloud.com/" target="_blank" class="card-logo-title">
+              Delfos Cloud
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo card-header-logo-padding">
+          <a href="http://www.ieproes.edu.sv/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_ieproes.jpg">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://www.ieproes.edu.sv/" target="_blank" class="card-logo-title">
+              IEPROES
             </a>
           </h6>
         </div>
