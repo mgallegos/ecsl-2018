@@ -42,7 +42,7 @@
       <h2 class="text-center text-white"><strong>X Encuentro Centroamericano de Software Libre</strong></h2>
       <h4 class="text-center text-white font-weight-bold">12 y 13 de julio del 2018</h4>
       <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
-        usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
+        usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
         la región.</p>
       <div id="btn-registration" class="text-center" style="margin:0 auto;">
         <a class="btn btn-lg btn-secondary btn-block disabled" href="">Registrarme (a partir del mes de abril)</a>
@@ -117,7 +117,7 @@
   <!-- /.row -->
   <div class="row mb-4">
     <div class="col-md-8">
-      <p class="text-center">Conoce los países y lugares en los que el Encuentro Centroamericano de Software Libre se ha venido realizando desde al año 2009 y no pierdas la oportunidad de participar en la décima edición del evento El Salvador 2018!</p>
+      <p class="text-center">¡Conoce los países y lugares en los que el Encuentro Centroamericano de Software Libre se ha venido realizando desde al año 2009 y no pierdas la oportunidad de participar en la décima edición del evento El Salvador 2018!</p>
     </div>
     <div class="col-md-4">
       <a class="btn btn-lg btn-secondary btn-block" href="{{URL::to('cms/eventos-anteriores')}}">Ver todos los eventos anteriores</a>
