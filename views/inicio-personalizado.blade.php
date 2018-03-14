@@ -45,7 +45,7 @@
         usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
         la región.</p>
       <div id="btn-registration" class="text-center" style="margin:0 auto;">
-        <a class="btn btn-lg btn-secondary btn-block disabled" href="">Registrarme (abierto a partir del mes de abril)</a>
+        <a class="btn btn-lg btn-secondary btn-block disabled" href="">Registrarme (a partir del mes de abril)</a>
       </div>
     </div>
   </div>
