@@ -134,6 +134,7 @@
           <div id="collapseMovilizacion" class="collapse" aria-labelledby="headingMovilizacion" data-parent="#sideLogistica">
             <div class="card-body p-0">
               <div class="list-group list-group-flush m-0">
+                <a href="#a-pie" class="list-group-item list-group-item-action py-2">A pie</a>
                 <a href="#servicio-de-autobuses" class="list-group-item list-group-item-action py-2">Servicio de Autobuses</a>
                 <a href="#servicio-de-taxis" class="list-group-item list-group-item-action py-2">Servicio de taxis</a>
                 <a href="#servicio-de-UBER" class="list-group-item list-group-item-action py-2">Servicio UBER</a>
@@ -387,13 +388,25 @@
           <p class="text-justify">Para movilizarse del lugar de hospedaje hacia la sede del ECSL-2018 existen varias opciones que se describen a continuación:</p>
         </div>
 
+        <div id="a-pie" class="right-block">
+          <h4 class="display-6 font-italic font-weight-bold">A pie</h4>
+          <p class="text-justify">
+            Desde el hospedaje oficial a la sede del evento no hay más de 15 minutos caminando.
+            Antiguo Cuscatlán es un municipio muy seguro para llevar su equipo, no obstante, como en
+            cualquier gran ciudad, siempre es mejor ir en grupo que solo/a. En cuanto al tipo de
+            camino, solo hay que atravesar un par de calles de doble sentido sin mucho tráfico.
+          </p>
+        </div>
+
         <div id="servicio-de-autobuses" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Servicio de Autobuses</h4>
           <p class="text-justify">En El Salvador es posible llegar prácticamente a cualquier lugar utilizando el servicio de autobuses.
             <br><br> La rutas que llegan a la Universidad Centroamericana “José Simeón Cañas” (UCA):
             <ul>
+              <li>Ruta 42</li>
               <li>Ruta 44</li>
-              <li>Por completar...</li>
+              <li>Ruta 101</li>
+              <li>Por Completar...</li>
             </ul>
           </p>
         </div>
