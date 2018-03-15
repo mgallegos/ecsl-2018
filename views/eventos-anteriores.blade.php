@@ -4,7 +4,7 @@
 <!-- Contenido -->
 <div class="container">
 
-<br><br>
+<br>
 <!-- Barra de Ubicacion -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">

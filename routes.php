@@ -25,6 +25,11 @@
 
 $ecslsv =  function ()
 {
+	Route::get('/cms/dashboard', function()
+	{
+		return View::make('ecsl-2018::dashboard');
+	});
+
 	// Route::get('/cms/ecsl/logistica', function()
 	Route::get('/cms/logistica', function()
 	{

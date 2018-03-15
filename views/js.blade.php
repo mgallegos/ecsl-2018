@@ -6,7 +6,7 @@
 
 	$(document).ready(function()
 	{
-		$('#ob-fa-form, #registration-form').jqMgVal('addFormFieldsValidations');
+		$('#ob-fa-form, #login-form, #reg-form').jqMgVal('addFormFieldsValidations');
 
 		$('[data-toggle="lightbox"]').click(function()
 		{
@@ -14,14 +14,50 @@
  			$(this).ekkoLightbox();
 		});
 
-		$('#ob-fa-btn').click(function()
-		{
-			var data = $('#ob-fa-form').formToObject('ob-fa-');
+		// $('#ob-fa-btn').click(function()
+		// {
+		// 	var data = $('#ob-fa-form').formToObject('ob-fa-');
+		//
+		// 	if(!$('#ob-fa-form').jqMgVal('isFormValid'))
+		// 	{
+		// 		return;
+		// 	}
+		//
+		// 	$.ajax(
+		// 	{
+		// 		type: 'POST',
+		// 		data: JSON.stringify(data),
+		// 		dataType : 'json',
+		// 		url: $('#ob-fa-form').attr('action'),
+		// 		error: function (jqXHR, textStatus, errorThrown)
+		// 		{
+		// 			handleServerExceptions(jqXHR, 'ob-fa-form');
+		// 		},
+		// 		beforeSend:function()
+		// 		{
+		// 			$('#app-loader').removeClass('hidden-xs-up');
+		// 			disabledAll();
+		// 		},
+		// 		success:function(json)
+		// 		{
+		// 			$('#ob-fa-form').showAlertAsFirstChild('alert-success', 'Ha sido suscrito, gracias por su interés.', 10000);
+		// 			$('#ob-fa-form').jqMgVal('clearForm');
+		// 			$('#app-loader').addClass('hidden-xs-up');
+		// 			enableAll();
+		// 		}
+		// 	});
+		// });
 
-			if(!$('#ob-fa-form').jqMgVal('isFormValid'))
+		$('#login-btn').click(function()
+		{
+			var data = $('#login-form').formToObject('ob-fa-');
+
+			if(!$('#login-form').jqMgVal('isFormValid'))
 			{
 				return;
 			}
+
+			return;
 
 			$.ajax(
 			{
@@ -48,12 +84,14 @@
 			});
 		});
 
-		$('#btn-registration').click(function()
+		$('#reg-btn-register').click(function()
 		{
-			if(!$('#registration-form').jqMgVal('isFormValid'))
+			if(!$('#reg-form').jqMgVal('isFormValid'))
 			{
 				return;
 			}
+
+			return;
 
 			if(!$('#is-attending').is(":checked") && !$('#is-speaker').is(":checked") && !$('#is-volunteer').is(":checked") && !$('#is-organizer').is(":checked"))
 			{
