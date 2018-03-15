@@ -103,6 +103,17 @@
               </div>
             </div>
           </div>
+          <div id="collapseMovilizacion" class="collapse" aria-labelledby="headingMovilizacion" data-parent="#sideLogistica">
+            <div class="card-body p-0">
+              <div class="list-group list-group-flush m-0">
+                <a href="#a-pie" class="list-group-item list-group-item-action py-2">A pie</a>
+                <a href="#servicio-de-autobuses" class="list-group-item list-group-item-action py-2">Servicio de Autobuses</a>
+                <a href="#servicio-de-taxis" class="list-group-item list-group-item-action py-2">Servicio de taxis</a>
+                <a href="#servicio-de-UBER" class="list-group-item list-group-item-action py-2">Servicio UBER</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
           <!-- Opcion de Viaje -->
           <div class="card border-0">
@@ -129,19 +140,6 @@
               </div>
             </div>
           </div>
-
-
-          <div id="collapseMovilizacion" class="collapse" aria-labelledby="headingMovilizacion" data-parent="#sideLogistica">
-            <div class="card-body p-0">
-              <div class="list-group list-group-flush m-0">
-                <a href="#a-pie" class="list-group-item list-group-item-action py-2">A pie</a>
-                <a href="#servicio-de-autobuses" class="list-group-item list-group-item-action py-2">Servicio de Autobuses</a>
-                <a href="#servicio-de-taxis" class="list-group-item list-group-item-action py-2">Servicio de taxis</a>
-                <a href="#servicio-de-UBER" class="list-group-item list-group-item-action py-2">Servicio UBER</a>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- Informacion de El Salvador-->
         <div class="card border-0">
