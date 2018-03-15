@@ -403,10 +403,9 @@
           <p class="text-justify">En El Salvador es posible llegar prácticamente a cualquier lugar utilizando el servicio de autobuses.
             <br><br> La rutas que llegan a la Universidad Centroamericana “José Simeón Cañas” (UCA):
             <ul>
-              <li>Ruta 42</li>
-              <li>Ruta 44</li>
-              <li>Ruta 101</li>
-              <li>Por Completar...</li>
+              <li>Ruta 42 (Bus y Coaster)</li>
+              <li>Ruta 44 (Bus y Coaster)</li>
+              <!-- <li>Ruta 101</li> -->
             </ul>
           </p>
         </div>
