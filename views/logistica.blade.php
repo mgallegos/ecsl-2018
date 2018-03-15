@@ -89,32 +89,6 @@
 
         </div>
 
-        <!-- Opcion de Viaje -->
-        <div class="card border-0">
-          <div class="card-header bg-white p-0 m-0">
-            <div class="btn w-100" id="headingTravelInfo" data-toggle="collapse" data-target="#collapseTravelInfo" aria-expanded="false">
-              <div class="row ">
-                <div class="col-9 text-center">
-                  <p class="font-weight-bold text-primary my-0 text-left">Información de Viaje</p>
-                </div>
-                <div class="col-3 text-right">
-                  <i class="fa fa-chevron-down text-secondary "></i>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div id="collapseTravelInfo" class="collapse" aria-labelledby="headingTravelInfo" data-parent="#sideLogistica">
-            <div class="card-body p-0">
-              <div class="list-group list-group-flush m-0">
-                <a href="#aereo" class="list-group-item list-group-item-action py-2">Aéreo</a>
-                <a href="#terrestre" class="list-group-item list-group-item-action py-2">Terrestre</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Movilizacion -->
         <div class="card border-0">
           <div class="card-header bg-white p-0 m-0 border-top">
@@ -125,6 +99,32 @@
                 </div>
                 <div class="col-4 text-right">
                   <i class="fa fa-chevron-down text-secondary "></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opcion de Viaje -->
+          <div class="card border-0">
+            <div class="card-header bg-white p-0 m-0">
+              <div class="btn w-100" id="headingTravelInfo" data-toggle="collapse" data-target="#collapseTravelInfo" aria-expanded="false">
+                <div class="row ">
+                  <div class="col-9 text-center">
+                    <p class="font-weight-bold text-primary my-0 text-left">Información de Viaje</p>
+                  </div>
+                  <div class="col-3 text-right">
+                    <i class="fa fa-chevron-down text-secondary "></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="collapseTravelInfo" class="collapse" aria-labelledby="headingTravelInfo" data-parent="#sideLogistica">
+              <div class="card-body p-0">
+                <div class="list-group list-group-flush m-0">
+                  <a href="#aereo" class="list-group-item list-group-item-action py-2">Aéreo</a>
+                  <a href="#terrestre" class="list-group-item list-group-item-action py-2">Terrestre</a>
                 </div>
               </div>
             </div>
@@ -338,47 +338,6 @@
 
         <hr>
 
-        <div id="aereo" class="right-block">
-          <h3 class="font-weight-bold">Información de viaje</h3>
-          <h4 class="display-6 font-italic font-weight-bold">Aérea</h4>
-          <p class="text-justify">La forma más rápida para llegar a El Salvador es por avión. El Salvador cuenta con el aeropuerto Internacional Monseñor Romero que se encuentra a 45 minutos de la sede del evento en cualquier automovil.
-            <br><br> Del aeropuerto puede tomar un taxi hacia el Centro Loyola. Los taxis en El Salvador no cuentan con taxímetro y la tarifa se negocia con el taxista antes de abordar el vehículo. También puede optar por el servicio de UBER para dirigirse
-            hacia el lugar de hospedaje.</p>
-
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d248225.3098415193!2d-89.14756444999999!3d13.564982550000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x8f7cb68084f5c48f%3A0xaff9539ed52e360d!2sAeropuerto+Internacional+de+El+Salvador!3m2!1d13.445137899999999!2d-89.0570357!4m5!1s0x8f6331cd305c735b%3A0x3d2a75b3761d4ded!2sUniversidad+Centroamericana+Jos%C3%A9+Sime%C3%B3n+Ca%C3%B1as%2C+Bulevar+Los+Proceres%2C+San+Salvador!3m2!1d13.6810526!2d-89.2357263!5e0!3m2!1ses!2ssv!4v1516678435332"
-              width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
-        </div>
-
-        <br>
-        <div id="terrestre" class="right-block">
-          <h4 class="display-6 font-italic font-weight-bold">Terrestre</h4>
-          <p class="text-justify">Llegar a San Salvador por tierra es la opción más viable para las personas que vienen de los países centroamericanos, aconsejamos verificar precios y asegúrese de consultar las promociones y descuentos especiales directamente con cada empresa
-            de transporte.</p>
-
-          <ul>
-            <li class="text-justify">
-              <p class="font-weight-bold mb-0">Platinum:</p>
-              <p class="">Tiene un servicio de transporte con atención de primera clase hacia San Salvador, El Salvador y tiene sus puertos de salida en Guatemala, Honduras y Nicaragua posee rutas clase Platinum, King y Quality los precios van desde $69.00 USD.
-                Más información en el <a target="_blank" href="http://www.platinumcentroamerica.com/">sitio web de Platinum.</a></p>
-            </li>
-
-            <li class="text-justify">
-              <p class="font-weight-bold mb-0">TicaBus:</p>
-              <p class="">Tiene servicio de transporte de mediano costo hacia San Salvador, El Salvador y tiene puertos de salida en Guatemala, Honduras, NIcaragua y Costa Rica posee rutas turistica y ejecutiva los precio van desde $72.00 USD. hasta $131.00 USD.
-                Más información en el <a target="_blank" href="http://ticabus.com/ ">sitio web de Ticabus.</a></p>
-            </li>
-
-            <li class="text-justify">
-              <p class="font-weight-bold mb-0">Transportes del Sol:</p>
-              <p class="">Tes una de las opciones más económicas para viajar a San Salvador, El Salvador poseen cuota diferencial entre adultos y menores de edad sus puertos de salida están ubicados unicamente en Guatemala, Nicaragua y Costa Rica; los precio van
-                desde $50.00 USD. hasta $120.00 USD. <a target="_blank" href="http://www.transportedelsol.com/">sitio web de Transportes del Sol.</a></p>
-            </li>
-          </ul>
-
-        </div>
-        <hr>
         <div id="movilizacion" class="right-block">
           <h3 class="font-weight-bold">Movilización</h3>
           <div class="embed-responsive embed-responsive-16by9">
@@ -428,6 +387,49 @@
         </div>
 
         <hr>
+
+        <div id="aereo" class="right-block">
+          <h3 class="font-weight-bold">Información de viaje</h3>
+          <h4 class="display-6 font-italic font-weight-bold">Aérea</h4>
+          <p class="text-justify">La forma más rápida para llegar a El Salvador es por avión. El Salvador cuenta con el aeropuerto Internacional Monseñor Romero que se encuentra a 45 minutos de la sede del evento en cualquier automovil.
+            <br><br> Del aeropuerto puede tomar un taxi hacia el Centro Loyola. Los taxis en El Salvador no cuentan con taxímetro y la tarifa se negocia con el taxista antes de abordar el vehículo. También puede optar por el servicio de UBER para dirigirse
+            hacia el lugar de hospedaje.</p>
+
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d248225.3098415193!2d-89.14756444999999!3d13.564982550000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x8f7cb68084f5c48f%3A0xaff9539ed52e360d!2sAeropuerto+Internacional+de+El+Salvador!3m2!1d13.445137899999999!2d-89.0570357!4m5!1s0x8f6331cd305c735b%3A0x3d2a75b3761d4ded!2sUniversidad+Centroamericana+Jos%C3%A9+Sime%C3%B3n+Ca%C3%B1as%2C+Bulevar+Los+Proceres%2C+San+Salvador!3m2!1d13.6810526!2d-89.2357263!5e0!3m2!1ses!2ssv!4v1516678435332"
+              width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <br>
+        <div id="terrestre" class="right-block">
+          <h4 class="display-6 font-italic font-weight-bold">Terrestre</h4>
+          <p class="text-justify">Llegar a San Salvador por tierra es la opción más viable para las personas que vienen de los países centroamericanos, aconsejamos verificar precios y asegúrese de consultar las promociones y descuentos especiales directamente con cada empresa
+            de transporte.</p>
+
+          <ul>
+            <li class="text-justify">
+              <p class="font-weight-bold mb-0">Platinum:</p>
+              <p class="">Tiene un servicio de transporte con atención de primera clase hacia San Salvador, El Salvador y tiene sus puertos de salida en Guatemala, Honduras y Nicaragua posee rutas clase Platinum, King y Quality los precios van desde $69.00 USD.
+                Más información en el <a target="_blank" href="http://www.platinumcentroamerica.com/">sitio web de Platinum.</a></p>
+            </li>
+
+            <li class="text-justify">
+              <p class="font-weight-bold mb-0">TicaBus:</p>
+              <p class="">Tiene servicio de transporte de mediano costo hacia San Salvador, El Salvador y tiene puertos de salida en Guatemala, Honduras, NIcaragua y Costa Rica posee rutas turistica y ejecutiva los precio van desde $72.00 USD. hasta $131.00 USD.
+                Más información en el <a target="_blank" href="http://ticabus.com/ ">sitio web de Ticabus.</a></p>
+            </li>
+
+            <li class="text-justify">
+              <p class="font-weight-bold mb-0">Transportes del Sol:</p>
+              <p class="">Tes una de las opciones más económicas para viajar a San Salvador, El Salvador poseen cuota diferencial entre adultos y menores de edad sus puertos de salida están ubicados unicamente en Guatemala, Nicaragua y Costa Rica; los precio van
+                desde $50.00 USD. hasta $120.00 USD. <a target="_blank" href="http://www.transportedelsol.com/">sitio web de Transportes del Sol.</a></p>
+            </li>
+          </ul>
+
+        </div>
+        <hr>
+
         <h3 class="font-weight-bold">Acerca de El Salvador</h3>
 
         <div id="moneda-local" class="right-block">
