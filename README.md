@@ -1,2 +1,2 @@
 # ecsl-2018
-Eventos de La Comunidad Salvadoreña de Software Libre
+[Sitio Web del X Encuentro Centroamericano de Software Libre](http://ecsl2018.softwarelibre.ca)
