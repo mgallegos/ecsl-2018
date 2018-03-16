@@ -4,6 +4,14 @@
 
 	}
 
+	function hideDashboard()
+	{
+		$('.dashboard-element').each(function( index )
+		{
+		  $(this).hide();
+		});
+	}
+
 	$(document).ready(function()
 	{
 		$('#ob-fa-form, #login-form, #reg-form').jqMgVal('addFormFieldsValidations');
@@ -12,6 +20,20 @@
 		{
 			event.preventDefault();
  			$(this).ekkoLightbox();
+		});
+
+		$('#dash-login').click(function()
+		{
+			hideDashboard();
+
+			$('#dash-login-container').show('fade');
+		});
+
+		$('#dash-registro').click(function()
+		{
+			hideDashboard();
+
+			$('#dash-registro-container').show('fade');
 		});
 
 		// $('#ob-fa-btn').click(function()

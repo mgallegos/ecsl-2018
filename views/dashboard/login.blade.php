@@ -1,4 +1,3 @@
-
 <div class="card">
   <h4 class="card-header">{{ Lang::get('security/login.loginFormLegend') }}</h4>
   <div class="card-body">

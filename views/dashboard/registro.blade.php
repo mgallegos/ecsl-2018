@@ -1,5 +1,5 @@
 
-<div class="card mt-3 mb-3">
+<div class="card mb-3">
   <h4 class="card-header">Formulario de registro</h4>
   <div class="card-body">
     {!! Form::open(array('id'=>'reg-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
@@ -114,7 +114,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-country">País</label>
-                {!! Form::autocomplete('reg-country', array('El Salvador','Guatemala'), array('class' => 'form-control')) !!}
+                {!! Form::autocomplete('reg-country', array('El Salvador', 'Guatemala'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@
             <!-- Passport Number-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-passport-number">identificación en su país / Pasaporte</label>
+                <label for="reg-passport-number">Pasaporte</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-id-card"></i></div>
@@ -137,7 +137,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-tshirt-size">Talla de Camiseta</label>
-                {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control')) !!}
+                {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
           </div>
@@ -148,7 +148,8 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-gender">Género</label>
-                {!! Form::autocomplete('reg-gender', array('Masculino','Femenino', 'Otro'), array('class' => 'form-control')) !!}
+                {!! Form::autocomplete('reg-gender', array('Masculino','Femenino', 'Otro'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+                <!-- {!! Form::select('reg-gender', array('' => '', 'M' => 'Masculino', 'F' => 'Femenino'), null, array('id'=>'gender', 'class'=>'form-control', 'data-mg-required'=>'')) !!} -->
             </div>
             </div>
 
@@ -156,7 +157,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-birthdate">Fecha de Nacimiento:</label>
-                {!! Form::date('reg-birthdate', array('class' => 'form-control' )) !!}
+                {!! Form::date('reg-birthdate', array('class' => 'form-control'), null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
           </div>
@@ -264,7 +265,7 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Deseo que mi fotografía aparezca en la sección de participantes y ponentes (si aplica) del sitio web
+                    <input id='is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Deseo que mi <a href="https://gravatar.com" target="_blank">gravatar</a> se muestre en la sección de participantes y ponentes (si aplica) del sitio web
                   </label>
                 </div>
               </div>
