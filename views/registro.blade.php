@@ -9,94 +9,160 @@
       </div>
       <div class="row">
         <div class="col-md-12">
+
           <div class="row">
+            <!--Firstname -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="firstname">Nombre</label>
+                <label for="reg-firstname">Nombre</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
-                  {!! Form::text('firstname', null, array('id'=>'firstname', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
-                  {!! Form::hidden('id', null, array('id' => 'id')) !!}
-                  {!! Form::hidden('insight', null, array('id' => 'insight')) !!}
+                  {!! Form::text('reg-firstname', null, array('id'=>'reg-firstname', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::hidden('reg-id', null, array('id' => 'reg-id')) !!}
+                  {!! Form::hidden('reg-insight', null, array('id' => 'reg-insight')) !!}
                 </div>
               </div>
             </div>
+
+            <!--Lastname -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="lastname">Apellido</label>
+                <label for="reg-lastname">Apellido</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
-                  {!! Form::text('lastname', null, array('id'=>'lastname', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('reg-lastname', null, array('id'=>'reg-lastname', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
           </div>
+
           <div class="row">
+            <!-- Password -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="password">Contraseña</label>
+                <label for="reg-password">Contraseña</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-key"></i></div>
                   </span>
-                  {!! Form::password('password', array('id'=>'password', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::password('reg-password', array('id'=>'reg-password', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
+
+            <!-- Password Confirmation -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="password-confirmation">Confirmar contraseña</label>
+                <label for="reg-password-confirmation">Confirmar contraseña</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-key"></i></div>
                   </span>
-                  {!! Form::password('password-confirmation', array('id'=>'password-confirmation', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::password('reg-password-confirmation', array('id'=>'reg-password-confirmation', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
           </div>
+
           <div class="row">
+            <!-- E-mail -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="email">Correo electrónico</label>
+                <label for="reg-email">Correo electrónico</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-envelope-o"></i></div>
                   </span>
-                  {!! Form::text('email', null, array('id'=>'email', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('reg-email', null, array('id'=>'reg-email', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
+
+            <!-- Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="contact">Número de contacto</label>
+                <label for="reg-contact">Número de contacto</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                   </span>
-                  {!! Form::text('contact', null, array('id'=>'contact', 'class'=>'form-control')) !!}
+                  {!! Form::text('reg-contact', null, array('id'=>'reg-contact', 'class'=>'form-control')) !!}
                 </div>
               </div>
             </div>
           </div>
+
           <div class="row">
+            <!-- Address -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="gender">Género</label>
-                {!! Form::select('gender', array('' => '', 'Masculino' => 'Masculino', 'Femenino' => 'Femenino', 'Otro' => 'Otro'), null, array('id'=>'gender', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                <label for="reg-address">Dirección en su país</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-home"></i></div>
+                  </span>
+                  {!! Form::text('reg-address', null, array('id'=>'reg-address', 'class'=>'form-control', 'data-mg-required'=>'' )) !!}
+                </div>
+              </div>
             </div>
-            </div>
+
+            <!-- Country -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="contact">Especificar (opcional):</label>
-                {!! Form::text('otro-genero', null, array('id'=>'otro-genero', 'class'=>'form-control', 'disabled' => 'disabled')) !!}
+                <label for="reg-country">País</label>
+                {!! Form::autocomplete('reg-country', array('El Salvador','Guatemala'), array('class' => 'form-control')) !!}
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <!-- Passport Number-->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-passport-number">identificación en su país / Pasaporte</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-id-card"></i></div>
+                  </span>
+                  {!! Form::text('passport-number', null, array('id'=>'passport-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
+              </div>
+            </div>
+
+            <!-- Tshirt Size -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-tshirt-size">Talla de Camiseta</label>
+                {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control')) !!}
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <!-- Gender -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-gender">Género</label>
+                {!! Form::autocomplete('reg-gender', array('Masculino','Femenino', 'Otro'), array('class' => 'form-control')) !!}
+            </div>
+            </div>
+
+            <!-- Birthdate -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-birthdate">Fecha de Nacimiento:</label>
+                {!! Form::date('reg-birthdate', array('class' => 'form-control' )) !!}
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
           <div class="form-group mg-hm">
             <label for="institution">Represento a la institución</label>
             <div class="input-group">
@@ -191,6 +257,7 @@
               <input type="text" class="form-control" id="other-distribution">
             </div>
           </div>
+
           <div id='participation-row' class="form-group mg-hm alert alert-warning">
             <label>Opciones de privacidad</label>
             <div class="row">
@@ -227,6 +294,8 @@
               </div> -->
             </div>
           </div>
+
+
           {!! Form::button('Registrarse', array('id'=>'reg-btn-register', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
         </div>
       </div>
