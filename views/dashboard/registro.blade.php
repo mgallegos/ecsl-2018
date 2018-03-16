@@ -85,12 +85,40 @@
             <!-- Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-contact">Número de contacto</label>
+                <label for="reg-contact">Telefono</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                   </span>
                   {!! Form::text('reg-contact', null, array('id'=>'reg-contact', 'class'=>'form-control')) !!}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- Emergency Contact -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-emergency-contact">En caso de emegencia contactar a</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-user"></i></div>
+                  </span>
+                  {!! Form::text('reg-emergency-contact', null, array('id'=>'reg-emergency-contact', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
+              </div>
+            </div>
+
+            <!-- Phone Number Emergency Contact -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-number-emergency">Telefono contacto de emergencia</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-phone"></i></div>
+                  </span>
+                  {!! Form::text('reg-number-emergency', null, array('id'=>'reg-number-emergency', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -173,6 +201,7 @@
               {!! Form::text('institution', null, array('id'=>'institution', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
             </div>
           </div>
+
           <div class="form-group mg-hm">
             <label for="email">Utilizo las siguientes distibuciones Linux:</label>
             <div class="row">
@@ -252,12 +281,45 @@
               </div>
             </div>
           </div>
+
+          <!-- Other Distribution -->
           <div class="form-group row">
-            <label for="other-distribution" class="col-sm-3 col-form-label">Especificar distribución</label>
+            <label for="reg-other-distribution" class="col-sm-3 col-form-label">Especificar distribución</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="other-distribution">
+              {!! Form::text('reg-other-distribution', null, array('id'=>'reg-other-distribution', 'class'=>'form-control')) !!}
             </div>
           </div>
+
+          <!-- Previous ECSL -->
+          <div class="">
+            <div class="form-group">
+              <label for="reg-previous-ecsl">Encuentros anteriores en los que he participado</label>
+                {!! Form::text('reg-previous-ecsl', null, array('id'=>'reg-previous-ecsl', 'class'=>'form-control')) !!}
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <!-- Health Condition -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <br><br>
+                <label for="reg-health-condition">Condición de Salud</label>
+                  {!! Form::textareacustom('reg-health-condition', 4, 500, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+
+            <!-- Special Needs -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-special-needs">¿Tiene alguna necesidad especifica de alimentación y hospedaje o alguna condición especial de salud?</label>
+                  {!! Form::textareacustom('reg-special-needs', 4, 500, array('class' => 'form-control')) !!}
+              </div>
+            </div>
+          </div>
+
+          <hr>
 
           <div id='participation-row' class="form-group mg-hm alert alert-warning">
             <label>Opciones de privacidad</label>
