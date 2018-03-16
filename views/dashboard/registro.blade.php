@@ -202,8 +202,38 @@
             </div>
           </div>
 
+          <!-- Previous ECSL -->
+          <div class="">
+            <div class="form-group">
+              <label for="reg-previous-ecsl">Encuentros anteriores en los que he participado</label>
+                {!! Form::text('reg-previous-ecsl', null, array('id'=>'reg-previous-ecsl', 'class'=>'form-control')) !!}
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <!-- Health Condition -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-health-condition">Condición de Salud</label>
+                  {!! Form::textareacustom('reg-health-condition', 4, 500, array('class' => 'form-control')) !!}
+                </div>
+            </div>
+
+            <!-- Special Needs -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-special-needs">Necesidad especifica o condición especial</label>
+                  {!! Form::textareacustom('reg-special-needs', 4, 500, array('class' => 'form-control')) !!}
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
           <div class="form-group mg-hm">
-            <label for="email">Utilizo las siguientes distibuciones Linux:</label>
+            <label for="email">Distibuciones Linux que utiliza:</label>
             <div class="row">
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
@@ -281,7 +311,6 @@
               </div>
             </div>
           </div>
-
           <!-- Other Distribution -->
           <div class="form-group row">
             <label for="reg-other-distribution" class="col-sm-3 col-form-label">Especificar distribución</label>
@@ -289,37 +318,6 @@
               {!! Form::text('reg-other-distribution', null, array('id'=>'reg-other-distribution', 'class'=>'form-control')) !!}
             </div>
           </div>
-
-          <!-- Previous ECSL -->
-          <div class="">
-            <div class="form-group">
-              <label for="reg-previous-ecsl">Encuentros anteriores en los que he participado</label>
-                {!! Form::text('reg-previous-ecsl', null, array('id'=>'reg-previous-ecsl', 'class'=>'form-control')) !!}
-            </div>
-          </div>
-
-          <hr>
-
-          <div class="row">
-            <!-- Health Condition -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <br><br>
-                <label for="reg-health-condition">Condición de Salud</label>
-                  {!! Form::textareacustom('reg-health-condition', 4, 500, array('class' => 'form-control')) !!}
-                </div>
-            </div>
-
-            <!-- Special Needs -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="reg-special-needs">¿Tiene alguna necesidad especifica de alimentación y hospedaje o alguna condición especial de salud?</label>
-                  {!! Form::textareacustom('reg-special-needs', 4, 500, array('class' => 'form-control')) !!}
-              </div>
-            </div>
-          </div>
-
-          <hr>
 
           <div id='participation-row' class="form-group mg-hm alert alert-warning">
             <label>Opciones de privacidad</label>

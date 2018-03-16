@@ -1,4 +1,7 @@
 <script>
+
+	var dashPreviousEcsl = [{'label':'Nicaragua 2009', 'value':'ECSL2009'}, {'label':'Costa Rica 2010', 'value':'ECSL2010'}];
+
 	function decSendRequest(formId, data)
 	{
 
@@ -162,6 +165,28 @@
 				}
 			});
 		});
+
+		setTimeout(function ()
+		{
+			// $('#reg-previous-ecsl').tokenfield({beautify:false}); // Permite ingresar cualquier cosa
+
+			$('#reg-previous-ecsl').tokenfield(
+			{
+				autocomplete:
+				{
+					source: dashPreviousEcsl,
+					delay: 100,
+					focus: function( event, ui ) {return false;}
+				},
+				showAutocompleteOnFocus: true,
+				beautify:false
+			});
+
+			$('#reg-previous-ecsl').on('tokenfield:createtoken', function (event)
+			{
+				return validateToken(event, dashPreviousEcsl);
+			});
+		}, 500);
 
 
 		// if ((window.location.href).split("action=")[1] == "DecimaERP-Cloud")
