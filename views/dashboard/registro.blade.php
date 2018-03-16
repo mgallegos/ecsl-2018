@@ -85,7 +85,7 @@
             <!-- Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-contact">Telefono</label>
+                <label for="reg-contact">Teléfono</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
@@ -113,7 +113,7 @@
             <!-- Phone Number Emergency Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-number-emergency">Telefono contacto de emergencia</label>
+                <label for="reg-number-emergency">Teléfono contacto de emergencia</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
@@ -164,7 +164,7 @@
             <!-- Tshirt Size -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-tshirt-size">Talla de Camiseta</label>
+                <label for="reg-tshirt-size">Talla de camiseta</label>
                 {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
@@ -184,13 +184,13 @@
             <!-- Birthdate -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-birthdate">Fecha de Nacimiento:</label>
+                <label for="reg-birthdate">Fecha de nacimiento:</label>
                 {!! Form::date('reg-birthdate', array('class' => 'form-control'), null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
           </div>
 
-          <hr>
+          <!-- <hr> -->
 
           <div class="form-group mg-hm">
             <label for="institution">Represento a la institución</label>
@@ -210,7 +210,7 @@
             </div>
           </div>
 
-          <hr>
+          <!-- <hr> -->
 
           <div class="row">
             <!-- Health Condition -->
@@ -230,7 +230,7 @@
             </div>
           </div>
 
-          <hr>
+          <!-- <hr> -->
 
           <div class="form-group mg-hm">
             <label for="email">Distibuciones Linux que utiliza:</label>
