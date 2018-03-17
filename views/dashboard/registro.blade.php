@@ -168,7 +168,7 @@
               <div class="form-group mg-hm">
                 <label for="reg-tshirt-size">Talla de camiseta</label>
                 @if (!Agent::isMobile())
-                  {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+                  {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
                   {!! Form::select('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), null, array('id'=>'reg-tshirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
             		@endif
@@ -178,7 +178,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-birthdate">Fecha de nacimiento</label>
-                {!! Form::date('reg-birthdate', array('class' => 'form-control'), null, 'btn-outline-secondary', '4') !!}
+                {!! Form::date('reg-birthdate', array('class' => 'form-control', 'data-mg-required'=>''), null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
           </div>
@@ -190,9 +190,9 @@
               <div class="form-group mg-hm">
                 <label for="reg-gender">Sexo</label>
                 @if (!Agent::isMobile())
-                  {!! Form::autocomplete('reg-gender', array('Mujer','Hombre', 'Personalizado'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+                  {!! Form::autocomplete('reg-gender', array('Mujer','Hombre', 'Personalizado'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
-                  {!! Form::select('reg-gender', array('Mujer' => 'Mujer','Hombre' => 'Hombre', 'Personalizado' => 'Personalizado'), null, array('id'=>'reg-gender', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::select('reg-gender', array('Mujer' => 'Mujer','Hombre' => 'Hombre', 'Personalizado' => 'Personalizado', 'data-mg-required'=>''), null, array('id'=>'reg-gender', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
             		@endif
             </div>
             </div>
