@@ -50,16 +50,16 @@
 
 		@if (!Agent::isMobile())
 
-		$('#reg-gender').change(function()
+		$('#reg-gender').on('autocompleteselect', function( event, ui )
 		{
-			customGender($(this).val());
+			customGender(ui.item.label);
 		});
 
 		@else
 
-		$('#reg-gender').on('autocompleteselect', function( event, ui )
+		$('#reg-gender').change(function()
 		{
-			customGender(ui.item.label);
+			customGender($(this).val());
 		});
 
 		@endif
