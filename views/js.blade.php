@@ -1,6 +1,30 @@
 <script>
 
-	var dashPreviousEcsl = [{'label':'Nicaragua 2009', 'value':'ECSL2009'}, {'label':'Costa Rica 2010', 'value':'ECSL2010'}];
+	var dashPreviousEcsl = [
+		{'label':'Nicaragua 2009', 'value':'ECSL2009'},
+		{'label':'Costa Rica 2010', 'value':'ECSL2010'},
+		{'label':'El Salvador 2011', 'value':'ECSL2011'},
+		{'label':'Guatemala 2012', 'value':'ECSL2012'},
+		{'label':'Belize 2013', 'value':'ECSL2013'},
+		{'label':'Panamá 2014', 'value':'ECSL2014'},
+		{'label':'Honduras 2015', 'value':'ECSL2015'},
+		{'label':'Nicaragua 2016', 'value':'ECSL2016'},
+		{'label':'Costa Rica 2017', 'value':'ECSL2017'}
+	];
+
+	function customGender(gender)
+	{
+		if(gender == 'Personalizado')
+		{
+			$('#reg-custom-gender').val('');
+			$('#reg-custom-gender').removeAttr('disabled');
+		}
+		else
+		{
+			$('#reg-custom-gender').val('');
+			$('#reg-custom-gender').attr('disabled', 'disabled');
+		}
+	}
 
 	function decSendRequest(formId, data)
 	{
@@ -9,15 +33,36 @@
 
 	function hideDashboard()
 	{
-		$('.dashboard-element').each(function( index )
+		$('.dashboard-elements').children().each(function( index )
 		{
 		  $(this).hide();
+		});
+
+		$('.dashboard-list-group').children().each(function( index )
+		{
+		  $(this).removeClass('active');
 		});
 	}
 
 	$(document).ready(function()
 	{
 		$('#ob-fa-form, #login-form, #reg-form').jqMgVal('addFormFieldsValidations');
+
+		@if (!Agent::isMobile())
+
+		$('#reg-gender').change(function()
+		{
+			customGender($(this).val());
+		});
+
+		@else
+
+		$('#reg-gender').on('autocompleteselect', function( event, ui )
+		{
+			customGender(ui.item.label);
+		});
+
+		@endif
 
 		$('[data-toggle="lightbox"]').click(function()
 		{
@@ -29,12 +74,16 @@
 		{
 			hideDashboard();
 
+			$(this).addClass('active');
+
 			$('#dash-login-container').show('fade');
 		});
 
 		$('#dash-registro').click(function()
 		{
 			hideDashboard();
+
+			$(this).addClass('active');
 
 			$('#dash-registro-container').show('fade');
 		});

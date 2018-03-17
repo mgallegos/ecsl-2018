@@ -5,7 +5,7 @@
     {!! Form::open(array('id'=>'reg-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       <div class="alert alert-dark" role="alert">
-        <h6 class="card-title mb-0">Complete el formulario de registro para que pueda realizar el pago y proponer una o más ponencias.</h6>
+        <h6 class="card-title mb-0">Complete el formulario para poder realizar el pago y proponer una o más ponencias.</h6>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -85,7 +85,7 @@
             <!-- Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-contact">Teléfono</label>
+                <label for="reg-contact">Teléfono de contacto</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
@@ -113,7 +113,7 @@
             <!-- Phone Number Emergency Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-number-emergency">Teléfono contacto de emergencia</label>
+                <label for="reg-number-emergency">Teléfono de contacto de emergencia</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
@@ -125,30 +125,6 @@
           </div>
 
           <div class="row">
-            <!-- Address -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="reg-address">Dirección en su país</label>
-                <div class="input-group">
-                  <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-home"></i></div>
-                  </span>
-                  {!! Form::text('reg-address', null, array('id'=>'reg-address', 'class'=>'form-control', 'data-mg-required'=>'' )) !!}
-                </div>
-              </div>
-            </div>
-
-            <!-- Country -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="reg-country">País</label>
-                {!! Form::autocomplete('reg-country', array('El Salvador', 'Guatemala'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <!-- Passport Number-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-passport-number">Pasaporte</label>
@@ -160,12 +136,49 @@
                 </div>
               </div>
             </div>
+            <!-- Country -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-country">País</label>
+                @if (!Agent::isMobile())
+                  {!! Form::autocomplete('reg-country', array('Argentina','Belize','Bolivia','Brazil','Chile','Cuba','Costa Rica','Colombia','Ecuador','Estados Unidos de América','El Salvador','French Guiana','Guyana','Guatemala','Honduras','Mexico','Nicaragua','Panama','Paraguay','Peru','Suriname','Uruguay','Venezuela'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+            		@else
+                  {!! Form::select('reg-country', array('Argentina','Belize','Bolivia','Brazil','Chile','Cuba','Costa Rica','Colombia','Ecuador','Estados Unidos de América','El Salvador','French Guiana','Guyana','Guatemala','Honduras','Mexico','Nicaragua','Panama','Paraguay','Peru','Suriname','Uruguay','Venezuela'), null, array('id'=>'reg-country', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+            		@endif
+              </div>
+            </div>
+          </div>
 
+          <!-- Address -->
+
+          <div class="form-group mg-hm">
+            <label for="reg-address">Dirección en su país</label>
+            <div class="input-group">
+              <span class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-home"></i></div>
+              </span>
+              {!! Form::text('reg-address', null, array('id'=>'reg-address', 'class'=>'form-control', 'data-mg-required'=>'' )) !!}
+            </div>
+          </div>
+
+
+          <div class="row">
             <!-- Tshirt Size -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-tshirt-size">Talla de camiseta</label>
-                {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+                @if (!Agent::isMobile())
+                  {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+            		@else
+                  {!! Form::select('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), null, array('id'=>'reg-tshirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+            		@endif
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-birthdate">Fecha de nacimiento</label>
+                {!! Form::date('reg-birthdate', array('class' => 'form-control'), null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
           </div>
@@ -175,17 +188,20 @@
             <!-- Gender -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-gender">Género</label>
-                {!! Form::autocomplete('reg-gender', array('Masculino','Femenino', 'Otro'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
-                <!-- {!! Form::select('reg-gender', array('' => '', 'M' => 'Masculino', 'F' => 'Femenino'), null, array('id'=>'gender', 'class'=>'form-control', 'data-mg-required'=>'')) !!} -->
+                <label for="reg-gender">Sexo</label>
+                @if (!Agent::isMobile())
+                  {!! Form::autocomplete('reg-gender', array('Mujer','Hombre', 'Personalizado'), array('class' => 'form-control'), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+            		@else
+                  {!! Form::select('reg-gender', array('Mujer' => 'Mujer','Hombre' => 'Hombre', 'Personalizado' => 'Personalizado'), null, array('id'=>'reg-gender', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+            		@endif
             </div>
             </div>
 
             <!-- Birthdate -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-birthdate">Fecha de nacimiento:</label>
-                {!! Form::date('reg-birthdate', array('class' => 'form-control'), null, 'btn-outline-secondary', '4') !!}
+                <label for="reg-birthdate">Personalizado</label>
+                {!! Form::text('reg-custom-gender', null, array('id'=>'reg-custom-gender', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
               </div>
             </div>
           </div>
@@ -193,12 +209,12 @@
           <!-- <hr> -->
 
           <div class="form-group mg-hm">
-            <label for="institution">Represento a la institución</label>
+            <label for="institution">Institución que representa</label>
             <div class="input-group">
               <span class="input-group-prepend">
                 <div class="input-group-text"><i class="fa fa-university"></i></div>
               </span>
-              {!! Form::text('institution', null, array('id'=>'institution', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+              {!! Form::text('institution', null, array('id'=>'institution', 'class'=>'form-control')) !!}
             </div>
           </div>
 
@@ -216,7 +232,7 @@
             <!-- Health Condition -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-health-condition">Condición de Salud</label>
+                <label for="reg-health-condition">Condiciones de salud</label>
                   {!! Form::textareacustom('reg-health-condition', 4, 500, array('class' => 'form-control')) !!}
                 </div>
             </div>
@@ -224,7 +240,7 @@
             <!-- Special Needs -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-special-needs">Necesidad especifica o condición especial</label>
+                <label for="reg-special-needs">Necesidades especificas</label>
                   {!! Form::textareacustom('reg-special-needs', 4, 500, array('class' => 'form-control')) !!}
               </div>
             </div>
@@ -319,13 +335,32 @@
             </div>
           </div>
 
-          <div id='participation-row' class="form-group mg-hm alert alert-warning">
-            <label>Opciones de privacidad</label>
+          <div class="form-group mg-hm alert alert-success">
+            <label>Opción alimenticia alternativa</label>
             <div class="row">
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Deseo que mi <a href="https://gravatar.com" target="_blank">gravatar</a> se muestre en la sección de participantes y ponentes (si aplica) del sitio web
+                    <input id='is-vegetarian' class="form-check-input" type="checkbox" value=""> Deseo optar por la opción vegetariana en todas las comidas del evento (disponible para los paquetes parcial y completo)
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group mg-hm alert alert-warning">
+            <label>Privacidad</label>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='is-sex-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento
+                  </label>
+                  <label class="form-check-label">
+                    <input id='is-general-information-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi país, edad, institución que represento, eventos anteriores que he participado y distribuciones linux de mi preferencia, formen parte de las estadísticas del evento
+                  </label>
+                  <label class="form-check-label">
+                    <input id='is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi <a href="https://gravatar.com" target="_blank">gravatar</a> se muestre en la sección de participantes y ponentes (si aplica) del sitio web
                   </label>
                 </div>
               </div>
@@ -355,8 +390,6 @@
               </div> -->
             </div>
           </div>
-
-
           {!! Form::button('Registrarse', array('id'=>'reg-btn-register', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
         </div>
       </div>

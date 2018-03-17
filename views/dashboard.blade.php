@@ -16,9 +16,9 @@
   </li>
 </ol>
 <div class="row">
-  <div class="col-md-3 col-12 mb-3">
+  <div class="col-xl-3 col-lg-4 col-12 mb-3">
     <!-- <h2 class="my-4">Opciones</h2> -->
-    <ul class="list-group">
+    <ul class="list-group dashboard-list-group">
       <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }}">Iniciar sesión</a>
       <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">Registrarse</a>
       <a id="dash-pago" href="#" class="list-group-item disabled" disabled="disabled">Realizar pago</a>
@@ -30,18 +30,18 @@
       <!-- <li class="list-group-item">Vestibulum at eros</li> -->
     </ul>
   </div>
-  <div class="col-md-9 col-12">
-    <div id="dash-login-container" class="dashboard-element" style="{{ empty($login)?'display:none;':'' }}">
+  <div class="col-xl-9 col-lg-8 col-12 dashboard-elements">
+    <div id="dash-login-container" style="{{ empty($login)?'display:none;':'' }}">
       @include('ecsl-2018::dashboard/login')
     </div>
-    <div id="dash-registro-container" class="dashboard-element" style="{{ empty($registro)?'display:none;':'' }}">
+    <div id="dash-registro-container" style="{{ empty($registro)?'display:none;':'' }}">
       @include('ecsl-2018::dashboard/registro')
     </div>
-    <div id="dash-pago-container" class="dashboard-element">
+    <div id="dash-pago-container">
     </div>
-    <div id="dash-transporte-container" class="dashboard-element">
+    <div id="dash-transporte-container">
     </div>
-    <div id="dash-ponencias-container" class="dashboard-element">
+    <div id="dash-ponencias-container">
     </div>
   </div>
 </div>
