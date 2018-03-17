@@ -1,9 +1,6 @@
 @extends('ecsl-2018::base')
 
 @section('container')
-@include('decima-cms::blog-css')
-@include('decima-cms::blog-post')
-
 <!-- CARRUSEL-->
 <header>
   <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
@@ -289,6 +286,5 @@
   <!-- /.row -->
 </div>
 <!-- /.container -->
-@include('decima-cms::blog-js')
 @parent
 @stop

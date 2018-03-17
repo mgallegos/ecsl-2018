@@ -62,10 +62,6 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::eventos-anteriores');
 	});
 
-	// Route::put('/cms/decimaerp/{id}', 'Mgallegos\DecimaWeb\Controllers\GestorCms@getIndex');
-
-	Route::controller('/cms/sfd2017/login', 'Mgallegos\ECSL2018\Controllers\LoginManager');
-
 	// Route::controller('/cms/ecsl', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 

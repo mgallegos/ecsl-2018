@@ -97,10 +97,8 @@ class GestorCms extends Controller {
 	 */
 	protected $Mailer;
 
-	public function __construct(SettingManagementInterface $SettingManagerService, ClientManagementInterface $ClientManagerService, Factory $View, Request $Input, SessionManager $Session, Filesystem $File, Excel $Excel, DatabaseManager $DB, Mailer $Mailer)
+	public function __construct(ClientManagementInterface $ClientManagerService, Factory $View, Request $Input, SessionManager $Session, Filesystem $File, Excel $Excel, DatabaseManager $DB, Mailer $Mailer)
 	{
-		$this->SettingManagerService = $SettingManagerService;
-
 		$this->ClientManagerService = $ClientManagerService;
 
 		$this->View = $View;
@@ -133,14 +131,14 @@ class GestorCms extends Controller {
 
 		// $currentSettingConfiguration = $this->SettingManagerService->getCurrentSettingConfiguration($this->OrganizationId);
 
-		$currentSettingConfiguration['user_for_notification'] = 'freelance@mariogallegos.com';
+		$currentSettingConfiguration['user_for_notification'] = 'mgallegos@decimaerp.com';
 
 		$this->Mailer->send('ecsl-2018::emails.clientes', array('input' => $input), function($message) use ($currentSettingConfiguration)
 		{
 			$message->to($currentSettingConfiguration['user_for_notification'])
 				->subject('Solictud de inscripción a lista de correo ' . date('d/m/Y'))
 				->replyTo($currentSettingConfiguration['user_for_notification'], 'Ob\'s World')
-				->bcc('freelance@mariogallegos.com');
+				->bcc('mgallegos@decimaerp.com');
 		});
 
 		return json_encode(array('success' => true));
