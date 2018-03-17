@@ -24,8 +24,8 @@
       <a id="dash-pago" href="#" class="list-group-item disabled" disabled="disabled">Realizar pago</a>
       <a id="dash-transporte" href="#" class="list-group-item disabled" disabled="disabled">Solicitar transporte <i class="fa fa-plane"></i> <-> <i class="fa fa-bed"></i></a>
       <a id="dash-ponencias" href="#" class="list-group-item disabled" disabled="disabled">Administrar mis ponencias</a>
-      <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Generar comprob. de pago</a>
       <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Generar carta de invitación</a>
+      <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a>
       <!-- <li class="list-group-item">Mis contactos</li> -->
       <!-- <li class="list-group-item">Vestibulum at eros</li> -->
     </ul>
