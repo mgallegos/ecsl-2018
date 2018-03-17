@@ -6,8 +6,13 @@
     padding-top: 86px;
   }
 
+  .card-logo{
+    border: 0 !important;
+  }
+
   .card-logo .card-body{
-    padding: .4rem !important;
+    display: none;
+    /* padding: .4rem !important; */
   }
 
   .card-logo-title{
