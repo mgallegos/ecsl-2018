@@ -31,13 +31,6 @@ $ecslsv =  function ()
 		return Redirect::to('cms/dashboard')->with('ecsl2018registro', true);
 	});
 
-	Route::get('/cms/dashboard', function()
-	{
-		return View::make('ecsl-2018::dashboard')
-			->with('login', Session::get('ecsl2018login', false))
-			->with('registro', Session::get('ecsl2018registro', false));
-	});
-
 	// Route::get('/cms/ecsl/logistica', function()
 	Route::get('/cms/logistica', function()
 	{
@@ -62,7 +55,7 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::eventos-anteriores');
 	});
 
-	// Route::controller('/cms/ecsl', 'Mgallegos\ECSL2018\Controllers\InicioManager');
+	Route::controller('/cms/dashboard', 'Mgallegos\ECSL2018\Controllers\OpenCmsManager');
 	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 
 	// Route::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');
