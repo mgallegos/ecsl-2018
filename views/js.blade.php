@@ -46,7 +46,7 @@
 
 	$(document).ready(function()
 	{
-		$('#ob-fa-form, #login-form, #reg-form').jqMgVal('addFormFieldsValidations');
+		$('#ob-fa-form, #login-form, #reg-form, #pon-form').jqMgVal('addFormFieldsValidations');
 
 		@if (!Agent::isMobile())
 
@@ -86,6 +86,15 @@
 			$(this).addClass('active');
 
 			$('#dash-registro-container').show('fade');
+		});
+
+		$('#dash-ponencias').click(function()
+		{
+			hideDashboard();
+
+			$(this).addClass('active');
+
+			$('#dash-ponencias-container').show('fade');
 		});
 
 		// $('#ob-fa-btn').click(function()

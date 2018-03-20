@@ -23,9 +23,9 @@
       <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">Registrarse</a>
       <a id="dash-pago" href="#" class="list-group-item disabled" disabled="disabled">Realizar pago</a>
       <a id="dash-transporte" href="#" class="list-group-item disabled" disabled="disabled">Solicitar transporte <i class="fa fa-plane"></i> <-> <i class="fa fa-bed"></i></a>
-      <a id="dash-ponencias" href="#" class="list-group-item disabled" disabled="disabled">Administrar mis ponencias</a>
+      <a id="dash-ponencias" href="#" class="list-group-item">Administrar mis ponencias</a>
       <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Generar carta de invitación</a>
-      <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a>
+      <a id="dash-comprobante" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a>
       <!-- <li class="list-group-item">Mis contactos</li> -->
       <!-- <li class="list-group-item">Vestibulum at eros</li> -->
     </ul>
@@ -41,7 +41,8 @@
     </div>
     <div id="dash-transporte-container">
     </div>
-    <div id="dash-ponencias-container">
+    <div id="dash-ponencias-container" style="display:none;">
+      @include('ecsl-2018::dashboard/ponencia')
     </div>
   </div>
 </div>

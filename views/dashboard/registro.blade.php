@@ -1,4 +1,3 @@
-
 <div class="card mb-3">
   <h4 class="card-header">Formulario de registro</h4>
   <div class="card-body">
