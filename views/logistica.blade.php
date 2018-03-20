@@ -92,32 +92,6 @@
 
         </div>
 
-        <!-- Opcion de Viaje -->
-        <div class="card border-0">
-          <div class="card-header bg-white p-0 m-0">
-            <div class="btn w-100" id="headingTravelInfo" data-toggle="collapse" data-target="#collapseTravelInfo" aria-expanded="false">
-              <div class="row ">
-                <div class="col-9 text-center">
-                  <p class="font-weight-bold text-primary my-0 text-left">Información de Viaje</p>
-                </div>
-                <div class="col-3 text-right">
-                  <i class="fa fa-chevron-down text-secondary "></i>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div id="collapseTravelInfo" class="collapse" aria-labelledby="headingTravelInfo" data-parent="#sideLogistica">
-            <div class="card-body p-0">
-              <div class="list-group list-group-flush m-0">
-                <a href="#aereo" class="list-group-item list-group-item-action py-2">Aéreo</a>
-                <a href="#terrestre" class="list-group-item list-group-item-action py-2">Terrestre</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <!-- Movilizacion -->
         <div class="card border-0">
           <div class="card-header bg-white p-0 m-0 border-top">
@@ -132,11 +106,10 @@
               </div>
             </div>
           </div>
-
-
           <div id="collapseMovilizacion" class="collapse" aria-labelledby="headingMovilizacion" data-parent="#sideLogistica">
             <div class="card-body p-0">
               <div class="list-group list-group-flush m-0">
+                <a href="#a-pie" class="list-group-item list-group-item-action py-2">A pie</a>
                 <a href="#servicio-de-autobuses" class="list-group-item list-group-item-action py-2">Servicio de Autobuses</a>
                 <a href="#servicio-de-taxis" class="list-group-item list-group-item-action py-2">Servicio de taxis</a>
                 <a href="#servicio-de-UBER" class="list-group-item list-group-item-action py-2">Servicio UBER</a>
@@ -144,6 +117,32 @@
             </div>
           </div>
         </div>
+
+          <!-- Opcion de Viaje -->
+          <div class="card border-0">
+            <div class="card-header bg-white p-0 m-0">
+              <div class="btn w-100" id="headingTravelInfo" data-toggle="collapse" data-target="#collapseTravelInfo" aria-expanded="false">
+                <div class="row ">
+                  <div class="col-9 text-center">
+                    <p class="font-weight-bold text-primary my-0 text-left">Información de Viaje</p>
+                  </div>
+                  <div class="col-3 text-right">
+                    <i class="fa fa-chevron-down text-secondary "></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="collapseTravelInfo" class="collapse" aria-labelledby="headingTravelInfo" data-parent="#sideLogistica">
+              <div class="card-body p-0">
+                <div class="list-group list-group-flush m-0">
+                  <a href="#aereo" class="list-group-item list-group-item-action py-2">Aéreo</a>
+                  <a href="#terrestre" class="list-group-item list-group-item-action py-2">Terrestre</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <!-- Informacion de El Salvador-->
         <div class="card border-0">
@@ -341,6 +340,56 @@
 
         <hr>
 
+        <div id="movilizacion" class="right-block">
+          <h3 class="font-weight-bold">Movilización</h3>
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9220.383720812502!2d-89.24185015400008!3d13.67637323291067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x8f6331cfc77882f9%3A0xdbc6907706f0e897!2sCentro+de+Retiro+San+Ignacio+de+Loyola%2C+Santa+Tecla!3m2!1d13.671825799999999!2d-89.2360495!4m5!1s0x8f6331cd305c735b%3A0x3d2a75b3761d4ded!2sUniversidad+Centroamericana+Jos%C3%A9+Sime%C3%B3n+Ca%C3%B1as%2C+Bulevar+Los+Proceres%2C+San+Salvador!3m2!1d13.6810526!2d-89.2357263!5e0!3m2!1ses!2ssv!4v1519789042093"
+              width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+          <p class="text-justify">Para movilizarse del lugar de hospedaje hacia la sede del ECSL-2018 existen varias opciones que se describen a continuación:</p>
+        </div>
+
+        <div id="a-pie" class="right-block">
+          <h4 class="display-6 font-italic font-weight-bold">A pie</h4>
+          <p class="text-justify">
+            Desde el hospedaje oficial a la sede del evento no hay más de 15 minutos caminando.
+            Antiguo Cuscatlán es un municipio muy seguro para llevar su equipo, no obstante, como en
+            cualquier gran ciudad, siempre es mejor ir en grupo que solo/a. En cuanto al tipo de
+            camino, solo hay que atravesar un par de calles de doble sentido sin mucho tráfico.
+          </p>
+        </div>
+
+        <div id="servicio-de-autobuses" class="right-block">
+          <h4 class="display-6 font-italic font-weight-bold">Servicio de Autobuses</h4>
+          <p class="text-justify">En El Salvador es posible llegar prácticamente a cualquier lugar utilizando el servicio de autobuses.
+            <br><br> La rutas que llegan a la Universidad Centroamericana “José Simeón Cañas” (UCA):
+            <ul>
+              <li>Ruta 42 (Bus y Coaster)</li>
+              <li>Ruta 44 (Bus y Coaster)</li>
+              <!-- <li>Ruta 101</li> -->
+            </ul>
+          </p>
+        </div>
+
+        <div id="servicio-de-taxis" class="right-block">
+          <h4 class="display-6 font-italic font-weight-bold">Servicio de taxis</h4>
+          <p class="text-justify">Los taxis no cuentan con taxímetro, la tarifa se negocia con el taxista antes de abordar el vehículo. El costo promedio para desplazarse desde la Universidad Centroamericana “José Simeón Cañas” (UCA) sede del evento y el Centro Loyola es de
+            $ 5.00 dólares.
+            <br><br> Cabe destacar que a la salida hacia la calle “La Sultana” de la Universidad Centroamericana “José Simeón Cañas” (UCA) se ubica un punto de taxis de los cuales puede hacer uso en el horario que usted desee.
+          </p>
+        </div>
+
+        <div id="servicio-de-UBER" class="right-block">
+          <h4 class="display-6 font-italic font-weight-bold">Servicio UBER</h4>
+          <p class="text-justify">También puede optar por el servicio <a target="_blank" href="https://www.uber.com/es-ES/cities/san-salvador/">Uber</a>, para lo cual previamente debe instalar la respectiva app y configurar una cuenta. En El Salvador se ofrece la opción de UberX (4 personas).
+            Puede pagar el servicio con tarjeta de débito/crédito o con dinero en efectivo en dólares.</p>
+          <p>
+            Para consultar estimación de tarifas, puede dirigirse a <a target="_blank" href="https://www.uber.com/es-ES/fare-estimate/">este enlace.</a>
+          </p>
+        </div>
+
+        <hr>
+
         <div id="aereo" class="right-block">
           <h3 class="font-weight-bold">Información de viaje</h3>
           <h4 class="display-6 font-italic font-weight-bold">Aérea</h4>
@@ -382,44 +431,7 @@
 
         </div>
         <hr>
-        <div id="movilizacion" class="right-block">
-          <h3 class="font-weight-bold">Movilización</h3>
-          <div class="embed-responsive embed-responsive-16by9">
-            <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d9220.383720812502!2d-89.24185015400008!3d13.67637323291067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x8f6331cfc77882f9%3A0xdbc6907706f0e897!2sCentro+de+Retiro+San+Ignacio+de+Loyola%2C+Santa+Tecla!3m2!1d13.671825799999999!2d-89.2360495!4m5!1s0x8f6331cd305c735b%3A0x3d2a75b3761d4ded!2sUniversidad+Centroamericana+Jos%C3%A9+Sime%C3%B3n+Ca%C3%B1as%2C+Bulevar+Los+Proceres%2C+San+Salvador!3m2!1d13.6810526!2d-89.2357263!5e0!3m2!1ses!2ssv!4v1519789042093"
-              width="800" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
-          </div>
-          <p class="text-justify">Para movilizarse del lugar de hospedaje hacia la sede del ECSL-2018 existen varias opciones que se describen a continuación:</p>
-        </div>
 
-        <div id="servicio-de-autobuses" class="right-block">
-          <h4 class="display-6 font-italic font-weight-bold">Servicio de Autobuses</h4>
-          <p class="text-justify">En El Salvador es posible llegar prácticamente a cualquier lugar utilizando el servicio de autobuses.
-            <br><br> La rutas que llegan a la Universidad Centroamericana “José Simeón Cañas” (UCA):
-            <ul>
-              <li>Ruta 44</li>
-              <li>Por completar...</li>
-            </ul>
-          </p>
-        </div>
-
-        <div id="servicio-de-taxis" class="right-block">
-          <h4 class="display-6 font-italic font-weight-bold">Servicio de taxis</h4>
-          <p class="text-justify">Los taxis no cuentan con taxímetro, la tarifa se negocia con el taxista antes de abordar el vehículo. El costo promedio para desplazarse desde la Universidad Centroamericana “José Simeón Cañas” (UCA) sede del evento y el Centro Loyola es de
-            $ 5.00 dólares.
-            <br><br> Cabe destacar que a la salida hacia la calle “La Sultana” de la Universidad Centroamericana “José Simeón Cañas” (UCA) se ubica un punto de taxis de los cuales puede hacer uso en el horario que usted desee.
-          </p>
-        </div>
-
-        <div id="servicio-de-UBER" class="right-block">
-          <h4 class="display-6 font-italic font-weight-bold">Servicio UBER</h4>
-          <p class="text-justify">También puede optar por el servicio <a target="_blank" href="https://www.uber.com/es-ES/cities/san-salvador/">Uber</a>, para lo cual previamente debe instalar la respectiva app y configurar una cuenta. En El Salvador se ofrece la opción de UberX (4 personas).
-            Puede pagar el servicio con tarjeta de débito/crédito o con dinero en efectivo en dólares.</p>
-          <p>
-            Para consultar estimación de tarifas, puede dirigirse a <a target="_blank" href="https://www.uber.com/es-ES/fare-estimate/">este enlace.</a>
-          </p>
-        </div>
-
-        <hr>
         <h3 class="font-weight-bold">Acerca de El Salvador</h3>
 
         <div id="moneda-local" class="right-block">

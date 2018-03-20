@@ -25,6 +25,12 @@
 
 $ecslsv =  function ()
 {
+	Route::get('/ecsltest', function()
+	{
+		// return Redirect::to('cms/dashboard')->with('ecsl2018login', true);
+		return Redirect::to('cms/dashboard')->with('ecsl2018registro', true);
+	});
+
 	// Route::get('/cms/ecsl/logistica', function()
 	Route::get('/cms/logistica', function()
 	{
@@ -49,11 +55,7 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::eventos-anteriores');
 	});
 
-	// Route::put('/cms/decimaerp/{id}', 'Mgallegos\DecimaWeb\Controllers\GestorCms@getIndex');
-
-	// Route::controller('/cms/sfd2017/login', 'Mgallegos\ECSL2018\Controllers\LoginManager');
-
-	// Route::controller('/cms/ecsl', 'Mgallegos\ECSL2018\Controllers\InicioManager');
+	Route::controller('/cms/dashboard', 'Mgallegos\ECSL2018\Controllers\OpenCmsManager');
 	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 
 	// Route::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');

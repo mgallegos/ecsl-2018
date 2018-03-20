@@ -9,10 +9,6 @@
 
 namespace Mgallegos\ECSL2018\Controllers;
 
-use Mgallegos\DecimaCms\Cms\Services\BlogManagement\BlogManagementInterface;
-
-use Mgallegos\DecimaCms\Cms\Services\SettingManagement\SettingManagementInterface;
-
 use Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterface;
 
 use Illuminate\Session\SessionManager;
@@ -38,22 +34,6 @@ use Mgallegos\LaravelJqgrid\Facades\GridEncoder;
 use App\Http\Controllers\Controller;
 
 class InicioManager extends Controller {
-
-	/**
-	 * Blog Manager Service
-	 *
-	 * @var Mgallegos\DecimaCms\Cms\Services\BlogManagement\BlogManagementInterface
-	 *
-	 */
-	protected $BlogManagerService;
-
-	/**
-	 * Setting Manager Service
-	 *
-	 * @var Mgallegos\DecimaCms\Cms\Services\SettingManagement\SettingManagementInterface
-	 *
-	 */
-	protected $SettingManagerService;
 
 	/**
 	 * Client Manager Service
@@ -117,12 +97,8 @@ class InicioManager extends Controller {
 	 */
 	protected $Url;
 
-	public function __construct(BlogManagementInterface $BlogManagerService, SettingManagementInterface $SettingManagerService, ClientManagementInterface $ClientManagerService, Factory $View, Request $Input, SessionManager $Session, Filesystem $File, Excel $Excel, DatabaseManager $DB, Mailer $Mailer, UrlGenerator $Url)
+	public function __construct(ClientManagementInterface $ClientManagerService, Factory $View, Request $Input, SessionManager $Session, Filesystem $File, Excel $Excel, DatabaseManager $DB, Mailer $Mailer, UrlGenerator $Url)
 	{
-		$this->BlogManagerService = $BlogManagerService;
-
-		$this->SettingManagerService = $SettingManagerService;
-
 		$this->ClientManagerService = $ClientManagerService;
 
 		$this->View = $View;
@@ -140,23 +116,10 @@ class InicioManager extends Controller {
 		$this->Mailer = $Mailer;
 
 		$this->Url = $Url;
-
-		/*8 antes de dar push*/
-		$this->OrganizationId = 1;
-		// $this->OrganizationId = 15;
 	}
 
 	public function getIndex()
 	{
-		$postPerPage = 2;
-		$types = array('T', 'E');
-
-		// var_dump($this->BlogManagerService->getBlogPosts($postPerPage, 1, null, array('T'), $this->OrganizationId, true));
-		return $this->View->make('ecsl-2018::inicio-personalizado')
-			->with('prefix', 'cms-blog-')
-			->with('url', $this->Url->to('/'))
-			->with('blogUrl', $this->Url->to('/'))
-			->with('eventUrl', '');
-			// ->with('blogPosts', $this->BlogManagerService->getBlogPosts($postPerPage, 1, null, $types, null, null, null, 'date', 'desc', null, $this->OrganizationId, true));
+		return $this->View->make('ecsl-2018::inicio-personalizado');
 	}
 }

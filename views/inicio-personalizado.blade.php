@@ -1,9 +1,6 @@
 @extends('ecsl-2018::base')
 
 @section('container')
-@include('decima-cms::blog-css')
-@include('decima-cms::blog-post')
-
 <!-- CARRUSEL-->
 <header>
   <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
@@ -41,17 +38,18 @@
     <div class="container">
       <h2 class="text-center text-white"><strong>X Encuentro Centroamericano de Software Libre</strong></h2>
       <h4 class="text-center text-white font-weight-bold">12 y 13 de julio del 2018</h4>
-      <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión anual de activistas y miembros de comunidades y grupos de
-        usuarios que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
+      <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
+        usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
         la región.</p>
+      <div id="btn-registration" class="text-center" style="margin:0 auto;">
+        <a class="btn btn-lg btn-secondary btn-block disabled" href="">Registrarme (a partir del mes de abril)</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Page Content -->
 <div class="container">
-
-  <h1 class="my-4 text-center"></h1>
 
   <!-- Marketing Icons Section -->
   <div class="row">
@@ -77,7 +75,7 @@
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="card-img-top img-fluid">
         </a>
         <div class="card-body">
-          <h5 class="card-title text-center">VIII ECSL 2016 <br> Managua, Nicagarua</h5>
+          <h5 class="card-title text-center">VIII ECSL 2016 <br> Managua, Nicaragua</h5>
           <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
           <a href="http://encuentro.softwarelibre.ca/2016/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
           <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
@@ -116,18 +114,16 @@
   <!-- /.row -->
   <div class="row mb-4">
     <div class="col-md-8">
-      <p class="text-center">Conoce los países y lugares en los que el Encuentro Centroamericano de Software Libre se ha venido realizando desde al año 2009 y no pierdas la oportunidad de participar en la décima edición del evento El Salvador 2018!</p>
+      <p class="text-center">¡Conoce los países y lugares en los que el Encuentro Centroamericano de Software Libre se ha venido realizando desde al año 2009 y no pierdas la oportunidad de participar en la décima edición del evento El Salvador 2018!</p>
     </div>
     <div class="col-md-4">
       <a class="btn btn-lg btn-secondary btn-block" href="{{URL::to('cms/eventos-anteriores')}}">Ver todos los eventos anteriores</a>
     </div>
   </div>
 
-  <hr>
+  <!-- <hr> -->
 </div>
 <!-- /.container -->
-
-
 
 <!--Informacion General-->
 <section class="about-us section-padding">
@@ -167,19 +163,6 @@
 
 <!-- Page Content -->
 <div class="container">
-
-  <!-- Anuncio "Registrarme" -->
-
-  <!-- <div class="row mb-4">
-    <div class="col-md-8">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-    </div>
-    <div class="col-md-4">
-      <a class="btn btn-lg btn-secondary btn-block bg-dark" href="#">Registrarme</a>
-    </div>
-  </div>
-
-  <hr> -->
 
 
   <!-- Portfolio Section -->
@@ -250,10 +233,58 @@
         </div>
       </div>
     </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="https://uls.edu.sv/sitioweb/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_luterana.jpg">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="https://uls.edu.sv/sitioweb/" target="_blank" class="card-logo-title">
+              Universidad Luterana Salvadoreña
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="http://delfos-cloud.com/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_delfos_cloud.jpg">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://delfos-cloud.com/" target="_blank" class="card-logo-title">
+              Delfos Cloud
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo card-header-logo-padding">
+          <a href="http://www.ieproes.edu.sv/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_ieproes.jpg">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://www.ieproes.edu.sv/" target="_blank" class="card-logo-title">
+              IEPROES
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- /.row -->
 </div>
 <!-- /.container -->
-@include('decima-cms::blog-js')
 @parent
 @stop

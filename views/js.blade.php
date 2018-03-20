@@ -1,12 +1,68 @@
 <script>
+
+	var dashPreviousEcsl = [
+		{'label':'Nicaragua 2009', 'value':'ECSL2009'},
+		{'label':'Costa Rica 2010', 'value':'ECSL2010'},
+		{'label':'El Salvador 2011', 'value':'ECSL2011'},
+		{'label':'Guatemala 2012', 'value':'ECSL2012'},
+		{'label':'Belize 2013', 'value':'ECSL2013'},
+		{'label':'Panamá 2014', 'value':'ECSL2014'},
+		{'label':'Honduras 2015', 'value':'ECSL2015'},
+		{'label':'Nicaragua 2016', 'value':'ECSL2016'},
+		{'label':'Costa Rica 2017', 'value':'ECSL2017'}
+	];
+
+	function customGender(gender)
+	{
+		if(gender == 'Personalizado')
+		{
+			$('#reg-custom-gender').val('');
+			$('#reg-custom-gender').removeAttr('disabled');
+		}
+		else
+		{
+			$('#reg-custom-gender').val('');
+			$('#reg-custom-gender').attr('disabled', 'disabled');
+		}
+	}
+
 	function decSendRequest(formId, data)
 	{
 
 	}
 
+	function hideDashboard()
+	{
+		$('.dashboard-elements').children().each(function( index )
+		{
+		  $(this).hide();
+		});
+
+		$('.dashboard-list-group').children().each(function( index )
+		{
+		  $(this).removeClass('active');
+		});
+	}
+
 	$(document).ready(function()
 	{
-		$('#ob-fa-form, #registration-form').jqMgVal('addFormFieldsValidations');
+		$('#ob-fa-form, #login-form, #reg-form').jqMgVal('addFormFieldsValidations');
+
+		@if (!Agent::isMobile())
+
+		$('#reg-gender').on('autocompleteselect', function( event, ui )
+		{
+			customGender(ui.item.label);
+		});
+
+		@else
+
+		$('#reg-gender').change(function()
+		{
+			customGender($(this).val());
+		});
+
+		@endif
 
 		$('[data-toggle="lightbox"]').click(function()
 		{
@@ -14,14 +70,68 @@
  			$(this).ekkoLightbox();
 		});
 
-		$('#ob-fa-btn').click(function()
+		$('#dash-login').click(function()
 		{
-			var data = $('#ob-fa-form').formToObject('ob-fa-');
+			hideDashboard();
 
-			if(!$('#ob-fa-form').jqMgVal('isFormValid'))
+			$(this).addClass('active');
+
+			$('#dash-login-container').show('fade');
+		});
+
+		$('#dash-registro').click(function()
+		{
+			hideDashboard();
+
+			$(this).addClass('active');
+
+			$('#dash-registro-container').show('fade');
+		});
+
+		// $('#ob-fa-btn').click(function()
+		// {
+		// 	var data = $('#ob-fa-form').formToObject('ob-fa-');
+		//
+		// 	if(!$('#ob-fa-form').jqMgVal('isFormValid'))
+		// 	{
+		// 		return;
+		// 	}
+		//
+		// 	$.ajax(
+		// 	{
+		// 		type: 'POST',
+		// 		data: JSON.stringify(data),
+		// 		dataType : 'json',
+		// 		url: $('#ob-fa-form').attr('action'),
+		// 		error: function (jqXHR, textStatus, errorThrown)
+		// 		{
+		// 			handleServerExceptions(jqXHR, 'ob-fa-form');
+		// 		},
+		// 		beforeSend:function()
+		// 		{
+		// 			$('#app-loader').removeClass('hidden-xs-up');
+		// 			disabledAll();
+		// 		},
+		// 		success:function(json)
+		// 		{
+		// 			$('#ob-fa-form').showAlertAsFirstChild('alert-success', 'Ha sido suscrito, gracias por su interés.', 10000);
+		// 			$('#ob-fa-form').jqMgVal('clearForm');
+		// 			$('#app-loader').addClass('hidden-xs-up');
+		// 			enableAll();
+		// 		}
+		// 	});
+		// });
+
+		$('#login-btn').click(function()
+		{
+			var data = $('#login-form').formToObject('ob-fa-');
+
+			if(!$('#login-form').jqMgVal('isFormValid'))
 			{
 				return;
 			}
+
+			return;
 
 			$.ajax(
 			{
@@ -48,12 +158,14 @@
 			});
 		});
 
-		$('#btn-registration').click(function()
+		$('#reg-btn-register').click(function()
 		{
-			if(!$('#registration-form').jqMgVal('isFormValid'))
+			if(!$('#reg-form').jqMgVal('isFormValid'))
 			{
 				return;
 			}
+
+			return;
 
 			if(!$('#is-attending').is(":checked") && !$('#is-speaker').is(":checked") && !$('#is-volunteer').is(":checked") && !$('#is-organizer').is(":checked"))
 			{
@@ -102,6 +214,28 @@
 				}
 			});
 		});
+
+		setTimeout(function ()
+		{
+			// $('#reg-previous-ecsl').tokenfield({beautify:false}); // Permite ingresar cualquier cosa
+
+			$('#reg-previous-ecsl').tokenfield(
+			{
+				autocomplete:
+				{
+					source: dashPreviousEcsl,
+					delay: 100,
+					focus: function( event, ui ) {return false;}
+				},
+				showAutocompleteOnFocus: true,
+				beautify:false
+			});
+
+			$('#reg-previous-ecsl').on('tokenfield:createtoken', function (event)
+			{
+				return validateToken(event, dashPreviousEcsl);
+			});
+		}, 500);
 
 
 		// if ((window.location.href).split("action=")[1] == "DecimaERP-Cloud")
