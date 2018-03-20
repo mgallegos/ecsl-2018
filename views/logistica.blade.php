@@ -258,7 +258,7 @@
           <div class="row">
 
             <div class="col-md-6 mb-4">
-              <div class="card">
+              <div class="card card1">
                 <h3 class="card-header text-center">Básico</h3>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Camiseta</li>
@@ -766,7 +766,8 @@
   var bool = false;
   var documentHeight = $(document).height();
   var partialHeight  =  documentHeight -(documentHeight * 0.10);
-  var partialHeight2 = documentHeight -(documentHeight * 0.05);
+  var partialHeight2 = documentHeight -(documentHeight * 0.06);
+ 
   @if (!Agent::isMobile())
 
   $(window).scroll(function()
@@ -785,12 +786,12 @@
    
     var windowScroll = $(window).scrollTop();
     console.log($("#prueba").css("width"));
-    if( windowScroll >=  partialHeight ){
+    if( windowScroll >=  partialHeight2 ){
       $("#colSide").removeClass("side-bar m-2 p-0").addClass("side-bar-sticky");
       $("#colContent").removeClass("offset-lg-3 mb-4");
 
       $("#colSide").css({
-        "margin-top": partialHeight,
+        "margin-top": partialHeight2,
         "width": "auto"
       });
 
@@ -839,7 +840,7 @@
 
   $(window).resize(function()
   {
-    var widthCol = $("#prueba").width();
+     var widthCol = $("#prueba").width();
     $("#colSide").css({
       "width": widthCol
     });

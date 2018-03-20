@@ -76,6 +76,21 @@
       top: 0px;
     }
 
+    .card1{
+      margin-left: 10px
+    }
+
+    #rowContainer .col-lg-3{
+      padding-left: 0px;
+    }
+
+    #rowContainer .p-0{
+      padding: 0rem !important;
+    }
+
+    #rowContainer .m-2{
+      margin: .0rem !important;
+    }
 
   }
 
