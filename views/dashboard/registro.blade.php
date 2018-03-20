@@ -218,14 +218,6 @@
             </div>
           </div>
 
-          <!-- Previous ECSL -->
-          <div class="">
-            <div class="form-group">
-              <label for="reg-previous-ecsl">Encuentros anteriores en los que he participado</label>
-                {!! Form::text('reg-previous-ecsl', null, array('id'=>'reg-previous-ecsl', 'class'=>'form-control')) !!}
-            </div>
-          </div>
-
           <!-- <hr> -->
 
           <div class="row">
@@ -246,8 +238,63 @@
             </div>
           </div>
 
-          <!-- <hr> -->
+          <!-- Previous ECSL -->
+          <div class="form-group mg-hm">
+            <label>Encuentros anteriores en los que he participado</label>
+            <div class="row">
+              <div class="col-lg-6 col-md-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2009' class="form-check-input" type="checkbox" value=""> Nicaragua 2009
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2010' class="form-check-input" type="checkbox" value=""> Costa Rica 2010
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2011' class="form-check-input" type="checkbox" value=""> El Salvador 2011
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2012' class="form-check-input" type="checkbox" value=""> Guatemala 2012
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2013' class="form-check-input" type="checkbox" value=""> Belize 2013
+                  </label>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2014' class="form-check-input" type="checkbox" value=""> Panamá 2014
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2015' class="form-check-input" type="checkbox" value=""> Honduras 2015
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2016' class="form-check-input" type="checkbox" value=""> Nigaragua 2016
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='participated-in-ecsl2017' class="form-check-input" type="checkbox" value=""> Costa Rica 2017
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <!-- Linux Distros -->
           <div class="form-group mg-hm">
             <label for="email">Distibuciones Linux que utiliza:</label>
             <div class="row">
