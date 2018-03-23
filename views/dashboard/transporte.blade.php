@@ -1,5 +1,5 @@
 <div class="card mb-3">
-  <h4 class="card-header">Administrar ponencias</h4>
+  <h4 class="card-header">Solicitar transporte</h4>
   <div class="card-body">
     {!! Form::open(array('id'=>'pon-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
@@ -58,7 +58,7 @@
             <!--Scheduled Hour -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-scheduled-hour">Hora y día asignado</label>
+                <label for="pon-scheduled-hour">Hora asignada</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fas fa-clock"></i></div>
@@ -68,15 +68,15 @@
               </div>
             </div>
 
-            <!--Status -->
+            <!--Scheduled Day -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-status">Estado</label>
+                <label for="pon-scheduled-day">Dia asignado</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                   </span>
-                  {!! Form::text('pon-status', null, array('id'=>'pon-status', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('pon-scheduled-day', null, array('id'=>'pon-lastname', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>

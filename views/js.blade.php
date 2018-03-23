@@ -88,6 +88,15 @@
 			$('#dash-registro-container').show('fade');
 		});
 
+		$('#dash-transporte').click(function()
+		{
+			hideDashboard();
+
+			$(this).addClass('active');
+
+			$('#dash-transporte-container').show('fade');
+		});
+
 		$('#dash-ponencias').click(function()
 		{
 			hideDashboard();
