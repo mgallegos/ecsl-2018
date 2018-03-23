@@ -46,7 +46,7 @@
                 <label for="pon-allocated-space">Espacio asignado</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-user"></i></div>
+                    <div class="input-group-text"><i class="fa fa-map-o"></i></div>
                   </span>
                   {!! Form::text('pon-allocated-space', null, array('id'=>'pon-allocated-space', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
@@ -61,7 +61,7 @@
                 <label for="pon-scheduled-hour">Hora y día asignado</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-clock"></i></div>
+                    <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                   </span>
                   {!! Form::text('pon-scheduled-hour', null, array('id'=>'pon-scheduled-hour', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
@@ -74,7 +74,7 @@
                 <label for="pon-status">Estado</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    <div class="input-group-text"><i class="fa fa-tasks"></i></div>
                   </span>
                   {!! Form::text('pon-status', null, array('id'=>'pon-status', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>

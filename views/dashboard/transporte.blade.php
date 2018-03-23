@@ -11,14 +11,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="pon-firstname">Nombre</label>
-                <div class="input-group">
-                  <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-user"></i></div>
-                  </span>
-                  {!! Form::text('pon-firstname', null, array('id'=>'pon-firstname', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
-                  {!! Form::hidden('pon-id', null, array('id' => 'pon-id')) !!}
-                  {!! Form::hidden('pon-insight', null, array('id' => 'pon-insight')) !!}
-                </div>
+                  {!! Form::datetime('reg-birthdate', array('class' => 'form-control', 'data-mg-required'=>''), null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
 
