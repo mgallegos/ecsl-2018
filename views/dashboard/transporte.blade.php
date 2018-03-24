@@ -7,10 +7,10 @@
         <div class="col-md-12">
 
           <div class="row">
-            <!--Firstname -->
+            <!--Date -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-firstname">Nombre</label>
+                <label for="trans-date">Fecha y Hora</label>
                 {!! Form::datetime('trans-date', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => '')) !!}
               </div>
             </div>
@@ -18,7 +18,7 @@
             <!--Company-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-company">Empresa y numero de vuelo/autobus</label>
+                <label for="trans-company">Empresa y número de vuelo/autobús</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-building-o"></i></div>
@@ -92,7 +92,7 @@
             <!--Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-contact">Numero de contacto</label>
+                <label for="trans-contact">Número de contacto</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
