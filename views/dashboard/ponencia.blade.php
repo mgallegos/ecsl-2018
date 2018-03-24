@@ -5,17 +5,15 @@
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       <div class="row">
         <div class="col-md-12">
-
-          <div class="row">
-            <!--Firstname -->
+            <!--Name-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-firstname">Nombre</label>
+                <label for="pon-name">Nombre</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
-                  {!! Form::text('pon-firstname', null, array('id'=>'pon-firstname', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('pon-name', null, array('id'=>'pon-name', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                   {!! Form::hidden('pon-id', null, array('id' => 'pon-id')) !!}
                   {!! Form::hidden('pon-insight', null, array('id' => 'pon-insight')) !!}
                 </div>
@@ -40,15 +38,15 @@
               </div>
             </div>
 
-            <!--Allocated Space -->
+            <!--Space -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-allocated-space">Espacio asignado</label>
+                <label for="pon-space">Espacio asignado</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-map-o"></i></div>
                   </span>
-                  {!! Form::text('pon-allocated-space', null, array('id'=>'pon-allocated-space', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('pon-space', null, array('id'=>'pon-space', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>
@@ -68,15 +66,15 @@
               </div>
             </div>
 
-            <!--Status -->
+            <!--Is Approved -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-status">Estado</label>
+                <label for="pon-is-approved">Estado</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-tasks"></i></div>
                   </span>
-                  {!! Form::text('pon-status', null, array('id'=>'pon-status', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('pon-is-approved', null, array('id'=>'pon-is-approved', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>

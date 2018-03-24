@@ -7,23 +7,23 @@
         <div class="col-md-12">
 
           <div class="row">
-            <!--Date -->
+            <!--Pickup Datetime -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-date">Fecha y Hora</label>
-                {!! Form::datetime('trans-date', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => ''),null, 'btn-outline-secondary', '4') !!}
+                <label for="trans-pickup-datetime">Fecha y Hora</label>
+                {!! Form::datetime('trans-pickup-datetime', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => ''),null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
 
-            <!--Company-->
+            <!--Transport Number-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-company">Empresa y número de vuelo/autobús</label>
+                <label for="trans-transport-number">Empresa y número de vuelo/autobús</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-building-o"></i></div>
                   </span>
-                  {!! Form::text('trans-company', null, array('id'=>'trans-company', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('trans-transport-number', null, array('id'=>'trans-transport-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -33,16 +33,16 @@
             <!--Point of Origin -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-point-of-origin">Origen</label>
-                {!! Form::select('trans-point-of-origin', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'transportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                <label for="trans-origin">Origen</label>
+                {!! Form::select('trans-origin', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'transportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 
             <!--Point of Destination -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-point-of-destination">Destino</label>
-                {!! Form::select('trans-point-of-destination', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'transportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                <label for="trans-destination">Destino</label>
+                {!! Form::select('trans-destination', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'transportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
           </div>
@@ -61,30 +61,30 @@
               </div>
             </div>
 
-            <!--Transport -->
+            <!--Assigned Transport -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-transport">Transporte asignado</label>
+                <label for="trans-assigned-transport">Transporte asignado</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-car"></i></div>
                   </span>
-                  {!! Form::text('trans-transport', null, array('id'=>'trans-transport', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('trans-assigned-transport', null, array('id'=>'trans-assigned-transport', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <!--Dependant-->
+            <!--Responsable User Name-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="trans-dependant">Persona a cargo</label>
                 <div class="input-group">
-                  <span class="input-group-prepend">
+                  <span class="input-grouresponsable-user-name">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
-                  {!! Form::text('trans-dependant', null, array('id'=>'trans-dependant', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('trans-responsable-user-name', null, array('id'=>'trans-responsable-user-name', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>
@@ -105,8 +105,8 @@
 
           <!-- Observation -->
           <div class="form-group mg-hm">
-            <label for="trans-observation">Observaciones del viaje</label>
-              {!! Form::textareacustom('trans-observation', 3, 500, array('class' => 'form-control')) !!}
+            <label for="trans-remark">Observaciones del viaje</label>
+              {!! Form::textareacustom('trans-remark', 3, 500, array('class' => 'form-control')) !!}
           </div>
 
         </div>
