@@ -1,7 +1,7 @@
 <div class="card mb-3">
   <h4 class="card-header">Solicitar transporte</h4>
   <div class="card-body">
-    {!! Form::open(array('id'=>'pon-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
+    {!! Form::open(array('id'=>'trans-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       <div class="row">
         <div class="col-md-12">
@@ -10,75 +10,103 @@
             <!--Firstname -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-firstname">Nombre</label>
-                  {!! Form::datetime('reg-birthdate', array('class' => 'form-control', 'data-mg-required'=>''), null, 'btn-outline-secondary', '4') !!}
+                <label for="trans-firstname">Nombre</label>
+                {!! Form::datetime('trans-date', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => '')) !!}
               </div>
             </div>
 
-            <!--Type -->
+            <!--Company-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-type">Tipo</label>
-                {!! Form::select('pon-type', array('Charla' => 'Charla','Taller' => 'Taller'), null, array('id'=>'pon-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                <label for="trans-company">Empresa y numero de vuelo/autobus</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-building-o"></i></div>
+                  </span>
+                  {!! Form::text('trans-company', null, array('id'=>'trans-company', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
               </div>
             </div>
           </div>
 
           <div class="row">
-            <!--Duration -->
+            <!--Point of Origin -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-duration">Duración</label>
-                {!! Form::select('pon-duration', array('OneHour' => '1 Hora','TwoHours' => '2 Horas'), null, array('id'=>'pon-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                <label for="trans-point-of-origin">Origen</label>
+                {!! Form::select('trans-point-of-origin', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'transportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 
-            <!--Allocated Space -->
+            <!--Point of Destination -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="pon-allocated-space">Espacio asignado</label>
+                <label for="trans-point-of-destination">Destino</label>
+                {!! Form::select('trans-point-of-destination', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'transportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!--Status -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="trans-status">Estado</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-tasks"></i></div>
+                  </span>
+                  {!! Form::text('trans-status', null, array('id'=>'trans-status', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                </div>
+              </div>
+            </div>
+
+            <!--Transport -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="trans-transport">Transporte asignado</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-car"></i></div>
+                  </span>
+                  {!! Form::text('trans-transport', null, array('id'=>'trans-transport', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <!--Dependant-->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="trans-dependant">Persona a cargo</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
-                  {!! Form::text('pon-allocated-space', null, array('id'=>'pon-allocated-space', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('trans-dependant', null, array('id'=>'trans-dependant', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
+                </div>
+              </div>
+            </div>
+
+            <!--Contact -->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="trans-contact">Numero de contacto</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-phone"></i></div>
+                  </span>
+                  {!! Form::text('trans-contact', null, array('id'=>'trans-contact', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row">
-            <!--Scheduled Hour -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="pon-scheduled-hour">Hora asignada</label>
-                <div class="input-group">
-                  <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fas fa-clock"></i></div>
-                  </span>
-                  {!! Form::text('pon-scheduled-hour', null, array('id'=>'pon-scheduled-hour', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
-                </div>
-              </div>
-            </div>
-
-            <!--Scheduled Day -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="pon-scheduled-day">Dia asignado</label>
-                <div class="input-group">
-                  <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                  </span>
-                  {!! Form::text('pon-scheduled-day', null, array('id'=>'pon-lastname', 'class'=>'form-control', 'data-mg-required'=>'', 'disabled'=>'disabled')) !!}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Description -->
+          <!-- Observation -->
           <div class="form-group mg-hm">
-            <label for="pon-description">Descripción</label>
-              {!! Form::textareacustom('pon-description', 3, 500, array('class' => 'form-control')) !!}
+            <label for="trans-observation">Observaciones del viaje</label>
+              {!! Form::textareacustom('trans-observation', 3, 500, array('class' => 'form-control')) !!}
           </div>
 
         </div>
