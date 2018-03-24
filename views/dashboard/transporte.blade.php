@@ -11,7 +11,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="trans-date">Fecha y Hora</label>
-                {!! Form::datetime('trans-date', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => '')) !!}
+                {!! Form::datetime('trans-date', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => ''),null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
 
