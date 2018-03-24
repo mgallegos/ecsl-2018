@@ -5,7 +5,6 @@
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       <div class="row">
         <div class="col-md-12">
-
           <div class="row">
             <!--Pickup Datetime -->
             <div class="col-lg-6 col-md-12">
