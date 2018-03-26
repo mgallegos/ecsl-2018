@@ -46,7 +46,7 @@
 
 	$(document).ready(function()
 	{
-		$('#ob-fa-form, #login-form, #reg-form, #pon-form, #trans-form').jqMgVal('addFormFieldsValidations');
+		$('#ob-fa-form, #login-form, #reg-form, #pon-form, #trans-from-form, #trans-to-form').jqMgVal('addFormFieldsValidations');
 
 		$(window).bind('resize', function()
 		{
