@@ -81,7 +81,9 @@
     {!! Form::close() !!}
   </div>
 </div>
-<div class="section-header btn-toolbar toolbar-preceded-by-form-section" role="toolbar" style="background-color: rgba(0,0,0,.03)">
+
+
+<!-- <div class="section-header btn-toolbar toolbar-preceded-by-form-section" role="toolbar" style="background-color: rgba(0,0,0,.03)">
   <div id="lqp-btn-group-1" class="btn-group mr-2" role="group">
   	{!! Form::button('<i class="fa fa-save"></i> Save', array('id' => 'lqp-btn-save', 'class' => 'btn btn-outline-secondary lqp-tooltip', 'data-container' => 'body', 'data-toggle' => 'tooltip', 'data-original-title' => 'Save book')) !!}
   	{!! Form::button('<i class="fa fa-refresh"></i> Refresh', array('id' => 'lqp-btn-refresh', 'class' => 'btn btn-outline-secondary lqp-tooltip', 'data-container' => 'body', 'data-toggle' => 'tooltip', 'data-original-title' => 'Refresh grid data')) !!}
@@ -113,4 +115,4 @@ GridRender::setGridId("BookGrid0")
   ->addColumn(array('label' => 'Author','index' => 'author'))
   ->renderGrid()
 !!}
-</div>
+</div> -->

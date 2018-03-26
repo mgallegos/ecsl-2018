@@ -22,7 +22,8 @@
       <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }}">Iniciar sesión</a>
       <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">Registrarse</a>
       <a id="dash-pago" href="#" class="list-group-item disabled" disabled="disabled">Realizar pago</a>
-      <a id="dash-transporte" href="#" class="list-group-item">Solicitar transporte <i class="fa fa-plane"></i> <-> <i class="fa fa-bed"></i></a>
+      <a id="dash-transporte-from" href="#" class="list-group-item">Solicitar transporte desde  <i class="fa fa-plane"></i></a>
+      <a id="dash-transporte-to" href="#" class="list-group-item">Solicitar transporte hacia <i class="fa fa-plane"></i></a>
       <a id="dash-ponencias" href="#" class="list-group-item">Administrar mis ponencias</a>
       <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Generar carta de invitación</a>
       <a id="dash-comprobante" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a>
@@ -39,8 +40,11 @@
     </div>
     <div id="dash-pago-container">
     </div>
-    <div id="dash-transporte-container" style="display:none;">
-      @include('ecsl-2018::dashboard/transporte')
+    <div id="dash-transporte-from-container" style="display:none;">
+      @include('ecsl-2018::dashboard/transporte-from')
+    </div>
+    <div id="dash-transporte-to-container" style="display:none;">
+      @include('ecsl-2018::dashboard/transporte-to')
     </div>
     <div id="dash-ponencias-container" style="display:none;">
       @include('ecsl-2018::dashboard/ponencia')
