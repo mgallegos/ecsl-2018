@@ -189,7 +189,7 @@
       <div class="card card-logo">
         <div class="card-header-logo card-header-logo-padding">
           <a href="http://www.slsv.org/" target="_blank">
-            <img class="card-img-top img-fluid" src="http://www.slsv.org/sites/default/files/color/business-4a3de5b4/logo.png">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_slsv.png">
           </a>
         </div>
         <div class="card-body">
