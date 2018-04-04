@@ -1,8 +1,12 @@
-<div class="card form-container-followed-by-grid-section">
+<div class="card mb-3">
+<!-- <div class="card form-container-followed-by-grid-section"> -->
   <h4 class="card-header">Solicitar transporte desde aeropuerto</h4>
   <div class="card-body">
     {!! Form::open(array('id'=>'trans-from-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
+      <div class="alert alert-dark" role="alert">
+        <h6 class="card-title mb-0">Complete el formulario para poder solicitar el traslado hacia el hotel.</h6>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <div class="row">
