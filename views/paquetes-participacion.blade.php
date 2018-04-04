@@ -3,7 +3,7 @@
   <!-- Paquete Básico -->
   <div class="card">
     <h3 class="card-header text-center">Básico</h3>
-    <div class="card-body m-0 px-0">
+    <div class="card-body m-0 px-0 align-middle">
       <h2 class="text-center font-weight-bold">$ 10.00</h2>
       <div class="font-italic text-center mb-4">Incluye:</div>
       <ul class="list-group list-group-flush">

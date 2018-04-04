@@ -15,25 +15,25 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
         <div class="row mb-4">
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-4">
                 <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-4">
                 <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="img-fluid">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-4">
                 <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
             </a>
         </div>
 
         <div class="row mb-4">
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-4">
                 <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-4">
                 <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="img-fluid">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-4">
                 <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
             </a>
         </div>
