@@ -11,6 +11,7 @@
         <li class="list-group-item">Promocional básico</li>
         <li class="list-group-item border-bottom">Diploma de participación</li>
       </ul>
+      <footer class="blockquote-footer p-4">Someone famous in Someone famous in Someone famous in </footer>
     </div>
   </div>
 
@@ -26,6 +27,7 @@
         <li class="list-group-item">Diploma de participación</li>
         <li class="list-group-item border-bottom">Almuerzos</li>
       </ul>
+      <footer class="blockquote-footer p-4">Someone famous in Someone famous in Someone famous in </footer>
     </div>
   </div>
 
