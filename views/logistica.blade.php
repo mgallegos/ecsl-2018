@@ -605,8 +605,7 @@
             salones de conferencia de la sede son áreas de no fumado. Usted puede fumar fuera de la sede.
           </p>
           <p class="text-justify">
-            En general, se permite fumar dentro de los restaurantes y bares, con algunas pocas excepciones.
-            En ese caso, habrá un letrero visible de advertencia en la pared o la entrada.
+            Según la legislación vigente no se permite fumar en las áreas interiores de  restaurantes y bares. Por cualquier duda, es mejor preguntar antes de encender un cigarrillo, aunque debería haber siempre letreros que lo indiquen.
           </p>
         </div>
 
@@ -779,7 +778,7 @@
   var documentHeight = $(document).height();
   var partialHeight  =  documentHeight -(documentHeight * 0.10);
   var partialHeight2 = documentHeight -(documentHeight * 0.06);
- 
+
   @if (!Agent::isMobile())
 
   $(window).scroll(function()
@@ -791,11 +790,11 @@
 
     if( $("a.active").length != 0 && !($("a.active").parents(".show").eq(2).length) && !bool){
       //$("a.active").parents().eq(2).addClass("show");
-      
+
       $("a.active").parents().eq(2).collapse('show');
     }
 
-   
+
     var windowScroll = $(window).scrollTop();
     console.log($("#prueba").css("width"));
     if( windowScroll >=  partialHeight2 ){
@@ -812,7 +811,7 @@
       });
 
     }else{
-      $("#colSide").removeClass("side-bar-sticky").addClass("side-bar m-2 p-0");      
+      $("#colSide").removeClass("side-bar-sticky").addClass("side-bar m-2 p-0");
       $("#colContent").addClass("offset-lg-3 mb-4");
       $("#prueba").css({
         "display": "block"
@@ -869,7 +868,7 @@
     if( $("div.show").length != 0 )
     {
       //$(this).addClass("active");
-      $("div.collapse").collapse("hide");      
+      $("div.collapse").collapse("hide");
     }
 
     $("a.active").removeClass("active");
