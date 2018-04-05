@@ -9,11 +9,26 @@
             <!--Pickup Datetime -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-to-pickup-datetime">Fecha y Hora</label>
-                {!! Form::datetime('trans-to-pickup-datetime', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => ''),null, 'btn-outline-secondary', '4') !!}
+                <label for="trans-to-pickup-datetime">Fecha</label>
+                {!! Form::select('trans-to-date', array('14-07-2018' => '14 de julio del 2018','15-07-2018' => '15 de julio del 2018'), null, array('id'=>'trans-to-date', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 
+            <!--Hora-->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="trans-from-hour">Hora</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
+                  </span>
+                  {!! Form::text('trans-from-hour', null, array('id'=>'trans-from-hour', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
             <!--Transport Number-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
@@ -24,16 +39,6 @@
                   </span>
                   {!! Form::text('trans-to-trans-toport-number', null, array('id'=>'trans-to-trans-toport-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <!--Point of Origin -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="trans-to-origin">Origen</label>
-                {!! Form::select('trans-to-origin', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'trans-toportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-to-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 

@@ -9,26 +9,40 @@
             <!--Pickup Datetime -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-from-pickup-datetime">Fecha y Hora</label>
-                {!! Form::datetime('trans-from-pickup-datetime', array('class' => 'form-control', 'data-mg-required' => '', 'data-default-value' => ''),null, 'btn-outline-secondary', '4') !!}
+                <label for="trans-from-pickup-datetime">Fecha</label>
+                {!! Form::select('trans-from-date', array('11-07-2018' => '11 de julio del 2018','12-07-2018' => '12 de julio del 2018'), null, array('id'=>'trans-to-date', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 
-            <!--Transport Number-->
+            <!--Hora-->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="trans-from-trans-fromport-number">Empresa y número de vuelo/autobús</label>
+                <label for="trans-from-hour">Hora</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-building-o"></i></div>
+                    <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
                   </span>
-                  {!! Form::text('trans-from-trans-fromport-number', null, array('id'=>'trans-from-trans-fromport-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('trans-from-hour', null, array('id'=>'trans-from-hour', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
           </div>
 
           <div class="row">
+
+            <!--Transport Number-->
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="trans-from-transport-number">Empresa y número de vuelo/autobús</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-building-o"></i></div>
+                  </span>
+                  {!! Form::text('trans-from-transport-number', null, array('id'=>'trans-from-transport-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
+              </div>
+            </div>
+
             <!--Point of Origin -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
@@ -37,13 +51,6 @@
               </div>
             </div>
 
-            <!--Point of Destination -->
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="trans-from-destination">Destino</label>
-                {!! Form::select('trans-from-destination', array('hotel' => 'Centro Loyola','aeropuerto' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"', 'puertoBus' => 'Puerto Bus', 'ticaBus1' => 'Tica Bus Terminal San Benito','ticaBus2' => 'Tica Bus Terminal San Carlos', 'platinum' => 'Terminal Platinum Centro', 'trans-fromportesElSol' => 'Transportes El Sol Terminal San Benito'), null, array('id'=>'trans-from-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
-              </div>
-            </div>
           </div>
 
           <div class="row">
