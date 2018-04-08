@@ -247,7 +247,12 @@
         <div id="cuota-de-participacion" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Cuota de Participación</h4>
           <!-- Content Row -->
-          @include('ecsl-2018::paquetes-participacion')
+          @if (!Agent::isMobile())
+            @include('ecsl-2018::paquetes-participacion-v2')
+          @else
+            @include('ecsl-2018::paquetes-participacion')
+          @endif
+          <br>
           <p class="text-justify">La organización brindará información sobre hoteles cercanos a la sede para quienes la requieran, como una cortesía. Sin embargo, no se hará responsable de traslados ni depósitos de garantía que deban realizar quienes elijan la cuota parcial.</p>
           <!-- /.row -->
         </div>
