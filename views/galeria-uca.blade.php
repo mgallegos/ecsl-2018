@@ -46,6 +46,10 @@
                 <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
             </a>
         </div>
+        <div class="mb-5">
+          @include('ecsl-2018::paquetes-participacion')
+        </div>
+
     </div>
   </div>
 </div>

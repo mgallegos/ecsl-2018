@@ -46,7 +46,7 @@
 
       <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="Two">
         <div class="card-body">
-          El Encuentro Centroamericano de Software Libre 2018 se realizará en la ciudad de San Salvador, El Salvador los días 12 y 13 de julio del 2018.
+          El Encuentro Centroamericano de Software Libre 2018 se realizará en la ciudad de San Salvador, El Salvador los días 12, 13 y 14 de julio del 2018.
         </div>
       </div>
     </div>

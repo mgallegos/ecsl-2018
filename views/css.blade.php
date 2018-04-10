@@ -190,4 +190,8 @@
     visibility: hidden;
   }
 
+.bg-gray{
+  background-color: #f2f2f2;
+}
+
 </style>
