@@ -247,7 +247,12 @@
         <div id="cuota-de-participacion" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Cuota de Participación</h4>
           <!-- Content Row -->
-          @include('ecsl-2018::paquetes-participacion')
+          @if (!Agent::isMobile())
+            @include('ecsl-2018::paquetes-participacion-v2')
+          @else
+            @include('ecsl-2018::paquetes-participacion')
+          @endif
+          <br>
           <p class="text-justify">La organización brindará información sobre hoteles cercanos a la sede para quienes la requieran, como una cortesía. Sin embargo, no se hará responsable de traslados ni depósitos de garantía que deban realizar quienes elijan la cuota parcial.</p>
           <!-- /.row -->
         </div>
@@ -317,6 +322,26 @@
           <p>
             Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2227-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
           </p>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row mb-4 justify-content-center pl-3">
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div id="hospedaje-alternativo" class="right-block">
@@ -335,6 +360,25 @@
           <p>
             Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2210-6600 <br> Correo electrónico: <a href="direccion.comunicaciones@uca.edu.sv">direccion.comunicaciones@uca.edu.sv</a>.<br> Sitio web: <a target="_blank" href="http://www.uca.edu.sv/">Universidad Centroamericana “José Simeon Cañas”</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/UCA.ElSalvador">UCA El Salvador</a> <br>
           </p>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row mb-4 justify-content-center pl-3">
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
+                </a>
+              </div>
+            </div>
+          </div>
 
         </div>
 
