@@ -4,7 +4,7 @@
     {!! Form::open(array('id'=>'pon-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       <div class="alert alert-dark" role="alert">
-        <h6 class="card-title mb-0">Complete el formulario para poder proponer una o más ponencias.</h6>
+        <h6 class="card-title mb-0">Complete el formulario para proponer una o más ponencias, una vez enviada, siemrpe podrá realizar modificaciones a sus ponencias haciendo clic al registro correspondiente en la tabla.</h6>
       </div>
       <div class="row">
         <!--Name-->
