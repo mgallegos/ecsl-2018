@@ -259,32 +259,59 @@
 
         <div id="paquete-en-swag" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Paquete promocional</h4>
-          <div class="row">
+          <br>
+          @if (!Agent::isMobile())
+            <div class="row ">
+              <div class="col-4 py-2 border-right ">&nbsp;</div>
+              <div class="col-4 border border-bottom-0  text-center text-dark bg-gray font-weight-bold h4 py-3 mb-0 border-left-0">Básico</div>
+              <div class="col-4 border border-bottom-0  text-center text-dark bg-gray font-weight-bold h4 py-3 mb-0 border-left-0">Completo</div>
+            </div>
+            <div class="row border border-bottom-0">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start  py-2">Camiseta</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+              <div class="col-4 border-left   d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+            </div>
+            <div class="row border border-bottom-0   bg-light">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start py-2">Gafete con NFC</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+              <div class="col-4 border-left  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+            </div>
+            <div class="row border border-bottom-0">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start py-2">Sticker en vinil del evento</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-times icon-null"></i></div>
+              <div class="col-4 border-left  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+            </div>
+            <div class="row border   bg-light">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start py-2">Recuerdo del evento (artesanía nacional)</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-times icon-null"></i></div>
+              <div class="col-4 border-left  d-flex align-items-center justify-content-center py-2 "><i class="fa fa-check icon-check"></i></div>
+            </div>
+          @else
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="card card1">
+                  <h3 class="card-header text-center">Básico</h3>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Camiseta</li>
+                    <li class="list-group-item">Gafete con NFC</li>
+                  </ul>
+                </div>
+              </div>
 
-            <div class="col-md-6 mb-4">
-              <div class="card card1">
-                <h3 class="card-header text-center">Básico</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Camiseta</li>
-                  <li class="list-group-item">Gafete con NFC</li>
-                </ul>
+              <div class="col-md-6 mb-4">
+                <div class="card">
+                  <h3 class="card-header text-center">Completo</h3>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item ">Camiseta</li>
+                    <li class="list-group-item ">Gafete con NFC</li>
+                    <li class="list-group-item ">Sticker en vinil del evento</li>
+                    <li class="list-group-item ">Recuerdo del evento (artesanía nacional)</li>
+                  </ul>
+                </div>
               </div>
             </div>
-
-            <div class="col-md-6 mb-4">
-              <div class="card">
-                <h3 class="card-header text-center">Completo</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Camiseta</li>
-                  <li class="list-group-item ">Gafete con NFC</li>
-                  <li class="list-group-item ">Sticker en vinil del evento</li>
-                  <li class="list-group-item ">Recuerdo del evento (artesanía nacional)</li>
-                </ul>
-              </div>
-
-
-            </div>
-          </div>
+          @endif
+          <br>
         </div>
 
         <div id="forma-de-pago" class="right-block">
