@@ -102,11 +102,6 @@
 			$(this).addClass('active');
 
 			$('#dash-transporte-from-container').show('fade');
-
-			// setTimeout(function()
-			// {
-			// 	$('#BookGrid1').setGridWidth($('.dashboard-elements').width());
-			// }, 100);
 		});
 
 		$('#dash-transporte-to').click(function()
@@ -116,11 +111,6 @@
 			$(this).addClass('active');
 
 			$('#dash-transporte-to-container').show('fade');
-
-			// setTimeout(function()
-			// {
-			// 	$('#BookGrid1').setGridWidth($('.dashboard-elements').width());
-			// }, 100);
 		});
 
 		$('#dash-ponencias').click(function()
@@ -131,10 +121,24 @@
 
 			$('#dash-ponencias-container').show('fade');
 
-			// setTimeout(function()
-			// {
-			// 	$('#BookGrid0').setGridWidth($('.dashboard-elements').width());
-			// }, 100);
+			setTimeout(function()
+			{
+				$('#pon-grid').setGridWidth($('.dashboard-elements').width());
+			}, 100);
+		});
+
+		$('#trans-to-date').change(function()
+		{
+			if($(this).val() == '2018-07-14')
+			{
+				$('#trans-to-origin').val('Centro Loyola');
+			}
+			else if($(this).val() == '2018-07-15')
+			{
+				$('#trans-to-origin').val('Playa El Amatal');
+			}
+
+			$('#trans-to-origin').effect('highlight', 2000);
 		});
 
 		// $('#ob-fa-btn').click(function()
