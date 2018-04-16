@@ -159,6 +159,11 @@
 
 		$('#dash-ponencias').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+			
 			hideDashboard();
 
 			$(this).addClass('active');
