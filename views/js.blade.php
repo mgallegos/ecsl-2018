@@ -14,16 +14,33 @@
 
 	function customGender(gender)
 	{
-		if(gender == 'Personalizado')
+		if(gender == 'Deseo especificarlo')
 		{
 			$('#reg-custom-gender').val('');
+			$('#reg-custom-gender').attr('data-mg-required', '');
 			$('#reg-custom-gender').removeAttr('disabled');
 		}
 		else
 		{
 			$('#reg-custom-gender').val('');
 			$('#reg-custom-gender').attr('disabled', 'disabled');
+			$('#reg-custom-gender').removeAttr('data-mg-required');
 		}
+		if(gender == 'Prefiero no decirlo')
+		{
+			if($('#is-sex-visible').is(":checked"))
+			{
+				$('#is-sex-visible').click();
+			}
+		}
+		else
+		{
+			if(!$('#is-sex-visible').is(":checked"))
+			{
+				$('#is-sex-visible').click();
+			}
+		}
+
 	}
 
 	function decSendRequest(formId, data)
@@ -33,6 +50,8 @@
 
 	function hideDashboard()
 	{
+		disabledAll();
+
 		$('.dashboard-elements').children().each(function( index )
 		{
 		  $(this).hide();
@@ -42,6 +61,11 @@
 		{
 		  $(this).removeClass('active');
 		});
+
+		setTimeout(function()
+		{
+			enableAll();
+		}, 500);
 	}
 
 	$(document).ready(function()
@@ -79,6 +103,11 @@
 
 		$('#dash-login').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');
@@ -88,6 +117,11 @@
 
 		$('#dash-registro').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');
@@ -97,6 +131,11 @@
 
 		$('#dash-transporte-from').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');
@@ -106,6 +145,11 @@
 
 		$('#dash-transporte-to').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');

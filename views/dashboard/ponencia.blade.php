@@ -1,10 +1,10 @@
 <div class="card form-container-followed-by-grid-section">
-  <h4 class="card-header">Administrar ponencias</h4>
+  <h4 class="card-header">Administrar mis ponencias</h4>
   <div class="card-body">
     {!! Form::open(array('id'=>'pon-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       <div class="alert alert-dark" role="alert">
-        <h6 class="card-title mb-0">Complete el formulario para proponer una o más ponencias, una vez enviada, siemrpe podrá realizar modificaciones a sus ponencias haciendo clic al registro correspondiente en la tabla.</h6>
+        <h6 class="card-title mb-0">Complete el formulario para proponer una o más ponencias, una vez enviada, siempre podrá realizar modificaciones a sus ponencias haciendo clic al registro correspondiente en la tabla.</h6>
       </div>
       <div class="row">
         <!--Name-->
@@ -41,7 +41,7 @@
         <div class="col-lg-6 col-md-12">
           <div class="form-group mg-hm">
             <label for="pon-type">Eje temático</label>
-            {!! Form::select('pon-topic', array('1' => 'Eje 1', '2' => 'Eje 2'), null, array('id'=>'pon-topic', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+            {!! Form::select('pon-topic', array('1' => 'Eje 1...', '2' => 'Eje ...', '3' => 'Pendientes....'), null, array('id'=>'pon-topic', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="col-lg-6 col-md-12">
           <div class="form-group mg-hm">
-            <label for="pon-space">Espacio asignado</label>
+            <label for="pon-space">Aula asignada</label>
             <div class="input-group">
               <span class="input-group-prepend">
                 <div class="input-group-text"><i class="fa fa-map-o"></i></div>
