@@ -1,5 +1,5 @@
 <div class="card mb-3">
-  <h4 class="card-header">Formulario de registro</h4>
+  <h4 class="card-header">Registrarse</h4>
   <div class="card-body">
     {!! Form::open(array('id'=>'reg-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
