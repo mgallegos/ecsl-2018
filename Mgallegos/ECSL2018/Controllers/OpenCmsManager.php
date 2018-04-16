@@ -8,6 +8,8 @@
  */
 namespace Mgallegos\ECSL2018\Controllers;
 
+use Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface;
+
 use Illuminate\Foundation\Application;
 
 use Illuminate\Session\SessionManager;
@@ -27,6 +29,7 @@ class OpenCmsManager extends Controller {
 	 *
 	 */
 	protected $OpenCmsManagerService;
+
 
 	/**
 	 * View
@@ -60,7 +63,12 @@ class OpenCmsManager extends Controller {
 	 */
 	protected $Session;
 
-	public function __construct(Application $App, Factory $View, Request $Input, SessionManager $Session)
+	public function __construct(
+		Application $App,
+		Factory $View,
+		Request $Input,
+		SessionManager $Session
+	)
 	{
 		$this->App = $App;
 
@@ -77,7 +85,26 @@ class OpenCmsManager extends Controller {
 	{
 		return $this->View->make('ecsl-2018::dashboard')
 			->with('login', $this->Session->get('ecsl2018login', false))
-			->with('registro', $this->Session->get('ecsl2018registro', false));
+			->with('registro', $this->Session->get('ecsl2018registro', false))
+			->with('status', 'En revisión')
+			->with('lugares', array(
+				'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"',
+				'Puerto Bus' => 'Puerto Bus',
+				'Pullmantur San Benito' => 'Pullmantur San Benito',
+				'Tica Bus Terminal San Benito' => 'Tica Bus Terminal San Benito',
+				'Terminal Platinum Sheraton Presidente' => 'Terminal Platinum Sheraton Presidente',
+				'Transportes El Sol Terminal San Benito' => 'Transportes El Sol Terminal San Benito')
+			);
+	}
+
+	/**
+	 * Handle a POST request for presentation grid data.
+	 *
+	 * @return Response
+	 */
+	public function postGridData()
+	{
+		return $this->PresentationManagerService->getGridData( $this->Input->all() );
 	}
 
 	/**

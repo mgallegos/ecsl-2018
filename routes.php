@@ -55,9 +55,16 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::eventos-anteriores');
 	});
 
-	Route::get('cms/galeria-uca', function()
+	Route::get('/cms/galeria-uca', function()
 	{
 		return View::make('ecsl-2018::galeria-uca');
+	});
+
+	Route::post('/cms/presentaciones', function()
+	{
+		$app = $this->app;
+		
+    return GridEncoder::encodeRequestedData(new \Mgallegos\ECSL2018\Repositories\Presentation\EloquentPresentationGridRepository($app['db']), Request::all());
 	});
 
 	Route::controller('/cms/dashboard', 'Mgallegos\ECSL2018\Controllers\OpenCmsManager');

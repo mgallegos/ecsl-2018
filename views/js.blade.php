@@ -14,16 +14,33 @@
 
 	function customGender(gender)
 	{
-		if(gender == 'Personalizado')
+		if(gender == 'Deseo especificarlo')
 		{
 			$('#reg-custom-gender').val('');
+			$('#reg-custom-gender').attr('data-mg-required', '');
 			$('#reg-custom-gender').removeAttr('disabled');
 		}
 		else
 		{
 			$('#reg-custom-gender').val('');
 			$('#reg-custom-gender').attr('disabled', 'disabled');
+			$('#reg-custom-gender').removeAttr('data-mg-required');
 		}
+		if(gender == 'Prefiero no decirlo')
+		{
+			if($('#is-sex-visible').is(":checked"))
+			{
+				$('#is-sex-visible').click();
+			}
+		}
+		else
+		{
+			if(!$('#is-sex-visible').is(":checked"))
+			{
+				$('#is-sex-visible').click();
+			}
+		}
+
 	}
 
 	function decSendRequest(formId, data)
@@ -33,6 +50,8 @@
 
 	function hideDashboard()
 	{
+		disabledAll();
+
 		$('.dashboard-elements').children().each(function( index )
 		{
 		  $(this).hide();
@@ -42,6 +61,11 @@
 		{
 		  $(this).removeClass('active');
 		});
+
+		setTimeout(function()
+		{
+			enableAll();
+		}, 500);
 	}
 
 	$(document).ready(function()
@@ -79,6 +103,11 @@
 
 		$('#dash-login').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');
@@ -88,6 +117,11 @@
 
 		$('#dash-registro').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');
@@ -97,30 +131,30 @@
 
 		$('#dash-transporte-from').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');
 
 			$('#dash-transporte-from-container').show('fade');
-
-			// setTimeout(function()
-			// {
-			// 	$('#BookGrid1').setGridWidth($('.dashboard-elements').width());
-			// }, 100);
 		});
 
 		$('#dash-transporte-to').click(function()
 		{
+			if($(this).hasClass('active'))
+			{
+				return;
+			}
+
 			hideDashboard();
 
 			$(this).addClass('active');
 
 			$('#dash-transporte-to-container').show('fade');
-
-			// setTimeout(function()
-			// {
-			// 	$('#BookGrid1').setGridWidth($('.dashboard-elements').width());
-			// }, 100);
 		});
 
 		$('#dash-ponencias').click(function()
@@ -131,10 +165,24 @@
 
 			$('#dash-ponencias-container').show('fade');
 
-			// setTimeout(function()
-			// {
-			// 	$('#BookGrid0').setGridWidth($('.dashboard-elements').width());
-			// }, 100);
+			setTimeout(function()
+			{
+				$('#pon-grid').setGridWidth($('.dashboard-elements').width());
+			}, 100);
+		});
+
+		$('#trans-to-date').change(function()
+		{
+			if($(this).val() == '2018-07-14')
+			{
+				$('#trans-to-origin').val('Centro Loyola');
+			}
+			else if($(this).val() == '2018-07-15')
+			{
+				$('#trans-to-origin').val('Playa El Amatal');
+			}
+
+			$('#trans-to-origin').effect('highlight', 2000);
 		});
 
 		// $('#ob-fa-btn').click(function()
