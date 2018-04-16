@@ -22,8 +22,8 @@
       <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }}">Iniciar sesión</a>
       <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">Registrarse</a>
       <a id="dash-pago" href="#" class="list-group-item disabled" disabled="disabled">Realizar pago</a>
-      <a id="dash-transporte-from" href="#" class="list-group-item">Solicitar transporte desde  <i class="fa fa-plane"></i></a>
-      <a id="dash-transporte-to" href="#" class="list-group-item">Solicitar transporte hacia <i class="fa fa-plane"></i></a>
+      <a id="dash-transporte-from" href="#" class="list-group-item">Solicitar transporte a su llegada <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
+      <a id="dash-transporte-to" href="#" class="list-group-item">Solicitar transporte a su salida <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
       <a id="dash-ponencias" href="#" class="list-group-item">Administrar mis ponencias</a>
       <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Generar carta de invitación</a>
       <a id="dash-comprobante" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a>

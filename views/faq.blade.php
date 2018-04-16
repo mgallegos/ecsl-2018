@@ -44,9 +44,9 @@
         </h5>
       </div>
 
-      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="Two">
+      <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="Two">
         <div class="card-body">
-          El Encuentro Centroamericano de Software Libre 2018 se realizará en la ciudad de San Salvador, El Salvador los días 12 y 13 de julio del 2018.
+          El Encuentro Centroamericano de Software Libre 2018 se realizará en la ciudad de San Salvador, El Salvador los días 12, 13 y 14 de julio del 2018.
         </div>
       </div>
     </div>
@@ -59,7 +59,7 @@
         </h5>
       </div>
 
-      <div id="collapseThee" class="collapse" role="tabpanel" aria-labelledby="Thee">
+      <div id="collapseThee" class="collapse show" role="tabpanel" aria-labelledby="Thee">
         <div class="card-body">
           Puede consultar los temas a tratar en el apartado de  <a href="{{URL::to('cms/ejes-tematicos')}}">Ejes Tematicos.</a>
         </div>
@@ -74,7 +74,7 @@
         </h5>
       </div>
 
-      <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="Four">
+      <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="Four">
         <div class="card-body">
           El registro aún no está abierto.
         </div>
@@ -89,10 +89,15 @@
         </h5>
       </div>
 
-      <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="Five">
+      <div id="collapseFive" class="collapse show" role="tabpanel" aria-labelledby="Five">
         <div class="card-body">
           Sí, los costos de participación al evento son los siguientes:
-          @include('ecsl-2018::paquetes-participacion')
+          <br><br>
+          @if (!Agent::isMobile())
+            @include('ecsl-2018::paquetes-participacion-v2')
+          @else
+            @include('ecsl-2018::paquetes-participacion')
+          @endif
         </div>
       </div>
     </div>

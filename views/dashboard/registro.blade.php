@@ -3,9 +3,9 @@
   <div class="card-body">
     {!! Form::open(array('id'=>'reg-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
-      <div class="alert alert-dark" role="alert">
+      <!-- <div class="alert alert-dark" role="alert">
         <h6 class="card-title mb-0">Complete el formulario para poder realizar el pago y proponer una o más ponencias.</h6>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-md-12">
 
@@ -13,7 +13,7 @@
             <!--Firstname -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-firstname">Nombre</label>
+                <label for="reg-firstname">Nombres</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
@@ -28,7 +28,7 @@
             <!--Lastname -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-lastname">Apellido</label>
+                <label for="reg-lastname">Apellidos</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
@@ -149,16 +149,16 @@
           </div>
 
           <!-- Address -->
-
+<!--
           <div class="form-group mg-hm">
             <label for="reg-address">Dirección en su país</label>
             <div class="input-group">
               <span class="input-group-prepend">
                 <div class="input-group-text"><i class="fa fa-home"></i></div>
               </span>
-              {!! Form::text('reg-address', null, array('id'=>'reg-address', 'class'=>'form-control', 'data-mg-required'=>'' )) !!}
+              {!! Form::text('reg-address', null, array('id'=>'reg-address', 'class'=>'form-control')) !!}
             </div>
-          </div>
+          </div> -->
 
 
           <div class="row">
@@ -189,9 +189,9 @@
               <div class="form-group mg-hm">
                 <label for="reg-gender">Sexo</label>
                 @if (!Agent::isMobile())
-                  {!! Form::autocomplete('reg-gender', array('Mujer','Hombre', 'Personalizado'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+                  {!! Form::autocomplete('reg-gender', array('Mujer','Hombre', 'Deseo especificarlo', 'Prefiero no decirlo'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
-                  {!! Form::select('reg-gender', array('Mujer' => 'Mujer','Hombre' => 'Hombre', 'Personalizado' => 'Personalizado', 'data-mg-required'=>''), null, array('id'=>'reg-gender', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::select('reg-gender', array('Mujer' => 'Mujer', 'Hombre' => 'Hombre', 'Deseo especificarlo' => 'Deseo especificarlo', 'Prefiero no decirlo' => 'Prefiero no decirlo'), null, array('id'=>'reg-gender', 'class'=>'form-control')) !!}
             		@endif
             </div>
             </div>
@@ -199,7 +199,7 @@
             <!-- Birthdate -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-birthdate">Personalizado</label>
+                <label for="reg-birthdate">Mi sexo esta mejor representado como</label>
                 {!! Form::text('reg-custom-gender', null, array('id'=>'reg-custom-gender', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
               </div>
             </div>
@@ -223,7 +223,7 @@
             <!-- Health Condition -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-health-condition">Condiciones de salud</label>
+                <label for="reg-health-condition">Enfermedades / Alergías</label>
                   {!! Form::textareacustom('reg-health-condition', 4, 500, array('class' => 'form-control')) !!}
                 </div>
             </div>
@@ -382,7 +382,8 @@
           </div>
 
           <div class="form-group mg-hm alert alert-success">
-            <label>Opción alimenticia alternativa</label>
+            <label><strong>Opción alimenticia alternativa</strong></label>
+            <hr style="margin-top:0;margin-bottom: .5rem;"/>
             <div class="row">
               <div class="col-12">
                 <div class="form-check">
@@ -394,8 +395,23 @@
             </div>
           </div>
 
+          <div class="form-group mg-hm alert alert-success">
+            <label><strong>Competencia de seguidores en línea</strong></label>
+            <hr style="margin-top:0;margin-bottom: .5rem;"/>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='is-interested-in-competition' class="form-check-input" type="checkbox" value=""> Estoy interesado en participar en la competencia de seguidores en línea y me gustaría recibir información adicional.
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="form-group mg-hm alert alert-warning">
-            <label>Privacidad</label>
+            <label><strong>Privacidad</strong></label>
+            <hr style="margin-top:0;margin-bottom: .5rem;"/>
             <div class="row">
               <div class="col-12">
                 <div class="form-check">

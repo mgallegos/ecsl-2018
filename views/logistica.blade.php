@@ -247,39 +247,71 @@
         <div id="cuota-de-participacion" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Cuota de Participación</h4>
           <!-- Content Row -->
-          @include('ecsl-2018::paquetes-participacion')
+          @if (!Agent::isMobile())
+            @include('ecsl-2018::paquetes-participacion-v2')
+          @else
+            @include('ecsl-2018::paquetes-participacion')
+          @endif
+          <br>
           <p class="text-justify">La organización brindará información sobre hoteles cercanos a la sede para quienes la requieran, como una cortesía. Sin embargo, no se hará responsable de traslados ni depósitos de garantía que deban realizar quienes elijan la cuota parcial.</p>
           <!-- /.row -->
         </div>
 
         <div id="paquete-en-swag" class="right-block">
           <h4 class="display-6 font-italic font-weight-bold">Paquete promocional</h4>
-          <div class="row">
+          <br>
+          @if (!Agent::isMobile())
+            <div class="row ">
+              <div class="col-4 py-2 border-right ">&nbsp;</div>
+              <div class="col-4 border border-bottom-0  text-center text-dark bg-gray font-weight-bold h4 py-3 mb-0 border-left-0">Básico</div>
+              <div class="col-4 border border-bottom-0  text-center text-dark bg-gray font-weight-bold h4 py-3 mb-0 border-left-0">Completo</div>
+            </div>
+            <div class="row border border-bottom-0">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start  py-2">Camiseta</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+              <div class="col-4 border-left   d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+            </div>
+            <div class="row border border-bottom-0   bg-light">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start py-2">Gafete con NFC</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+              <div class="col-4 border-left  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+            </div>
+            <div class="row border border-bottom-0">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start py-2">Sticker en vinil del evento</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-times icon-null"></i></div>
+              <div class="col-4 border-left  d-flex align-items-center justify-content-center py-2"><i class="fa fa-check icon-check"></i></div>
+            </div>
+            <div class="row border   bg-light">
+              <div class="col-4 border-right  d-flex align-items-center justify-content-start py-2">Recuerdo del evento (artesanía nacional)</div>
+              <div class="col-4 border-right  d-flex align-items-center justify-content-center py-2"><i class="fa fa-times icon-null"></i></div>
+              <div class="col-4 border-left  d-flex align-items-center justify-content-center py-2 "><i class="fa fa-check icon-check"></i></div>
+            </div>
+          @else
+            <div class="row">
+              <div class="col-md-6 mb-4">
+                <div class="card card1">
+                  <h3 class="card-header text-center">Básico</h3>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Camiseta</li>
+                    <li class="list-group-item">Gafete con NFC</li>
+                  </ul>
+                </div>
+              </div>
 
-            <div class="col-md-6 mb-4">
-              <div class="card card1">
-                <h3 class="card-header text-center">Básico</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Camiseta</li>
-                  <li class="list-group-item">Gafete con NFC</li>
-                </ul>
+              <div class="col-md-6 mb-4">
+                <div class="card">
+                  <h3 class="card-header text-center">Completo</h3>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item ">Camiseta</li>
+                    <li class="list-group-item ">Gafete con NFC</li>
+                    <li class="list-group-item ">Sticker en vinil del evento</li>
+                    <li class="list-group-item ">Recuerdo del evento (artesanía nacional)</li>
+                  </ul>
+                </div>
               </div>
             </div>
-
-            <div class="col-md-6 mb-4">
-              <div class="card">
-                <h3 class="card-header text-center">Completo</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item ">Camiseta</li>
-                  <li class="list-group-item ">Gafete con NFC</li>
-                  <li class="list-group-item ">Sticker en vinil del evento</li>
-                  <li class="list-group-item ">Recuerdo del evento (artesanía nacional)</li>
-                </ul>
-              </div>
-
-
-            </div>
-          </div>
+          @endif
+          <br>
         </div>
 
         <div id="forma-de-pago" class="right-block">
@@ -317,6 +349,26 @@
           <p>
             Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2273-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
           </p>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row mb-4 justify-content-center pl-3">
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" class="img-fluid">
+                </a>
+                <!-- <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
+                </a> -->
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div id="hospedaje-alternativo" class="right-block">
@@ -335,6 +387,25 @@
           <p>
             Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2210-6600 <br> Correo electrónico: <a href="direccion.comunicaciones@uca.edu.sv">direccion.comunicaciones@uca.edu.sv</a>.<br> Sitio web: <a target="_blank" href="http://www.uca.edu.sv/">Universidad Centroamericana “José Simeon Cañas”</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/UCA.ElSalvador">UCA El Salvador</a> <br>
           </p>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="row mb-4 justify-content-center pl-3">
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" class="img-fluid">
+                </a>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" class="img-fluid">
+                </a>
+              </div>
+            </div>
+          </div>
 
         </div>
 

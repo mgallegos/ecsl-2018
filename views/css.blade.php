@@ -65,6 +65,18 @@
       right: 10px;
       cursor:pointer;
     }
+
+    .icon-check{
+      font-size: 1.5rem !important;
+      color: #088c11;
+      float:right;
+    }
+
+    .icon-null{
+      font-size: 1.5rem !important;
+      color: #fe0000;
+      float:right;
+    }
   }
 
   @media (min-width: 992px) {
@@ -76,6 +88,17 @@
     .main-icons {
       font-size: 12em !important;
       color: #fff;
+    }
+    .icon-check{
+      font-size: 1rem !important;
+      color: #088c11;
+      float:right;
+    }
+
+    .icon-null{
+      font-size: 1rem !important;
+      color: #fe0000;
+      float:right;
     }
 
     .side-bar{
@@ -160,10 +183,15 @@
 
 
   .right-block:before {
-        display: block;
-        content: " ";
-        margin-top: -96px;
-        height: 96px;
-        visibility: hidden;
+    display: block;
+    content: " ";
+    margin-top: -96px;
+    height: 96px;
+    visibility: hidden;
   }
+
+.bg-gray{
+  background-color: #f2f2f2;
+}
+
 </style>
