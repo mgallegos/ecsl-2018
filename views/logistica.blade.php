@@ -315,7 +315,7 @@
           </div>
           <br>
           <p>
-            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2227-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
+            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2273-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
           </p>
         </div>
 
