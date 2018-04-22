@@ -59,12 +59,18 @@
 
 		$('.dashboard-list-group').children().each(function( index )
 		{
+		  $(this).attr('disabled', 'disabled');
 		  $(this).removeClass('active');
 		});
 
 		setTimeout(function()
 		{
 			enableAll();
+
+			$('.dashboard-list-group').children().each(function( index )
+			{
+			  $(this).removeAttr('disabled');
+			});
 		}, 500);
 	}
 
@@ -103,7 +109,7 @@
 
 		$('#dash-login').click(function()
 		{
-			if($(this).hasClass('active'))
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
 			{
 				return;
 			}
@@ -117,7 +123,7 @@
 
 		$('#dash-registro').click(function()
 		{
-			if($(this).hasClass('active'))
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
 			{
 				return;
 			}
@@ -129,9 +135,48 @@
 			$('#dash-registro-container').show('fade');
 		});
 
+		$('#dash-pago').click(function()
+		{
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			hideDashboard();
+
+			$(this).addClass('active');
+
+			$('#dash-pago-container').show('fade');
+		});
+
+		$('.card-payment-deck').find('.card').each(function()
+		{
+			$(this).click(function()
+			{
+				$('.card-payment-deck').find('.card').each(function()
+				{
+					$(this).removeClass('bg-success');
+				});
+
+				$(this).addClass('bg-success');
+				$('#pay-participation-type').val($(this).attr('data-type'));
+				$('#pay-payment-amount').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+			});
+		});
+
+		$('#online-payment-form').click(function()
+		{
+			$('#pay-btn-pay').show();
+		});
+
+		$('#transfer-payment-form').click(function()
+		{
+			$('#pay-btn-pay').hide();
+		});
+
 		$('#dash-transporte-from').click(function()
 		{
-			if($(this).hasClass('active'))
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
 			{
 				return;
 			}
@@ -145,7 +190,7 @@
 
 		$('#dash-transporte-to').click(function()
 		{
-			if($(this).hasClass('active'))
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
 			{
 				return;
 			}
@@ -159,11 +204,11 @@
 
 		$('#dash-ponencias').click(function()
 		{
-			if($(this).hasClass('active'))
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
 			{
 				return;
 			}
-			
+
 			hideDashboard();
 
 			$(this).addClass('active');
@@ -175,6 +220,7 @@
 				$('#pon-grid').setGridWidth($('.dashboard-elements').width());
 			}, 100);
 		});
+
 
 		$('#trans-to-date').change(function()
 		{

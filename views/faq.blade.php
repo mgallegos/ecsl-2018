@@ -93,11 +93,7 @@
         <div class="card-body">
           Sí, los costos de participación al evento son los siguientes:
           <br><br>
-          @if (!Agent::isMobile())
-            @include('ecsl-2018::paquetes-participacion-v2')
-          @else
-            @include('ecsl-2018::paquetes-participacion')
-          @endif
+          @include('ecsl-2018::paquetes-participacion')
         </div>
       </div>
     </div>

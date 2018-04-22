@@ -30,6 +30,15 @@
     padding: 0 3rem;
   }
 
+  .card-payment-deck .card-deck .card{
+    cursor: pointer;
+  }
+
+  /* .card-payment-deck .card-deck .card .ul > li { */
+  .card-payment-deck li {
+    background-color: inherit !important;
+  }
+
   @media (min-width: 576px) and (max-width: 767.98px) {
     .card-header-logo {
       height: 192px;
