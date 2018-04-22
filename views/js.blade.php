@@ -160,17 +160,20 @@
 
 				$(this).addClass('bg-success');
 				$('#pay-participation-type').val($(this).attr('data-type'));
-				$('#pay-payment-amount').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+				$('#pay-amount').val($(this).attr('data-amount'));
+				$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
 			});
 		});
 
 		$('#online-payment-form').click(function()
 		{
 			$('#pay-btn-pay').show();
+			$('#pay-btn-send').hide();
 		});
 
 		$('#transfer-payment-form').click(function()
 		{
+			$('#pay-btn-send').show();
 			$('#pay-btn-pay').hide();
 		});
 

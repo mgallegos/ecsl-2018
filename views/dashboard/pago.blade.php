@@ -6,7 +6,7 @@
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       {!! Form::hidden('pay-id', null, array('id' => 'pay-id')) !!}
       {!! Form::hidden('pay-participation-type', null, array('id' => 'pay-participation-type')) !!}
-      {!! Form::hidden('pay-insight', null, array('id' => 'pay-insight')) !!}
+      {!! Form::hidden('pay-amount', null, array('id' => 'pay-amount')) !!}
       <!-- <div class="alert alert-dark" role="alert">
         <h6 class="card-title mb-0">Complete el formulario para solicitar el traslado hacia el hotel a su llegada.</h6>
       </div> -->
@@ -22,7 +22,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-usd"></i></div>
                   </span>
-                  {!! Form::text('pay-payment-amount', null, array('id'=>'pay-payment-amount', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('pay-amount-label', null, array('id'=>'pay-amount-label', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>
@@ -44,6 +44,7 @@
             </div>
           </div>
           {!! Form::button('Realizar pago', array('id'=>'pay-btn-pay', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
+          {!! Form::button('Enviar', array('id'=>'pay-btn-send', 'class'=>'btn btn-dark', 'style' => 'display:none;')) !!}
         </div>
       </div>
     {!! Form::close() !!}
