@@ -168,12 +168,12 @@
 		$('#online-payment-form').click(function()
 		{
 			$('#pay-btn-pay').show();
-			$('#pay-btn-send').hide();
+			$('#pay-btn-send, #pay-bank-transfer').hide();
 		});
 
 		$('#transfer-payment-form').click(function()
 		{
-			$('#pay-btn-send').show();
+			$('#pay-btn-send, #pay-bank-transfer').show();
 			$('#pay-btn-pay').hide();
 		});
 

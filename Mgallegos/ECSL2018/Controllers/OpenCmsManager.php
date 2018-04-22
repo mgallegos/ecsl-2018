@@ -86,6 +86,8 @@ class OpenCmsManager extends Controller {
 		return $this->View->make('ecsl-2018::dashboard')
 			->with('login', $this->Session->get('ecsl2018login', false))
 			->with('registro', $this->Session->get('ecsl2018registro', false))
+			->with('prefix', 'pay-')
+			->with('appInfo', array('id' => 'dashboard'))
 			->with('status', 'En revisión')
 			->with('lugares', array(
 				'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"',

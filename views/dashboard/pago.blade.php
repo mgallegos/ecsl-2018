@@ -43,6 +43,27 @@
               </div>
             </div>
           </div>
+          <div id="pay-bank-transfer" style="display:none;">
+            <label>A continuación se detalla, la información bancaria para puedas realizar la transferencia, una vez realizada, adjunte el comprobante que le entregó el banco poder verificar la operación.</label>
+            <ul>
+              <li><strong>Nombre del banco:</strong> BAC CREDOMATIC (El Salvador)</li>
+              <li><strong>Cuenta a nombre de:</strong> ...</li>
+              <li><strong>Cuenta BAC CREDOMATIC (El Salvador):</strong> ...</li>
+              <li><strong>Cuenta Cliente:</strong> ...</li>
+              <li><strong>Cuenta a nombre de:</strong> ...</li>
+              <li><strong>Dirección postal de la oficina principal del banco:</strong> ...</li>
+              <li><strong>Nombre del Banco corresponsal:</strong> ...</li>
+              <li><strong>Dirección del banco corresponsal:</strong> ...</li>
+            </ul>
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fa fa-files-o"></i> Archivos asociados
+              </div>
+              <div class="card-body">
+                <a href="#" class="btn btn-dark">Adjuntar archivo</a>
+              </div>
+            </div>
+          </div>
           {!! Form::button('Realizar pago', array('id'=>'pay-btn-pay', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
           {!! Form::button('Enviar', array('id'=>'pay-btn-send', 'class'=>'btn btn-dark', 'style' => 'display:none;')) !!}
         </div>
@@ -50,9 +71,12 @@
     {!! Form::close() !!}
   </div>
 </div>
-<!-- Información bancaria detallada Nombre del banco: Banco Nacional de Costa Rica
+<!-- Información bancaria detallada
+Nombre del banco: Banco Nacional de Costa Rica
 Dialogía de Información y Comunicación S.C.
-Cuenta IBAN (Internacional): CR38015109620020034632 Cuenta Banco Nacional (CR): 200-02-096-003463-0 Cuenta Cliente (CR): 15109620020034632
+Cuenta IBAN (Internacional): CR38015109620020034632
+Cuenta Banco Nacional (CR): 200-02-096-003463-0
+Cuenta Cliente (CR): 15109620020034632
 Cédula jurídica: 3-106-562299
 Cuenta a nombre de: Dialogía de Información y Comunicación SC
 Dirección postal de la o cina principal del banco: Avenidas 1 y 3, calle 3. San José, Costa Rica. SWIFT bic: BNCRCRSJ
