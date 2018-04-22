@@ -12,7 +12,7 @@
       </div> -->
       <div class="row">
         <div class="col-md-12 card-payment-deck">
-          <label>Elija su tipo de participación</label>
+          <label>Elija la opción de pago</label>
           @include('ecsl-2018::paquetes-participacion')
           <div class="row">
             <div class="col-md-6">
@@ -50,3 +50,12 @@
     {!! Form::close() !!}
   </div>
 </div>
+<!-- Información bancaria detallada Nombre del banco: Banco Nacional de Costa Rica
+Dialogía de Información y Comunicación S.C.
+Cuenta IBAN (Internacional): CR38015109620020034632 Cuenta Banco Nacional (CR): 200-02-096-003463-0 Cuenta Cliente (CR): 15109620020034632
+Cédula jurídica: 3-106-562299
+Cuenta a nombre de: Dialogía de Información y Comunicación SC
+Dirección postal de la o cina principal del banco: Avenidas 1 y 3, calle 3. San José, Costa Rica. SWIFT bic: BNCRCRSJ
+Datos del banco corresponsal o intermediario en USA
+Nombre del Banco corresponsal: Citibank
+Dirección del banco corresponsal: New York 339 Park Avenue New York, NY 10022. USA Código ABA del corresponsal: CITIUS33 -->
