@@ -99,7 +99,7 @@
             <!-- Emergency Contact -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-emergency-contact">En caso de emegencia contactar a</label>
+                <label for="reg-emergency-contact">En caso de emergencia contactar a</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
@@ -196,10 +196,10 @@
             </div>
             </div>
 
-            <!-- Birthdate -->
+            <!-- Gender -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-birthdate">Mi sexo esta mejor representado como</label>
+                <label for="reg-birthdate">Mi sexo está mejor representado como</label>
                 {!! Form::text('reg-custom-gender', null, array('id'=>'reg-custom-gender', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
               </div>
             </div>
@@ -223,7 +223,7 @@
             <!-- Health Condition -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-health-condition">Enfermedades / Alergías</label>
+                <label for="reg-health-condition">Enfermedades / Alergias</label>
                   {!! Form::textareacustom('reg-health-condition', 4, 500, array('class' => 'form-control')) !!}
                 </div>
             </div>
@@ -231,7 +231,7 @@
             <!-- Special Needs -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-special-needs">Necesidades especificas</label>
+                <label for="reg-special-needs">Necesidades específicas</label>
                   {!! Form::textareacustom('reg-special-needs', 4, 500, array('class' => 'form-control')) !!}
               </div>
             </div>
@@ -281,7 +281,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2016' class="form-check-input" type="checkbox" value=""> Nigaragua 2016
+                    <input id='participated-in-ecsl2016' class="form-check-input" type="checkbox" value=""> Nicaragua 2016
                   </label>
                 </div>
                 <div class="form-check">
@@ -388,7 +388,7 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-vegetarian' class="form-check-input" type="checkbox" value=""> Deseo optar por la opción vegetariana en todas las comidas del evento (disponible para los paquetes parcial y completo)
+                    <input id='is-vegetarian' class="form-check-input" type="checkbox" value=""> Deseo optar por la opción vegetariana en todas las comidas del evento (disponible para los paquetes parcial y completo).
                   </label>
                 </div>
               </div>
@@ -416,13 +416,13 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-sex-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento
+                    <input id='is-sex-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento.
                   </label>
                   <label class="form-check-label">
-                    <input id='is-general-information-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi país, edad, institución que represento, eventos anteriores que he participado y distribuciones linux de mi preferencia, formen parte de las estadísticas del evento
+                    <input id='is-general-information-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi país, edad, institución que represento, eventos anteriores que he participado y distribuciones Linux de mi preferencia, formen parte de las estadísticas del evento.
                   </label>
                   <label class="form-check-label">
-                    <input id='is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi <a href="https://gravatar.com" target="_blank">gravatar</a> se muestre en la sección de participantes y ponentes (si aplica) del sitio web
+                    <input id='is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi <a href="https://gravatar.com" target="_blank">gravatar</a> se muestre en la sección de participantes y ponentes (si aplica) del sitio web.
                   </label>
                 </div>
               </div>

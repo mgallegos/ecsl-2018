@@ -25,7 +25,7 @@
       <div class="font-italic text-center mb-4">Incluye:</div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">* Ingreso al evento <i class="fa fa-check-circle-o icon-check"></i></li>
-        <li class="list-group-item">Promocional Completo <i class="fa fa-check-circle-o icon-check"></i></li>
+        <li class="list-group-item">Promocional completo <i class="fa fa-check-circle-o icon-check"></i></li>
         <li class="list-group-item">Diploma de participación <i class="fa fa-check-circle-o icon-check"></i></li>
         <li class="list-group-item">** Almuerzos <i class="fa fa-check-circle-o icon-check"></i></li>
         <li class="list-group-item disabled">Hospedaje <i class="fa fa-times-circle-o icon-null"></i></li>
@@ -42,7 +42,7 @@
       <div class="font-italic text-center mb-4">Incluye:</div>
       <ul class="list-group list-group-flush" >
         <li class="list-group-item">* Ingreso al evento <i class="fa fa-check-circle-o icon-check"></i></li>
-        <li class="list-group-item">Promocional Completo <i class="fa fa-check-circle-o icon-check"></i></li>
+        <li class="list-group-item">Promocional completo <i class="fa fa-check-circle-o icon-check"></i></li>
         <li class="list-group-item">Diploma de participación <i class="fa fa-check-circle-o icon-check"></i></li>
         <li class="list-group-item">*** Tres tiempos<i class="fa fa-check-circle-o icon-check"></i></li>
         <li class="list-group-item">**** Hospedaje<i class="fa fa-check-circle-o icon-check"></i></li>

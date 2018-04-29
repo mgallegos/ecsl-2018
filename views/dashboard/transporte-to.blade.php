@@ -5,7 +5,7 @@
     {!! Form::open(array('id'=>'trans-to-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       <div class="alert alert-dark" role="alert">
-        <h6 class="card-title mb-0">Complete el formulario para solicitar el traslado hacia el aeropuerto o terminal de autobus, si se dirige hacia el aeropuerto, tome en cuenta en la hora solicitada, que el traslado tarda aproximadamente de 45 minutos a 1 hora.</h6>
+        <h6 class="card-title mb-0">Complete el formulario para solicitar el traslado hacia el aeropuerto o terminal de autobus, si se dirige hacia el aeropuerto, tome en cuenta, en la hora solicitada, que el traslado tarda aproximadamente de 45 minutos a 1 hora.</h6>
       </div>
       <div class="row">
         <div class="col-md-12">
