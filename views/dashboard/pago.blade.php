@@ -17,10 +17,10 @@
           <div class="row">
             <div class="col-md-6">
               <div class="form-group mg-hm mt-4">
-                <label for="pay-payment-amount">Monto a pagar (en $)</label>
+                <label for="pay-payment-amount">Monto a pagar (en US$)</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-usd"></i></div>
+                    <div class="input-group-text">US<i class="fa fa-usd"></i></div>
                   </span>
                   {!! Form::text('pay-amount-label', null, array('id'=>'pay-amount-label', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
                 </div>

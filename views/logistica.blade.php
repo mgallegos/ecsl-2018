@@ -345,26 +345,47 @@
           <p>
             Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2273-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
           </p>
-
+          @if (!Agent::isMobile())
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row mb-4 justify-content-center pl-3">
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" class="img-fluid">
+                  </a>
+                  <!-- <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
+                  </a> -->
+                </div>
+              </div>
+            </div>
+          @else
           <div class="row">
             <div class="col-md-12">
-              <div class="row mb-4 justify-content-center pl-3">
-                <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+              <div class="row mb-4 justify-content-center">
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-hotel-mobile" class="col-6 px-1 pb-2">
                     <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid">
                 </a>
-                <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                <br>
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" data-toggle="lightbox" data-gallery="gallery-hotel-mobile" class="col-6 px-1 pb-2">
                     <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" class="img-fluid">
                 </a>
-                <!-- <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
-                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/areas_merienda_opt.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-6 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/areas_merienda_opt.jpg" class="img-fluid">
                 </a>
-                <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
-                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid">
-                </a> -->
+                <a href="https://storage.googleapis.com/decimaerp/organizations/15/fachadaLoyola.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-6 px-1">
+                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/fachadaLoyola.jpg" class="img-fluid">
+                </a>
               </div>
             </div>
           </div>
 
+          @endif
         </div>
 
         <div id="hospedaje-alternativo" class="right-block">
@@ -384,24 +405,45 @@
             Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2210-6600 <br> Correo electrónico: <a href="direccion.comunicaciones@uca.edu.sv">direccion.comunicaciones@uca.edu.sv</a>.<br> Sitio web: <a target="_blank" href="http://www.uca.edu.sv/">Universidad Centroamericana “José Simeon Cañas”</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/UCA.ElSalvador">UCA El Salvador</a> <br>
           </p>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row mb-4 justify-content-center pl-3">
-                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
-                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" class="img-fluid">
-                </a>
-                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
-                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" class="img-fluid">
-                </a>
-                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
-                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" class="img-fluid">
-                </a>
-                <a href="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
-                    <img src="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" class="img-fluid">
-                </a>
+          @if (!Agent::isMobile())
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row mb-4 justify-content-center pl-3">
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" data-toggle="lightbox" data-gallery="gallery-uca" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" class="img-fluid">
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
+          @else
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row mb-4 justify-content-center">
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca-mobile" class="col-6 px-1 pb-2">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Exterior_del_edificio_ICAS.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" data-toggle="lightbox" data-gallery="gallery-uca-mobile" class="col-6 px-1 pb-2">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Hall_y_escalera_de_acceso_a_segundo_nivel.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" data-toggle="lightbox" data-gallery="gallery-uca-mobile" class="col-6 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Cafeteria_anexa_al_ICAS.jpg" class="img-fluid">
+                  </a>
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" data-toggle="lightbox" data-gallery="gallery-uca-mobile" class="col-6 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/Auditorio.jpg" class="img-fluid">
+                  </a>
+                </div>
+              </div>
+            </div>
+          @endif
 
         </div>
 
