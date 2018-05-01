@@ -50,7 +50,7 @@
           <!-- Description -->
           <div class="form-group mg-hm">
             <label for="pon-description">Descripción</label>
-              {!! Form::textareacustom('pon-description', 3, 1000, array('class' => 'form-control', 'data-mg-required'=>'')) !!}
+              {!! Form::textareacustom('pon-description', 3, 1500, array('class' => 'form-control', 'data-mg-required'=>'')) !!}
           </div>
         </div>
       </div>

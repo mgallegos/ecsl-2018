@@ -26,7 +26,7 @@
       <a id="dash-transporte-to" href="#" class="list-group-item">Solicitar transporte a su salida <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
       <a id="dash-ponencias" href="#" class="list-group-item">Administrar mis ponencias</a>
       <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Generar carta de invitación</a>
-      <a id="dash-comprobante" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a>
+      <!-- <a id="dash-comprobante" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a> -->
       <!-- <li class="list-group-item">Mis contactos</li> -->
       <!-- <li class="list-group-item">Vestibulum at eros</li> -->
     </ul>

@@ -17,7 +17,7 @@ class RegistrationForm extends Eloquent{
 	 *
 	 * @var string
 	 */
-	protected $table = 'CMS_ECSL_Registration_Form';
+	protected $table = 'ECSL_Registration_Form';
 
 	/**
 	 * The attributes that aren't mass assignable.

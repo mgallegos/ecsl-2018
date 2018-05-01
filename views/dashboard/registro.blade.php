@@ -89,7 +89,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                   </span>
-                  {!! Form::text('reg-contact', null, array('id'=>'reg-contact', 'class'=>'form-control')) !!}
+                  {!! Form::text('reg-contact-phone', null, array('id'=>'reg-contact-phone', 'class'=>'form-control')) !!}
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
-                  {!! Form::text('reg-emergency-contact', null, array('id'=>'reg-emergency-contact', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('reg-emergency-contact-name', null, array('id'=>'emergency-contact-name', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -117,7 +117,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                   </span>
-                  {!! Form::text('reg-number-emergency', null, array('id'=>'reg-number-emergency', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('reg-emergency-contact-number', null, array('id' => 'reg-emergency-contact-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -131,7 +131,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-id-card"></i></div>
                   </span>
-                  {!! Form::text('passport-number', null, array('id'=>'passport-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('reg-passport', null, array('id'=>'reg-passport', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -167,9 +167,9 @@
               <div class="form-group mg-hm">
                 <label for="reg-tshirt-size">Talla de camiseta</label>
                 @if (!Agent::isMobile())
-                  {!! Form::autocomplete('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+                  {!! Form::autocomplete('reg-shirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
-                  {!! Form::select('reg-tshirt-size', array('S','M', 'L', 'XL', 'XXL'), null, array('id'=>'reg-tshirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::select('reg-shirt-size', array('S','M', 'L', 'XL', 'XXL'), null, array('id'=>'reg-shirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
             		@endif
               </div>
             </div>
@@ -177,7 +177,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-birthdate">Fecha de nacimiento</label>
-                {!! Form::date('reg-birthdate', array('class' => 'form-control', 'data-mg-required'=>''), null, 'btn-outline-secondary', '4') !!}
+                {!! Form::date('reg-birth-date', array('class' => 'form-control', 'data-mg-required'=>''), null, 'btn-outline-secondary', '4') !!}
               </div>
             </div>
           </div>
@@ -232,7 +232,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-special-needs">Necesidades específicas</label>
-                  {!! Form::textareacustom('reg-special-needs', 4, 500, array('class' => 'form-control')) !!}
+                  {!! Form::textareacustom('reg-specific-needs', 4, 500, array('class' => 'form-control')) !!}
               </div>
             </div>
           </div>
@@ -325,7 +325,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-opensuse-linux-user' class="form-check-input" type="checkbox" value=""> openSUSE
+                    <input id='is-opensuse-linux-user' class="form-check-input" type="checkbox" value=""> OpenSUSE
                   </label>
                 </div>
                 <div class="form-check">
@@ -342,7 +342,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-damn-small-linux-user' class="form-check-input" type="checkbox" value=""> Damn Small Linux
+                    <input id='is-damn-linux-user' class="form-check-input" type="checkbox" value=""> Damn Small Linux
                   </label>
                 </div>
                 <div class="form-check">
@@ -352,7 +352,7 @@
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-elementary-os-linux-user' class="form-check-input" type="checkbox" value=""> Elementary OS
+                    <input id='is-elementary-linux-user' class="form-check-input" type="checkbox" value=""> Elementary OS
                   </label>
                 </div>
                 <div class="form-check">
@@ -377,7 +377,7 @@
           <div class="form-group row">
             <label for="reg-other-distribution" class="col-sm-3 col-form-label">Especificar distribución</label>
             <div class="col-sm-9">
-              {!! Form::text('reg-other-distribution', null, array('id'=>'reg-other-distribution', 'class'=>'form-control')) !!}
+              {!! Form::text('reg-custom-distribution', null, array('id'=>'reg-custom-distribution', 'class'=>'form-control')) !!}
             </div>
           </div>
 
@@ -416,7 +416,7 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-sex-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento.
+                    <input id='is-gender-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento.
                   </label>
                   <label class="form-check-label">
                     <input id='is-general-information-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi país, edad, institución que represento, eventos anteriores que he participado y distribuciones Linux de mi preferencia, formen parte de las estadísticas del evento.
