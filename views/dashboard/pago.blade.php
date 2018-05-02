@@ -54,7 +54,7 @@
               <li><strong>Nombre del Banco corresponsal:</strong> ...</li>
               <li><strong>Dirección del banco corresponsal:</strong> ...</li>
             </ul>
-            <div class="card mb-3">
+            <div class="card card-files mb-3">
               <div class="card-header">
                 <i class="fa fa-files-o"></i> Archivos asociados
               </div>

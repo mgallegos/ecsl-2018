@@ -151,18 +151,21 @@
 
 		$('.card-payment-deck').find('.card').each(function()
 		{
-			$(this).click(function()
+			if(!$(this).hasClass('card-files'))
 			{
-				$('.card-payment-deck').find('.card').each(function()
+				$(this).click(function()
 				{
-					$(this).removeClass('bg-success');
-				});
+					$('.card-payment-deck').find('.card').each(function()
+					{
+						$(this).removeClass('bg-success');
+					});
 
-				$(this).addClass('bg-success');
-				$('#pay-participation-type').val($(this).attr('data-type'));
-				$('#pay-amount').val($(this).attr('data-amount'));
-				$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
-			});
+					$(this).addClass('bg-success');
+					$('#pay-participation-type').val($(this).attr('data-type'));
+					$('#pay-amount').val($(this).attr('data-amount'));
+					$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+				});
+			}
 		});
 
 		$('#online-payment-form').click(function()
