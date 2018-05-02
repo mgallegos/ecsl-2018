@@ -40,8 +40,17 @@
         <!--Eje tematico -->
         <div class="col-lg-6 col-md-12">
           <div class="form-group mg-hm">
-            <label for="pon-type">Eje temático</label>
-            {!! Form::select('pon-topic', array('1' => 'Eje 1...', '2' => 'Eje ...', '3' => 'Pendientes....'), null, array('id'=>'pon-topic', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+            <label for="pon-topic">Eje temático</label>
+            <select id="pon-topic" class="form-control" data-mg-required="" name="pon-topic">
+              <optgroup label="Eje temático 1">
+                <option value="Eje 1.1">Eje 1.1</option>
+                <option value="Eje 1.2">Eje 1.2</option>
+              </optgroup>
+              <optgroup label="Eje temático 2">
+                <option value="Eje 2.1">Eje 2.1</option>
+                <option value="Eje 2.2">Eje 2.2</option>
+              </optgroup>
+            </select>
           </div>
         </div>
       </div>
