@@ -32,10 +32,9 @@
           <div class="form-group mg-hm">
             <label for="pay-form-type">Forma de pago</label>
             <div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="payment-form" id="online-payment-form" checked>
-                <label class="form-check-label" for="online-payment-form">Pago en línea</label>
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/pagadito.png" class="img-fluid">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="payment-form" id="online-payment-form" style="margin-top:2.4rem;" checked>
+                <label class="form-check-label" for="online-payment-form">Pago en línea <img src="https://storage.googleapis.com/decimaerp/organizations/15/pagadito.png" class="img-fluid"></label>
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="payment-form" id="transfer-payment-form">
