@@ -55,15 +55,15 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::eventos-anteriores');
 	});
 
-	Route::get('/cms/galeria-uca', function()
+	Route::get('/cms/carta-invitacion', function()
 	{
-		return View::make('ecsl-2018::galeria-uca');
+		return View::make('ecsl-2018::carta-invitacion-pdf');
 	});
 
 	Route::post('/cms/presentaciones', function()
 	{
 		$app = $this->app;
-		
+
     return GridEncoder::encodeRequestedData(new \Mgallegos\ECSL2018\Repositories\Presentation\EloquentPresentationGridRepository($app['db']), Request::all());
 	});
 
