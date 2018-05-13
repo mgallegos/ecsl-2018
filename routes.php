@@ -28,7 +28,12 @@ $ecslsv =  function ()
 	Route::get('/ecsltest', function()
 	{
 		// return Redirect::to('cms/dashboard')->with('ecsl2018login', true);
-		return Redirect::to('cms/dashboard')->with('ecsl2018registro', true);
+		// return Redirect::to('cms/dashboard')->with('ecsl2018registro', true);
+
+		return Redirect::to('cms/dashboard')
+			->with('ecsl2018pago', true)
+			->with('token', Request::get('token', ''))
+			->with('ern', Request::get('ern', ''));
 	});
 
 	// Route::get('/cms/ecsl/logistica', function()

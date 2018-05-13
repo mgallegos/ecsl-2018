@@ -83,6 +83,19 @@ class OpenCmsManager extends Controller {
 
 	public function getIndex()
 	{
+		// http://localhost:8000/ecsltest?token=9a5ca3487bbc8de6b89783645f9b96e0&ern=1126
+		// var_dump('token ' . $this->Input->get('token', ''));
+		// var_dump('ern ' . $this->Input->get('ern', ''));
+		// var_dump('token ' . $this->Session->get('token', ''));
+		// var_dump('ern ' . $this->Session->get('ern', ''));
+
+		$token = $this->Session->get('token', '');
+
+		if(!empty($token))
+		{
+			// $this->OpenCmsManagerService->registerPayment($token);
+		}
+
 		return $this->View->make('ecsl-2018::dashboard')
 			->with('login', $this->Session->get('ecsl2018login', false))
 			->with('registro', $this->Session->get('ecsl2018registro', false))
@@ -126,6 +139,16 @@ class OpenCmsManager extends Controller {
 	 */
 	public function postLogin()
 	{
-		return $this->OpenCmsManagerService->loginAttempt( $this->Input->json()->all() );
+		return $this->OpenCmsManagerService->attemptLogin( $this->Input->json()->all() );
+	}
+
+	/**
+	 * Handle a POST request for a payment.
+	 *
+	 * @return Response
+	 */
+	public function postPayment()
+	{
+		return $this->OpenCmsManagerService->attemptPayment( $this->Input->all() );
 	}
 }

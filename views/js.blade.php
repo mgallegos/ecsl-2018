@@ -162,7 +162,8 @@
 
 					$(this).addClass('bg-success');
 					$('#pay-participation-type').val($(this).attr('data-type'));
-					$('#pay-amount').val($(this).attr('data-amount'));
+					$('#pay-op-amount').val($(this).attr('data-amount'));
+					$('#pay-op-description').val($(this).attr('data-description'));
 					$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
 				});
 			}
@@ -178,6 +179,11 @@
 		{
 			$('#pay-btn-send, #pay-bank-transfer').show();
 			$('#pay-btn-pay').hide();
+		});
+
+		$('#pay-btn-pay').click(function()
+		{
+			$('#pay-op-form').submit();
 		});
 
 		$('#dash-transporte-from').click(function()

@@ -2,11 +2,10 @@
 <!-- <div class="card form-container-followed-by-grid-section"> -->
   <h4 class="card-header">Realizar pago</h4>
   <div class="card-body">
-    {!! Form::open(array('id'=>'pay-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
+    {!! Form::open(array('id'=>'pay-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=> URL::to('cms/public/registration'))) !!}
       {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       {!! Form::hidden('pay-id', null, array('id' => 'pay-id')) !!}
       {!! Form::hidden('pay-participation-type', null, array('id' => 'pay-participation-type')) !!}
-      {!! Form::hidden('pay-amount', null, array('id' => 'pay-amount')) !!}
       <!-- <div class="alert alert-dark" role="alert">
         <h6 class="card-title mb-0">Complete el formulario para solicitar el traslado hacia el hotel a su llegada.</h6>
       </div> -->
@@ -82,3 +81,7 @@ Dirección postal de la o cina principal del banco: Avenidas 1 y 3, calle 3. Sa
 Datos del banco corresponsal o intermediario en USA
 Nombre del Banco corresponsal: Citibank
 Dirección del banco corresponsal: New York 339 Park Avenue New York, NY 10022. USA Código ABA del corresponsal: CITIUS33 -->
+{!! Form::open(array('id' => 'pay-op-form', 'url' => URL::to('cms/dashboard/payment'), 'role'  =>  'form')) !!}
+	{!! Form::hidden('amount', 110, array('id' => 'pay-op-amount')) !!}
+	{!! Form::hidden('description', null, array('id' => 'pay-op-description')) !!}
+{!! Form::close() !!}

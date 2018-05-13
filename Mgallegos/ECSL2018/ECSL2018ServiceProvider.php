@@ -87,7 +87,7 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind('Ecsl2018OpenCmsManagementInterface', function($app)
 		{
-			return new \Mgallegos\DecimaOpenCms\OpenCms\Services\OpenCmsManagement\OpenCmsManager(
+			return new \Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager(
 					$app->make('App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface'),
 					$app->make('App\Kwaai\Security\Repositories\Journal\JournalInterface'),
 					$app->make('App\Kwaai\Organization\Repositories\Organization\OrganizationInterface'),
@@ -105,8 +105,9 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app['session'],
 					$app['validator'],
 					$app['log'],
-					15,//organization id
-					'ecsl2018'//database connection name
+					1,
+					15,
+					'ecsl2018'
 			);
 		});
 	}
