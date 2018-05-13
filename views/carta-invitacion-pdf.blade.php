@@ -2,11 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
-    @include('layouts.header-css-cdn-b4-latest')
-    @include('layouts.header-javascript-cdn-b4-latest')
+
     <title>ECSL-2018</title>
     <style>
 
+      .root{
+        padding-left: 25px;
+        padding-right: 25px;
+        font-size: 1.8rem;
+        display: inline-block;
+        text-align: justify;
+        line-height: 35pt;
+
+      }
       .contenedor{
         padding-left: 25px;
         padding-right: 25px;
@@ -14,19 +22,28 @@
         position: relative;
         display: inline-block;
         text-align: justify;
+        margin-bottom: 400px;
+      }
+
+      .footer{
+        padding-left: 25px;
+        padding-right: 25px;
+        font-size: 2rem;
+        position: absolute;
+
       }
 
       .txt-fecha{
         position: absolute;
-        top: 125px;
-        right: 50px;
+        top: 200px;
+        right: 60px;
       }
 
       .txt-cuerpo{
         position: absolute;
-        top: 250px;
-        left: 50px;
-        right:50px;
+        top: 300px;
+        left: 60px;
+        right:60px;
       }
 
       .pt{
@@ -45,12 +62,12 @@
 
   <body class="pt-3">
 
-    <div class="contenedor pt-0" width="100%" >
+    <div class="" width="100%" >
       <img  src="https://storage.googleapis.com/decimaerp/organizations/15/encabezado.png" class ="" width="100%" >
     </div>
 
-    <div class="contenedor pt">
-      <img  src="https://storage.googleapis.com/decimaerp/organizations/15/fondo.png" width="90%" style="padding-left:150px;">
+    <div class="root pt" width="100%">
+      <img  src="https://storage.googleapis.com/decimaerp/organizations/15/fondo.png" width="90%" height="90%" style="padding-left:50px;" class="contenedor">
 
       <div class="txt-fecha">
         <p>Sábado 17 de marzo de 2018</p>
@@ -77,37 +94,41 @@
           En base a lo anteriormente expuesto, se convoca a  <strong>[NOMBRE DE LA PERSONA INVITADA]</strong> para formar parte de la presente
           edición del ECSL.
         </p>
+
+        <table width="100%" style="text-align: center; line-height: 10pt;">
+          <tr>
+            <td>
+              <div class="col text-center" style = "">
+                <img height="150px"src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_CJMP.png">
+                <p>Carlos Juan Martín Pérez</p>
+                <small>
+                  <p class="pb-0 mb-0">Representante General del</p>
+                  <p class="pt-0 mt-0">Comité Organizador del ECSL</p>
+                </small>
+              </div>
+            </td>
+            <td>
+              <div class="col text-center">
+                <img height="150px" src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_KH.jpeg">
+                <p>Karla Hernández</p>
+                <small>
+                  <p class="pb-0 mb-0">Administración y Marketing del </p>
+                  <p class="pt-0 mt-0">Comité Organizador del ECSL</p>
+                </small>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+        <strong><p class="mb" style="text-align: center;">Sello digital</p></strong>
+
+
+        <p class="mb" style="text-align: center;">Antiguo Cuscatlán, San Salvador, El Salvador, Centroamérica.</p>
+
       </div>
-
-      <div class="container mb pt">
-        <div class="row">
-          <div class="col text-center">
-            <img height="150px"src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_CJMP.png">
-            <p>Carlos Juan Martín Pérez</p>
-            <small>
-              <p class="pb-0 mb-0">Representante General del</p>
-              <p class="pt-0 mt-0">Comité Organizador del ECSL</p>
-            </small>
-          </div>
-          <div class="col text-center">
-            <img height="150px" src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_KH.jpeg">
-            <p>Karla Hernández</p>
-            <small>
-              <p class="pb-0 mb-0">Administración y Marketing del </p>
-              <p class="pt-0 mt-0">Comité Organizador del ECSL</p>
-            </small>
-          </div>
-        </div>
-      </div>
-
-      <p class="mb text-center font-weight-bold">Sello digital</p>
-
-      <p class="mb text-center">Antiguo Cuscatlán, San Salvador, El Salvador, Centroamérica.</p>
-
-
     </div>
 
-    <div class="contenedor mt-5 mb-3" width="100%" >
+    <div class="" width="100%">
       <img  src="https://storage.googleapis.com/decimaerp/organizations/15/PieDePagina.png" class ="" width="100%" >
     </div>
 
