@@ -37,7 +37,7 @@
               </div>
               <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="payment-form" id="transfer-payment-form">
-                <label class="form-check-label" for="transfer-payment-form">Transferencia bancaria</label>
+                <label class="form-check-label" for="transfer-payment-form">Transferencia/Depósito bancario</label>
               </div>
             </div>
           </div>

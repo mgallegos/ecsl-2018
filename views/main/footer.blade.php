@@ -1,5 +1,8 @@
 <!-- Pie de Pagina -->
-<footer class="py-3 bg-dark">
+<footer class="footer bg-dark">
+  <!-- <div class="container">
+    <span class="text-muted">Place sticky footer content here.</span>
+  </div> -->
   <div class="container">
     <div class="row">
       <div class="col-md-8">

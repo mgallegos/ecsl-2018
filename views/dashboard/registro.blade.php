@@ -19,8 +19,8 @@
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
                   {!! Form::text('reg-firstname', null, array('id'=>'reg-firstname', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
-                  {!! Form::hidden('reg-id', null, array('id' => 'reg-id')) !!}
-                  {!! Form::hidden('reg-insight', null, array('id' => 'reg-insight')) !!}
+                  {!! Form::hidden('reg-user-id', null, array('id' => 'reg-user-id')) !!}
+                  {!! Form::hidden('reg-registration-form-id', null, array('id' => 'reg-registration-form-id')) !!}
                 </div>
               </div>
             </div>
@@ -135,6 +135,7 @@
                 </div>
               </div>
             </div>
+
             <!-- Country -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
@@ -146,6 +147,33 @@
             		@endif
               </div>
             </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-passport-number">Departamento/Provincia</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-map"></i></div>
+                  </span>
+                  {!! Form::text('reg-state', null, array('id'=>'reg-state', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-passport-number">Municipio</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-map-marker"></i></div>
+                  </span>
+                  {!! Form::text('reg-district', null, array('id'=>'reg-district', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <!-- Address -->
@@ -239,7 +267,7 @@
 
           <!-- Previous ECSL -->
           <div class="form-group mg-hm">
-            <label>Encuentros anteriores en los que he participado</label>
+            <label>Encuentros anteriores en los que ha participado</label>
             <div class="row">
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
@@ -409,6 +437,20 @@
             </div>
           </div>
 
+          <div class="form-group mg-hm alert alert-success">
+            <label><strong>Día social</strong></label>
+            <hr style="margin-top:0;margin-bottom: .5rem;"/>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input id='is-interested-in-social-day' class="form-check-input" type="checkbox" value=""> Estoy interesado en participar en el día social que se llevará a cabo en la playa El Amatal, el sábado 14 de julio del 2018 (el costo es adicional a la cuota del evento) y me gustaría recibir información adicional.
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="form-group mg-hm alert alert-warning">
             <label><strong>Privacidad</strong></label>
             <hr style="margin-top:0;margin-bottom: .5rem;"/>
@@ -426,32 +468,9 @@
                   </label>
                 </div>
               </div>
-              <!-- <div class="col-lg-6 col-md-12">
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input id='is-attending' class="form-check-input" type="checkbox" value=""> Asistir al evento
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input id='is-speaker' class="form-check-input" type="checkbox" value=""> Participar como ponente
-                  </label>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-12">
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input id='is-volunteer' class="form-check-input" type="checkbox" value=""> Colaborar como voluntario
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input id='is-organizer' class="form-check-input" type="checkbox" value=""> Colaborar en la organización
-                  </label>
-                </div>
-              </div> -->
             </div>
           </div>
+
           {!! Form::button('Registrarse', array('id'=>'reg-btn-register', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
         </div>
       </div>

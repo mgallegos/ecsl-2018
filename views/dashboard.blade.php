@@ -19,13 +19,13 @@
   <div class="col-xl-3 col-lg-4 col-12 mb-3">
     <!-- <h2 class="my-4">Opciones</h2> -->
     <ul class="list-group dashboard-list-group">
-      <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }}">Iniciar sesión</a>
+      <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }} {{ $loggedUserDisabledCssClass }}" {{ $loggedUserDisabledInputAttribute }} data-guest-user="">Iniciar sesión</a>
       <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">Registrarse</a>
-      <a id="dash-pago" href="#" class="list-group-item">Realizar pago</a>
-      <a id="dash-transporte-from" href="#" class="list-group-item">Solicitar transporte a su llegada <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
-      <a id="dash-transporte-to" href="#" class="list-group-item">Solicitar transporte a su salida <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
-      <a id="dash-ponencias" href="#" class="list-group-item">Administrar mis ponencias</a>
-      <a id="dash-carta" href="#" class="list-group-item disabled" disabled="disabled">Generar carta de invitación</a>
+      <a id="dash-pago" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Realizar pago</a>
+      <a id="dash-transporte-from" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Solicitar transporte a su llegada <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
+      <a id="dash-transporte-to" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Solicitar transporte a su salida <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
+      <a id="dash-ponencias" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Administrar mis ponencias</a>
+      <a id="dash-carta" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Generar carta de invitación</a>
       <!-- <a id="dash-comprobante" href="#" class="list-group-item disabled" disabled="disabled">Descargar comprob. de pago</a> -->
       <!-- <li class="list-group-item">Mis contactos</li> -->
       <!-- <li class="list-group-item">Vestibulum at eros</li> -->

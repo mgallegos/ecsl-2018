@@ -19,6 +19,8 @@ class CreateEcslTablePartOne extends Migration
         $table->string('emergency_contact_phone', 60)->nullable();
         $table->string('passport', 60)->nullable();
         $table->string('country', 60)->nullable();
+        $table->string('district', 60)->nullable();
+        $table->string('state', 60)->nullable();
         $table->string('shirt_size', 10)->nullable();
         $table->date('birth_date')->nullable();
         $table->string('gender', 60)->nullable();
@@ -52,17 +54,19 @@ class CreateEcslTablePartOne extends Migration
         $table->string('custom_distribution', 60)->nullable();
         $table->boolean('is_vegetarian')->default(false);
         $table->boolean('is_interested_in_competition')->default(false);
+        $table->boolean('is_interested_in_social_day')->default(false);
         $table->boolean('is_gender_visible')->default(false);
         $table->boolean('is_general_information_visible')->default(false);
         $table->boolean('is_photo_visible')->default(false);
 
-        $table->unsignedInteger('arriving_transportation_request_id')->index();
-        $table->foreign('arriving_transportation_request_id')->references('id')->on('OCMS_Transportation_Request');
-        $table->unsignedInteger('leaving_transportation_request_id')->index();
-        $table->foreign('leaving_transportation_request_id')->references('id')->on('OCMS_Transportation_Request');
+        //foreign Keys
         $table->unsignedInteger('user_id')->index();
         $table->foreign('user_id')->references('id')->on('OCMS_User');
-        $table->timestamps();
+        $table->unsignedInteger('organization_id')->index();
+
+        //timestamps
+  			$table->timestamps(); //Adds created_at and updated_at columns
+  			$table->softDeletes(); //Adds deleted_at column for soft deletes
       });
     }
 
@@ -73,6 +77,6 @@ class CreateEcslTablePartOne extends Migration
      */
     public function down()
     {
-        Schema::drop('ECSL_Registration');
+        Schema::drop('ECSL_Registration_Form');
     }
 }

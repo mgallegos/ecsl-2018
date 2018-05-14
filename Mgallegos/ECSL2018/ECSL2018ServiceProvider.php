@@ -105,6 +105,8 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app['session'],
 					$app['validator'],
 					$app['log'],
+					$app->make('Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface'),
+					65,
 					1,
 					15,
 					'ecsl2018'

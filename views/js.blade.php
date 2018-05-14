@@ -28,16 +28,16 @@
 		}
 		if(gender == 'Prefiero no decirlo')
 		{
-			if($('#is-sex-visible').is(":checked"))
+			if($('#is-gender-visible').is(":checked"))
 			{
-				$('#is-sex-visible').click();
+				$('#is-gender-visible').click();
 			}
 		}
 		else
 		{
-			if(!$('#is-sex-visible').is(":checked"))
+			if(!$('#is-gender-visible').is(":checked"))
 			{
-				$('#is-sex-visible').click();
+				$('#is-gender-visible').click();
 			}
 		}
 
@@ -69,7 +69,10 @@
 
 			$('.dashboard-list-group').children().each(function( index )
 			{
-			  $(this).removeAttr('disabled');
+			  if(empty($(this).attr('data-guest-user')))
+				{
+					$(this).removeAttr('disabled');
+				}
 			});
 		}, 500);
 	}
@@ -177,6 +180,11 @@
 
 		$('#transfer-payment-form').click(function()
 		{
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
 			$('#pay-btn-send, #pay-bank-transfer').show();
 			$('#pay-btn-pay').hide();
 		});
@@ -325,31 +333,27 @@
 				return;
 			}
 
-			return;
+			$('.decima-erp-tooltip').tooltip('hide');
 
-			if(!$('#is-attending').is(":checked") && !$('#is-speaker').is(":checked") && !$('#is-volunteer').is(":checked") && !$('#is-organizer').is(":checked"))
+			if($('#reg-user-id').isEmpty())
 			{
-				$('#registration-form').showAlertAsFirstChild('alert-info', 'Debes seleccionar al menos una de las opciones de participación disponible', 10000);
-				$('#participation-row').removeClass('alert-primary');
-				$('#participation-row').addClass('alert-danger');
-				return;
+				url = url + '/create';
 			}
-
-			$('#participation-row').removeClass('alert-danger');
-			$('#participation-row').addClass('alert-primary');
-			$('#registration-form').jqMgVal('clearContextualClasses');
-
-			return;
+			else
+			{
+				url = url + '/update';
+				action = 'edit';
+			}
 
 			$.ajax(
 			{
 				type: 'POST',
-				data: JSON.stringify($('#registration-form').formToObject()),
+				data: JSON.stringify($('#reg-form').formToObject('reg-')),
 				dataType : 'json',
 				url: $('#registration-form').attr('action'),
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					handleServerExceptions(jqXHR, 'ob-fa-form');
+					handleServerExceptions(jqXHR, 'reg-form');
 				},
 				beforeSend:function()
 				{
@@ -360,13 +364,21 @@
 				{
 					if(json.success)
 					{
-						$('#registration-form').showAlertAsFirstChild('alert-success', 'Tu registro se completó exitosamente, te esperamos en el evento!', 10000);
-						$('#registration-form').jqMgVal('clearContextualClasses');
+						if(action == 'edit')
+						{
+							$('#sale-som-btn-toolbar').showAlertAfterElement('alert-success alert-custom', json.success, 6000);
+							$('#reg-form').jqMgVal('clearContextualClasses');
+						}
+						else
+						{
+							$('#reg-form').showAlertAsFirstChild('alert-success', 'El primer paso de su registro se realizó exitosamente, debe realizar el pago para completarlo. <br> <center><a href="#" class="alert-link" onclick="$(\'#dash-login\').click();">Haz clic aquí para iniciar sesión</a></center>', 40000);
+							$('#reg-form').jqMgVal('clearForm');
+						}
 					}
 
 					if(json.validationFailed)
 	        {
-	          $('#up-user-form').showServerErrorsByField(json.fieldValidationMessages, 'up-');
+	          $('#reg-form').showServerErrorsByField(json.fieldValidationMessages, 'reg-');
 	        }
 
 					$('#app-loader').addClass('hidden-xs-up');

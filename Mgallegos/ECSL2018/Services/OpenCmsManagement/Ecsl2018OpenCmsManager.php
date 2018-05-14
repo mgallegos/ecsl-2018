@@ -55,7 +55,45 @@ use App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface;
 
 use App\Kwaai\Security\Repositories\Journal\JournalInterface;
 
+use Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface;
+
 class Ecsl2018OpenCmsManager extends OpenCmsManager {
+
+  /**
+	 * Sale Order Manager Service
+	 *
+	 * @var Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface
+	 *
+	 */
+	protected $SaleManager;
+
+  /**
+	* Virtual assistant id
+	*
+	* @var Integer
+	*/
+	protected $virtualAssistantId;
+
+  /**
+	* Event id
+	*
+	* @var Integer
+	*/
+	protected $eventId;
+
+  /**
+	* Organization id
+	*
+	* @var Integer
+	*/
+	protected $organizationId;
+
+  /**
+	* CMS Database Connection
+	*
+	* @var Integer
+	*/
+	protected $cmsDatabaseConnectionName;
 
 	public function __construct(
 		JournalManagementInterface $JournalManager,
@@ -75,6 +113,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		SessionManager $Session,
 		Factory $Validator,
 		Writer $Log,
+		SaleOrderManagementInterface $SaleManager,
+		$virtualAssistantId,
 		$eventId,
 		$organizationId,
 		$cmsDatabaseConnectionName
@@ -114,7 +154,11 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->Log = $Log;
 
+    $this->virtualAssistantId = $virtualAssistantId;
+
     $this->eventId = $eventId;
+
+    $this->SaleManager = $SaleManager;
 
     $this->organizationId = $organizationId;
 
@@ -168,8 +212,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => array('email' => $this->Lang->get('security/user-management.UserExistsException'))));
 		}
 
-
-		// Email
+		// Activation by email
 		// $input['is_active'] = 0;
 		// $email = $input['email'];
 		// $value = str_shuffle(sha1($email.spl_object_hash($this).microtime(true)));
@@ -181,25 +224,57 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		try
 		{
-			$User = $this->User->create($input);
+      $input['organization_id'] = $this->organizationId;
+
+			$User = $this->User->create(
+        array(
+          'firstname' => $input['firstname'],
+          'lastname' => $input['lastname'],
+          'email' => $input['email'],
+          'password' => $input['password'],
+          'organization_id' => $input['organization_id'],
+          'is_active' => 1,
+        ),
+        $this->cmsDatabaseConnectionName
+      );
+
+      unset(
+        $input['token'],
+        $input['firstname'],
+        $input['lastname'],
+        $input['email'],
+        $input['password']
+      );
+
+      $input['user_id'] = $User->id;
+
+      $RegistrationForm = $this->RegistrationForm->create($input, $this->cmsDatabaseConnectionName);
+
+      // client_id
+      // payment_id
+      // arriving_transportation_request_id
+      // leaving_transportation_request_id
+
 		  // $Journal = $this->Journal->create(array('journalized_id' => $User->id, 'journalized_type' => $this->User->getTable(), 'user_id' => $input['created_by']));
 		  // $this->Journal->attachDetail($Journal->id, array('n=> $this->AuthenticationManager->getCurrentUserOrganization('name')))), $Journal);
-			// $data = $input;
-			// unset($data['password'], $data['activation_code']);
-			// $this->Event->fire(new OnNewInfoMessage(array('message' => '[SECURITY EVENT] A new admin user has been added to the system', 'context' => $data), $this->AuthenticationManager));
+
+      $this->Log->info('[SECURITY EVENT] A new user has registered at ECSL 2018', array('context' => array()));
+
 			$this->commit($openTransaction);
 		}
-		catch (\Exception $e) {
+		catch (\Exception $e)
+    {
 				$this->rollBack($openTransaction);
 
 				throw $e;
-		} catch (\Throwable $e) {
+		} catch (\Throwable $e)
+    {
 				$this->rollBack($openTransaction);
 
 				throw $e;
 		}
 
-		// Email
+		// Send email
 		// $replyToEmail = $this->Config->get('system-security.reply_to_email');
 		// $replyToName = $this->Config->get('system-security.reply_to_name');
 		//
@@ -360,7 +435,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
                     $details[] =
                         array(
                             "quantity"      => 1,
-                            "description"   => 'Pago de cuota ECSL 2018',
+                            "description"   => $input['description'],
                             "price"         => $input['amount'],
                             // "url_product"   => $_POST["url1"]
                         );

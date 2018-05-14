@@ -4,6 +4,7 @@
 
   body {
     padding-top: 86px;
+    /* margin-bottom: 56px; */
   }
 
   .card-logo{
@@ -37,6 +38,15 @@
   /* .card-payment-deck .card-deck .card .ul > li { */
   .card-payment-deck li {
     background-color: inherit !important;
+  }
+
+  .footer {
+    /* position: absolute; */
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    /* background-color: #f5f5f5; */
   }
 
   @media (min-width: 576px) and (max-width: 767.98px) {

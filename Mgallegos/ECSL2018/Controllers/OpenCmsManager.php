@@ -96,9 +96,25 @@ class OpenCmsManager extends Controller {
 			// $this->OpenCmsManagerService->registerPayment($token);
 		}
 
+		$guestUserDisabledCssClass = '';
+		$guestUserDisabledInputAttribute = '';
+
+		$guestUserDisabledCssClass = 'disabled';
+		$guestUserDisabledInputAttribute = 'disabled="disabled"';
+
+		$loggedUserDisabledCssClass = 'disabled';
+		$loggedUserDisabledInputAttribute = 'disabled="disabled"';
+
+		$loggedUserDisabledCssClass = '';
+		$loggedUserDisabledInputAttribute = '';
+
 		return $this->View->make('ecsl-2018::dashboard')
 			->with('login', $this->Session->get('ecsl2018login', false))
 			->with('registro', $this->Session->get('ecsl2018registro', false))
+			->with('guestUserDisabledCssClass', $guestUserDisabledCssClass)
+			->with('guestUserDisabledInputAttribute', $guestUserDisabledInputAttribute)
+			->with('loggedUserDisabledCssClass', $loggedUserDisabledCssClass)
+			->with('loggedUserDisabledInputAttribute', $loggedUserDisabledInputAttribute)
 			->with('prefix', 'pay-')
 			->with('appInfo', array('id' => 'dashboard'))
 			->with('status', 'En revisión')
