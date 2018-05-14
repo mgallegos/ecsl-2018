@@ -382,7 +382,7 @@
 						}
 						else
 						{
-							$('#reg-form').showAlertAsFirstChild('alert-success', 'El primer paso de su registro se realizó exitosamente, debe realizar el pago para completarlo. <br> <center><a href="#" class="alert-link" onclick="$(\'#dash-login\').click();">Haga clic aquí para iniciar sesión</a></center>', 40000);
+							$('#reg-form').showAlertAsFirstChild('alert-success', 'El registro se realizó exitosamente, no olvide que debe realizar el pago para confirmar su participación. <br> <center><a href="#" class="alert-link" onclick="$(\'#dash-login\').click();">Haga clic aquí para iniciar sesión</a></center>', 40000);
 							$('#reg-form').jqMgVal('clearForm');
 						}
 					}
