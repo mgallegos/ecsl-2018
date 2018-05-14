@@ -1,4 +1,9 @@
 <script>
+	@if(isset($cmsLoggedUser))
+		var loggedUser = {!! json_encode($cmsLoggedUser) !!};
+	@else
+		var loggedUser = {};
+	@endif
 
 	var dashPreviousEcsl = [
 		{'label':'Nicaragua 2009', 'value':'ECSL2009'},
@@ -292,21 +297,19 @@
 
 		$('#login-btn').click(function()
 		{
-			var data = $('#login-form').formToObject('ob-fa-');
+			$('#login-form-alert').remove();
 
 			if(!$('#login-form').jqMgVal('isFormValid'))
 			{
 				return;
 			}
 
-			return;
-
 			$.ajax(
 			{
 				type: 'POST',
-				data: JSON.stringify(data),
+				data: JSON.stringify($('#login-form').formToObject('login-')),
 				dataType : 'json',
-				url: $('#ob-fa-form').attr('action'),
+				url: $('#login-form').attr('action'),
 				error: function (jqXHR, textStatus, errorThrown)
 				{
 					handleServerExceptions(jqXHR, 'ob-fa-form');
@@ -318,16 +321,24 @@
 				},
 				success:function(json)
 				{
-					$('#ob-fa-form').showAlertAsFirstChild('alert-success', 'Ha sido suscrito, gracias por su interés.', 10000);
-					$('#ob-fa-form').jqMgVal('clearForm');
-					$('#app-loader').addClass('hidden-xs-up');
-					enableAll();
+					if(json.message != 'success')
+					{
+						$('#login-form').showAlertAsFirstChild('alert-info',json.message, 7000);
+						$('#app-loader').addClass('hidden-xs-up');
+						enableAll();
+					}
+					else
+					{
+						window.location.replace($('#app-url').val() + '/cms/dashboard');
+					}
 				}
 			});
 		});
 
 		$('#reg-btn-register').click(function()
 		{
+			var url = $('#reg-form').attr('action'), action = 'new'
+
 			if(!$('#reg-form').jqMgVal('isFormValid'))
 			{
 				return;
@@ -350,7 +361,7 @@
 				type: 'POST',
 				data: JSON.stringify($('#reg-form').formToObject('reg-')),
 				dataType : 'json',
-				url: $('#registration-form').attr('action'),
+				url: url,
 				error: function (jqXHR, textStatus, errorThrown)
 				{
 					handleServerExceptions(jqXHR, 'reg-form');
@@ -366,17 +377,20 @@
 					{
 						if(action == 'edit')
 						{
-							$('#sale-som-btn-toolbar').showAlertAfterElement('alert-success alert-custom', json.success, 6000);
+							$('#reg-form').showAlertAfterElement('alert-success alert-custom', json.success, 6000);
 							$('#reg-form').jqMgVal('clearContextualClasses');
 						}
 						else
 						{
-							$('#reg-form').showAlertAsFirstChild('alert-success', 'El primer paso de su registro se realizó exitosamente, debe realizar el pago para completarlo. <br> <center><a href="#" class="alert-link" onclick="$(\'#dash-login\').click();">Haz clic aquí para iniciar sesión</a></center>', 40000);
+							$('#reg-form').showAlertAsFirstChild('alert-success', 'El primer paso de su registro se realizó exitosamente, debe realizar el pago para completarlo. <br> <center><a href="#" class="alert-link" onclick="$(\'#dash-login\').click();">Haga clic aquí para iniciar sesión</a></center>', 40000);
 							$('#reg-form').jqMgVal('clearForm');
 						}
 					}
-
-					if(json.validationFailed)
+					else if(json.info)
+					{
+						$('#reg-form').showAlertAsFirstChild('alert-info', json.info, 12000);
+					}
+					else if(json.validationFailed)
 	        {
 	          $('#reg-form').showServerErrorsByField(json.fieldValidationMessages, 'reg-');
 	        }
@@ -407,6 +421,11 @@
 			{
 				return validateToken(event, dashPreviousEcsl);
 			});
+
+			if(!empty(loggedUser))
+			{
+				populateFormFields(loggedUser, 'reg-');
+			}
 		}, 500);
 
 

@@ -35,27 +35,33 @@ use Illuminate\Validation\Factory;
 
 use Illuminate\Log\Writer;
 
+use Illuminate\Database\DatabaseManager;
+
 use Symfony\Component\Translation\TranslatorInterface;
 
-use App\Kwaai\Organization\Organization;
+use App\Kwaai\Security\Services\AuthenticationManagement\AuthenticationManagementInterface;
+
+use Mgallegos\DecimaOpenCms\OpenCms\Services\SettingManagement\SettingManagementInterface;
 
 use Mgallegos\DecimaOpenCms\OpenCms\Services\OpenCmsManagement\OpenCmsManager;
 
+use Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface;
+
 use Mgallegos\DecimaOpenCms\OpenCms\Repositories\User\UserInterface;
 
-use Mgallegos\DecimaOpenCms\OpenCms\Repositories\RegistrationForm\RegistrationFormInterface;
+use Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface;
+
+use Mgallegos\ECSL2018\Repositories\RegistrationForm\RegistrationFormInterface;
+
+use Mgallegos\DecimaOpenCms\OpenCms\Repositories\Payment\PaymentInterface;
 
 use App\Kwaai\System\Repositories\Currency\CurrencyInterface;
 
 use App\Kwaai\Organization\Repositories\Organization\OrganizationInterface;
 
-use App\Kwaai\Security\Services\Authentication\AuthenticationInterface;
-
 use App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface;
 
 use App\Kwaai\Security\Repositories\Journal\JournalInterface;
-
-use Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface;
 
 class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
@@ -96,12 +102,16 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	protected $cmsDatabaseConnectionName;
 
 	public function __construct(
+    AuthenticationManagementInterface $AuthenticationManager,
 		JournalManagementInterface $JournalManager,
+		SettingManagementInterface $SettingManager,
 		JournalInterface $Journal,
 		OrganizationInterface $Organization,
 		CurrencyInterface $Currency,
 		UserInterface $User,
+		UserEventInterface $UserEvent,
 		RegistrationFormInterface $RegistrationForm,
+		PaymentInterface $Payment,
 		TranslatorInterface $Lang,
 		UrlGenerator $Url,
 		Redirector $Redirector,
@@ -113,14 +123,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		SessionManager $Session,
 		Factory $Validator,
 		Writer $Log,
-		SaleOrderManagementInterface $SaleManager,
-		$virtualAssistantId,
-		$eventId,
+    DatabaseManager $DB,
+    Carbon $Carbon,
 		$organizationId,
-		$cmsDatabaseConnectionName
+		$cmsDatabaseConnectionName,
+    $virtualAssistantId,
+		$eventId,
+    SaleOrderManagementInterface $SaleManager
 	)
 	{
+    $this->AuthenticationManager = $AuthenticationManager;
+
 		$this->JournalManager = $JournalManager;
+
+    $this->SettingManager = $SettingManager;
 
     $this->Journal = $Journal;
 
@@ -128,7 +144,11 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		$this->User = $User;
 
+    $this->UserEvent = $UserEvent;
+
 		$this->RegistrationForm = $RegistrationForm;
+
+		$this->Payment = $Payment;
 
 		$this->Currency = $Currency;
 
@@ -154,17 +174,21 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->Log = $Log;
 
-    $this->virtualAssistantId = $virtualAssistantId;
+    $this->DB = $DB;
 
-    $this->eventId = $eventId;
-
-    $this->SaleManager = $SaleManager;
+    $this->Carbon = $Carbon;
 
     $this->organizationId = $organizationId;
 
     $this->cmsDatabaseConnectionName = $cmsDatabaseConnectionName;
 
     $this->defaultDatabaseConnectionName = 'default';
+
+    $this->virtualAssistantId = $virtualAssistantId;
+
+    $this->eventId = $eventId;
+
+    $this->SaleManager = $SaleManager;
 
 		$this->rules = array(
 			'kwaai_name' => 'honeypot',
@@ -181,7 +205,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	}
 
 	/**
-	 * Create a new user.
+	 * Create a new CMS User.
 	 *
 	 * @param array $input
 	 *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email, 'password'=>$password, 'is_active'=>$is_active, 'created_by'=>$created_by);
@@ -196,7 +220,16 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	 */
 	public function create(array $input, $openTransaction = true)
 	{
+    $this->rules = array(
+			'kwaai_name' => 'honeypot',
+			'kwaai_time' => 'required|honeytime:2',
+			'email' => 'required|email',
+			'password' => 'min:6|required|same:confirm_password'
+		);
+    
 		$data = array(
+      'kwaai_name' => $input['kwaai_name'],
+			'kwaai_time' => $input['kwaai_time'],
 			'email' => $input['email'],
 			'password' => $input['password'],
 			'confirm_password' => $input['confirm_password']
@@ -231,22 +264,42 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
           'firstname' => $input['firstname'],
           'lastname' => $input['lastname'],
           'email' => $input['email'],
-          'password' => $input['password'],
+          'password' => bcrypt($input['password']),
           'organization_id' => $input['organization_id'],
           'is_active' => 1,
         ),
         $this->cmsDatabaseConnectionName
       );
 
+      $input['user_id'] = $User->id;
+
+      $this->UserEvent->create(
+        array(
+          'user_id' => $input['user_id'],
+          'event_id' => $this->eventId,
+          'organization_id' => $input['organization_id'],
+        ),
+        $this->cmsDatabaseConnectionName
+      );
+
+      $context = array_only($input, ['firstname', 'lastname', 'email']);
+
       unset(
         $input['token'],
         $input['firstname'],
         $input['lastname'],
         $input['email'],
-        $input['password']
+        $input['password'],
+        $input['kwaai_name'],
+        $input['kwaai_time'],
+        $input['confirm_password'],
+        $input['registration_form_id']
       );
 
-      $input['user_id'] = $User->id;
+      if(isset($input['birth_date']) && !empty($input['birth_date']))
+      {
+        $input['birth_date'] = $this->Carbon->createFromFormat($this->Lang->get('form.phpShortDateFormat'), $input['birth_date'])->format('Y-m-d');
+      }
 
       $RegistrationForm = $this->RegistrationForm->create($input, $this->cmsDatabaseConnectionName);
 
@@ -258,7 +311,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		  // $Journal = $this->Journal->create(array('journalized_id' => $User->id, 'journalized_type' => $this->User->getTable(), 'user_id' => $input['created_by']));
 		  // $this->Journal->attachDetail($Journal->id, array('n=> $this->AuthenticationManager->getCurrentUserOrganization('name')))), $Journal);
 
-      $this->Log->info('[SECURITY EVENT] A new user has registered at ECSL 2018', array('context' => array()));
+      $this->Log->info('[SECURITY EVENT] A new user has registered at ECSL 2018', $context);
 
 			$this->commit($openTransaction);
 		}

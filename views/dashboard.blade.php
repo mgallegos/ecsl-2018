@@ -19,8 +19,8 @@
   <div class="col-xl-3 col-lg-4 col-12 mb-3">
     <!-- <h2 class="my-4">Opciones</h2> -->
     <ul class="list-group dashboard-list-group">
-      <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }} {{ $loggedUserDisabledCssClass }}" {{ $loggedUserDisabledInputAttribute }} data-guest-user="">Iniciar sesión</a>
-      <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">Registrarse</a>
+      <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }} {{ $loggedUserDisabledCssClass }}" {{ $loggedUserDisabledInputAttribute }} data-guest-user="{{ $loggedUserDisabledCssClass }}">Iniciar sesión</a>
+      <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">{{ $registroLabel }}</a>
       <a id="dash-pago" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Realizar pago</a>
       <a id="dash-transporte-from" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Solicitar transporte a su llegada <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
       <a id="dash-transporte-to" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Solicitar transporte a su salida <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
@@ -38,7 +38,7 @@
     <div id="dash-registro-container" style="{{ empty($registro)?'display:none;':'' }}">
       @include('ecsl-2018::dashboard/registro')
     </div>
-    <div id="dash-pago-container" style="display:none;">
+    <div id="dash-pago-container" style="{{ empty($pago)?'display:none;':'' }}">
       @include('ecsl-2018::dashboard/pago')
     </div>
     <div id="dash-transporte-from-container" style="display:none;">

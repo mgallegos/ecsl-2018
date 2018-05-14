@@ -1,8 +1,8 @@
 <div class="card mb-3">
-  <h4 class="card-header">Registrarse</h4>
+  <h4 class="card-header">{{ $registroLabel }}</h4>
   <div class="card-body">
-    {!! Form::open(array('id'=>'reg-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
-      {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
+    {!! Form::open(array('id'=>'reg-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/dashboard'))) !!}
+      {!! Honeypot::generate('reg-kwaai-name', 'reg-kwaai-time') !!}
       <!-- <div class="alert alert-dark" role="alert">
         <h6 class="card-title mb-0">Complete el formulario para poder realizar el pago y proponer una o más ponencias.</h6>
       </div> -->
@@ -61,7 +61,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-key"></i></div>
                   </span>
-                  {!! Form::password('reg-password-confirmation', array('id'=>'reg-password-confirmation', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::password('reg-confirm-password', array('id'=>'reg-confirm-password', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -104,7 +104,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-user"></i></div>
                   </span>
-                  {!! Form::text('reg-emergency-contact-name', null, array('id'=>'emergency-contact-name', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('reg-emergency-contact-name', null, array('id'=>'reg-emergency-contact-name', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -117,7 +117,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-phone"></i></div>
                   </span>
-                  {!! Form::text('reg-emergency-contact-number', null, array('id' => 'reg-emergency-contact-number', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::text('reg-emergency-contact-phone', null, array('id' => 'reg-emergency-contact-phone', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@
           <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-passport-number">Pasaporte</label>
+                <label for="reg-passport-number">NIT/DUI/Pasaporte (extranjeros)</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-id-card"></i></div>
@@ -241,7 +241,7 @@
               <span class="input-group-prepend">
                 <div class="input-group-text"><i class="fa fa-university"></i></div>
               </span>
-              {!! Form::text('institution', null, array('id'=>'institution', 'class'=>'form-control')) !!}
+              {!! Form::text('reg-institution', null, array('id'=>'reg-institution', 'class'=>'form-control')) !!}
             </div>
           </div>
 
@@ -272,49 +272,49 @@
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2009' class="form-check-input" type="checkbox" value=""> Nicaragua 2009
+                    <input id='reg-participated-in-ecsl2009' class="form-check-input" type="checkbox" value=""> Nicaragua 2009
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2010' class="form-check-input" type="checkbox" value=""> Costa Rica 2010
+                    <input id='reg-participated-in-ecsl2010' class="form-check-input" type="checkbox" value=""> Costa Rica 2010
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2011' class="form-check-input" type="checkbox" value=""> El Salvador 2011
+                    <input id='reg-participated-in-ecsl2011' class="form-check-input" type="checkbox" value=""> El Salvador 2011
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2012' class="form-check-input" type="checkbox" value=""> Guatemala 2012
+                    <input id='reg-participated-in-ecsl2012' class="form-check-input" type="checkbox" value=""> Guatemala 2012
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2013' class="form-check-input" type="checkbox" value=""> Belize 2013
+                    <input id='reg-participated-in-ecsl2013' class="form-check-input" type="checkbox" value=""> Belize 2013
                   </label>
                 </div>
               </div>
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2014' class="form-check-input" type="checkbox" value=""> Panamá 2014
+                    <input id='reg-participated-in-ecsl2014' class="form-check-input" type="checkbox" value=""> Panamá 2014
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2015' class="form-check-input" type="checkbox" value=""> Honduras 2015
+                    <input id='reg-participated-in-ecsl2015' class="form-check-input" type="checkbox" value=""> Honduras 2015
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2016' class="form-check-input" type="checkbox" value=""> Nicaragua 2016
+                    <input id='reg-participated-in-ecsl2016' class="form-check-input" type="checkbox" value=""> Nicaragua 2016
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='participated-in-ecsl2017' class="form-check-input" type="checkbox" value=""> Costa Rica 2017
+                    <input id='reg-participated-in-ecsl2017' class="form-check-input" type="checkbox" value=""> Costa Rica 2017
                   </label>
                 </div>
               </div>
@@ -328,74 +328,74 @@
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-debian-linux-user' class="form-check-input" type="checkbox" value=""> Debian
+                    <input id='reg-is-debian-linux-user' class="form-check-input" type="checkbox" value=""> Debian
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-ubuntu-linux-user' class="form-check-input" type="checkbox" value=""> Ubuntu
+                    <input id='reg-is-ubuntu-linux-user' class="form-check-input" type="checkbox" value=""> Ubuntu
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-mint-linux-user' class="form-check-input" type="checkbox" value=""> Linux Mint
+                    <input id='reg-is-mint-linux-user' class="form-check-input" type="checkbox" value=""> Linux Mint
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-arch-linux-user' class="form-check-input" type="checkbox" value=""> Arch Linux
+                    <input id='reg-is-arch-linux-user' class="form-check-input" type="checkbox" value=""> Arch Linux
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-slackware-linux-user' class="form-check-input" type="checkbox" value=""> Slackware
+                    <input id='reg-is-slackware-linux-user' class="form-check-input" type="checkbox" value=""> Slackware
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-opensuse-linux-user' class="form-check-input" type="checkbox" value=""> OpenSUSE
+                    <input id='reg-is-opensuse-linux-user' class="form-check-input" type="checkbox" value=""> OpenSUSE
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-knoppix-linux-user' class="form-check-input" type="checkbox" value=""> Knoppix
+                    <input id='reg-is-knoppix-linux-user' class="form-check-input" type="checkbox" value=""> Knoppix
                   </label>
                 </div>
               </div>
               <div class="col-lg-6 col-md-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-centos-linux-user' class="form-check-input" type="checkbox" value=""> CentOS
+                    <input id='reg-is-centos-linux-user' class="form-check-input" type="checkbox" value=""> CentOS
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-damn-linux-user' class="form-check-input" type="checkbox" value=""> Damn Small Linux
+                    <input id='reg-is-damn-linux-user' class="form-check-input" type="checkbox" value=""> Damn Small Linux
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-dream-linux-user' class="form-check-input" type="checkbox" value=""> Dream Linux
+                    <input id='reg-is-dream-linux-user' class="form-check-input" type="checkbox" value=""> Dream Linux
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-elementary-linux-user' class="form-check-input" type="checkbox" value=""> Elementary OS
+                    <input id='reg-is-elementary-linux-user' class="form-check-input" type="checkbox" value=""> Elementary OS
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-fedora-linux-user' class="form-check-input" type="checkbox" value=""> Fedora
+                    <input id='reg-is-fedora-linux-user' class="form-check-input" type="checkbox" value=""> Fedora
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-gentoo-linux-user' class="form-check-input" type="checkbox" value=""> Gentoo
+                    <input id='reg-is-gentoo-linux-user' class="form-check-input" type="checkbox" value=""> Gentoo
                   </label>
                 </div>
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-antergos-linux-user' class="form-check-input" type="checkbox" value=""> Antergos
+                    <input id='reg-is-antergos-linux-user' class="form-check-input" type="checkbox" value=""> Antergos
                   </label>
                 </div>
               </div>
@@ -416,7 +416,7 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-vegetarian' class="form-check-input" type="checkbox" value=""> Deseo optar por la opción vegetariana en todas las comidas del evento (disponible para los paquetes parcial y completo).
+                    <input id='reg-is-vegetarian' class="form-check-input" type="checkbox" value=""> Deseo optar por la opción vegetariana en todas las comidas del evento (disponible para los paquetes parcial y completo).
                   </label>
                 </div>
               </div>
@@ -430,7 +430,7 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-interested-in-competition' class="form-check-input" type="checkbox" value=""> Estoy interesado en participar en la competencia de seguidores en línea y me gustaría recibir información adicional.
+                    <input id='reg-is-interested-in-competition' class="form-check-input" type="checkbox" value=""> Estoy interesado en participar en la competencia de seguidores en línea y me gustaría recibir información adicional.
                   </label>
                 </div>
               </div>
@@ -444,7 +444,7 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-interested-in-social-day' class="form-check-input" type="checkbox" value=""> Estoy interesado en participar en el día social que se llevará a cabo en la playa El Amatal, el sábado 14 de julio del 2018 (el costo es adicional a la cuota del evento) y me gustaría recibir información adicional.
+                    <input id='reg-is-interested-in-social-day' class="form-check-input" type="checkbox" value=""> Estoy interesado en participar en el día social que se llevará a cabo en la playa El Amatal, el sábado 14 de julio del 2018 (el costo es adicional a la cuota del evento) y me gustaría recibir información adicional.
                   </label>
                 </div>
               </div>
@@ -458,20 +458,20 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='is-gender-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento.
+                    <input id='reg-is-gender-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento.
                   </label>
                   <label class="form-check-label">
-                    <input id='is-general-information-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi país, edad, institución que represento, eventos anteriores que he participado y distribuciones Linux de mi preferencia, formen parte de las estadísticas del evento.
+                    <input id='reg-is-general-information-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi país, edad, institución que represento, eventos anteriores que he participado y distribuciones Linux de mi preferencia, formen parte de las estadísticas del evento.
                   </label>
                   <label class="form-check-label">
-                    <input id='is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi <a href="https://gravatar.com" target="_blank">gravatar</a> se muestre en la sección de participantes y ponentes (si aplica) del sitio web.
+                    <input id='reg-is-photo-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi <a href="https://gravatar.com" target="_blank">gravatar</a> se muestre en la sección de participantes y ponentes (si aplica) del sitio web.
                   </label>
                 </div>
               </div>
             </div>
           </div>
 
-          {!! Form::button('Registrarse', array('id'=>'reg-btn-register', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
+          {!! Form::button($registroLabel, array('id'=>'reg-btn-register', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
         </div>
       </div>
     {!! Form::close() !!}

@@ -89,32 +89,50 @@ class OpenCmsManager extends Controller {
 		// var_dump('token ' . $this->Session->get('token', ''));
 		// var_dump('ern ' . $this->Session->get('ern', ''));
 
+		$redirectToLogin = $this->Session->get('ecsl2018login', false);
+		$redirectToRegistro = $this->Session->get('ecsl2018registro', false);
+		$redirectToPago = false;
+		$cmsLoggedUser = $this->OpenCmsManagerService->getSessionLoggedUser();
+
+		if(empty($cmsLoggedUser))
+		{
+			$guestUserDisabledCssClass = 'disabled';
+			$guestUserDisabledInputAttribute = 'disabled="disabled"';
+			$loggedUserDisabledCssClass = '';
+			$loggedUserDisabledInputAttribute = '';
+			$registroLabel = 'Registrarse';
+			$cmsLoggedUser = array();
+		}
+		else
+		{
+			$redirectToLogin = false;
+			$redirectToRegistro = true;
+			$guestUserDisabledCssClass = '';
+			$guestUserDisabledInputAttribute = '';
+			$loggedUserDisabledCssClass = 'disabled';
+			$loggedUserDisabledInputAttribute = 'disabled="disabled"';
+			$registroLabel = 'Actualizar mis datos';
+		}
+
 		$token = $this->Session->get('token', '');
 
 		if(!empty($token))
 		{
-			// $this->OpenCmsManagerService->registerPayment($token);
+			$redirectToLogin = false;
+			$redirectToRegistro = false;
+			$redirectToPago = true;
 		}
 
-		$guestUserDisabledCssClass = '';
-		$guestUserDisabledInputAttribute = '';
-
-		$guestUserDisabledCssClass = 'disabled';
-		$guestUserDisabledInputAttribute = 'disabled="disabled"';
-
-		$loggedUserDisabledCssClass = 'disabled';
-		$loggedUserDisabledInputAttribute = 'disabled="disabled"';
-
-		$loggedUserDisabledCssClass = '';
-		$loggedUserDisabledInputAttribute = '';
-
 		return $this->View->make('ecsl-2018::dashboard')
-			->with('login', $this->Session->get('ecsl2018login', false))
-			->with('registro', $this->Session->get('ecsl2018registro', false))
+			->with('login', $redirectToLogin)
+			->with('registro', $redirectToRegistro)
+			->with('pago', $redirectToPago)
 			->with('guestUserDisabledCssClass', $guestUserDisabledCssClass)
 			->with('guestUserDisabledInputAttribute', $guestUserDisabledInputAttribute)
 			->with('loggedUserDisabledCssClass', $loggedUserDisabledCssClass)
 			->with('loggedUserDisabledInputAttribute', $loggedUserDisabledInputAttribute)
+			->with('cmsLoggedUser', $cmsLoggedUser)
+			->with('registroLabel', $registroLabel)
 			->with('prefix', 'pay-')
 			->with('appInfo', array('id' => 'dashboard'))
 			->with('status', 'En revisión')
@@ -143,9 +161,18 @@ class OpenCmsManager extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function postRegistration()
+	public function postCreate()
 	{
 		return $this->OpenCmsManagerService->create( $this->Input->json()->all() );
+	}
+	/**
+	 * Handle a POST request for user registration.
+	 *
+	 * @return Response
+	 */
+	public function postUpdate()
+	{
+		return $this->OpenCmsManagerService->update( $this->Input->json()->all() );
 	}
 
 	/**

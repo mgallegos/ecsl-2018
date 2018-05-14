@@ -1,5 +1,7 @@
 <?php namespace Mgallegos\ECSL2018;
 
+use Carbon\Carbon;
+
 use Illuminate\Support\ServiceProvider;
 
 class ECSL2018ServiceProvider extends ServiceProvider {
@@ -72,14 +74,12 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind('Ecsl2018RegistrationFormInterface', function($app)
 		{
-			$AuthenticationManager = $app->make('App\Kwaai\Security\Services\AuthenticationManagement\AuthenticationManagementInterface');
-
-			return new \Mgallegos\DecimaOpenCms\OpenCms\Repositories\RegistrationForm\EloquentRegistrationForm( new \Mgallegos\ECSL2018\RegistrationForm(), 'ecsl2018');
+			return new \Mgallegos\ECSL2018\Repositories\RegistrationForm\EloquentRegistrationForm( new \Mgallegos\ECSL2018\RegistrationForm(), 'ecsl2018');
 		});
 	}
 
 	/**
-	 * Register the authenticator instance.
+	 * Register a ... interface instance.
 	 *
 	 * @return void
 	 */
@@ -88,12 +88,16 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 		$this->app->bind('Ecsl2018OpenCmsManagementInterface', function($app)
 		{
 			return new \Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager(
+					$app->make('App\Kwaai\Security\Services\AuthenticationManagement\AuthenticationManagementInterface'),
 					$app->make('App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface'),
+					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\SettingManagement\SettingManagementInterface'),
 					$app->make('App\Kwaai\Security\Repositories\Journal\JournalInterface'),
 					$app->make('App\Kwaai\Organization\Repositories\Organization\OrganizationInterface'),
 					$app->make('App\Kwaai\System\Repositories\Currency\CurrencyInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\User\UserInterface'),
+					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface'),
 					$app->make('Ecsl2018RegistrationFormInterface'),
+					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\Payment\PaymentInterface'),
 					$app['translator'],
 					$app['url'],
 					$app['redirect'],
@@ -105,11 +109,13 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app['session'],
 					$app['validator'],
 					$app['log'],
-					$app->make('Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface'),
+					$app['db'],
+					new Carbon(),
+					15,
+					'ecsl2018',
 					65,
 					1,
-					15,
-					'ecsl2018'
+					$app->make('Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface')
 			);
 		});
 	}

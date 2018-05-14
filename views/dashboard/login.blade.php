@@ -2,7 +2,7 @@
   <h4 class="card-header">{{ Lang::get('security/login.loginFormLegend') }}</h4>
   <div class="card-body">
     <!-- <h4 class="card-title">Special title treatment</h4> -->
-    {!! Form::open(array('id'=>'login-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/login'))) !!}
+    {!! Form::open(array('id'=>'login-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/dashboard/login'))) !!}
       {!! Honeypot::generate('login-kwaai-name', 'login-kwaai-time') !!}
       <div class="form-group mg-hm">
         <!-- <label for="">&nbsp;</label> -->
