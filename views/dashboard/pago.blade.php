@@ -11,8 +11,7 @@
       </div> -->
       <div class="row">
         <div class="col-md-12 card-payment-deck">
-          <!-- <div class="alert alert-success" role="alert" style="{{ empty($pago)?'display:none;':'' }}"> -->
-          <div class="alert alert-success" role="alert">
+          <div class="alert alert-success" role="alert" style="{{ empty($pago)?'display:none;':'' }}">
             Su pago fue procesado exitosamente, te esperamos en el evento!
           </div>
           <label>Elija la opción de pago</label>
