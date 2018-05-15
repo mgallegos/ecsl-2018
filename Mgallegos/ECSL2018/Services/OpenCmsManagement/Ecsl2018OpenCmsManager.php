@@ -719,14 +719,14 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
                                      * Tratamiento para una transacción exitosa.
                                      */
                                     // $msg = "Gracias por comprar en Mi Tienda Pagadito.<br /><br />Referencia: ".$data_response->value["reference"]."<br />Fecha: ".$data_response->value["date_trans"];
-                                    $msg = "Su pago fue procesado exitosamente, gracias por confirmar tu participación al ECSL 2018.<br />El número de referencia de su pago es: ".$data_response->value["reference"]." con fecha: ".$data_response->value["date_trans"];
+                                    return "Su pago fue procesado exitosamente, gracias por confirmar su participación al ECSL 2018.<br />El número de referencia de su pago es: ".$data_response->value["reference"]." con fecha: ".$data_response->value["date_trans"];
                                     break;
                                 case "REGISTERED":
                                     /*
                                      * Tratamiento para una transacción aún en
                                      * proceso.
                                      */
-                                    $msg = "La transacci&oacute;n a&uacute;n est&aacute; en proceso, le confirmaremos vía correo electrónico cuando sea completada.";
+                                    return "La transacci&oacute;n a&uacute;n est&aacute; en proceso, le confirmaremos vía correo electrónico cuando sea completada.";
                                     break;
                                 case "FAILED":
                                     /*
@@ -827,6 +827,5 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     // }
 
 		return false;
-
   }
 }
