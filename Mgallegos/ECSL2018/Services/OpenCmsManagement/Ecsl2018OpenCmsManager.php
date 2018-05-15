@@ -676,7 +676,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
         if (!$oSoap->fault)
         {
-					var_dump($data_response->code);
+					var_dump($data_response);
             /*
              * Debido a que el WSPG nos puede devolver diversos mensajes de
              * respuesta, validamos el tipo de mensaje que nos devuelve.
@@ -700,7 +700,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
                     $response = $oSoap->call('get_status', $params);
                     $data_response = unserialize($response);
 
-										var_dump($data_response->code);
+										var_dump($data_response);
 
                     /*
                      * Debido a que el WSPG nos puede devolver diversos mensajes
