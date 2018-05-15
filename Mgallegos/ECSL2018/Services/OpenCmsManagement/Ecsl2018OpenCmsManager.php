@@ -676,7 +676,6 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
         if (!$oSoap->fault)
         {
-					var_dump($data_response);
             /*
              * Debido a que el WSPG nos puede devolver diversos mensajes de
              * respuesta, validamos el tipo de mensaje que nos devuelve.
@@ -700,8 +699,6 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
                     $response = $oSoap->call('get_status', $params);
                     $data_response = unserialize($response);
 
-										var_dump($data_response);
-
                     /*
                      * Debido a que el WSPG nos puede devolver diversos mensajes
                      * de respuesta, validamos el tipo de mensaje que nos
@@ -722,7 +719,10 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
                                      * Tratamiento para una transacción exitosa.
                                      */
                                     // $msg = "Gracias por comprar en Mi Tienda Pagadito.<br /><br />Referencia: ".$data_response->value["reference"]."<br />Fecha: ".$data_response->value["date_trans"];
-                                    return "Su pago fue procesado exitosamente, gracias por confirmar su participación al ECSL 2018.<br />El número de referencia de su pago es: ".$data_response->value["reference"]." con fecha: ".$data_response->value["date_trans"];
+                                    return "Su pago fue procesado exitosamente, gracias por confirmar su participación al ECSL 2018.<br />El número de referencia de su pago es: " .
+																			$data_response->value["reference"] .
+																			" con fecha y hora: " .
+																			$this->Carbon->createFromFormat('Y-m-d H:i:s', $data_response->value['date_trans'])->format($this->Lang->get('form.phpDateFormat'));
                                     break;
                                 case "REGISTERED":
                                     /*

@@ -83,12 +83,6 @@ class OpenCmsManager extends Controller {
 
 	public function getIndex()
 	{
-		// http://localhost:8000/ecsltest?token=9a5ca3487bbc8de6b89783645f9b96e0&ern=1126
-		// var_dump('token ' . $this->Input->get('token', ''));
-		// var_dump('ern ' . $this->Input->get('ern', ''));
-		// var_dump('token ' . $this->Session->get('token', ''));
-		// var_dump('ern ' . $this->Session->get('ern', ''));
-
 		$redirectToLogin = $this->Session->get('ecsl2018login', false);
 		$redirectToRegistro = $this->Session->get('ecsl2018registro', false);
 		$redirectToPago = false;
@@ -123,7 +117,7 @@ class OpenCmsManager extends Controller {
 			$redirectToLogin = false;
 			$redirectToRegistro = false;
 			$redirectToPago = true;
-			$transactionStatusMessage = $this->OpenCmsManagerService->getTransactionStatus($token);;
+			$transactionStatusMessage = $this->OpenCmsManagerService->getTransactionStatus($token);
 		}
 
 		return $this->View->make('ecsl-2018::dashboard')
@@ -138,7 +132,7 @@ class OpenCmsManager extends Controller {
 			->with('registroLabel', $registroLabel)
 			->with('token', $token)
 			->with('ern', $ern)
-			->with('transactionStatus', $transactionStatusMessage)
+			->with('transactionStatusMessage', $transactionStatusMessage)
 			->with('prefix', 'pay-')
 			->with('appInfo', array('id' => 'dashboard'))
 			->with('status', 'En revisión')
