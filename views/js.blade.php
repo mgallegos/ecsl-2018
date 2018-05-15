@@ -288,39 +288,10 @@
 			$('#trans-to-origin').effect('highlight', 2000);
 		});
 
-		// $('#ob-fa-btn').click(function()
-		// {
-		// 	var data = $('#ob-fa-form').formToObject('ob-fa-');
-		//
-		// 	if(!$('#ob-fa-form').jqMgVal('isFormValid'))
-		// 	{
-		// 		return;
-		// 	}
-		//
-		// 	$.ajax(
-		// 	{
-		// 		type: 'POST',
-		// 		data: JSON.stringify(data),
-		// 		dataType : 'json',
-		// 		url: $('#ob-fa-form').attr('action'),
-		// 		error: function (jqXHR, textStatus, errorThrown)
-		// 		{
-		// 			handleServerExceptions(jqXHR, 'ob-fa-form');
-		// 		},
-		// 		beforeSend:function()
-		// 		{
-		// 			$('#app-loader').removeClass('hidden-xs-up');
-		// 			disabledAll();
-		// 		},
-		// 		success:function(json)
-		// 		{
-		// 			$('#ob-fa-form').showAlertAsFirstChild('alert-success', 'Ha sido suscrito, gracias por su interés.', 10000);
-		// 			$('#ob-fa-form').jqMgVal('clearForm');
-		// 			$('#app-loader').addClass('hidden-xs-up');
-		// 			enableAll();
-		// 		}
-		// 	});
-		// });
+		$('#login-password').onEnter( function()
+		{
+			$('#login-btn').click();
+	  });
 
 		$('#login-btn').click(function()
 		{
