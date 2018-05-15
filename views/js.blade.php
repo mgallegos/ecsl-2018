@@ -115,6 +115,28 @@
  			$(this).ekkoLightbox();
 		});
 
+		$('#cms-logout').click(function()
+		{
+			$.ajax(
+			{
+				type: 'POST',
+				url: $('#app-url').val() + '/cms/dashboard/logout',
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					handleServerExceptions(jqXHR, 'ob-fa-form');
+				},
+				beforeSend:function()
+				{
+					$('#app-loader').removeClass('hidden-xs-up');
+					disabledAll();
+				},
+				success:function(json)
+				{
+					window.location.replace($('#app-url').val() + '/cms/inicio');
+				}
+			});
+		});
+
 		$('#dash-login').click(function()
 		{
 			if($(this).hasClass('active') || $(this).hasAttr('disabled'))

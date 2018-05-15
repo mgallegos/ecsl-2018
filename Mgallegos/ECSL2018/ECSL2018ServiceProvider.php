@@ -111,10 +111,6 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app['log'],
 					$app['db'],
 					new Carbon(),
-					15,
-					'ecsl2018',
-					65,
-					1,
 					$app->make('Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface')
 			);
 		});

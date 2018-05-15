@@ -186,6 +186,16 @@ class OpenCmsManager extends Controller {
 	}
 
 	/**
+	 * Handle a POST request for user login.
+	 *
+	 * @return Response
+	 */
+	public function postLogout()
+	{
+		return $this->OpenCmsManagerService->attemptLogout();
+	}
+
+	/**
 	 * Handle a POST request for a payment.
 	 *
 	 * @return Response

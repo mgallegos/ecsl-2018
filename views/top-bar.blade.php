@@ -36,6 +36,19 @@
           <a class="nav-link fake-link" data-toggle="modal" data-target="#Contact" role="button">Contacto</a>
         </li>
       </ul>
+      <ul class="navbar-nav">
+        @if(!AuthManager::isCmsUserGuest('ecsl2018slca'))
+        <li class="nav-item dropdown">
+          <a class="nav-link p-2 dropdown-toggle" href="#" id="navbarDropdownUserMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class='rounded-circle' onerror="this.src='{{URL::asset('assets/kwaai/images/anonymous.png')}}'" src='{{{ Gravatar::buildGravatarURL( AuthManager::getCmsSessionLoggedUser('ecsl2018slca', 'email'), 40 ) }}}'> {{ substr(AuthManager::getCmsSessionLoggedUser('ecsl2018slca', 'firstname'), 0, 10) }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownUserMenu">
+            <a class="dropdown-item" id='cms-dashboard' href="{{URL::to('cms/dashboard')}}">Dashboard</a>
+            <a class="dropdown-item fake-link" id='cms-logout'>Salir</a>
+          </div>
+        </li>
+      	@endif
+      </ul>
     </div>
   </div>
 </nav>

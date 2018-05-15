@@ -125,10 +125,6 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		Writer $Log,
     DatabaseManager $DB,
     Carbon $Carbon,
-		$organizationId,
-		$cmsDatabaseConnectionName,
-    $virtualAssistantId,
-		$eventId,
     SaleOrderManagementInterface $SaleManager
 	)
 	{
@@ -178,15 +174,17 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->Carbon = $Carbon;
 
-    $this->organizationId = $organizationId;
+    // $this->defaultDatabaseConnectionName = 'default';
 
-    $this->cmsDatabaseConnectionName = $cmsDatabaseConnectionName;
+    $this->organizationId = 15;
 
-    $this->defaultDatabaseConnectionName = 'default';
+    $this->cmsDatabaseConnectionName = 'ecsl2018';
 
-    $this->virtualAssistantId = $virtualAssistantId;
+    $this->virtualAssistantId = 65;
 
-    $this->eventId = $eventId;
+    $this->eventId = 1;
+
+    $this->eventPrefix = 'ecsl2018slca';
 
     $this->SaleManager = $SaleManager;
 
@@ -226,7 +224,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			'email' => 'required|email',
 			'password' => 'min:6|required|same:confirm_password'
 		);
-    
+
 		$data = array(
       'kwaai_name' => $input['kwaai_name'],
 			'kwaai_time' => $input['kwaai_time'],
