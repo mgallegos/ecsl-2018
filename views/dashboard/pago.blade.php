@@ -13,7 +13,7 @@
         <div class="col-md-12 card-payment-deck">
           @if(!empty($token) && !empty($transactionStatusMessage))
             <div class="alert alert-success" role="alert">
-              {{ $transactionStatusMessage }}
+              {!! $transactionStatusMessage !!}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
