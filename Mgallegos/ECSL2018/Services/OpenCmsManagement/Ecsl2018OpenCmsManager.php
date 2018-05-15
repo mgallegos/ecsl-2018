@@ -635,4 +635,198 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         // ";
     }
   }
+
+  /**
+   * Make payment
+   *
+   * @param array $input
+   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
+   *
+   * @return JSON encoded string
+   *  A string as follows:
+   */
+  public function getTransactionStatus($tokenTrans)
+  {
+    $UID = '3b5fe62169c492b285fab24d63334f1d';
+    $WSK = '7c769929fa407504abf706b9ee337b2d';
+    $WSPG = 'https://sandbox.pagadito.com/comercios/wspg/charges.php?wdsl';
+
+		/*
+     * Lo primero es crear el objeto nusoap_client, al que se le pasa como
+     * parámetro la URL de Conexión definida en la constante WSPG
+     */
+    $oSoap = new nusoap_client($WSPG);
+
+    $err = $oSoap->getError();
+    if (!$err)
+    {
+        /*
+         * Lo siguiente será consumir la operación 'connect', a la cual le
+         * pasaremos el UID y WSK para solicitarle un token de conexión al WSPG.
+         * Alternativamente le enviamos el formato en el que queremos que nos
+         * responda el WSPG, en este ejemplo solicitamos el formato PHP.
+         */
+        $params = array(
+            "uid"           => $UID,
+            "wsk"           => $WSK,
+            "format_return" => "php"
+        );
+        $response = $oSoap->call('connect', $params);
+        $data_response = unserialize($response);
+
+        if (!$oSoap->fault)
+        {
+            /*
+             * Debido a que el WSPG nos puede devolver diversos mensajes de
+             * respuesta, validamos el tipo de mensaje que nos devuelve.
+             */
+            switch($data_response->code)
+            {
+                case "PG1001":
+                    /*
+                     * En caso de haber recibido un token exitosamente,
+                     * procedemos a consumir la operación 'get_status'
+                     * enviándole al WSPG el token de conexión y el token
+                     * recibido por GET, que es el que consultaremos.
+                     */
+                    $token = $data_response->value;
+
+                    $params = array(
+                        "token"         => $token,
+                        "token_trans"   => $tokenTrans,
+                        "format_return" => "php"
+                    );
+                    $response = $oSoap->call('get_status', $params);
+                    $data_response = unserialize($response);
+
+                    /*
+                     * Debido a que el WSPG nos puede devolver diversos mensajes
+                     * de respuesta, validamos el tipo de mensaje que nos
+                     * devuelve.
+                     */
+                    switch($data_response->code)
+                    {
+                        case "PG1003":
+                            /*
+                             * En caso de haberse obtenido el estado de la
+                             * transacción exitosamente, validamos el estado
+                             * devuelto.
+                             */
+                            switch ($data_response->value["status"])
+                            {
+                                case "COMPLETED":
+                                    /*
+                                     * Tratamiento para una transacción exitosa.
+                                     */
+                                    // $msg = "Gracias por comprar en Mi Tienda Pagadito.<br /><br />Referencia: ".$data_response->value["reference"]."<br />Fecha: ".$data_response->value["date_trans"];
+                                    $msg = "Su pago fue procesado exitosamente, gracias por confirmar tu participación al ECSL 2018.<br />El número de referencia de su pago es: ".$data_response->value["reference"]." con fecha: ".$data_response->value["date_trans"];
+                                    break;
+                                case "REGISTERED":
+                                    /*
+                                     * Tratamiento para una transacción aún en
+                                     * proceso.
+                                     */
+                                    $msg = "La transacci&oacute;n a&uacute;n est&aacute; en proceso, le confirmaremos vía correo electrónico cuando sea completada.";
+                                    break;
+                                case "FAILED":
+                                    /*
+                                     * Tratamiento para una transacción fallida.
+                                     */
+                                default:
+                                    /*
+                                     * Por ser un ejemplo, se muestra un mensaje
+                                     * de error fijo.
+                                     */
+                                    $msg = "Lo sentimos, la compra no pudo realizarse.";
+                                    break;
+                            }
+                            break;
+                        case "PG2001":
+                            /*
+                             * Tratamiento para datos incompletos.
+                             */
+                        case "PG3002":
+                            /*
+                             * Tratamiento para error.
+                             */
+                        case "PG3003":
+                            /*
+                             * Tratamiento para transacción no registrada.
+                             */
+                        case "PG3007":
+                            /*
+                             * Tratamiento para acceso denegado.
+                             */
+                        default:
+                            /*
+                             * Por ser un ejemplo, se muestra un mensaje
+                             * de error fijo.
+                             */
+                            $msg = "Lo sentimos, ha ocurrido un problema :/";
+                            break;
+                    }
+                    break;
+                case "PG2001":
+                    /*
+                     * Tratamiento para datos incompletos.
+                     */
+                case "PG3001":
+                    /*
+                     * Tratamiento para conexión dengada.
+                     */
+                case "PG3002":
+                    /*
+                     * Tratamiento para error.
+                     */
+                case "PG3005":
+                    /*
+                     * Tratamiento para conexión deshabilitada.
+                     */
+                default:
+                    /*
+                     * Por ser un ejemplo, se muestra en una ventana
+                     * emergente el código y mensaje de la respuesta
+                     * del WSPG
+                     */
+                    // echo "
+                    //     <SCRIPT>
+                    //         alert(\"$data_response->code: $data_response->message\");
+                    //         location.href = 'index.php';
+                    //     </SCRIPT>
+                    // ";
+										$msg = "$data_response->code: $data_response->message";
+                    break;
+            }
+        }
+        // else
+        // {
+        //     /*
+        //      * Por ser un ejemplo, se muestra en una ventana emergente el
+        //      * mensaje de error devuelto por el objeto oSoap.
+        //      */
+        //     echo "
+        //         <SCRIPT>
+        //             alert('".$oSoap->getError()."');
+        //             location.href = 'index.php';
+        //         </SCRIPT>
+        //     ";
+        // }
+    }
+    // else
+    // {
+    //     /*
+    //      * Por ser un ejemplo, se muestra en una ventana emergente el mensaje de
+    //      * error devuelto por el objeto oSoap.
+    //      */
+    //     echo "
+    //         <SCRIPT>
+    //             alert('".$err."');
+    //             location.href = 'index.php';
+    //         </SCRIPT>
+    //     ";
+    // }
+
+		return false;
+
+  }
 }

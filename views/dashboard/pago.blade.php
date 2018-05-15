@@ -11,16 +11,15 @@
       </div> -->
       <div class="row">
         <div class="col-md-12 card-payment-deck">
-          @if(!empty($ern))
+          @if(!empty($token) && !empty($transactionStatusMessage))
             <div class="alert alert-success" role="alert">
-              Su pago fue procesado exitosamente, el número de identificación de su pago es: {{ $ern }}.<br>
-              <center>¡Le esperamos en el evento!</center>
+              {{ $transactionStatusMessage }}
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-        	@endif
-          @if(!empty($token) && empty($ern))
+          @endif
+          @if(!empty($token) && empty($transactionStatusMessage))
             <div class="alert alert-info" role="alert">
               El pago no fue completado, por favor inténtelo nuevamente.
               <button type="button" class="close" data-dismiss="alert" aria-label="Close">

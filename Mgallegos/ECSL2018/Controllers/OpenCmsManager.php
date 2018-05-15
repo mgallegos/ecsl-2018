@@ -116,12 +116,14 @@ class OpenCmsManager extends Controller {
 
 		$token = $this->Session->get('token', '');
 		$ern = $this->Session->get('ern', '');
+		$transactionStatusMessage = false;
 
 		if(!empty($token))
 		{
 			$redirectToLogin = false;
 			$redirectToRegistro = false;
 			$redirectToPago = true;
+			$transactionStatusMessage = $this->OpenCmsManagerService->getTransactionStatus($token);;
 		}
 
 		return $this->View->make('ecsl-2018::dashboard')
@@ -136,6 +138,7 @@ class OpenCmsManager extends Controller {
 			->with('registroLabel', $registroLabel)
 			->with('token', $token)
 			->with('ern', $ern)
+			->with('transactionStatus', $transactionStatusMessage)
 			->with('prefix', 'pay-')
 			->with('appInfo', array('id' => 'dashboard'))
 			->with('status', 'En revisión')
