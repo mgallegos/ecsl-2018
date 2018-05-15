@@ -84,7 +84,7 @@
 
 	$(document).ready(function()
 	{
-		$('#ob-fa-form, #login-form, #reg-form, #pon-form, #trans-from-form, #trans-to-form').jqMgVal('addFormFieldsValidations');
+		$('#ob-fa-form, #login-form, #reg-form, #pay-form, #pon-form, #trans-from-form, #trans-to-form').jqMgVal('addFormFieldsValidations');
 
 		$(window).bind('resize', function()
 		{
@@ -218,6 +218,11 @@
 
 		$('#pay-btn-pay').click(function()
 		{
+			if(!$('#pay-form').jqMgVal('isFormValid'))
+			{
+				return;
+			}
+
 			$('#pay-op-form').submit();
 		});
 

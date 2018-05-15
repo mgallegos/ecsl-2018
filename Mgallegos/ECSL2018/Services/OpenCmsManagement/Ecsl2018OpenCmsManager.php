@@ -505,7 +505,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
                      */
                     $params = array(
                         "token"         => $token,
-                        "ern"           => rand(1000, 2000),
+                        "ern"           => rand(1, 2000),
                         // "ern"           => 1001,
                         "amount"        => $input['amount'],
                         "details"       => json_encode($details),

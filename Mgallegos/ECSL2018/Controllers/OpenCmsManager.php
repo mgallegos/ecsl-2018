@@ -115,6 +115,7 @@ class OpenCmsManager extends Controller {
 		}
 
 		$token = $this->Session->get('token', '');
+		$ern = $this->Session->get('ern', '');
 
 		if(!empty($token))
 		{
@@ -133,6 +134,8 @@ class OpenCmsManager extends Controller {
 			->with('loggedUserDisabledInputAttribute', $loggedUserDisabledInputAttribute)
 			->with('cmsLoggedUser', $cmsLoggedUser)
 			->with('registroLabel', $registroLabel)
+			->with('token', $token)
+			->with('ern', $ern)
 			->with('prefix', 'pay-')
 			->with('appInfo', array('id' => 'dashboard'))
 			->with('status', 'En revisión')

@@ -11,9 +11,23 @@
       </div> -->
       <div class="row">
         <div class="col-md-12 card-payment-deck">
-          <div class="alert alert-success" role="alert" style="{{ empty($pago)?'display:none;':'' }}">
-            Su pago fue procesado exitosamente, te esperamos en el evento!
-          </div>
+          @if(!empty($ern))
+            <div class="alert alert-success" role="alert">
+              Su pago fue procesado exitosamente, el número de identificación de su pago es: {{ $ern }}.<br>
+              <center>¡Le esperamos en el evento!</center>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        	@endif
+          @if(!empty($token) && empty($ern))
+            <div class="alert alert-info" role="alert">
+              El pago no fue completado, por favor inténtelo nuevamente.
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        	@endif
           <label>Elija la opción de pago</label>
           @include('ecsl-2018::paquetes-participacion')
           <div class="row">
@@ -24,7 +38,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text">US<i class="fa fa-usd"></i></div>
                   </span>
-                  {!! Form::text('pay-amount-label', null, array('id'=>'pay-amount-label', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('pay-amount-label', null, array('id'=>'pay-amount-label', 'class'=>'form-control', 'disabled'=>'disabled', 'data-mg-required' => '')) !!}
                 </div>
               </div>
             </div>
@@ -85,6 +99,6 @@ Datos del banco corresponsal o intermediario en USA
 Nombre del Banco corresponsal: Citibank
 Dirección del banco corresponsal: New York 339 Park Avenue New York, NY 10022. USA Código ABA del corresponsal: CITIUS33 -->
 {!! Form::open(array('id' => 'pay-op-form', 'url' => URL::to('cms/dashboard/payment'), 'role'  =>  'form')) !!}
-	{!! Form::hidden('amount', 110, array('id' => 'pay-op-amount')) !!}
+	{!! Form::hidden('amount', 0, array('id' => 'pay-op-amount')) !!}
 	{!! Form::hidden('description', null, array('id' => 'pay-op-description')) !!}
 {!! Form::close() !!}
