@@ -97,7 +97,6 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\User\UserInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface'),
 					$app->make('Ecsl2018RegistrationFormInterface'),
-					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\Payment\PaymentInterface'),
 					$app['translator'],
 					$app['url'],
 					$app['redirect'],
@@ -110,7 +109,11 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app['validator'],
 					$app['log'],
 					$app['db'],
+					$app['mailer'],
 					new Carbon(),
+					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface'),
+					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface'),
+					$app->make('Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterface'),
 					$app->make('Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface')
 			);
 		});

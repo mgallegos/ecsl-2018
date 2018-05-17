@@ -37,6 +37,8 @@ use Illuminate\Log\Writer;
 
 use Illuminate\Database\DatabaseManager;
 
+use Illuminate\Mail\Mailer;
+
 use Symfony\Component\Translation\TranslatorInterface;
 
 use App\Kwaai\Security\Services\AuthenticationManagement\AuthenticationManagementInterface;
@@ -44,6 +46,12 @@ use App\Kwaai\Security\Services\AuthenticationManagement\AuthenticationManagemen
 use Mgallegos\DecimaOpenCms\OpenCms\Services\SettingManagement\SettingManagementInterface;
 
 use Mgallegos\DecimaOpenCms\OpenCms\Services\OpenCmsManagement\OpenCmsManager;
+
+use Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface;
+
+use Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface;
+
+use Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterface;
 
 use Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface;
 
@@ -64,6 +72,14 @@ use App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface;
 use App\Kwaai\Security\Repositories\Journal\JournalInterface;
 
 class Ecsl2018OpenCmsManager extends OpenCmsManager {
+
+  /**
+	 * Sale Order Manager Service
+	 *
+	 * @var Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterface
+	 *
+	 */
+	protected $ClientManager;
 
   /**
 	 * Sale Order Manager Service
@@ -111,7 +127,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		UserInterface $User,
 		UserEventInterface $UserEvent,
 		RegistrationFormInterface $RegistrationForm,
-		PaymentInterface $Payment,
+		// PaymentInterface $Payment,
 		TranslatorInterface $Lang,
 		UrlGenerator $Url,
 		Redirector $Redirector,
@@ -124,7 +140,11 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		Factory $Validator,
 		Writer $Log,
     DatabaseManager $DB,
+		Mailer $Mailer,
     Carbon $Carbon,
+		PaymentManagementInterface $PaymentManager,
+		TransportationRequestManagementInterface $TransportationRequestManager,
+    ClientManagementInterface $ClientManager,
     SaleOrderManagementInterface $SaleManager
 	)
 	{
@@ -144,7 +164,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		$this->RegistrationForm = $RegistrationForm;
 
-		$this->Payment = $Payment;
+		// $this->Payment = $Payment;
 
 		$this->Currency = $Currency;
 
@@ -172,6 +192,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->DB = $DB;
 
+		$this->Mailer = $Mailer;
+
     $this->Carbon = $Carbon;
 
     // $this->defaultDatabaseConnectionName = 'default';
@@ -186,7 +208,13 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->eventPrefix = 'ecsl2018slca';
 
-    $this->SaleManager = $SaleManager;
+		$this->PaymentManager = $PaymentManager;
+
+		$this->TransportationRequestManager = $TransportationRequestManager;
+
+		$this->ClientManager = $ClientManager;
+
+		$this->SaleManager = $SaleManager;
 
 		$this->rules = array(
 			'kwaai_name' => 'honeypot',
@@ -238,6 +266,9 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => $this->singleMessageStringByField()));
 		}
 
+		$User = null;
+
+		//La validación debe ser por evento
 		if(!$this->User->byEmailAndByOrganization($input['email'], $this->organizationId, $this->cmsDatabaseConnectionName)->isEmpty())
 		{
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => array('email' => $this->Lang->get('security/user-management.UserExistsException'))));
@@ -257,17 +288,32 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		{
       $input['organization_id'] = $this->organizationId;
 
-			$User = $this->User->create(
-        array(
-          'firstname' => $input['firstname'],
-          'lastname' => $input['lastname'],
-          'email' => $input['email'],
-          'password' => bcrypt($input['password']),
-          'organization_id' => $input['organization_id'],
-          'is_active' => 1,
-        ),
-        $this->cmsDatabaseConnectionName
-      );
+			if(empty($User))
+			{
+				$User = $this->User->create(
+	        array(
+	          'firstname' => $input['firstname'],
+	          'lastname' => $input['lastname'],
+	          'email' => $input['email'],
+	          'password' => bcrypt($input['password']),
+	          'organization_id' => $input['organization_id'],
+	          'is_active' => 1,
+	        ),
+	        $this->cmsDatabaseConnectionName
+	      );
+			}
+			else
+			{
+				$this->User->update(
+	        array(
+	          'firstname' => $input['firstname'],
+	          'lastname' => $input['lastname'],
+	          'password' => bcrypt($input['password'])
+	        ),
+					$User,
+	        $this->cmsDatabaseConnectionName
+	      );
+			}
 
       $input['user_id'] = $User->id;
 
@@ -301,10 +347,84 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
       $RegistrationForm = $this->RegistrationForm->create($input, $this->cmsDatabaseConnectionName);
 
-      // client_id
-      // payment_id
-      // arriving_transportation_request_id
-      // leaving_transportation_request_id
+			$response = json_decode(
+				$this->ClientManager->create(
+					array(
+						'name' => $context['firstname'] . ' ' . $context['lastname'],
+						'city_name' => $input['district'],
+						'state_name' => $input['state'],
+						'phone_number' => $input['contact_phone'],
+						'email' => $context['email'],
+						'date_birth' => $input['birth_date'],
+						'country_id' => 202,//SLV
+					),
+					$this->cmsDatabaseConnectionName,
+					$this->virtualAssistantId, // $loggedUserId = null,
+					$this->organizationId,// $organizationId = null,
+					false,// $openTransaction = true,
+					false// $changeDateFormat = true
+				),
+				true
+			);
+
+			$userInput['client_id'] = $response['id'];
+
+			$response = json_decode(
+				$this->PaymentManager->create(
+					array(
+						'user_id' => $input['user_id'],
+						'event_id' => $this->eventId
+					),
+					false,// $openTransaction = true,
+					false,// $changeDateFormat = true,
+					$this->cmsDatabaseConnectionName,
+					$this->organizationId,// $organizationId = null,
+					$this->virtualAssistantId // $loggedUserId = null,
+				),
+				true
+			);
+
+			$userInput['payment_id'] = $response['id'];
+
+			$response = json_decode(
+				$this->TransportationRequestManager->create(
+					array(
+						'request_user_id' => $input['user_id'],
+						'event_id' => $this->eventId
+					),
+					false,// $openTransaction = true,
+					false,// $changeDateFormat = true
+					$this->cmsDatabaseConnectionName,
+					$this->organizationId,// $organizationId = null,
+					$this->virtualAssistantId // $loggedUserId = null,
+				),
+				true
+			);
+
+			$userInput['arriving_transportation_request_id'] = $response['id'];
+
+			$response = json_decode(
+				$this->TransportationRequestManager->create(
+					array(
+						'request_user_id' => $input['user_id'],
+						'event_id' => $this->eventId
+					),
+					false,// $openTransaction = true,
+					false,// $changeDateFormat = true
+					$this->cmsDatabaseConnectionName,
+					$this->organizationId,// $organizationId = null,
+					$this->virtualAssistantId // $loggedUserId = null,
+				),
+				true
+			);
+
+			$userInput['leaving_transportation_request_id'] = $response['id'];
+
+			$this->User->update(
+				$userInput,
+				$User,
+				$this->cmsDatabaseConnectionName
+			);
 
 		  // $Journal = $this->Journal->create(array('journalized_id' => $User->id, 'journalized_type' => $this->User->getTable(), 'user_id' => $input['created_by']));
 		  // $this->Journal->attachDetail($Journal->id, array('n=> $this->AuthenticationManager->getCurrentUserOrganization('name')))), $Journal);
@@ -326,13 +446,14 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		}
 
 		// Send email
-		// $replyToEmail = $this->Config->get('system-security.reply_to_email');
-		// $replyToName = $this->Config->get('system-security.reply_to_name');
-		//
-		// $this->Mailer->queue('security.emails.activation', array('addressee' => $input['firstname'], 'sender' => $sender, 'token' => $input['activation_code']), function($message) use ($input, $subject, $replyToEmail, $replyToName)
-		// {
-		// 	$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName);
-		// });
+		$subject = '[ECSL 2018] Confirmación de registro';
+		$replyToEmail = 'ecsl2018@softwarelibre.ca';
+		$replyToName = 'Comité Organizador del ECSL 2018';
+
+		$this->Mailer->queue('ecsl-2018::emails.registro', array('addressee' => $context['firstname']), function($message) use ($context, $subject, $replyToEmail, $replyToName)
+		{
+			$message->to($context['email'])->subject($subject)->replyTo($replyToEmail, $replyToName);
+		});
 
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
 	}
