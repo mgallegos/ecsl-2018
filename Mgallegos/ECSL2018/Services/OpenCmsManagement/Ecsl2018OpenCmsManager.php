@@ -266,6 +266,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => $this->singleMessageStringByField()));
 		}
 
+		$input = eloquent_array_filter_for_insert($input);
 		$User = null;
 
 		//La validación debe ser por evento
@@ -329,7 +330,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
       $context = array_only($input, ['firstname', 'lastname', 'email']);
 
       unset(
-        $input['token'],
+        $input['_token'],
         $input['firstname'],
         $input['lastname'],
         $input['email'],
@@ -445,7 +446,6 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				throw $e;
 		}
 
-		// Send email
 		$subject = '[ECSL 2018] Confirmación de registro';
 		$replyToEmail = 'ecsl2018@softwarelibre.ca';
 		$replyToName = 'Comité Organizador del ECSL 2018';
@@ -466,15 +466,21 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	 *
 	 * @return JSON encoded string
 	 *  A string as follows:
-	 *  In case of success (non-admin user): {"success":security/user-management.successSaveMessage}
-	 *  In case of success (admin user): {"success":form.defaultSuccessSaveMessage}
-	 *  In case of a non-admin user tries to add an admin user: {"info":security/user-management.nonAdminException}
-	 *  In case of an existing user: {"info":security/user-management.UserExistsException}
+	 *  In case of success: {"success":form.defaultSuccessSaveMessage}
 	 *  In form does not pass validation: {"validationFailed":true, "fieldValidationMessages":{$field0:$message0, $field1:$message1,…}}
 	 */
-	public function update(array $input)
+	public function update(array $input, $openTransaction = true)
 	{
+		$this->rules = array(
+			'kwaai_name' => 'honeypot',
+			'kwaai_time' => 'required|honeytime:2',
+			'email' => 'required|email',
+			'password' => 'min:6|same:confirm_password'
+		);
+
 		$data = array(
+			'kwaai_name' => $input['kwaai_name'],
+			'kwaai_time' => $input['kwaai_time'],
 			'email' => $input['email'],
 			'password' => $input['password'],
 			'confirm_password' => $input['confirm_password']
@@ -485,21 +491,66 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => $this->singleMessageStringByField()));
 		}
 
-		if(!$this->User->byEmail($input['email'])->isEmpty())
+		$User = $this->User->byId($input['user_id'], $this->cmsDatabaseConnectionName);
+		$input = eloquent_array_filter_for_update($input);
+
+		if($User->email != $input['email'] && !$this->User->byEmailAndByOrganization($input['email'], $this->organizationId, $this->cmsDatabaseConnectionName)->isEmpty())
 		{
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => array('email' => $this->Lang->get('security/user-management.UserExistsException'))));
 		}
 
     $this->beginTransaction($openTransaction, $this->cmsDatabaseConnectionName);
 
+		$userInput  = array(
+			'firstname' => $input['firstname'],
+			'lastname' => $input['lastname'],
+			'email' => $input['email']
+		);
+
+		if(isset($input['password']))
+		{
+			$userInput['password'] = bcrypt($input['password']);
+		}
+
 		try
 		{
-      $this->User->update($input, $User);
+      $this->User->update(
+				$userInput,
+				$User,
+				$this->cmsDatabaseConnectionName
+			);
+
+			$input['id'] = $input['registration_form_id'];
+			$context = array_only($input, ['firstname', 'lastname', 'email']);
+
+			unset(
+        $input['_token'],
+        $input['user_id'],
+        $input['firstname'],
+        $input['lastname'],
+        $input['email'],
+        $input['password'],
+        $input['kwaai_name'],
+        $input['kwaai_time'],
+        $input['confirm_password'],
+        $input['registration_form_id']
+      );
+
+			if(isset($input['birth_date']) && !empty($input['birth_date']))
+      {
+        $input['birth_date'] = $this->Carbon->createFromFormat($this->Lang->get('form.phpShortDateFormat'), $input['birth_date'])->format('Y-m-d');
+      }
+
+			$this->RegistrationForm->update(
+				$input,
+				null,
+				$this->cmsDatabaseConnectionName
+			);
+
 		  // $Journal = $this->Journal->create(array('journalized_id' => $User->id, 'journalized_type' => $this->User->getTable(), 'user_id' => $input['created_by']));
 		  // $this->Journal->attachDetail($Journal->id, array('note' => $this->Lang->get('security/user-management.adminUserAddedJournal', array('email' => $input['email'], 'organization' => $this->AuthenticationManager->getCurrentUserOrganization('name')))), $Journal);
-			// $data = $input;
-			// unset($data['password'], $data['activation_code']);
-			// $this->Event->fire(new OnNewInfoMessage(array('message' => '[SECURITY EVENT] A new admin user has been added to the system', 'context' => $data), $this->AuthenticationManager));
+
+			$this->Log->info('[SECURITY EVENT] An existing user updated his information at ECSL 2018', $context);
 
 			$this->commit($openTransaction);
 		}
@@ -515,20 +566,6 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
 	}
-
-  /**
-   * Register payment
-   *
-   * @param array $input
-   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
-   *
-   * @return JSON encoded string
-   *  A string as follows:
-   */
-  public function registerPayment(array $input)
-  {
-
-  }
 
   /**
    * Make payment
@@ -755,6 +792,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         //     </SCRIPT>
         // ";
     }
+  }
+
+	/**
+   * Register payment
+   *
+   * @param array $input
+   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
+   *
+   * @return JSON encoded string
+   *  A string as follows:
+   */
+  public function registerPayment(array $input)
+  {
+
   }
 
   /**

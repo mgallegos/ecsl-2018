@@ -42,7 +42,7 @@
           <div class="row">
             <!-- Password -->
             <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
+              <div id="reg-password-col" class="form-group mg-hm">
                 <label for="reg-password">Contraseña</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
@@ -55,7 +55,7 @@
 
             <!-- Password Confirmation -->
             <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
+              <div id="reg-confirm-password-col" class="form-group mg-hm">
                 <label for="reg-password-confirmation">Confirmar contraseña</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
@@ -124,18 +124,6 @@
           </div>
 
           <div class="row">
-            <div class="col-lg-6 col-md-12">
-              <div class="form-group mg-hm">
-                <label for="reg-passport-number">NIT/DUI/Pasaporte (extranjeros)</label>
-                <div class="input-group">
-                  <span class="input-group-prepend">
-                    <div class="input-group-text"><i class="fa fa-id-card"></i></div>
-                  </span>
-                  {!! Form::text('reg-passport', null, array('id'=>'reg-passport', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
-                </div>
-              </div>
-            </div>
-
             <!-- Country -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
@@ -147,9 +135,7 @@
             		@endif
               </div>
             </div>
-          </div>
 
-          <div class="row">
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-passport-number">Departamento/Provincia</label>
@@ -162,6 +148,10 @@
               </div>
             </div>
 
+          </div>
+
+          <div class="row">
+
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-passport-number">Municipio</label>
@@ -170,6 +160,18 @@
                     <div class="input-group-text"><i class="fa fa-map-marker"></i></div>
                   </span>
                   {!! Form::text('reg-district', null, array('id'=>'reg-district', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+              <div class="form-group mg-hm">
+                <label for="reg-passport-number">Pasaporte</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-id-card"></i></div>
+                  </span>
+                  {!! Form::text('reg-passport', null, array('id'=>'reg-passport', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
                 </div>
               </div>
             </div>
@@ -195,9 +197,9 @@
               <div class="form-group mg-hm">
                 <label for="reg-tshirt-size">Talla de camiseta</label>
                 @if (!Agent::isMobile())
-                  {!! Form::autocomplete('reg-shirt-size', array('S','M', 'L', 'XL', 'XXL'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
+                  {!! Form::autocomplete('reg-shirt-size', array('S', 'M', 'L', 'XL', 'XXL'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
-                  {!! Form::select('reg-shirt-size', array('S','M', 'L', 'XL', 'XXL'), null, array('id'=>'reg-shirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::select('reg-shirt-size', array('S', 'M', 'L', 'XL', 'XXL'), null, array('id'=>'reg-shirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
             		@endif
               </div>
             </div>

@@ -375,7 +375,7 @@
 					{
 						if(action == 'edit')
 						{
-							$('#reg-form').showAlertAfterElement('alert-success alert-custom', json.success, 6000);
+							$('#reg-form').showAlertAsFirstChild('alert-success alert-custom', 'Sus datos se actualizaron exitosamente', 6000);
 							$('#reg-form').jqMgVal('clearContextualClasses');
 						}
 						else
@@ -401,7 +401,7 @@
 
 		setTimeout(function ()
 		{
-			// $('#reg-previous-ecsl').tokenfield({beautify:false}); // Permite ingresar cualquier cosa
+			// $('#reg-previous-ecsl').tokenfield({beautify:false});
 
 			$('#reg-previous-ecsl').tokenfield(
 			{
@@ -423,6 +423,9 @@
 			if(!empty(loggedUser))
 			{
 				populateFormFields(loggedUser, 'reg-');
+
+				$('#reg-password, #reg-confirm-password').removeAttr('data-mg-required');
+				$('#reg-password-col, #reg-confirm-password-col').find('p').remove();
 			}
 		}, 500);
 

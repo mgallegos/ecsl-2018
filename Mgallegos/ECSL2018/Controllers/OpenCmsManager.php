@@ -18,6 +18,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\View\Factory;
 
+use Symfony\Component\Translation\TranslatorInterface;
+
 use App\Http\Controllers\Controller;
 
 class OpenCmsManager extends Controller {
@@ -63,11 +65,20 @@ class OpenCmsManager extends Controller {
 	 */
 	protected $Session;
 
+	/**
+	 * Laravel Translator instance
+	 *
+	 * @var \Symfony\Component\Translation\TranslatorInterface
+	 *
+	 */
+	protected $Lang;
+
 	public function __construct(
 		Application $App,
 		Factory $View,
 		Request $Input,
-		SessionManager $Session
+		SessionManager $Session,
+		TranslatorInterface $Lang
 	)
 	{
 		$this->App = $App;
@@ -79,6 +90,8 @@ class OpenCmsManager extends Controller {
 		$this->Input = $Input;
 
 		$this->Session = $Session;
+
+		$this->Lang = $Lang;
 	}
 
 	public function getIndex()
@@ -106,6 +119,7 @@ class OpenCmsManager extends Controller {
 			$loggedUserDisabledCssClass = 'disabled';
 			$loggedUserDisabledInputAttribute = 'disabled="disabled"';
 			$registroLabel = 'Actualizar mis datos';
+			$cmsLoggedUser['birth_date'] = \Carbon\Carbon::createFromFormat('Y-m-d', $cmsLoggedUser['birth_date'])->format($this->Lang->get('form.phpShortDateFormat'));
 		}
 
 		$token = $this->Session->get('token', '');
