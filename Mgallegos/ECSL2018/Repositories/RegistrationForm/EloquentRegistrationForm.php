@@ -147,7 +147,9 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
       $RegistrationForm->$key = $value;
     }
 
-    return $RegistrationForm->save();
+    $RegistrationForm->save();
+
+    return $RegistrationForm;
   }
 
   /**

@@ -541,11 +541,21 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         $input['birth_date'] = $this->Carbon->createFromFormat($this->Lang->get('form.phpShortDateFormat'), $input['birth_date'])->format('Y-m-d');
       }
 
-			$this->RegistrationForm->update(
+			$RegistrationForm = $this->RegistrationForm->update(
 				$input,
 				null,
 				$this->cmsDatabaseConnectionName
 			);
+
+			$User = $this->User->byId($RegistrationForm->user_id, $this->cmsDatabaseConnectionName);
+			$user = $User->toArray();
+      $registrationForm = $RegistrationForm->toArray();
+      $registrationForm['registration_form_id'] = $registrationForm['id'];
+
+			unset($user['password']);
+
+			$this->clearCache();
+			$this->setCache(array_merge($registrationForm, $user));
 
 		  // $Journal = $this->Journal->create(array('journalized_id' => $User->id, 'journalized_type' => $this->User->getTable(), 'user_id' => $input['created_by']));
 		  // $this->Journal->attachDetail($Journal->id, array('note' => $this->Lang->get('security/user-management.adminUserAddedJournal', array('email' => $input['email'], 'organization' => $this->AuthenticationManager->getCurrentUserOrganization('name')))), $Journal);
