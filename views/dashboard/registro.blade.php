@@ -2,7 +2,7 @@
   <h4 class="card-header">{{ $registroLabel }}</h4>
   <div class="card-body">
     {!! Form::open(array('id'=>'reg-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/dashboard'))) !!}
-      {!! Honeypot::generate('reg-kwaai-name', 'reg-kwaai-time') !!}
+      {!! Honeypot::generate('fc-kwaai-name', 'fc-kwaai-time') !!}
       <!-- <div class="alert alert-dark" role="alert">
         <h6 class="card-title mb-0">Complete el formulario para poder realizar el pago y proponer una o más ponencias.</h6>
       </div> -->

@@ -51,6 +51,8 @@ use Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagement
 
 use Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface;
 
+use Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface;
+
 use Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterface;
 
 use Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface;
@@ -72,6 +74,30 @@ use App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface;
 use App\Kwaai\Security\Repositories\Journal\JournalInterface;
 
 class Ecsl2018OpenCmsManager extends OpenCmsManager {
+
+  /**
+	 * Payment Manager Service
+	 *
+	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface
+	 *
+	 */
+	protected $PaymentManager;
+
+  /**
+	 * TransportationRequest Manager Service
+	 *
+	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface
+	 *
+	 */
+	protected $TransportationRequestManager;
+
+  /**
+	 * Presentation Manager Service
+	 *
+	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface
+	 *
+	 */
+	protected $PresentationManager;
 
   /**
 	 * Sale Order Manager Service
@@ -144,6 +170,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     Carbon $Carbon,
 		PaymentManagementInterface $PaymentManager,
 		TransportationRequestManagementInterface $TransportationRequestManager,
+		PresentationManagementInterface $PresentationManager,
     ClientManagementInterface $ClientManager,
     SaleOrderManagementInterface $SaleManager
 	)
@@ -212,6 +239,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		$this->TransportationRequestManager = $TransportationRequestManager;
 
+		$this->PresentationManager = $PresentationManager;
+
 		$this->ClientManager = $ClientManager;
 
 		$this->SaleManager = $SaleManager;
@@ -235,7 +264,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
    *
    * @return integer
    */
-  public function getOrganizationId()
+  public function getCmsOrganizationId()
 	{
 		return $this->organizationId;
 	}
@@ -248,6 +277,43 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
   public function getCmsDatabaseConnectionName()
 	{
 		return $this->cmsDatabaseConnectionName;
+	}
+
+	/**
+   * Get CMS database connection
+   *
+   * @return string
+   */
+  public function getCmsEventId()
+	{
+		return $this->eventId;
+	}
+
+	/**
+   * Get default status
+   *
+   * @return array
+   */
+  public function getDefaultStatus()
+	{
+		return 'En revisión';
+	}
+
+	/**
+   * Get
+   *
+   * @return array
+   */
+  public function getPlaces()
+	{
+		return array(
+			'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"',
+			'Puerto Bus' => 'Puerto Bus',
+			'Pullmantur San Benito' => 'Pullmantur San Benito',
+			'Tica Bus Terminal San Benito' => 'Tica Bus Terminal San Benito',
+			'Terminal Platinum Sheraton Presidente' => 'Terminal Platinum Sheraton Presidente',
+			'Transportes El Sol Terminal San Benito' => 'Transportes El Sol Terminal San Benito'
+		);
 	}
 
 	/**
@@ -264,20 +330,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	public function create(array $input, $openTransaction = true)
 	{
     $this->rules = array(
-			'kwaai_name' => 'honeypot',
-			'kwaai_time' => 'required|honeytime:2',
+			'fc_kwaai_name' => 'honeypot',
+			'fc_kwaai_time' => 'required|honeytime:2',
 			'email' => 'required|email',
 			'password' => 'min:6|required|same:confirm_password'
 		);
 
-		if(!isset($input['kwaai_name']))
+		if(!isset($input['fc_kwaai_name']))
 		{
 			die('sorry!');
 		}
 
 		$data = array(
-      'kwaai_name' => $input['kwaai_name'],
-			'kwaai_time' => $input['kwaai_time'],
+      'fc_kwaai_name' => $input['fc_kwaai_name'],
+			'fc_kwaai_time' => $input['fc_kwaai_time'],
 			'email' => $input['email'],
 			'password' => $input['password'],
 			'confirm_password' => $input['confirm_password']
@@ -349,8 +415,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         $input['lastname'],
         $input['email'],
         $input['password'],
-        $input['kwaai_name'],
-        $input['kwaai_time'],
+        $input['fc_kwaai_name'],
+        $input['fc_kwaai_time'],
         $input['confirm_password'],
         $input['registration_form_id']
       );
@@ -488,20 +554,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	public function update(array $input, $openTransaction = true)
 	{
 		$this->rules = array(
-			'kwaai_name' => 'honeypot',
-			'kwaai_time' => 'required|honeytime:2',
+			'fc_kwaai_name' => 'honeypot',
+			'fc_kwaai_time' => 'required|honeytime:2',
 			'email' => 'required|email',
 			'password' => 'min:6|same:confirm_password'
 		);
 
-		if(!isset($input['kwaai_name']))
+		if(!isset($input['fc_kwaai_name']))
 		{
 			die('sorry!');
 		}
 
 		$data = array(
-			'kwaai_name' => $input['kwaai_name'],
-			'kwaai_time' => $input['kwaai_time'],
+			'fc_kwaai_name' => $input['fc_kwaai_name'],
+			'fc_kwaai_time' => $input['fc_kwaai_time'],
 			'email' => $input['email'],
 			'password' => $input['password'],
 			'confirm_password' => $input['confirm_password']
@@ -551,8 +617,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         $input['lastname'],
         $input['email'],
         $input['password'],
-        $input['kwaai_name'],
-        $input['kwaai_time'],
+        $input['fc_kwaai_name'],
+        $input['fc_kwaai_time'],
         $input['confirm_password'],
         $input['registration_form_id']
       );
@@ -679,6 +745,191 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 					->bcc('mgallegos@decimaerp.com');
 			});
 		}
+
+		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
+	}
+
+	/**
+	 * Create presentation.
+	 *
+	 * @param array $input
+	 *	An array as follows: array();
+	 *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *  In case of success: {"success":form.defaultSuccessSaveMessage}
+	 *  In form does not pass validation: {"validationFailed":true, "fieldValidationMessages":{$field0:$message0, $field1:$message1,…}}
+	 */
+	public function createPresentation(array $input, $openTransaction = true)
+	{
+		$this->rules = array(
+			'fc_kwaai_name' => 'honeypot',
+			'fc_kwaai_time' => 'required|honeytime:2'
+		);
+
+		if(!isset($input['fc_kwaai_name']))
+		{
+			die('sorry!');
+		}
+
+		$data = array(
+			'fc_kwaai_name' => $input['fc_kwaai_name'],
+			'fc_kwaai_time' => $input['fc_kwaai_time'],
+		);
+
+		if( $this->with( $data )->fails() )
+		{
+			die('fail');
+		}
+
+		// /Users/mgallegos/Documents/workspace/decima-ecsl-2018/Mgallegos/ECSL2018/Controllers/OpenCmsManager.php:286:
+		// array (size=12)
+		//   '_token' => string 'xpovnAuQgbIMvVtjFCqhWZxjEOeKqMOPDcFyUyad' (length=40)
+		//   'kwaai_name' => string '' (length=0)
+		//   'kwaai_time' => string 'eyJpdiI6IlF5Wndua2xOWDI0MTFxcGtlY3dRQnc9PSIsInZhbHVlIjoiU3hXMXRnV3MwcmlCV3p5R0o3Y2xOUT09IiwibWFjIjoiMDI1MWIyMDg1OTNmYTdiZTBjZDY0MjcyZGIwNzMxYTI2MmY1MDA0OGM1NjEwMGNhOTA1YzI3MGJmNzQxZjE5MiJ9' (length=188)
+		//   'name' => string 'DecimaERP en la nube' (length=20)
+		//   'id' => string '' (length=0)
+		//   'type' => string 'Charla' (length=6)
+		//   'duration' => string '1' (length=1)
+		//   'topic' => string '5' (length=1)
+		//   'description' => string 'Hello worlds' (length=12)
+		//   'is_approved' => string 'En revisiÃ³n' (length=12)
+		//   'space' => string '' (length=0)
+		//   'scheduled_hour' => string '' (length=0)
+
+		// $Presentation = $this->PresentationManager->getPresentation($input['id'], $this->cmsDatabaseConnectionName);
+
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
+		$this->PresentationManager->create(
+			array(
+				'name' => $input['name'],
+				'description' => $input['description'],
+				'type' => $input['type'],
+				'duration' => $input['duration'],
+				'subtopic_id' => $input['subtopic_id'],
+				'user_id' => $cmsLoggedUser['user_id'],
+				'event_id' => $this->eventId
+			),
+			true,//$openTransaction = true,
+			$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+			$this->organizationId,//$organizationId = null,
+			$this->virtualAssistantId// $loggedUserId = null
+		);
+
+		if(empty($dateTime))
+		{
+			$subject = '[ECSL 2018] Confirmación de solicitud de ponencia ' . $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+			$replyToEmail = 'ecsl2018@softwarelibre.ca';
+			$replyToName = 'Comité Organizador del ECSL 2018';
+			$input['email'] = $cmsLoggedUser['email'];
+			$input['user'] = $cmsLoggedUser['firstname'] . ' ' . $cmsLoggedUser['lastname'];
+
+			$this->Mailer->queue('ecsl-2018::emails.solicitud-ponencia', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+					// ->cc('ecsl2018@softwarelibre.ca')
+					->bcc('mgallegos@decimaerp.com');
+			});
+		}
+
+		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
+	}
+
+	/**
+	 * Update presentation
+	 *
+	 * @param array $input
+	 *	An array as follows: array();
+	 *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *  In case of success: {"success":form.defaultSuccessSaveMessage}
+	 *  In form does not pass validation: {"validationFailed":true, "fieldValidationMessages":{$field0:$message0, $field1:$message1,…}}
+	 */
+	public function updatePresentation(array $input, $openTransaction = true)
+	{
+		$this->rules = array(
+			'fc_kwaai_name' => 'honeypot',
+			'fc_kwaai_time' => 'required|honeytime:2'
+		);
+
+		if(!isset($input['fc_kwaai_name']))
+		{
+			die('sorry!');
+		}
+
+		$data = array(
+			'fc_kwaai_name' => $input['fc_kwaai_name'],
+			'fc_kwaai_time' => $input['fc_kwaai_time'],
+		);
+
+		if( $this->with( $data )->fails() )
+		{
+			die('fail');
+		}
+
+		$this->PresentationManager->update(
+			array(
+				'id' => $input['id'],
+				'name' => $input['name'],
+				'description' => $input['description'],
+				'type' => $input['type'],
+				'duration' => $input['duration'],
+				'subtopic_id' => $input['subtopic_id']
+			),
+			null,
+			true,//$openTransaction = true,
+			$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+			$this->organizationId,//$organizationId = null,
+			$this->virtualAssistantId// $loggedUserId = null
+		);
+
+		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
+	}
+
+	/**
+	 * Delete presentation
+	 *
+	 * @param array $input
+	 *	An array as follows: array();
+	 *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *  In case of success: {"success":form.defaultSuccessSaveMessage}
+	 *  In form does not pass validation: {"validationFailed":true, "fieldValidationMessages":{$field0:$message0, $field1:$message1,…}}
+	 */
+	public function deletePresentation(array $input, $openTransaction = true)
+	{
+		$this->rules = array(
+			'fc_kwaai_name' => 'honeypot',
+			'fc_kwaai_time' => 'required|honeytime:2'
+		);
+
+		if(!isset($input['fc_kwaai_name']))
+		{
+			die('sorry!');
+		}
+
+		$data = array(
+			'fc_kwaai_name' => $input['fc_kwaai_name'],
+			'fc_kwaai_time' => $input['fc_kwaai_time'],
+		);
+
+		if( $this->with( $data )->fails() )
+		{
+			die('fail');
+		}
+
+		$this->PresentationManager->delete(
+			array(
+				'id' => array($input['id'])
+			),
+			true,//$openTransaction = true,
+			$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+			$this->organizationId,//$organizationId = null,
+			$this->virtualAssistantId// $loggedUserId = null
+		);
 
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
 	}

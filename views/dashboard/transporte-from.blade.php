@@ -38,7 +38,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="trans-from-origin">Lugar de llegada</label>
-                {!! Form::select('trans-from-origin', $lugares, null, array('id'=>'trans-from-origin', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                {!! Form::select('trans-from-origin', $places, null, array('id'=>'trans-from-origin', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 

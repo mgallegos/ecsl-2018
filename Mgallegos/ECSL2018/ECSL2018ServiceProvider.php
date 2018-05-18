@@ -113,6 +113,7 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					new Carbon(),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface'),
+					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface'),
 					$app->make('Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterface'),
 					$app->make('Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface')
 			);

@@ -52,7 +52,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="trans-to-destination">Destino</label>
-                {!! Form::select('trans-to-destination', $lugares, null, array('id'=>'trans-to-destination', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                {!! Form::select('trans-to-destination', $places, null, array('id'=>'trans-to-destination', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 

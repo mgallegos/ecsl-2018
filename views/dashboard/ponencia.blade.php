@@ -1,23 +1,23 @@
 <div class="card form-container-followed-by-grid-section">
   <h4 class="card-header">Administrar mis ponencias</h4>
   <div class="card-body">
-    {!! Form::open(array('id'=>'pon-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
-      {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
-      <div class="alert alert-dark" role="alert">
+    {!! Form::open(array('id'=>'pon-form', 'role' => 'form', 'onsubmit'=>'return false;')) !!}
+      {!! Honeypot::generate('fc-kwaai-name', 'fc-kwaai-time') !!}
+      <div id="pon-alert-black" class="alert alert-dark" role="alert">
         <h6 class="card-title mb-0">Complete el formulario para proponer una o más ponencias, una vez enviada, siempre podrá realizar modificaciones a sus ponencias haciendo clic al registro correspondiente en la tabla.</h6>
       </div>
       <div class="row">
         <!--Name-->
         <div class="col-lg-6 col-md-12">
           <div class="form-group mg-hm">
-            <label for="pon-name">Nombre</label>
+            <label for="pon-name">Título</label>
             <div class="input-group">
               <span class="input-group-prepend">
                 <div class="input-group-text"><i class="fa fa-user"></i></div>
               </span>
               {!! Form::text('pon-name', null, array('id'=>'pon-name', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               {!! Form::hidden('pon-id', null, array('id' => 'pon-id')) !!}
-              {!! Form::hidden('pon-insight', null, array('id' => 'pon-insight')) !!}
+              {!! Form::hidden('pon-eje', null, array('id' => 'pon-eje')) !!}
             </div>
           </div>
         </div>
@@ -41,16 +41,7 @@
         <div class="col-lg-6 col-md-12">
           <div class="form-group mg-hm">
             <label for="pon-topic">Eje temático</label>
-            <select id="pon-topic" class="form-control" data-mg-required="" name="pon-topic">
-              <optgroup label="Eje temático 1">
-                <option value="Eje 1.1">Eje 1.1</option>
-                <option value="Eje 1.2">Eje 1.2</option>
-              </optgroup>
-              <optgroup label="Eje temático 2">
-                <option value="Eje 2.1">Eje 2.1</option>
-                <option value="Eje 2.2">Eje 2.2</option>
-              </optgroup>
-            </select>
+            {!! Form::select('pon-subtopic-id', $topics, null, array('id'=>'pon-subtopic-id', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
           </div>
         </div>
       </div>
@@ -76,7 +67,7 @@
               <span class="input-group-prepend">
                 <div class="input-group-text"><i class="fa fa-tasks"></i></div>
               </span>
-              {!! Form::text('pon-is-approved', 'En revisión', array('id'=>'pon-is-approved', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+              {!! Form::text('pon-is-approved', null, array('id'=>'pon-is-approved', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
             </div>
           </div>
         </div>
@@ -107,7 +98,7 @@
     {!! Form::close() !!}
   </div>
 </div>
-<div class="section-header btn-toolbar toolbar-preceded-by-form-section" role="toolbar" style="background-color: rgba(0,0,0,.03)">
+<div id="pon-btn-toolbar" class="section-header btn-toolbar toolbar-preceded-by-form-section" role="toolbar" style="background-color: rgba(0,0,0,.03)">
   <div id="pon-btn-group-1" class="btn-group mr-2" role="group">
   	{!! Form::button('<i class="fa fa-save"></i> Enviar', array('id' => 'pon-btn-save', 'class' => 'btn btn-outline-secondary pon-tooltip', 'data-container' => 'body', 'data-toggle' => 'tooltip', 'data-original-title' => 'Save book')) !!}
   	{!! Form::button('<i class="fa fa-refresh"></i> Actualizar', array('id' => 'pon-btn-refresh', 'class' => 'btn btn-outline-secondary pon-tooltip', 'data-container' => 'body', 'data-toggle' => 'tooltip', 'data-original-title' => 'Refresh grid data')) !!}
@@ -119,8 +110,8 @@
 </div>
 <div class="app-mg-grid app-responsive-grid mb-3">
 {!!
-GridRender::setGridId("pon-grid")
-  ->enablefilterToolbar(true, false)
+GridRender::setGridId('pon-grid')
+  //->enablefilterToolbar(true, false)
   ->hideXlsExporter()
   ->hideCsvExporter()
   ->setGridOption('url', URL::to('/cms/presentaciones'))
@@ -128,16 +119,32 @@ GridRender::setGridId("pon-grid")
   ->setGridOption('rownumbers', true)
   ->setGridOption('width', 1000)
   ->setGridOption('height', 'auto')
-  ->setGridOption('rowList',array(10,20,30))
-  ->setGridOption('multiselect',false)
-  ->setGridOption('viewrecords',true)
-  //->setGridEvent('onSelectRow', 'onSelectRowEvent2')
-  //->setGridEvent('onSelectRow', 'onBeforeRequest')
-  ->addColumn(array('index' => 'id', 'hidden' => true))
-  ->addColumn(array('label' => 'Nombre', 'index'=>'name'))
-  ->addColumn(array('label' => 'Tipo', 'index'=>'name'))
-  ->addColumn(array('label' => 'Duración', 'index'=>'name'))
-  ->addColumn(array('label' => 'Descripción','index' => 'description'))
+  ->setGridOption('rowList',array())
+  ->setGridOption('multiselect', false)
+  ->setGridOption('viewrecords', false)
+  ->setGridOption('postData', array('_token' => Session::token(), 'filters'=>"{'groupOp':'AND','rules':[{'field':'user_id','op':'eq','data':'" . (empty($cmsLoggedUser)?-1:$cmsLoggedUser['user_id']) ."'}]}"))
+  ->setGridEvent('onSelectRow', 'ponOnSelectRowEvent')
+  ->addColumn(array('index' => 'p.id', 'name' => 'pon_id', 'hidden' => true))
+  ->addColumn(array('index' => 'p.is_approved', 'name' => 'pon_is_approved', 'hidden' => true))
+  ->addColumn(array('index' => 'st.id', 'name' => 'pon_subtopic_id', 'hidden' => true))
+  ->addColumn(array('label' => 'Título', 'index'=>'p.name', 'name' => 'pon_name', 'width' => 60))
+  ->addColumn(array('label' => 'Tipo', 'index'=>'p.type', 'name'=>'pon_type', 'width' => 40 ))
+  ->addColumn(array('label' => 'Duración (horas)', 'index'=>'p.duration', 'name'=>'pon_duration', 'width' => 35, 'align' => 'center'))
+  ->addColumn(array('label' => 'Eje temático','index' => 'st.name', 'name'=>'pon_subtopic_label', 'width' => 100))
+  ->addColumn(array('label' => 'Descripción','index' => 'p.description', 'name'=>'pon_description'))
   ->renderGrid()
 !!}
+</div>
+<div id='pon-modal-delete' class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm pon-btn-delete">
+    <div class="modal-content">
+			<div class="modal-body" style="padding: 20px 20px 0px 20px;">
+				<p id="pon-delete-message">¿Está seguro(a) que desea eliminar la presentación seleccionada?</p>
+      </div>
+			<div class="modal-footer mx-auto">
+				<button type="button" class="btn btn-outline-secondary" data-dismiss="modal">{{ Lang::get('form.no') }}</button>
+				<button id="pon-btn-modal-delete" type="button" class="btn btn-outline-primary">{{ Lang::get('form.yes') }}</button>
+			</div>
+    </div>
+  </div>
 </div>

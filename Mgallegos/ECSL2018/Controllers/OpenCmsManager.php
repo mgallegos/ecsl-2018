@@ -12,6 +12,8 @@ use Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\Tra
 
 use Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface;
 
+use Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface;
+
 use Illuminate\Foundation\Application;
 
 use Illuminate\Session\SessionManager;
@@ -41,6 +43,14 @@ class OpenCmsManager extends Controller {
 	 *
 	 */
 	protected $PaymentManagerService;
+
+	/**
+	 * Presentation Manager Service
+	 *
+	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface
+	 *
+	 */
+	protected $PresentationManagerService;
 
 	/**
 	 * Open Cms Manager Service
@@ -94,6 +104,7 @@ class OpenCmsManager extends Controller {
 	public function __construct(
 		TransportationRequestManagementInterface $TransportationRequestManagerService,
 		PaymentManagementInterface $PaymentManagerService,
+		PresentationManagementInterface $PresentationManagerService,
 		Application $App,
 		Factory $View,
 		Request $Input,
@@ -104,6 +115,8 @@ class OpenCmsManager extends Controller {
 		$this->TransportationRequestManagerService = $TransportationRequestManagerService;
 
 		$this->PaymentManagerService = $PaymentManagerService;
+
+		$this->PresentationManagerService = $PresentationManagerService;
 
 		$this->App = $App;
 
@@ -192,27 +205,16 @@ class OpenCmsManager extends Controller {
 			->with('payment', $payment)
 			->with('arrivingTransportationRequest', $arrivingTransportationRequest)
 			->with('leavingTransportationRequest', $leavingTransportationRequest)
+			->with('topics', $this->PresentationManagerService->getPresentationTopics(
+					$this->OpenCmsManagerService->getCmsEventId(),
+					$this->OpenCmsManagerService->getCmsOrganizationId(),
+					$this->OpenCmsManagerService->getCmsDatabaseConnectionName()
+				)
+			)
+			->with('status', $this->OpenCmsManagerService->getDefaultStatus())
+			->with('places', $this->OpenCmsManagerService->getPlaces())
 			->with('prefix', 'pay-')
-			->with('appInfo', array('id' => 'dashboard'))
-			->with('status', 'En revisión')
-			->with('lugares', array(
-				'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"' => 'Aeropuerto Internacional de El Salvador "Monseñor Oscar Arnulfo Romero"',
-				'Puerto Bus' => 'Puerto Bus',
-				'Pullmantur San Benito' => 'Pullmantur San Benito',
-				'Tica Bus Terminal San Benito' => 'Tica Bus Terminal San Benito',
-				'Terminal Platinum Sheraton Presidente' => 'Terminal Platinum Sheraton Presidente',
-				'Transportes El Sol Terminal San Benito' => 'Transportes El Sol Terminal San Benito')
-			);
-	}
-
-	/**
-	 * Handle a POST request for presentation grid data.
-	 *
-	 * @return Response
-	 */
-	public function postGridData()
-	{
-		return $this->PresentationManagerService->getGridData( $this->Input->all() );
+			->with('appInfo', array('id' => 'dashboard'));
 	}
 
 	/**
@@ -272,5 +274,35 @@ class OpenCmsManager extends Controller {
 	public function postUpdateTransportationRequest()
 	{
 		return $this->OpenCmsManagerService->updateTransportationRequest( $this->Input->json()->all() );
+	}
+
+	/**
+	 * Handle a POST request for a payment.
+	 *
+	 * @return Response
+	 */
+	public function postCreatePresentation()
+	{
+		return $this->OpenCmsManagerService->createPresentation( $this->Input->json()->all() );
+	}
+
+	/**
+	 * Handle a POST request for a payment.
+	 *
+	 * @return Response
+	 */
+	public function postUpdatePresentation()
+	{
+		return $this->OpenCmsManagerService->updatePresentation( $this->Input->json()->all() );
+	}
+
+	/**
+	 * Handle a POST request for a payment.
+	 *
+	 * @return Response
+	 */
+	public function postDeletePresentation()
+	{
+		return $this->OpenCmsManagerService->deletePresentation( $this->Input->json()->all() );
 	}
 }

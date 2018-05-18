@@ -102,7 +102,7 @@
 			type: 'POST',
 			data: JSON.stringify($('#' + prefix + 'form').formToObject(prefix)),
 			dataType : 'json',
-			url: $('#' + prefix + 'form').attr('action') + '/update-transportation-request',
+			url: $('#reg-form').attr('action') + '/update-transportation-request',
 			error: function (jqXHR, textStatus, errorThrown)
 			{
 				handleServerExceptions(jqXHR, prefix + 'form');
@@ -133,6 +133,28 @@
 				enableAll();
 			}
 		});
+	}
+
+	function ponOnSelectRowEvent()
+	{
+		var rowData = $('#pon-grid').getRowData($('#pon-grid').jqGrid('getGridParam', 'selrow'));
+
+		$('#back-to-top').click();
+
+		populateFormFields(rowData);
+
+		$('#pon-btn-save').html('Guardar');
+
+		if(empty(rowData.pon_is_approved))
+		{
+			$('#pon-is-approved').val('En revisión');
+		}
+		else
+		{
+			$('#pon-is-approved').val('Aprobada');
+		}
+
+		$('#pon-btn-group-2').enableButtonGroup();
 	}
 
 	$(document).ready(function()
@@ -484,6 +506,148 @@
 			$('.decima-erp-tooltip').tooltip('hide');
 
 			updateTransportationRequest('trans-to-');
+		});
+
+		$('#pon-btn-save').click(function()
+		{
+			var url = $('#pon-form').attr('action'), action = 'new';
+
+			if(!$('#pon-form').jqMgVal('isFormValid'))
+			{
+				return;
+			}
+
+			$('.decima-erp-tooltip').tooltip('hide');
+
+			if($('#pon-id').isEmpty())
+			{
+				url = url + '/create-presentation';
+			}
+			else
+			{
+				url = url + '/update-presentation';
+				action = 'edit';
+			}
+
+			$('#pon-eje').val($('#pon-subtopic-id').find('option:selected')[0].label);
+
+			$.ajax(
+			{
+				type: 'POST',
+				data: JSON.stringify($('#pon-form').formToObject('pon-')),
+				dataType : 'json',
+				url: url,
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					handleServerExceptions(jqXHR, 'pon-form');
+				},
+				beforeSend:function()
+				{
+					$('#app-loader').removeClass('hidden-xs-up');
+					disabledAll();
+				},
+				success:function(json)
+				{
+					if(json.success)
+					{
+						$('#pon-btn-refresh').click();
+
+						if(action == 'edit')
+						{
+							$('#pon-form').showAlertAsFirstChild('alert-success', 'Los datos de su presentación se actualizaron exitosamente', 6000);
+						}
+						else
+						{
+							$('#pon-form').showAlertAsFirstChild('alert-success', 'Su solicitud se envió exitosamente, se le notificará vía correo electrónica cuando se le asigne un horario y una aula.', 10000);
+
+						}
+
+						$('#pon-form').jqMgVal('clearForm');
+						$('#pon-btn-save').html('Enviar');
+					}
+					else if(json.info)
+					{
+						$('#pon-form').showAlertAsFirstChild('alert-info', json.info, 12000);
+					}
+					else if(json.validationFailed)
+	        {
+	          $('#pon-form').showServerErrorsByField(json.fieldValidationMessages, 'pon-');
+	        }
+
+					$('#app-loader').addClass('hidden-xs-up');
+					enableAll();
+				}
+			});
+		});
+
+		$('#pon-btn-delete').click(function()
+		{
+			var rowData;
+
+			if($(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			if(!$('#pon-grid').isRowSelected())
+			{
+				return;
+			}
+
+			$('.decima-erp-tooltip').tooltip('hide');
+			$('#pon-modal-delete').modal('show');
+		});
+
+		$('#pon-btn-modal-delete').click(function()
+		{
+			$.ajax(
+			{
+				type: 'POST',
+				data: JSON.stringify($('#pon-form').formToObject('pon-')),
+				dataType : 'json',
+				url: $('#reg-form').attr('action') + '/delete-presentation',
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					handleServerExceptions(jqXHR, 'pon-btn-toolbar', false);
+					$('#pon-modal-delete').modal('hide');
+				},
+				beforeSend:function()
+				{
+					$('#app-loader').removeClass('hidden');
+					disabledAll();
+				},
+				success:function(json)
+				{
+					if(json.success)
+					{
+						$('#pon-btn-refresh').click();
+						$('#pon-btn-group-2').disabledButtonGroup();
+						$('#pon-form').jqMgVal('clearForm');
+						$('#pon-btn-save').html('Enviar');
+						$('#pon-form').showAlertAsFirstChild('alert-success', 'La presentación se eliminó exitosamente', 6000);
+					}
+					else if(json.info)
+					{
+						$('#pon-form').showAlertAsFirstChild('alert-info',json.info, 12000);
+					}
+
+					$('#pon-modal-delete').modal('hide');
+					$('#app-loader').addClass('hidden');
+					enableAll();
+					$('.decima-erp-tooltip').tooltip('hide');
+				}
+			});
+		});
+
+		$('#pon-btn-refresh').click(function()
+		{
+			$('.decima-erp-tooltip').tooltip('hide');
+
+			$('#pon-btn-toolbar').disabledButtonGroup();
+
+			$('#pon-btn-group-1').enableButtonGroup();
+
+			$('#pon-grid').trigger('reloadGrid');
 		});
 
 		setTimeout(function ()

@@ -49,6 +49,23 @@
     /* background-color: #f5f5f5; */
   }
 
+  tr.success>td {
+    background-color: #dff0d8;
+  }
+
+  .app-mg-grid th.ui-th-column div, .app-mg-grid th.ui-th-column div{
+		word-wrap: break-word; /* IE 5.5+ and CSS3 */
+		white-space: pre-wrap; /* CSS3 */
+		white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+		white-space: -pre-wrap; /* Opera 4-6 */
+		white-space: -o-pre-wrap; /* Opera 7 */
+		overflow: hidden;
+		height: auto;
+		vertical-align: middle;
+		padding-top: 3px;
+		padding-bottom: 3px
+	}
+
   @media (min-width: 576px) and (max-width: 767.98px) {
     .card-header-logo {
       height: 192px;
