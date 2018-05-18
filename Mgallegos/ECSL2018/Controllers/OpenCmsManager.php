@@ -8,7 +8,9 @@
  */
 namespace Mgallegos\ECSL2018\Controllers;
 
-use Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface;
+use Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface;
+
+use Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface;
 
 use Illuminate\Foundation\Application;
 
@@ -26,6 +28,22 @@ class OpenCmsManager extends Controller {
 
 	/**
 	 * Account Manager Service
+	 *
+	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface
+	 *
+	 */
+	protected $TransportationRequestManagerService;
+
+	/**
+	 * Payment Manager Service
+	 *
+	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface
+	 *
+	 */
+	protected $PaymentManagerService;
+
+	/**
+	 * Open Cms Manager Service
 	 *
 	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\OpenCmsManagement\OpenCmsManagementInterface
 	 *
@@ -74,6 +92,8 @@ class OpenCmsManager extends Controller {
 	protected $Lang;
 
 	public function __construct(
+		TransportationRequestManagementInterface $TransportationRequestManagerService,
+		PaymentManagementInterface $PaymentManagerService,
 		Application $App,
 		Factory $View,
 		Request $Input,
@@ -81,6 +101,10 @@ class OpenCmsManager extends Controller {
 		TranslatorInterface $Lang
 	)
 	{
+		$this->TransportationRequestManagerService = $TransportationRequestManagerService;
+
+		$this->PaymentManagerService = $PaymentManagerService;
+
 		$this->App = $App;
 
 		$this->OpenCmsManagerService = $this->App->make('Ecsl2018OpenCmsManagementInterface');
@@ -99,6 +123,7 @@ class OpenCmsManager extends Controller {
 		$redirectToLogin = $this->Session->get('ecsl2018login', false);
 		$redirectToRegistro = $this->Session->get('ecsl2018registro', false);
 		$redirectToPago = false;
+		$payment = $arrivingTransportationRequest = $leavingTransportationRequest = array();
 		$cmsLoggedUser = $this->OpenCmsManagerService->getSessionLoggedUser();
 
 		if(empty($cmsLoggedUser))
@@ -120,6 +145,23 @@ class OpenCmsManager extends Controller {
 			$loggedUserDisabledInputAttribute = 'disabled="disabled"';
 			$registroLabel = 'Actualizar mis datos';
 			$cmsLoggedUser['birth_date'] = \Carbon\Carbon::createFromFormat('Y-m-d', $cmsLoggedUser['birth_date'])->format($this->Lang->get('form.phpShortDateFormat'));
+			$payment = $this->PaymentManagerService->getPayment($cmsLoggedUser['payment_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
+			$arrivingTransportationRequest = $this->TransportationRequestManagerService->getTransportationRequest($cmsLoggedUser['arriving_transportation_request_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
+			$leavingTransportationRequest = $this->TransportationRequestManagerService->getTransportationRequest($cmsLoggedUser['leaving_transportation_request_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
+
+			if(!empty($arrivingTransportationRequest['pickup_datetime']))
+			{
+				$PickupDatetime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $arrivingTransportationRequest['pickup_datetime']);
+				$arrivingTransportationRequest['date'] = $PickupDatetime->format('Y-m-d');
+				$arrivingTransportationRequest['hour'] = $PickupDatetime->format('H:i');
+			}
+
+			if(!empty($leavingTransportationRequest['pickup_datetime']))
+			{
+				$PickupDatetime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $leavingTransportationRequest['pickup_datetime']);
+				$leavingTransportationRequest['date'] = $PickupDatetime->format('Y-m-d');
+				$leavingTransportationRequest['hour'] = $PickupDatetime->format('H:i');
+			}
 		}
 
 		$token = $this->Session->get('token', '');
@@ -147,6 +189,9 @@ class OpenCmsManager extends Controller {
 			->with('token', $token)
 			->with('ern', $ern)
 			->with('transactionStatusMessage', $transactionStatusMessage)
+			->with('payment', $payment)
+			->with('arrivingTransportationRequest', $arrivingTransportationRequest)
+			->with('leavingTransportationRequest', $leavingTransportationRequest)
 			->with('prefix', 'pay-')
 			->with('appInfo', array('id' => 'dashboard'))
 			->with('status', 'En revisión')
@@ -217,5 +262,15 @@ class OpenCmsManager extends Controller {
 	public function postPayment()
 	{
 		return $this->OpenCmsManagerService->attemptPayment( $this->Input->all() );
+	}
+
+	/**
+	 * Handle a POST request for a payment.
+	 *
+	 * @return Response
+	 */
+	public function postUpdateTransportationRequest()
+	{
+		return $this->OpenCmsManagerService->updateTransportationRequest( $this->Input->json()->all() );
 	}
 }

@@ -5,6 +5,24 @@
 		var loggedUser = {};
 	@endif
 
+	@if(isset($payment))
+		var payment = {!! json_encode($payment) !!};
+	@else
+		var payment = {};
+	@endif
+
+	@if(isset($arrivingTransportationRequest))
+		var arrivingTransportationRequest = {!! json_encode($arrivingTransportationRequest) !!};
+	@else
+		var arrivingTransportationRequest = {};
+	@endif
+
+	@if(isset($leavingTransportationRequest))
+		var leavingTransportationRequest = {!! json_encode($leavingTransportationRequest) !!};
+	@else
+		var leavingTransportationRequest = {};
+	@endif
+
 	var dashPreviousEcsl = [
 		{'label':'Nicaragua 2009', 'value':'ECSL2009'},
 		{'label':'Costa Rica 2010', 'value':'ECSL2010'},
@@ -48,11 +66,6 @@
 
 	}
 
-	function decSendRequest(formId, data)
-	{
-
-	}
-
 	function hideDashboard()
 	{
 		disabledAll();
@@ -80,6 +93,46 @@
 				}
 			});
 		}, 500);
+	}
+
+	function updateTransportationRequest(prefix)
+	{
+		$.ajax(
+		{
+			type: 'POST',
+			data: JSON.stringify($('#' + prefix + 'form').formToObject(prefix)),
+			dataType : 'json',
+			url: $('#' + prefix + 'form').attr('action') + '/update-transportation-request',
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+				handleServerExceptions(jqXHR, prefix + 'form');
+			},
+			beforeSend:function()
+			{
+				$('#app-loader').removeClass('hidden-xs-up');
+				disabledAll();
+			},
+			success:function(json)
+			{
+				if(json.success)
+				{
+					$('#' + prefix + 'form').showAlertAsFirstChild('alert-success', 'Su solicitud se envió exitosamente, se le notificará vía correo electrónica cuando se le asigne un transporte y persona responsable.', 10000);
+					$('#' + prefix + 'enviar').html('Actualizar solicitud');
+					$('#' + prefix + 'form').jqMgVal('clearContextualClasses');
+				}
+				else if(json.info)
+				{
+					$('#' + prefix + 'form').showAlertAsFirstChild('alert-info', json.info, 12000);
+				}
+				else if(json.validationFailed)
+				{
+					$('#' + prefix + 'form').showServerErrorsByField(json.fieldValidationMessages, prefix);
+				}
+
+				$('#app-loader').addClass('hidden-xs-up');
+				enableAll();
+			}
+		});
 	}
 
 	$(document).ready(function()
@@ -335,7 +388,7 @@
 
 		$('#reg-btn-register').click(function()
 		{
-			var url = $('#reg-form').attr('action'), action = 'new'
+			var url = $('#reg-form').attr('action'), action = 'new';
 
 			if(!$('#reg-form').jqMgVal('isFormValid'))
 			{
@@ -399,6 +452,40 @@
 			});
 		});
 
+		$('#trans-from-enviar').click(function()
+		{
+			if($(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			if(!$('#trans-from-form').jqMgVal('isFormValid'))
+			{
+				return;
+			}
+
+			$('.decima-erp-tooltip').tooltip('hide');
+
+			updateTransportationRequest('trans-from-');
+		});
+
+		$('#trans-to-enviar').click(function()
+		{
+			if($(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			if(!$('#trans-to-form').jqMgVal('isFormValid'))
+			{
+				return;
+			}
+
+			$('.decima-erp-tooltip').tooltip('hide');
+
+			updateTransportationRequest('trans-to-');
+		});
+
 		setTimeout(function ()
 		{
 			// $('#reg-previous-ecsl').tokenfield({beautify:false});
@@ -424,8 +511,60 @@
 			{
 				populateFormFields(loggedUser, 'reg-');
 
+				$('#trans-from-id').val(loggedUser.arriving_transportation_request_id);
+				$('#trans-to-id').val(loggedUser.leaving_transportation_request_id);
 				$('#reg-password, #reg-confirm-password').removeAttr('data-mg-required');
 				$('#reg-password-col, #reg-confirm-password-col').find('p').remove();
+			}
+
+			if(!empty(payment))
+			{
+				$('#pay-id').val(payment.id);
+
+				if(payment.status == 'X')
+				{
+					// payment.order_id
+					// Mostrar mensaje de pago realizado y enlace para generar
+					// Deshabilitar radio y el boton de pago
+				}
+			}
+
+			if(!empty(arrivingTransportationRequest))
+			{
+				if(!empty(arrivingTransportationRequest.pickup_datetime))
+				{
+					populateFormFields(arrivingTransportationRequest, 'trans-from-');
+
+					$('#trans-from-enviar').html('Actualizar solicitud');
+
+					if(arrivingTransportationRequest.is_approved == 1)
+					{
+						$('#trans-from-enviar').attr('disabled', 'disabled');
+						$('#trans-from-status').val('Aprobada');
+						$('#trans-from-assigned-transport').val('');
+						$('#trans-from-responsable-user-name').val('');
+						$('#trans-from-contact-phone').val('');
+					}
+				}
+			}
+
+			if(!empty(leavingTransportationRequest))
+			{
+				if(!empty(leavingTransportationRequest.pickup_datetime))
+				{
+					populateFormFields(leavingTransportationRequest, 'trans-to-');
+
+					$('#trans-to-enviar').html('Actualizar solicitud');
+
+					if(leavingTransportationRequest.is_approved == 1)
+					{
+						$('#trans-to-enviar').attr('disabled', 'disabled');
+						$('#trans-to-status').val('Aprobada');
+						$('#trans-to-assigned-transport').val('');
+						$('#trans-to-responsable-user-name').val('');
+						$('#trans-to-contact-phone').val('');
+					}
+				}
 			}
 		}, 500);
 

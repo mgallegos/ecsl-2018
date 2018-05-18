@@ -3,7 +3,6 @@
   <h4 class="card-header">Realizar pago</h4>
   <div class="card-body">
     {!! Form::open(array('id'=>'pay-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=> URL::to('cms/public/registration'))) !!}
-      {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
       {!! Form::hidden('pay-id', null, array('id' => 'pay-id')) !!}
       {!! Form::hidden('pay-participation-type', null, array('id' => 'pay-participation-type')) !!}
       <!-- <div class="alert alert-dark" role="alert">

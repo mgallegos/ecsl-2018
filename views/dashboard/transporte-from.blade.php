@@ -2,8 +2,8 @@
 <!-- <div class="card form-container-followed-by-grid-section"> -->
   <h4 class="card-header">Solicitar transporte a su llegada a El Salvador</h4>
   <div class="card-body">
-    {!! Form::open(array('id'=>'trans-from-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/public/registration'))) !!}
-      {!! Honeypot::generate('kwaai-name', 'kwaai-time') !!}
+    {!! Form::open(array('id'=>'trans-from-form', 'role' => 'form', 'onsubmit'=>'return false;')) !!}
+      {!! Honeypot::generate('trans-from-kwaai-name', 'trans-from-kwaai-time') !!}
       <div class="alert alert-dark" role="alert">
         <h6 class="card-title mb-0">Complete el formulario para solicitar el traslado hacia el hotel a su llegada.</h6>
       </div>
@@ -15,6 +15,7 @@
               <div class="form-group mg-hm">
                 <label for="trans-from-pickup-datetime">Fecha</label>
                 {!! Form::select('trans-from-date', array('2018-07-11' => '11 de julio del 2018','2018-07-12' => '12 de julio del 2018'), null, array('id'=>'trans-from-date', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                {!! Form::hidden('trans-from-id', null, array('id' => 'trans-from-id')) !!}
               </div>
             </div>
 
@@ -37,7 +38,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="trans-from-origin">Lugar de llegada</label>
-                {!! Form::select('trans-from-origin', $lugares, null, array('id'=>'trans-from-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                {!! Form::select('trans-from-origin', $lugares, null, array('id'=>'trans-from-origin', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
               </div>
             </div>
 
@@ -48,7 +49,7 @@
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-tasks"></i></div>
                   </span>
-                  {!! Form::text('trans-to-destination', 'Centro Loyola', array('id'=>'trans-to-oridestination', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+                  {!! Form::text('trans-from-destination', 'Centro Loyola', array('id'=>'trans-from-destination', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
             </div>
@@ -101,7 +102,7 @@
             <span class="input-group-prepend">
               <div class="input-group-text"><i class="fa fa-car"></i></div>
             </span>
-            {!! Form::text('trans-from-assigned-trans-fromport', null, array('id'=>'trans-from-assigned-trans-fromport', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+            {!! Form::text('trans-from-assigned-transport', null, array('id'=>'trans-from-assigned-transport', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
           </div>
         </div>
       </div>
@@ -128,7 +129,7 @@
             <span class="input-group-prepend">
               <div class="input-group-text"><i class="fa fa-phone"></i></div>
             </span>
-            {!! Form::text('trans-from-contact', null, array('id'=>'trans-from-contact', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+            {!! Form::text('trans-from-contact-phone', null, array('id'=>'trans-from-contact', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
           </div>
         </div>
       </div>

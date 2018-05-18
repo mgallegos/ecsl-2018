@@ -231,6 +231,26 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	}
 
 	/**
+   * Get organization id
+   *
+   * @return integer
+   */
+  public function getOrganizationId()
+	{
+		return $this->organizationId;
+	}
+
+	/**
+   * Get CMS database connection
+   *
+   * @return string
+   */
+  public function getCmsDatabaseConnectionName()
+	{
+		return $this->cmsDatabaseConnectionName;
+	}
+
+	/**
 	 * Create a new CMS User.
 	 *
 	 * @param array $input
@@ -238,10 +258,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	 *
 	 * @return JSON encoded string
 	 *  A string as follows:
-	 *  In case of success (non-admin user): {"success":security/user-management.successSaveMessage}
-	 *  In case of success (admin user): {"success":form.defaultSuccessSaveMessage}
-	 *  In case of a non-admin user tries to add an admin user: {"info":security/user-management.nonAdminException}
-	 *  In case of an existing user: {"info":security/user-management.UserExistsException}
+	 *  In case of success: {"success":form.defaultSuccessSaveMessage}
 	 *  In form does not pass validation: {"validationFailed":true, "fieldValidationMessages":{$field0:$message0, $field1:$message1,…}}
 	 */
 	public function create(array $input, $openTransaction = true)
@@ -252,6 +269,11 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			'email' => 'required|email',
 			'password' => 'min:6|required|same:confirm_password'
 		);
+
+		if(!isset($input['kwaai_name']))
+		{
+			die('sorry!');
+		}
 
 		$data = array(
       'kwaai_name' => $input['kwaai_name'],
@@ -274,14 +296,6 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		{
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => array('email' => $this->Lang->get('security/user-management.UserExistsException'))));
 		}
-
-		// Activation by email
-		// $input['is_active'] = 0;
-		// $email = $input['email'];
-		// $value = str_shuffle(sha1($email.spl_object_hash($this).microtime(true)));
-		// $input['activation_code'] = hash_hmac('sha1', $value, $this->hashKey);
-		// $sender = $this->AuthenticationManager->getLoggedUserFirstname() . ' ' . $this->AuthenticationManager->getLoggedUserLastname();
-		// $subject = $this->Lang->get('security/user-activation.emailSubject', array('systemName' => $this->Config->get('system-security.system_name')));
 
 		$this->beginTransaction($openTransaction, $this->cmsDatabaseConnectionName);
 
@@ -446,13 +460,15 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				throw $e;
 		}
 
-		$subject = '[ECSL 2018] Confirmación de registro';
+		$subject = '[ECSL 2018] Confirmación de registro ' . $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));;
 		$replyToEmail = 'ecsl2018@softwarelibre.ca';
 		$replyToName = 'Comité Organizador del ECSL 2018';
 
 		$this->Mailer->queue('ecsl-2018::emails.registro', array('addressee' => $context['firstname']), function($message) use ($context, $subject, $replyToEmail, $replyToName)
 		{
-			$message->to($context['email'])->subject($subject)->replyTo($replyToEmail, $replyToName);
+			$message->to($context['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+				// ->cc('ecsl2018@softwarelibre.ca')
+				->bcc('mgallegos@decimaerp.com');
 		});
 
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
@@ -477,6 +493,11 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			'email' => 'required|email',
 			'password' => 'min:6|same:confirm_password'
 		);
+
+		if(!isset($input['kwaai_name']))
+		{
+			die('sorry!');
+		}
 
 		$data = array(
 			'kwaai_name' => $input['kwaai_name'],
@@ -577,6 +598,91 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
 	}
 
+	/**
+	 * Update transportation request.
+	 *
+	 * @param array $input
+	 *	An array as follows: array();
+	 *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *  In case of success: {"success":form.defaultSuccessSaveMessage}
+	 *  In form does not pass validation: {"validationFailed":true, "fieldValidationMessages":{$field0:$message0, $field1:$message1,…}}
+	 */
+	public function updateTransportationRequest(array $input, $openTransaction = true)
+	{
+		$this->rules = array(
+			'kwaai_name' => 'honeypot',
+			'kwaai_time' => 'required|honeytime:2'
+		);
+
+		if(!isset($input['kwaai_name']))
+		{
+			die('sorry!');
+		}
+
+		$data = array(
+			'kwaai_name' => $input['kwaai_name'],
+			'kwaai_time' => $input['kwaai_time'],
+		);
+
+		if( $this->with( $data )->fails() )
+		{
+			die('fail');
+		}
+
+		// var_dump($input);
+		// array (size=7)
+		//   'date' => string '2018-07-11' (length=10)
+		//   'id' => string '6' (length=1)
+		//   'hour' => string '02:01' (length=5)
+		//   'duration' => string 'Aeropuerto Internacional de El Salvador "MonseÃ±or Oscar Arnulfo Romero"' (length=72)
+		//   'destination' => string 'Centro Loyola' (length=13)
+		//   'transport_number' => string 'dasads' (length=6)
+		//   'remark' => string 'dsad' (length=4)
+
+		$TransportationRequest = $this->TransportationRequestManager->getTransportationRequest($input['id'], $this->cmsDatabaseConnectionName);
+
+		$input['datetime'] = $input['date'] . ' ' . $input['hour'] . ':00';
+		$dateTime = $TransportationRequest->pickup_datetime;
+
+		$this->TransportationRequestManager->update(
+			array(
+				'pickup_datetime' => $input['datetime'],
+				'transport_number' => $input['transport_number'],
+				'origin' => $input['origin'],
+				'destination' => $input['destination'],
+				'remark' => $input['remark']
+			),
+			$TransportationRequest,
+			false,//$openTransaction = true,
+			false,//$changeDateFormat = true,
+			$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+			$this->organizationId,//$organizationId = null,
+			$this->virtualAssistantId// $loggedUserId = null
+		);
+
+		if(empty($dateTime))
+		{
+			$subject = '[ECSL 2018] Confirmación de solicitud de transporte ' . $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+			$replyToEmail = 'ecsl2018@softwarelibre.ca';
+			$replyToName = 'Comité Organizador del ECSL 2018';
+			$User = $this->User->byId($TransportationRequest->request_user_id, $this->cmsDatabaseConnectionName);
+			$input['email'] = $User->email;
+			$input['name'] = $User->firstname . ' ' . $User->lastname;
+			$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', $input['datetime'])->format($this->Lang->get('form.phpDateFormat'));
+
+			$this->Mailer->queue('ecsl-2018::emails.solicitud-transporte', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+					// ->cc('ecsl2018@softwarelibre.ca')
+					->bcc('mgallegos@decimaerp.com');
+			});
+		}
+
+		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
+	}
+
   /**
    * Make payment
    *
@@ -591,6 +697,11 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     $UID = '3b5fe62169c492b285fab24d63334f1d';
     $WSK = '7c769929fa407504abf706b9ee337b2d';
     $WSPG = 'https://sandbox.pagadito.com/comercios/wspg/charges.php?wdsl';
+
+		if(!isset($input['amount']))
+		{
+			die('sorry!');
+		}
 
     /*
      * Lo primero es crear el objeto nusoap_client, al que se le pasa como
