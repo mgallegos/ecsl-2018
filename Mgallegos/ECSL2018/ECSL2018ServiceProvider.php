@@ -111,6 +111,7 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app['db'],
 					$app['mailer'],
 					new Carbon(),
+					$app->make('dompdf.wrapper'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagementInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\TransportationRequestManagement\TransportationRequestManagementInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface'),

@@ -52,5 +52,7 @@
     </div>
   </div>
 </div>
+{!! Form::open(array('id' => 'dash-form', 'url' => URL::to('cms/dashboard/generate-invitation-letter'), 'role'  =>  'form', 'target' => '_blank')) !!}
+{!! Form::close() !!}
 @parent
 @stop
