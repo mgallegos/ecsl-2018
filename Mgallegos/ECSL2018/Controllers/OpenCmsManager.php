@@ -305,4 +305,14 @@ class OpenCmsManager extends Controller {
 	{
 		return $this->OpenCmsManagerService->deletePresentation( $this->Input->json()->all() );
 	}
+
+	/**
+	 * Handle a POST request for generating letter.
+	 *
+	 * @return Response
+	 */
+	public function postGenerateInvitationLetter()
+	{
+		return $this->OpenCmsManagerService->generateInvitationLetter( $this->Input->all() );
+	}
 }

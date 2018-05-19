@@ -254,6 +254,16 @@
 			$('#dash-pago-container').show('fade');
 		});
 
+		$('#dash-carta').click(function()
+		{
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			$('#dash-form').submit();
+		});
+
 		$('.card-payment-deck').find('.card').each(function()
 		{
 			if(!$(this).hasClass('card-files'))

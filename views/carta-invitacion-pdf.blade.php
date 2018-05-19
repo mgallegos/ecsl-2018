@@ -6,15 +6,20 @@
     <title>ECSL-2018</title>
     <style>
 
+      body {
+        background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/fondo_small_40.png');
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
       .root{
-        padding-left: 25px;
-        padding-right: 25px;
-        font-size: 1.8rem;
+        font-size: 1rem;
         display: inline-block;
         text-align: justify;
-        line-height: 35pt;
-
+        line-height: 15pt;
+        /* background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/fondo.png'); */
       }
+
       .contenedor{
         padding-left: 25px;
         padding-right: 25px;
@@ -33,51 +38,45 @@
 
       }
 
-      .txt-fecha{
-        position: absolute;
-        top: 200px;
-        right: 60px;
-      }
-
-      .txt-cuerpo{
-        position: absolute;
-        top: 300px;
-        left: 60px;
-        right:60px;
-      }
-
       .pt{
-        padding-top: 125px;
+        /* padding-top: 125px; */
+        margin-top: 35px;
       }
 
       .mb{
-        margin-bottom: 50px;
+        /* margin-bottom: 50px; */
       }
 
       .bold{
         font-weight:bold;
       }
+
+      footer { position: fixed; bottom: 50px; left: 0px; right: 0px;}
+
     </style>
   </head>
 
   <body class="pt-3">
 
     <div class="" width="100%" >
-      <img  src="https://storage.googleapis.com/decimaerp/organizations/15/encabezado.png" class ="" width="100%" >
+      <img src="https://storage.googleapis.com/decimaerp/organizations/15/encabezado.png" class ="" width="100%" >
     </div>
 
     <div class="root pt" width="100%">
-      <img  src="https://storage.googleapis.com/decimaerp/organizations/15/fondo.png" width="90%" height="90%" style="padding-left:50px;" class="contenedor">
+      <!-- <img  src="https://storage.googleapis.com/decimaerp/organizations/15/fondo.png" width="90%" height="90%" style="padding-left:50px;" class="contenedor"> -->
 
-      <div class="txt-fecha">
-        <p>Sábado 17 de marzo de 2018</p>
+      <div style="text-align:right;">
+        <p>{{ $date }}</p>
       </div>
 
-      <div class="txt-cuerpo">
-        <p class="mb">A quien corresponda,</p>
+      <div style="text-align:left;margin-top:40px;">
+        <p>A quien corresponda,</p>
+      </div>
+
+      <div style="margin-top:30px;">
         <p class="mb">
           Por este medio, el comité organizador del décimo <strong>Encuentro Centroamericano de Software Libre (ECSL)</strong>
-          remite una atenta invitación a <strong>[NOMBRE DE LA PERSONA INVITADA]</strong> con el propósito de contar con su
+          remite una atenta invitación a <strong>{{ $name }}</strong> con el propósito de contar con su
           presencia como participante y conferencista en el marco de la celebración de dicha actividad,
           la cual tendrá lugar en la Universidad Centroamericana “José Simeón Cañas” (UCA), el municipio
           de Antiguo Cuscatlán, San Salvador, República de El Salvador; iniciando las actividades el día
@@ -91,30 +90,24 @@
           a esta carta de invitación.
         </p>
         <p class="mb">
-          En base a lo anteriormente expuesto, se convoca a  <strong>[NOMBRE DE LA PERSONA INVITADA]</strong> para formar parte de la presente
+          En base a lo anteriormente expuesto, se convoca a  <strong>{{ $name }}</strong> para formar parte de la presente
           edición del ECSL.
         </p>
 
-        <table width="100%" style="text-align: center; line-height: 10pt;">
+        <table width="100%" style="text-align: center; margin-top: 60px;">
           <tr>
             <td>
-              <div class="col text-center" style = "">
-                <img height="150px"src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_CJMP.png">
-                <p>Carlos Juan Martín Pérez</p>
-                <small>
-                  <p class="pb-0 mb-0">Representante General del</p>
-                  <p class="pt-0 mt-0">Comité Organizador del ECSL</p>
-                </small>
+              <div class="col text-center">
+                <img height="75px"src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_CJMP.png">
+                <p style="line-height: 2pt;margin-bottom: 0;">Carlos Juan Martín Pérez</p>
+                <p style="font-size: 0.8rem;line-height: 10pt;">Representante General del<br>Comité Organizador del ECSL</p>
               </div>
             </td>
             <td>
               <div class="col text-center">
-                <img height="150px" src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_KH.jpeg">
-                <p>Karla Hernández</p>
-                <small>
-                  <p class="pb-0 mb-0">Administración y Marketing del </p>
-                  <p class="pt-0 mt-0">Comité Organizador del ECSL</p>
-                </small>
+                <img height="75px" src="https://storage.googleapis.com/decimaerp/organizations/15/Firma_KH.jpeg">
+                <p style="line-height: 2pt;margin-bottom: 0;">Karla Hernández</p>
+                <p style="font-size: 0.8rem;line-height: 10pt;">Administración y Marketing del<br>Comité Organizador del ECSL</p>
               </div>
             </td>
           </tr>
@@ -128,9 +121,12 @@
       </div>
     </div>
 
-    <div class="" width="100%">
+    <!-- <div width="100%" style="margin-top:10px;">
       <img  src="https://storage.googleapis.com/decimaerp/organizations/15/PieDePagina.png" class ="" width="100%" >
-    </div>
+    </div> -->
+    <footer>
+      <img  src="https://storage.googleapis.com/decimaerp/organizations/15/PieDePagina.png" width="100%" >
+    </footer>
 
   </body>
 </html>

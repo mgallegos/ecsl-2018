@@ -11,6 +11,8 @@ namespace Mgallegos\ECSL2018\Services\OpenCmsManagement;
 
 use Carbon\Carbon;
 
+use Barryvdh\DomPDF\PDF;
+
 use nusoap_client;
 
 use Illuminate\Contracts\Hashing\Hasher;
@@ -74,6 +76,13 @@ use App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface;
 use App\Kwaai\Security\Repositories\Journal\JournalInterface;
 
 class Ecsl2018OpenCmsManager extends OpenCmsManager {
+
+	/**
+	 * PDF Creator
+	 *
+	 * @var Barryvdh\DomPDF\PDF
+	 */
+	protected $Dompdf;
 
   /**
 	 * Payment Manager Service
@@ -168,6 +177,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     DatabaseManager $DB,
 		Mailer $Mailer,
     Carbon $Carbon,
+		PDF $Dompdf,
 		PaymentManagementInterface $PaymentManager,
 		TransportationRequestManagementInterface $TransportationRequestManager,
 		PresentationManagementInterface $PresentationManager,
@@ -223,7 +233,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->Carbon = $Carbon;
 
-    // $this->defaultDatabaseConnectionName = 'default';
+		$this->Dompdf = $Dompdf;
 
     $this->organizationId = 15;
 
@@ -526,7 +536,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				throw $e;
 		}
 
-		$subject = '[ECSL 2018] Confirmación de registro ' . $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));;
+		$subject = '[ECSL 2018] Confirmación de registro ' . $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
 		$replyToEmail = 'ecsl2018@softwarelibre.ca';
 		$replyToName = 'Comité Organizador del ECSL 2018';
 
@@ -1374,5 +1384,27 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     // }
 
 		return false;
+  }
+
+	/**
+   * Generate invitation letter
+   *
+   * @param array $input
+   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
+   *
+   * @return JSON encoded string
+   *  A string as follows:
+   */
+  public function generateInvitationLetter(array $input)
+  {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
+		$Date = $this->Carbon->createFromFormat('Y-m-d', date('Y-m-d'), 'UTC')->setTimezone('America/El_Salvador');
+		$formattedDay = $this->Lang->get('week-days.' . strtolower($Date->format('l'))) . ' ' . $Date->format('d') . ' ' . strtolower($this->Lang->get('decima-accounting::period-management.' . (int)$Date->format('m'))) . ' de ' . $Date->format('Y');
+
+		return $this->Dompdf
+			->loadView('ecsl-2018::carta-invitacion-pdf', array('name' => $cmsLoggedUser['firstname'] . ' ' . $cmsLoggedUser['lastname'], 'date' => $formattedDay))
+			->setPaper('letter')
+			->stream('Carta_ECSL_2018.pdf');
   }
 }
