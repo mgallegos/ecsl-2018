@@ -14,6 +14,7 @@
     <li class="breadcrumb-item active">Intinerario de Evento</li>
   </ol>
 
+<h1>Opcion 1</h1>
   <div class="card-deck">
 
     <!-- Dia #1-->
@@ -65,6 +66,7 @@
 
 <br><br>
 
+<h1>Opcion 2</h1>
 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" id="uno-tab" data-toggle="tab" href="#uno" role="tab" aria-controls="uno" aria-selected="true">12 de Julio</a>
@@ -140,6 +142,7 @@
 </div>
 
 <br><br>
+<h1>Opcion 3</h1>
 
 <div class="row bg-light font-weight-bold text-center align-middle" >
   <div class="col-md-12 border p-3">12 de Julio</div>
@@ -203,7 +206,6 @@
   <div class="col-11 align-middle border-top border-right py-2 mb-0">
     <p class="text-justify mb-0">Descripcion de Actividad</p>
   </div>
-</div>
 
 <br><br>
 </div>
