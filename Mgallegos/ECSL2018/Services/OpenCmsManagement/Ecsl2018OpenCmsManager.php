@@ -1170,7 +1170,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		$input['amount'] = $Payment->amount;
 		$input['type'] = $Payment->remark;
 		$input['reference'] = $reference;
-		$subject = '[ECSL 2018] Confirmación de repción de pago ' . $input['datetime'];
+		$subject = '[ECSL 2018] Confirmación de repcepción de pago ' . $input['datetime'];
 		$replyToEmail = 'ecsl2018@softwarelibre.ca';
 		$replyToName = 'Comité Organizador del ECSL 2018';
 
