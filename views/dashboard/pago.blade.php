@@ -17,7 +17,7 @@
               </button>
             </div> -->
           @endif
-          @if($payment['status'] == 'X')
+          @if(isset($payment['status']) && $payment['status'] == 'X')
             <div class="alert alert-success" role="alert">
               Su pago fue procesado exitosamente, el número de referencia de su pago es: {{ $payment['approval_number']}},
               con fecha y hora: {{ !empty($payment['record_datetime'])?\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $payment['record_datetime'])->format(Lang::get('form.phpDateFormat')):'' }}.

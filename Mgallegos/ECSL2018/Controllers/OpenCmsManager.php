@@ -138,6 +138,7 @@ class OpenCmsManager extends Controller {
 		$redirectToPago = false;
 		$payment = $arrivingTransportationRequest = $leavingTransportationRequest = array();
 		$cmsLoggedUser = $this->OpenCmsManagerService->getSessionLoggedUser();
+		$payment['order_id'] = null;
 
 		if(empty($cmsLoggedUser))
 		{
