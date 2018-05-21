@@ -1168,7 +1168,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		$input['name'] = $cmsLoggedUser['firstname'] . ' ' . $cmsLoggedUser['lastname'];
 		$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
 		$input['amount'] = $Payment->amount;
-		$input['type'] = $Payment->type;
+		$input['type'] = $Payment->remark;
 		$input['reference'] = $reference;
 		$subject = '[ECSL 2018] Confirmación de repción de pago ' . $input['datetime'];
 		$replyToEmail = 'ecsl2018@softwarelibre.ca';
