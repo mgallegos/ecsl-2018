@@ -138,7 +138,7 @@
 
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-passport-number">Departamento/Provincia</label>
+                <label for="reg-state">Departamento/Provincia</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-map"></i></div>
@@ -154,7 +154,7 @@
 
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-passport-number">Municipio</label>
+                <label for="reg-district">Municipio</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-map-marker"></i></div>
@@ -166,7 +166,7 @@
 
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-passport-number">Pasaporte</label>
+                <label id="reg-passport-number-label" for="reg-passport-number">Pasaporte</label>
                 <div class="input-group">
                   <span class="input-group-prepend">
                     <div class="input-group-text"><i class="fa fa-id-card"></i></div>

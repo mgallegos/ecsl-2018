@@ -187,7 +187,11 @@ class OpenCmsManager extends Controller {
 			$redirectToRegistro = false;
 			$redirectToPago = true;
 			$transactionStatusMessage = $this->OpenCmsManagerService->getTransactionStatus($token);
+			$payment = $this->PaymentManagerService->getPayment($cmsLoggedUser['payment_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
 		}
+
+		// TESTING
+		// $this->OpenCmsManagerService->confirmPayment('ABC001', '2018-01-01 12:00:00');
 
 		return $this->View->make('ecsl-2018::dashboard')
 			->with('login', $redirectToLogin)
@@ -314,5 +318,15 @@ class OpenCmsManager extends Controller {
 	public function postGenerateInvitationLetter()
 	{
 		return $this->OpenCmsManagerService->generateInvitationLetter( $this->Input->all() );
+	}
+
+	/**
+	 * Handle a POST request for generating letter.
+	 *
+	 * @return Response
+	 */
+	public function postGenerateInvoice()
+	{
+		return $this->OpenCmsManagerService->generateInvoice( $this->Input->all() );
 	}
 }

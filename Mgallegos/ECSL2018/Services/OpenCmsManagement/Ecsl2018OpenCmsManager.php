@@ -543,7 +543,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		$this->Mailer->queue('ecsl-2018::emails.registro', array('addressee' => $context['firstname']), function($message) use ($context, $subject, $replyToEmail, $replyToName)
 		{
 			$message->to($context['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
-				// ->cc('ecsl2018@softwarelibre.ca')
+				->cc('ecsl2018@softwarelibre.ca')
 				->bcc('mgallegos@decimaerp.com');
 		});
 
@@ -751,7 +751,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			$this->Mailer->queue('ecsl-2018::emails.solicitud-transporte', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
 			{
 				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
-					// ->cc('ecsl2018@softwarelibre.ca')
+					->cc('ecsl2018@softwarelibre.ca')
 					->bcc('mgallegos@decimaerp.com');
 			});
 		}
@@ -838,7 +838,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			$this->Mailer->queue('ecsl-2018::emails.solicitud-ponencia', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
 			{
 				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
-					// ->cc('ecsl2018@softwarelibre.ca')
+					->cc('ecsl2018@softwarelibre.ca')
 					->bcc('mgallegos@decimaerp.com');
 			});
 		}
@@ -944,8 +944,246 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
 	}
 
+	/**
+   * Get payment ERN
+   *
+   * @param float $paymentTypeAmount
+   * @param float $paymentCommissionAmount
+   *
+   * @return JSON integer
+   */
+  public function getPaymentErn($paymentTypeId, $paymentFormType, $paymentAmount, $paymentTypeAmount, $paymentCommissionAmount, $type, $description, $openTransaction = true)
+  {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
+		$this->beginTransaction($openTransaction, $this->cmsDatabaseConnectionName);
+
+		try
+		{
+			$Payment = $this->PaymentManager->getPayment(
+				$cmsLoggedUser['payment_id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+			$date = $this->Carbon->createFromFormat('Y-m-d', date('Y-m-d'), 'UTC')->setTimezone('America/El_Salvador')->format('Y-m-d');
+
+			if(empty($Payment->order_id))
+			{
+				$response = json_decode(
+					$this->SaleManager->create(
+						array(
+							'type' => 'O',
+							'status' => 'P',
+							'registration_date' => $date,
+							'collection_date' => $date,
+							'client_id' => $cmsLoggedUser['client_id'],
+							'sale_point_id' => 1,
+							'payment_term_id' => 2,
+							'remark' => $description,
+						),
+						false,
+						false,
+						$this->cmsDatabaseConnectionName,
+						$this->organizationId,// $organizationId = null,
+						$this->virtualAssistantId // $loggedUserId = null,
+					),
+					true
+				);
+			}
+			else
+			{
+				$response['id'] = $Payment->order_id;
+
+				$this->SaleManager->update(
+					array(
+						'id' => $response['id'],
+						'registration_date' => $date,
+						'collection_date' => $date,
+						'remark' => $description
+					),
+					null,
+					null,
+					false,
+					false,
+					false,
+					$this->cmsDatabaseConnectionName,
+					$this->organizationId,// $organizationId = null,
+					$this->virtualAssistantId // $loggedUserId = null,
+				);
+			}
+
+			$this->PaymentManager->update(
+				array(
+					'order_id' => $response['id'],
+					'payment_form_label' => 'Pago en línea (pagadito)',
+					'payment_form_type' => $paymentFormType,
+					'type' => $type,
+					'remark' => $description,
+					'amount' => $paymentAmount,
+				),
+				$Payment,
+				false,
+				false,
+				$this->cmsDatabaseConnectionName,
+				$this->organizationId,// $organizationId = null,
+				$this->virtualAssistantId // $loggedUserId = null,
+			);
+
+			$Sale = $this->SaleManager->getSaleOrder(
+				$response['id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+			$this->SaleManager->deleteOrderDetails(
+				$response['id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+			$this->SaleManager->createOrderDetail(
+				array(
+					'quantity' => '1',
+					'price_without_discount' => $paymentTypeAmount,
+					'price' => $paymentTypeAmount,
+					'subject_amount' => $paymentTypeAmount,
+					'order_id' => $response['id'],
+					'article_id' => $paymentTypeId//paquete ECSL
+				),
+				false,// $openTransaction = true,
+				$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+				$this->organizationId,// $organizationId = null,
+				$this->virtualAssistantId // $loggedUserId = null,
+			);
+
+			$this->SaleManager->createOrderDetail(
+				array(
+					'quantity' => '1',
+					'price_without_discount' => $paymentCommissionAmount,
+					'price' => $paymentCommissionAmount,
+					'subject_amount' => $paymentCommissionAmount,
+					'order_id' => $response['id'],
+					'article_id' => 193//comisión
+				),
+				false,// $openTransaction = true,
+				$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+				$this->organizationId,// $organizationId = null,
+				$this->virtualAssistantId // $loggedUserId = null,
+			);
+
+			$this->commit($openTransaction);
+		}
+    catch (\Exception $e)
+    {
+      $this->rollBack($openTransaction);
+
+      throw $e;
+    }
+    catch (\Throwable $e)
+    {
+      $this->rollBack($openTransaction);
+
+      throw $e;
+    }
+
+		return $Sale->sale_order_number;
+  }
+
+	/**
+   * Confirm payment
+   *
+   * @param array $input
+   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
+   *
+   * @return JSON encoded string
+   *  A string as follows:
+   */
+  public function confirmPayment($reference, $dateTrans, $openTransaction = true)
+  {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
+		$this->beginTransaction($openTransaction, $this->cmsDatabaseConnectionName);
+
+		try
+		{
+			$Payment = $this->PaymentManager->getPayment(
+				$cmsLoggedUser['payment_id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+			$this->PaymentManager->update(
+				array(
+					'approval_number' => $reference,
+					'record_datetime' => $dateTrans,
+					'status' => 'X',
+				),
+				$Payment,
+				false,
+				false,
+				$this->cmsDatabaseConnectionName,
+				$this->organizationId,// $organizationId = null,
+				$this->virtualAssistantId // $loggedUserId = null,
+			);
+
+			$this->SaleManager->update(
+				array(
+					'id' => $Payment->order_id,
+					'emission_date' => $this->Carbon->createFromFormat('Y-m-d', date('Y-m-d'), 'UTC')->setTimezone('America/El_Salvador')->format('Y-m-d'),
+					'document_type_id' => '7',
+					'document_type_label' => 'Factura Comercial',
+					'document_number' => $this->SaleManager->getDocumentNumberByDocumentTypeId(
+						array(
+							'sale_point_id' => '1',
+							'document_type_id' => '7',
+							'organization_id' => $this->organizationId
+						),
+						$this->cmsDatabaseConnectionName,
+						false
+					)
+				),
+				null,
+				null,
+				false,
+				false,
+				false,
+				$this->cmsDatabaseConnectionName,
+				$this->organizationId,// $organizationId = null,
+				$this->virtualAssistantId // $loggedUserId = null,
+			);
+
+			$this->commit($openTransaction);
+		}
+		catch (\Exception $e)
+		{
+			$this->rollBack($openTransaction);
+
+			throw $e;
+		}
+		catch (\Throwable $e)
+		{
+			$this->rollBack($openTransaction);
+
+			throw $e;
+		}
+
+		$input['email'] = $cmsLoggedUser['email'];
+		$input['name'] = $cmsLoggedUser['firstname'] . ' ' . $cmsLoggedUser['lastname'];
+		$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+		$input['amount'] = $Payment->amount;
+		$input['type'] = $Payment->type;
+		$input['reference'] = $reference;
+		$subject = '[ECSL 2018] Confirmación de repción de pago ' . $input['datetime'];
+		$replyToEmail = 'ecsl2018@softwarelibre.ca';
+		$replyToName = 'Comité Organizador del ECSL 2018';
+
+		$this->Mailer->queue('ecsl-2018::emails.confirmacion-pago', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+		{
+			$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+				->cc('ecsl2018@softwarelibre.ca')
+				->bcc('mgallegos@decimaerp.com');
+		});
+  }
+
   /**
-   * Make payment
+   * Attempt payment
    *
    * @param array $input
    *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
@@ -955,6 +1193,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
    */
   public function attemptPayment(array $input)
   {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
     $UID = '3b5fe62169c492b285fab24d63334f1d';
     $WSK = '7c769929fa407504abf706b9ee337b2d';
     $WSPG = 'https://sandbox.pagadito.com/comercios/wspg/charges.php?wdsl';
@@ -974,220 +1214,256 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     if (!$err)
     {
+      /*
+       * Lo siguiente será consumir la operación 'connect', a la cual le
+       * pasaremos el UID y WSK para solicitarle un token de conexión al WSPG.
+       * Alternativamente le enviamos el formato en el que queremos que nos
+       * responda el WSPG, en este ejemplo solicitamos el formato PHP.
+       */
+      $params = array(
+          "uid"           => $UID,
+          "wsk"           => $WSK,
+          "format_return" => "php"
+      );
+
+      $response = $oSoap->call('connect', $params);
+      $data_response = unserialize($response);
+
+      // var_dump($data_response);die();
+      // object(stdClass)[2599]
+      //   public 'code' => string 'PG1001' (length=6)
+      //   public 'message' => string 'Connection successful.' (length=22)
+      //   public 'value' => string '75635d4f202e8428490624a8240ade0b' (length=32)
+      //   public 'datetime' => string '2018-05-12 13:37:21' (length=19)
+
+      if (!$oSoap->fault)
+      {
         /*
-         * Lo siguiente será consumir la operación 'connect', a la cual le
-         * pasaremos el UID y WSK para solicitarle un token de conexión al WSPG.
-         * Alternativamente le enviamos el formato en el que queremos que nos
-         * responda el WSPG, en este ejemplo solicitamos el formato PHP.
+         * Debido a que el WSPG nos puede devolver diversos mensajes de
+         * respuesta, validamos el tipo de mensaje que nos devuelve.
          */
-        $params = array(
-            "uid"           => $UID,
-            "wsk"           => $WSK,
-            "format_return" => "php"
-        );
-
-        $response = $oSoap->call('connect', $params);
-        $data_response = unserialize($response);
-
-        // var_dump($data_response);die();
-        // object(stdClass)[2599]
-        //   public 'code' => string 'PG1001' (length=6)
-        //   public 'message' => string 'Connection successful.' (length=22)
-        //   public 'value' => string '75635d4f202e8428490624a8240ade0b' (length=32)
-        //   public 'datetime' => string '2018-05-12 13:37:21' (length=19)
-
-        if (!$oSoap->fault)
+        switch($data_response->code)
         {
+          case "PG1001":
             /*
-             * Debido a que el WSPG nos puede devolver diversos mensajes de
-             * respuesta, validamos el tipo de mensaje que nos devuelve.
+             * En caso de haber recibido un token exitosamente,
+             * procedemos a definir los detalles de la venta, para ello
+             * definimos el siguiente arreglo.
+             */
+            $token = $data_response->value;
+            $details = array();
+            // if($_POST["cantidad1"]>0)
+            // {
+            //     $details[] =
+            //         array(
+            //             "quantity"      => $_POST["cantidad1"],
+            //             "description"   => $_POST["descripcion1"],
+            //             "price"         => $_POST["precio1"],
+            //             "url_product"   => $_POST["url1"]
+            //         );
+            // }
+
+            $details[] =
+              array(
+                  "quantity"      => 1,
+                  "description"   => $input['description'],
+                  "price"         => $input['amount'],
+                  // "url_product"   => $_POST["url1"]
+              );
+
+            /*
+             * A continuación, procedemos a consumir la operación
+             * exec_trans, para solicitar al WSPG que registre nuestra
+             * transacción. Para ello le enviamos token, ern, amount y
+             * details. Alternativamente, le enviamos el formato en el
+             * que queremos que nos responda el WSPG, en este ejemplo
+             * solicitamos el formato PHP.
+             *
+             * A manera de ejemplo el ern es generado como un número
+             * aleatorio entre 1000 y 2000. Lo ideal es que sea una
+             * referencia almacenada por el Pagadito Comercio.
+             */
+            $params = array(
+                "token"         => $token,
+                // "ern"           => rand(1, 2000),
+                "ern"           => $this->getPaymentErn($input['payment_type_id'], $input['payment_form_type'], $input['amount'], $input['payment_type_amount'], $input['payment_commission_amount'], $input['type'], $input['description']),
+                "amount"        => $input['amount'],
+                "details"       => json_encode($details),
+                "format_return" => "php"
+            );
+            $response = $oSoap->call('exec_trans', $params);
+            $data_response = unserialize($response);
+
+            // var_dump($data_response);die();
+            // object(stdClass)[2598]
+            // public 'code' => string 'PG1002' (length=6)
+            // public 'message' => string 'Transaction register successful.' (length=32)
+            // public 'value' => string 'https://sandbox.pagadito.com/comercios/index.php?mod=login&token=817113a613f43c063043c5048bdef30f' (length=97)
+            // public 'datetime' => string '2018-05-12 13:19:51' (length=19)
+
+            /*
+             * Debido a que el WSPG nos puede devolver diversos mensajes
+             * de respuesta, validamos el tipo de mensaje que nos
+             * devuelve.
              */
             switch($data_response->code)
             {
-                case "PG1001":
-                    /*
-                     * En caso de haber recibido un token exitosamente,
-                     * procedemos a definir los detalles de la venta, para ello
-                     * definimos el siguiente arreglo.
-                     */
-                    $token = $data_response->value;
-                    $details = array();
-                    // if($_POST["cantidad1"]>0)
-                    // {
-                    //     $details[] =
-                    //         array(
-                    //             "quantity"      => $_POST["cantidad1"],
-                    //             "description"   => $_POST["descripcion1"],
-                    //             "price"         => $_POST["precio1"],
-                    //             "url_product"   => $_POST["url1"]
-                    //         );
-                    // }
+	            case "PG1002":
+                /*
+                 * En caso de haberse registrado la transacción
+                 * exitosamente, redireccionamos al usuario a la
+                 * URL devuelta por el WSPG.
+                 */
+                // header("Location: $data_response->value");
+								$this->Log->info(
+									'[SECURITY EVENT] Pagadito transaction registered',
+									array(
+										'firstname' => $cmsLoggedUser['firstname'],
+										'lastname' => $cmsLoggedUser['lastname'],
+										'email' => $cmsLoggedUser['email'],
+										'code' => $data_response->code,
+										'value' => $data_response->value,
+									)
+								);
 
-                    $details[] =
-                        array(
-                            "quantity"      => 1,
-                            "description"   => $input['description'],
-                            "price"         => $input['amount'],
-                            // "url_product"   => $_POST["url1"]
-                        );
+                return $this->Redirector->to($data_response->value);
 
-                    /*
-                     * A continuación, procedemos a consumir la operación
-                     * exec_trans, para solicitar al WSPG que registre nuestra
-                     * transacción. Para ello le enviamos token, ern, amount y
-                     * details. Alternativamente, le enviamos el formato en el
-                     * que queremos que nos responda el WSPG, en este ejemplo
-                     * solicitamos el formato PHP.
-                     *
-                     * A manera de ejemplo el ern es generado como un número
-                     * aleatorio entre 1000 y 2000. Lo ideal es que sea una
-                     * referencia almacenada por el Pagadito Comercio.
-                     */
-                    $params = array(
-                        "token"         => $token,
-                        "ern"           => rand(1, 2000),
-                        // "ern"           => 1001,
-                        "amount"        => $input['amount'],
-                        "details"       => json_encode($details),
-                        "format_return" => "php"
-                    );
-                    $response = $oSoap->call('exec_trans', $params);
-                    $data_response = unserialize($response);
-
-                    // var_dump($data_response);die();
-                    // object(stdClass)[2598]
-                    // public 'code' => string 'PG1002' (length=6)
-                    // public 'message' => string 'Transaction register successful.' (length=32)
-                    // public 'value' => string 'https://sandbox.pagadito.com/comercios/index.php?mod=login&token=817113a613f43c063043c5048bdef30f' (length=97)
-                    // public 'datetime' => string '2018-05-12 13:19:51' (length=19)
-
-                    /*
-                     * Debido a que el WSPG nos puede devolver diversos mensajes
-                     * de respuesta, validamos el tipo de mensaje que nos
-                     * devuelve.
-                     */
-                    switch($data_response->code)
-                    {
-                        case "PG1002":
-                            /*
-                             * En caso de haberse registrado la transacción
-                             * exitosamente, redireccionamos al usuario a la
-                             * URL devuelta por el WSPG.
-                             */
-                            // header("Location: $data_response->value");
-                            return $this->Redirector->to($data_response->value);
-                            break;
-                        case "PG2001":
-                            /*
-                             * Tratamiento para datos incompletos.
-                             */
-                        case "PG3002":
-                            /*
-                             * Tratamiento para error.
-                             */
-                        case "PG3003":
-                            /*
-                             * Tratamiento para transacción no registrada.
-                             */
-                        case "PG3004":
-                            /*
-                             * Tratamiento para monto desigual
-                             */
-                        case "PG3006":
-                            /*
-                             * Tratamiento para monto excedido.
-                             */
-                        case "PG3007":
-                            /*
-                             * Tratamiento para acceso denegado.
-                             */
-                        default:
-                            /*
-                             * Por ser un ejemplo, se muestra en una ventana
-                             * emergente el código y mensaje de la respuesta
-                             * del WSPG
-                             */
-                            echo "
-                                <SCRIPT>
-                                    alert(\"$data_response->code: $data_response->message\");
-                                    location.href = 'index.php';
-                                </SCRIPT>
-                            ";
-                            break;
-                    }
-                    break;
-                case "PG2001":
-                    /*
-                     * Tratamiento para datos incompletos.
-                     */
-                case "PG3001":
-                    /*
-                     * Tratamiento para conexión dengada.
-                     */
-                case "PG3002":
-                    /*
-                     * Tratamiento para error.
-                     */
-                case "PG3005":
-                    /*
-                     * Tratamiento para conexión deshabilitada.
-                     */
-                default:
-                    /*
-                     * Por ser un ejemplo, se muestra en una ventana
-                     * emergente el código y mensaje de la respuesta
-                     * del WSPG
-                     */
-                    echo "
-                        <SCRIPT>
-                            alert(\"$data_response->code: $data_response->message\");
-                            location.href = 'index.php';
-                        </SCRIPT>
-                    ";
-                    break;
+                break;
+	            case "PG2001":
+                /*
+                 * Tratamiento para datos incompletos.
+                 */
+	            case "PG3002":
+                /*
+                 * Tratamiento para error.
+                 */
+	            case "PG3003":
+                /*
+                 * Tratamiento para transacción no registrada.
+                 */
+	            case "PG3004":
+                /*
+                 * Tratamiento para monto desigual
+                 */
+	            case "PG3006":
+                /*
+                 * Tratamiento para monto excedido.
+                 */
+	            case "PG3007":
+                /*
+                 * Tratamiento para acceso denegado.
+                 */
+	            default:
+                /*
+                 * Por ser un ejemplo, se muestra en una ventana
+                 * emergente el código y mensaje de la respuesta
+                 * del WSPG
+                 */
+                // echo "
+                //     <SCRIPT>
+                //         alert(\"$data_response->code: $data_response->message\");
+                //         location.href = 'index.php';
+                //     </SCRIPT>
+                // ";
+								$this->Log->info(
+									'[SECURITY EVENT] Pagadito transaction failed',
+									array(
+										'firstname' => $cmsLoggedUser['firstname'],
+										'lastname' => $cmsLoggedUser['lastname'],
+										'email' => $cmsLoggedUser['email'],
+										'code' => $data_response->code,
+										'message' => $data_response->message,
+									)
+								);
+                break;
             }
+            break;
+          case "PG2001":
+            /*
+             * Tratamiento para datos incompletos.
+             */
+          case "PG3001":
+            /*
+             * Tratamiento para conexión dengada.
+             */
+          case "PG3002":
+            /*
+             * Tratamiento para error.
+             */
+          case "PG3005":
+            /*
+             * Tratamiento para conexión deshabilitada.
+             */
+          default:
+            /*
+             * Por ser un ejemplo, se muestra en una ventana
+             * emergente el código y mensaje de la respuesta
+             * del WSPG
+             */
+            // echo "
+            //     <SCRIPT>
+            //         alert(\"$data_response->code: $data_response->message\");
+            //         location.href = 'index.php';
+            //     </SCRIPT>
+            // ";
+						$this->Log->info(
+							'[SECURITY EVENT] Pagadito connection failed',
+							array(
+								'firstname' => $cmsLoggedUser['firstname'],
+								'lastname' => $cmsLoggedUser['lastname'],
+								'email' => $cmsLoggedUser['email'],
+								'code' => $data_response->code,
+								'message' => $data_response->message,
+							)
+						);
+            break;
         }
-        else
-        {
-          /*
-           * Por ser un ejemplo, se muestra en una ventana emergente el
-           * mensaje de error devuelto por el objeto oSoap.
-           */
-          echo "
-              <SCRIPT>
-                  alert('".$oSoap->getError()."');
-                  location.href = 'index.php';
-              </SCRIPT>
-          ";
-        }
-    }
-    else
-    {
+      }
+      else
+      {
         /*
-         * Por ser un ejemplo, se muestra en una ventana emergente el mensaje de
-         * error devuelto por el objeto oSoap.
+         * Por ser un ejemplo, se muestra en una ventana emergente el
+         * mensaje de error devuelto por el objeto oSoap.
          */
         // echo "
         //     <SCRIPT>
-        //         alert('".$err."');
+        //         alert('".$oSoap->getError()."');
         //         location.href = 'index.php';
         //     </SCRIPT>
         // ";
+				$this->Log->info(
+					'[SECURITY EVENT] Pagadito soap error',
+					array(
+						'firstname' => $cmsLoggedUser['firstname'],
+						'lastname' => $cmsLoggedUser['lastname'],
+						'email' => $cmsLoggedUser['email'],
+						'error' => $oSoap->getError(),
+					)
+				);
+      }
     }
-  }
-
-	/**
-   * Register payment
-   *
-   * @param array $input
-   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
-   *
-   * @return JSON encoded string
-   *  A string as follows:
-   */
-  public function registerPayment(array $input)
-  {
-
+    else
+    {
+      /*
+       * Por ser un ejemplo, se muestra en una ventana emergente el mensaje de
+       * error devuelto por el objeto oSoap.
+       */
+      // echo "
+      //     <SCRIPT>
+      //         alert('".$err."');
+      //         location.href = 'index.php';
+      //     </SCRIPT>
+      // ";
+			$this->Log->info(
+				'[SECURITY EVENT] Pagadito soap error',
+				array(
+					'firstname' => $cmsLoggedUser['firstname'],
+					'lastname' => $cmsLoggedUser['lastname'],
+					'email' => $cmsLoggedUser['email'],
+					'error' => $err,
+				)
+			);
+    }
   }
 
   /**
@@ -1201,6 +1477,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
    */
   public function getTransactionStatus($tokenTrans)
   {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
     $UID = '3b5fe62169c492b285fab24d63334f1d';
     $WSK = '7c769929fa407504abf706b9ee337b2d';
     $WSPG = 'https://sandbox.pagadito.com/comercios/wspg/charges.php?wdsl';
@@ -1212,176 +1490,250 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     $oSoap = new nusoap_client($WSPG);
 
     $err = $oSoap->getError();
+
     if (!$err)
     {
-        /*
-         * Lo siguiente será consumir la operación 'connect', a la cual le
-         * pasaremos el UID y WSK para solicitarle un token de conexión al WSPG.
-         * Alternativamente le enviamos el formato en el que queremos que nos
-         * responda el WSPG, en este ejemplo solicitamos el formato PHP.
-         */
-        $params = array(
-            "uid"           => $UID,
-            "wsk"           => $WSK,
-            "format_return" => "php"
-        );
-        $response = $oSoap->call('connect', $params);
-        $data_response = unserialize($response);
+      /*
+       * Lo siguiente será consumir la operación 'connect', a la cual le
+       * pasaremos el UID y WSK para solicitarle un token de conexión al WSPG.
+       * Alternativamente le enviamos el formato en el que queremos que nos
+       * responda el WSPG, en este ejemplo solicitamos el formato PHP.
+       */
+      $params = array(
+        "uid"           => $UID,
+        "wsk"           => $WSK,
+        "format_return" => "php"
+      );
+      $response = $oSoap->call('connect', $params);
+      $data_response = unserialize($response);
 
-        if (!$oSoap->fault)
+      if (!$oSoap->fault)
+      {
+        /*
+         * Debido a que el WSPG nos puede devolver diversos mensajes de
+         * respuesta, validamos el tipo de mensaje que nos devuelve.
+         */
+        switch($data_response->code)
         {
+          case "PG1001":
             /*
-             * Debido a que el WSPG nos puede devolver diversos mensajes de
-             * respuesta, validamos el tipo de mensaje que nos devuelve.
+             * En caso de haber recibido un token exitosamente,
+             * procedemos a consumir la operación 'get_status'
+             * enviándole al WSPG el token de conexión y el token
+             * recibido por GET, que es el que consultaremos.
+             */
+            $token = $data_response->value;
+            $params = array(
+                "token"         => $token,
+                "token_trans"   => $tokenTrans,
+                "format_return" => "php"
+            );
+            $response = $oSoap->call('get_status', $params);
+            $data_response = unserialize($response);
+
+            /*
+             * Debido a que el WSPG nos puede devolver diversos mensajes
+             * de respuesta, validamos el tipo de mensaje que nos
+             * devuelve.
              */
             switch($data_response->code)
             {
-                case "PG1001":
+              case "PG1003":
+                /*
+                 * En caso de haberse obtenido el estado de la
+                 * transacción exitosamente, validamos el estado
+                 * devuelto.
+                 */
+                switch ($data_response->value['status'])
+                {
+                	case "COMPLETED":
                     /*
-                     * En caso de haber recibido un token exitosamente,
-                     * procedemos a consumir la operación 'get_status'
-                     * enviándole al WSPG el token de conexión y el token
-                     * recibido por GET, que es el que consultaremos.
+                     * Tratamiento para una transacción exitosa.
                      */
-                    $token = $data_response->value;
+                    // $msg = "Gracias por comprar en Mi Tienda Pagadito.<br /><br />Referencia: ".$data_response->value['reference']."<br />Fecha: ".$data_response->value['date_trans'];
 
-                    $params = array(
-                        "token"         => $token,
-                        "token_trans"   => $tokenTrans,
-                        "format_return" => "php"
-                    );
-                    $response = $oSoap->call('get_status', $params);
-                    $data_response = unserialize($response);
+										$this->confirmPayment($data_response->value['reference'], $data_response->value['date_trans']);
 
-                    /*
-                     * Debido a que el WSPG nos puede devolver diversos mensajes
-                     * de respuesta, validamos el tipo de mensaje que nos
-                     * devuelve.
-                     */
-                    switch($data_response->code)
-                    {
-                        case "PG1003":
-                            /*
-                             * En caso de haberse obtenido el estado de la
-                             * transacción exitosamente, validamos el estado
-                             * devuelto.
-                             */
-                            switch ($data_response->value["status"])
-                            {
-                                case "COMPLETED":
-                                    /*
-                                     * Tratamiento para una transacción exitosa.
-                                     */
-                                    // $msg = "Gracias por comprar en Mi Tienda Pagadito.<br /><br />Referencia: ".$data_response->value["reference"]."<br />Fecha: ".$data_response->value["date_trans"];
-                                    return "Su pago fue procesado exitosamente, gracias por confirmar su participación al ECSL 2018.<br />El número de referencia de su pago es: " .
-																			$data_response->value["reference"] .
-																			" con fecha y hora: " .
-																			$this->Carbon->createFromFormat('Y-m-d H:i:s', $data_response->value['date_trans'])->format($this->Lang->get('form.phpDateFormat'));
-                                    break;
-                                case "REGISTERED":
-                                    /*
-                                     * Tratamiento para una transacción aún en
-                                     * proceso.
-                                     */
-                                    return "La transacci&oacute;n a&uacute;n est&aacute; en proceso, le confirmaremos vía correo electrónico cuando sea completada.";
-                                    break;
-                                case "FAILED":
-                                    /*
-                                     * Tratamiento para una transacción fallida.
-                                     */
-                                default:
-                                    /*
-                                     * Por ser un ejemplo, se muestra un mensaje
-                                     * de error fijo.
-                                     */
-                                    $msg = "Lo sentimos, la compra no pudo realizarse.";
-                                    break;
-                            }
-                            break;
-                        case "PG2001":
-                            /*
-                             * Tratamiento para datos incompletos.
-                             */
-                        case "PG3002":
-                            /*
-                             * Tratamiento para error.
-                             */
-                        case "PG3003":
-                            /*
-                             * Tratamiento para transacción no registrada.
-                             */
-                        case "PG3007":
-                            /*
-                             * Tratamiento para acceso denegado.
-                             */
-                        default:
-                            /*
-                             * Por ser un ejemplo, se muestra un mensaje
-                             * de error fijo.
-                             */
-                            $msg = "Lo sentimos, ha ocurrido un problema :/";
-                            break;
-                    }
+										$this->Log->info(
+											'[SECURITY EVENT] Pagadito transaction completed',
+											array(
+												'firstname' => $cmsLoggedUser['firstname'],
+												'lastname' => $cmsLoggedUser['lastname'],
+												'email' => $cmsLoggedUser['email'],
+												'status' => $data_response->value['status'],
+												'reference' => $data_response->value['reference'],
+												'date_trans' => $data_response->value['date_trans']
+											)
+										);
+
+										return true;
+
+                    // return "Su pago fue procesado exitosamente, gracias por confirmar su participación al ECSL 2018.<br />El número de referencia de su pago es: " .
+										// 	$data_response->value['reference'] .
+										// 	" con fecha y hora: " .
+										// 	$this->Carbon->createFromFormat('Y-m-d H:i:s', $data_response->value['date_trans'])->format($this->Lang->get('form.phpDateFormat'));
                     break;
-                case "PG2001":
+                  case "REGISTERED":
                     /*
-                     * Tratamiento para datos incompletos.
+                     * Tratamiento para una transacción aún en
+                     * proceso.
                      */
-                case "PG3001":
-                    /*
-                     * Tratamiento para conexión dengada.
-                     */
-                case "PG3002":
-                    /*
-                     * Tratamiento para error.
-                     */
-                case "PG3005":
-                    /*
-                     * Tratamiento para conexión deshabilitada.
-                     */
-                default:
-                    /*
-                     * Por ser un ejemplo, se muestra en una ventana
-                     * emergente el código y mensaje de la respuesta
-                     * del WSPG
-                     */
-                    // echo "
-                    //     <SCRIPT>
-                    //         alert(\"$data_response->code: $data_response->message\");
-                    //         location.href = 'index.php';
-                    //     </SCRIPT>
-                    // ";
-										$msg = "$data_response->code: $data_response->message";
+
+										$this->Log->info(
+											'[SECURITY EVENT] Pagadito transaction registered but not completed',
+ 											array(
+ 												'firstname' => $cmsLoggedUser['firstname'],
+ 												'lastname' => $cmsLoggedUser['lastname'],
+ 												'email' => $cmsLoggedUser['email'],
+ 												'status' => $data_response->value['status']
+ 											)
+ 										);
+
+                    return "La transacci&oacute;n a&uacute;n est&aacute; en proceso, le confirmaremos vía correo electrónico cuando sea completada.";
                     break;
+                  case "FAILED":
+                    /*
+                     * Tratamiento para una transacción fallida.
+                     */
+                  default:
+                    /*
+                     * Por ser un ejemplo, se muestra un mensaje
+                     * de error fijo.
+                     */
+                    // $msg = "Lo sentimos, la compra no pudo realizarse.";
+										$this->Log->info(
+											'[SECURITY EVENT] Pagadito transaction failed',
+											array(
+												'firstname' => $cmsLoggedUser['firstname'],
+												'lastname' => $cmsLoggedUser['lastname'],
+												'email' => $cmsLoggedUser['email'],
+												'status' => $data_response->value['status']
+											)
+										);
+                    break;
+                }
+                break;
+              case "PG2001":
+                /*
+                 * Tratamiento para datos incompletos.
+                 */
+              case "PG3002":
+                /*
+                 * Tratamiento para error.
+                 */
+              case "PG3003":
+                /*
+                 * Tratamiento para transacción no registrada.
+                 */
+              case "PG3007":
+                /*
+                 * Tratamiento para acceso denegado.
+                 */
+              default:
+                /*
+                 * Por ser un ejemplo, se muestra un mensaje
+                 * de error fijo.
+                 */
+                // $msg = "Lo sentimos, ha ocurrido un problema :/";
+								$this->Log->info(
+									'[SECURITY EVENT] Pagadito transaction error',
+									array(
+										'firstname' => $cmsLoggedUser['firstname'],
+										'lastname' => $cmsLoggedUser['lastname'],
+										'email' => $cmsLoggedUser['email'],
+										'status' => $data_response->value['status']
+									)
+								);
+                break;
             }
+            break;
+          case "PG2001":
+            /*
+             * Tratamiento para datos incompletos.
+             */
+          case "PG3001":
+            /*
+             * Tratamiento para conexión denegada.
+             */
+          case "PG3002":
+            /*
+             * Tratamiento para error.
+             */
+          case "PG3005":
+            /*
+             * Tratamiento para conexión deshabilitada.
+             */
+          default:
+            /*
+             * Por ser un ejemplo, se muestra en una ventana
+             * emergente el código y mensaje de la respuesta
+             * del WSPG
+             */
+            // echo "
+            //     <SCRIPT>
+            //         alert(\"$data_response->code: $data_response->message\");
+            //         location.href = 'index.php';
+            //     </SCRIPT>
+            // ";
+						// $msg = "$data_response->code: $data_response->message";
+						$this->Log->info(
+							'[SECURITY EVENT] Pagadito transaction error',
+							array(
+								'firstname' => $cmsLoggedUser['firstname'],
+								'lastname' => $cmsLoggedUser['lastname'],
+								'email' => $cmsLoggedUser['email'],
+								'code' => $data_response->code,
+								'message' => $data_response->message
+							)
+						);
+            break;
         }
-        // else
-        // {
-        //     /*
-        //      * Por ser un ejemplo, se muestra en una ventana emergente el
-        //      * mensaje de error devuelto por el objeto oSoap.
-        //      */
-        //     echo "
-        //         <SCRIPT>
-        //             alert('".$oSoap->getError()."');
-        //             location.href = 'index.php';
-        //         </SCRIPT>
-        //     ";
-        // }
-    }
-    // else
-    // {
-    //     /*
-    //      * Por ser un ejemplo, se muestra en una ventana emergente el mensaje de
-    //      * error devuelto por el objeto oSoap.
-    //      */
-    //     echo "
-    //         <SCRIPT>
-    //             alert('".$err."');
-    //             location.href = 'index.php';
-    //         </SCRIPT>
-    //     ";
-    // }
+      }
+      else
+      {
+	      /*
+	       * Por ser un ejemplo, se muestra en una ventana emergente el
+	       * mensaje de error devuelto por el objeto oSoap.
+	       */
+	      // echo "
+	      //     <SCRIPT>
+	      //         alert('".$oSoap->getError()."');
+	      //         location.href = 'index.php';
+	      //     </SCRIPT>
+	      // ";
+				$this->Log->info(
+					'[SECURITY EVENT] Pagadito soap error',
+					array(
+						'firstname' => $cmsLoggedUser['firstname'],
+						'lastname' => $cmsLoggedUser['lastname'],
+						'email' => $cmsLoggedUser['email'],
+						'message' => $oSoap->getError()
+					)
+				);
+      }
+	  }
+	  else
+	  {
+      /*
+       * Por ser un ejemplo, se muestra en una ventana emergente el mensaje de
+       * error devuelto por el objeto oSoap.
+       */
+      // echo "
+      //     <SCRIPT>
+      //         alert('".$err."');
+      //         location.href = 'index.php';
+      //     </SCRIPT>
+      // ";
+			$this->Log->info(
+				'[SECURITY EVENT] Pagadito soap error',
+				array(
+					'firstname' => $cmsLoggedUser['firstname'],
+					'lastname' => $cmsLoggedUser['lastname'],
+					'email' => $cmsLoggedUser['email'],
+					'message' => $err
+				)
+			);
+	  }
 
 		return false;
   }
@@ -1400,11 +1752,37 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		$cmsLoggedUser = $this->getSessionLoggedUser();
 
 		$Date = $this->Carbon->createFromFormat('Y-m-d', date('Y-m-d'), 'UTC')->setTimezone('America/El_Salvador');
-		$formattedDay = $this->Lang->get('week-days.' . strtolower($Date->format('l'))) . ' ' . $Date->format('d') . ' ' . strtolower($this->Lang->get('decima-accounting::period-management.' . (int)$Date->format('m'))) . ' de ' . $Date->format('Y');
+		$formattedDay = $this->Lang->get('week-days.' . strtolower($Date->format('l'))) . ' ' . $Date->format('d') . ' de ' . strtolower($this->Lang->get('decima-accounting::period-management.' . (int)$Date->format('m'))) . ' de ' . $Date->format('Y');
 
 		return $this->Dompdf
 			->loadView('ecsl-2018::carta-invitacion-pdf', array('name' => $cmsLoggedUser['firstname'] . ' ' . $cmsLoggedUser['lastname'], 'date' => $formattedDay))
 			->setPaper('letter')
 			->stream('Carta_ECSL_2018.pdf');
+  }
+
+	/**
+   * Generate invitation letter
+   *
+   * @param array $input
+   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
+   *
+   * @return JSON encoded string
+   *  A string as follows:
+   */
+  public function generateInvoice(array $input)
+  {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+		$cmsLoggedUser = $this->getSessionOrganization();
+
+		return $this->SaleManager->createDefaultPdf(
+			array(
+				'sale_order_id' => $input['order_id'],
+				'print_format_identifier' => 'EC0001'
+			),
+			$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+			$this->virtualAssistantId, // $loggedUserId = null,
+			$this->organizationId,// $organizationId = null,
+			$this->getSessionOrganization()//$organization = null
+		);
   }
 }

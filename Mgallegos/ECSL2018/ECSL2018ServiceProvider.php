@@ -50,6 +50,8 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 	    __DIR__.'/../../assets/' => public_path('/mgallegos/ecsl-2018')
 		], 'public');
 
+		$this->registerCustomPrintFormats();
+
 		$this->registerRegistrationFormInterface();
 
 		$this->registerOpenCmsManagementInterface();
@@ -63,6 +65,19 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		//
+	}
+
+	/**
+	* Register custom print formats.
+	*
+	* @return void
+	*/
+	protected function registerCustomPrintFormats()
+	{
+		$customPrintFormatsArray = $this->app->make('customPrintFormats');
+		$customPrintFormatsArray['EC0001'] = new \Mgallegos\ECSL2018\CustomFormats\FacturaComercial($this->app->make('dompdf.wrapper'));
+
+		$this->app->instance('customPrintFormats', $customPrintFormatsArray);
 	}
 
 	/**

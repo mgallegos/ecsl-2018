@@ -39,7 +39,6 @@
 	{
 		if(gender == 'Deseo especificarlo')
 		{
-			$('#reg-custom-gender').val('');
 			$('#reg-custom-gender').attr('data-mg-required', '');
 			$('#reg-custom-gender').removeAttr('disabled');
 		}
@@ -64,6 +63,18 @@
 			}
 		}
 
+	}
+
+	function changeIdLabel(country)
+	{
+		if(country.toLowerCase() == 'EL Salvador'.toLowerCase())
+		{
+			$('#reg-passport-number-label').html('DUI');
+		}
+		else
+		{
+			$('#reg-passport-number-label').html('Pasaporte');
+		}
 	}
 
 	function hideDashboard()
@@ -184,6 +195,22 @@
 
 		@endif
 
+		@if (!Agent::isMobile())
+
+		$('#reg-country').on('autocompleteselect', function( event, ui )
+		{
+			changeIdLabel(ui.item.label);
+		});
+
+		@else
+
+		$('#reg-country').change(function()
+		{
+			changeIdLabel($(this).val());
+		});
+
+		@endif
+
 		$('[data-toggle="lightbox"]').click(function()
 		{
 			event.preventDefault();
@@ -251,6 +278,17 @@
 
 			$(this).addClass('active');
 
+			if($('#reg-country').val().toLowerCase() == 'Costa Rica'.toLowerCase())
+			{
+				$('#pay-bank-transfer-cr-payment-form-row').show();
+				$('#pay-bank-transfer-slsv-payment-form-row').hide();
+			}
+			else
+			{
+				$('#pay-bank-transfer-slsv-payment-form-row').show();
+				$('#pay-bank-transfer-cr-payment-form-row').hide();
+			}
+
 			$('#dash-pago-container').show('fade');
 		});
 
@@ -270,34 +308,107 @@
 			{
 				$(this).click(function()
 				{
+					var commissionAmount = '';
+
+					@if($payment['status'] == 'X')
+            return;
+        	@endif
+
 					$('.card-payment-deck').find('.card').each(function()
 					{
 						$(this).removeClass('bg-success');
 					});
 
 					$(this).addClass('bg-success');
-					$('#pay-participation-type').val($(this).attr('data-type'));
-					$('#pay-op-amount').val($(this).attr('data-amount'));
+
+					if($('#pay-online-payment-form').is(":checked"))
+					{
+						commissionAmount = parseFloat($(this).attr('data-payment-commission-amount'));
+					}
+					else
+					{
+						commissionAmount = 0;
+					}
+
+					$('#pay-op-payment-type-id').val($(this).attr('data-payment-type-id'));
+					$('#pay-op-type').val($(this).attr('data-type'));
 					$('#pay-op-description').val($(this).attr('data-description'));
-					$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+
+					$('#pay-op-payment-type-amount').val($(this).attr('data-amount'));
+					$('#pay-type-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+
+					$('#pay-op-payment-commission-amount').val($(this).attr('data-payment-commission-amount'));
+					$('#pay-commission-amount-label').val($.fmatter.NumberFormat(commissionAmount, $.fn.jqMgVal.defaults.validators.money.formatter));
+
+					$('#pay-op-amount').val(parseFloat($(this).attr('data-amount')) + commissionAmount);
+					$('#pay-amount-label').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount')) + commissionAmount, $.fn.jqMgVal.defaults.validators.money.formatter));
 				});
 			}
 		});
 
-		$('#online-payment-form').click(function()
+		$('#pay-online-payment-form').click(function()
 		{
-			$('#pay-btn-pay').show();
-			$('#pay-btn-send, #pay-bank-transfer').hide();
-		});
-
-		$('#transfer-payment-form').click(function()
-		{
-			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
+			if($(this).hasAttr('disabled'))
 			{
 				return;
 			}
 
-			$('#pay-btn-send, #pay-bank-transfer').show();
+			$('.card-payment-deck').find('.card').each(function()
+			{
+				if($(this).hasClass('bg-success'))
+				{
+					$(this).click();
+				}
+			});
+
+			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
+
+			$('#pay-btn-pay').show();
+			$('#pay-payment-amount-row, #pay-payment-amount-row').show();
+			$('#pay-btn-send, #pay-bank-sv-information, #pay-bank-cr-information, #pay-bank-files').hide();
+		});
+
+		$('#pay-bank-transfer-slsv-payment-form').click(function()
+		{
+			if($(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			$('.card-payment-deck').find('.card').each(function()
+			{
+				if($(this).hasClass('bg-success'))
+				{
+					$(this).click();
+				}
+			});
+
+			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
+
+			$('#pay-btn-send, #pay-bank-sv-information, #pay-bank-files').show();
+			$('#pay-payment-amount-row, #pay-payment-amount-row, #pay-bank-cr-information').hide();
+			$('#pay-btn-pay').hide();
+		});
+
+		$('#pay-bank-transfer-cr-payment-form').click(function()
+		{
+			if($(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			$('.card-payment-deck').find('.card').each(function()
+			{
+				if($(this).hasClass('bg-success'))
+				{
+					$(this).click();
+				}
+			});
+
+			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
+
+			$('#pay-btn-send, #pay-bank-cr-information, #pay-bank-files').show();
+			$('#pay-payment-amount-row, #pay-payment-amount-row, #pay-bank-sv-information').hide();
 			$('#pay-btn-pay').hide();
 		});
 
@@ -308,7 +419,19 @@
 				return;
 			}
 
+			if(parseFloat($('#pay-amount-label').val()) == 0)
+			{
+				$('#pay-form').showAlertAsFirstChild('alert-info', 'Seleccione una opción de pago.', 7000);
+
+				return;
+			}
+
 			$('#pay-op-form').submit();
+		});
+
+		$('#pay-generate-invoice').click(function()
+		{
+			$('#pay-inv-form').submit();
 		});
 
 		$('#dash-transporte-from').click(function()
@@ -689,6 +812,8 @@
 				$('#trans-to-id').val(loggedUser.leaving_transportation_request_id);
 				$('#reg-password, #reg-confirm-password').removeAttr('data-mg-required');
 				$('#reg-password-col, #reg-confirm-password-col').find('p').remove();
+				customGender(loggedUser.gender);
+				changeIdLabel(loggedUser.country);
 			}
 
 			if(!empty(payment))
@@ -697,9 +822,33 @@
 
 				if(payment.status == 'X')
 				{
-					// payment.order_id
-					// Mostrar mensaje de pago realizado y enlace para generar
 					// Deshabilitar radio y el boton de pago
+					$('.card-payment-deck').find('.card').each(function()
+					{
+						if($(this).attr('data-type') != undefined && $(this).attr('data-type') == payment.type)
+						{
+							$(this).addClass('bg-success');
+
+							if(payment.payment_form_type == 'G')
+							{
+								$('#pay-type-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+								$('#pay-commission-amount-label').val($.fmatter.NumberFormat($(this).attr('data-payment-commission-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+								$('#pay-amount-label').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount')) + parseFloat($(this).attr('data-payment-commission-amount')), $.fn.jqMgVal.defaults.validators.money.formatter));
+							}
+							else if(payment.payment_form_type == 'H')
+							{
+								$('#pay-bank-transfer-slsv-payment-form').click();
+								$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+							}
+							else if(payment.payment_form_type == 'I')
+							{
+								$('#pay-bank-transfer-cr-payment-form').click();
+								$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+							}
+						}
+					});
+
+					$('#pay-btn-pay, #pay-online-payment-form, #pay-bank-transfer-slsv-payment-form, #pay-bank-transfer-cr-payment-form').attr('disabled', 'disabled');
 				}
 			}
 
