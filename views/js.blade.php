@@ -310,7 +310,7 @@
 				{
 					var commissionAmount = '';
 
-					@if($payment['status'] == 'X')
+					@if(isset($payment['status']) && $payment['status'] == 'X')
             return;
         	@endif
 
