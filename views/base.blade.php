@@ -65,7 +65,7 @@
 			<fieldset id="main-panel-fieldset">
 	      @section('container')
 	      @show
-				{!! Form::button('<i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Cargando', array('id' => 'app-loader', 'class' => 'btn btn-outline-info btn-disable btn-lg app-loader hidden-xs-up', 'disabled' => 'disabled')) !!}
+				{!! Form::button('<i class="fa fa-circle-o-notch fa-spin fa-lg"></i> Cargando', array('id' => 'app-loader', 'class' => 'btn btn-warning btn-disable btn-lg app-loader hidden-xs-up', 'disabled' => 'disabled')) !!}
 				{!! Form::hidden('app-url', URL::to('/'), array('id' => 'app-url')) !!}
 				{!! Form::hidden('app-token', Session::token(), array('id' => 'app-token')) !!}
 				{!! Form::hidden('app-kwaai', '', array('id' => 'app-kwaai')) !!}
