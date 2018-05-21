@@ -31,7 +31,7 @@
 		<meta property="og:image" content="https://storage.googleapis.com/decimaerp/organizations/15/carousel3.jpg" />
 	@endif
 </head>
-<body  data-spy="scroll" data-target="#sideLogistica" id='body'>
+<body id="body" data-spy="scroll" data-target="#sideLogistica">
 	<header>
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {

@@ -2,9 +2,14 @@
   /* @import url('https://fonts.googleapis.com/css?family=Anton|Cabin:400,700'); */
   /* @import url('https://fonts.googleapis.com/css?family=Pacifico'); */
 
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+
   body {
     padding-top: 86px;
-    /* margin-bottom: 56px; */
+    margin-bottom: 56px;
   }
 
   .card-logo{
@@ -41,7 +46,7 @@
   }
 
   .footer {
-    /* position: absolute; */
+    position: absolute;
     bottom: 0;
     width: 100%;
     height: 56px;
