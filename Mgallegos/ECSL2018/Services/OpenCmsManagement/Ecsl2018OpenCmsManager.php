@@ -1194,10 +1194,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
   public function attemptPayment(array $input)
   {
 		$cmsLoggedUser = $this->getSessionLoggedUser();
+		$setting = $this->SettingManager->getCurrentSettingConfiguration($this->organizationId, $this->cmsDatabaseConnectionName);
 
-    $UID = '3b5fe62169c492b285fab24d63334f1d';
-    $WSK = '7c769929fa407504abf706b9ee337b2d';
-    $WSPG = 'https://sandbox.pagadito.com/comercios/wspg/charges.php?wdsl';
+		if($setting['pagadito_environment'] == 'S')
+		{
+			$UID = $setting['pagadito_sandbox_uid'];
+	    $WSK = $setting['pagadito_sandbox_wsk'];
+	    $WSPG = $setting['pagadito_sandbox_wspg'];
+		}
+		else if($setting['pagadito_environment'] == 'P')
+		{
+			$UID = $setting['pagadito_production_uid'];
+	    $WSK = $setting['pagadito_production_wsk'];
+	    $WSPG = $setting['pagadito_production_wspg'];
+		}
 
 		if(!isset($input['amount']))
 		{
@@ -1478,10 +1488,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
   public function getTransactionStatus($tokenTrans)
   {
 		$cmsLoggedUser = $this->getSessionLoggedUser();
+		$setting = $this->SettingManager->getCurrentSettingConfiguration($this->organizationId, $this->cmsDatabaseConnectionName);
 
-    $UID = '3b5fe62169c492b285fab24d63334f1d';
-    $WSK = '7c769929fa407504abf706b9ee337b2d';
-    $WSPG = 'https://sandbox.pagadito.com/comercios/wspg/charges.php?wdsl';
+		if($setting['pagadito_environment'] == 'S')
+		{
+			$UID = $setting['pagadito_sandbox_uid'];
+	    $WSK = $setting['pagadito_sandbox_wsk'];
+	    $WSPG = $setting['pagadito_sandbox_wspg'];
+		}
+		else if($setting['pagadito_environment'] == 'P')
+		{
+			$UID = $setting['pagadito_production_uid'];
+	    $WSK = $setting['pagadito_production_wsk'];
+	    $WSPG = $setting['pagadito_production_wspg'];
+		}
 
 		/*
      * Lo primero es crear el objeto nusoap_client, al que se le pasa como
