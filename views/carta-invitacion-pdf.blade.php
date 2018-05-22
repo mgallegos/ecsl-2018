@@ -113,7 +113,7 @@
           </tr>
         </table>
 
-        <strong><p class="mb" style="text-align: center;">Sello digital</p></strong>
+        <!-- <strong><p class="mb" style="text-align: center;">Sello digital</p></strong> -->
 
 
         <p class="mb" style="text-align: center;">Antiguo Cuscatlán, San Salvador, El Salvador, Centroamérica.</p>
