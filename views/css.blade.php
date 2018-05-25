@@ -69,6 +69,16 @@
 		padding-bottom: 3px
 	}
 
+  @media (max-width: 576px) {
+    .card-header-logo {
+      height: 192px;
+    }
+
+    .footer {
+      line-height: 30px !important;
+    }
+  }
+
   @media (min-width: 576px) and (max-width: 767.98px) {
     .card-header-logo {
       height: 192px;

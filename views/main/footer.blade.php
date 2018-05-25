@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <p class="m-0 font-weight-light font-weight-bold text-white text-center d-md-none d-xl-none d-block d-sm-block">
+        <p class="m-0 font-weight-light font-weight-bold text-white text-center d-block d-sm-block d-md-none d-xl-none">
           X Encuentro Centroamericano de Software Libre<br>Organizado por la SLSV
         </p>
       </div>
