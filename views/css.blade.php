@@ -9,7 +9,6 @@
 
   body {
     padding-top: 86px;
-    margin-bottom: 56px;
   }
 
   .card-logo{
@@ -49,7 +48,6 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 56px;
     line-height: 56px;
     /* background-color: #f5f5f5; */
   }
@@ -77,7 +75,26 @@
     }
   }
 
+  @media (max-width: 767.98px) {
+    body {
+      margin-bottom: 112px;
+    }
+
+    .footer {
+      height: 112px;
+    }
+  }
+
   @media (min-width: 768px) {
+
+    body {
+      margin-bottom: 56px;
+    }
+
+    .footer {
+      height: 56px;
+    }
+
     .card-header-logo {
       height: 152px;
     }
