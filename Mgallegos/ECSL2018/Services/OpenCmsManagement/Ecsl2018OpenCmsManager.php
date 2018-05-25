@@ -1054,6 +1054,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				$this->virtualAssistantId // $loggedUserId = null,
 			);
 
+			// comisión
 			// $this->SaleManager->createOrderDetail(
 			// 	array(
 			// 		'quantity' => '1',

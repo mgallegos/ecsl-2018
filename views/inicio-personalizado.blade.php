@@ -282,6 +282,23 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="https://www.pagadito.com/" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_pagadito.png">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="https://www.pagadito.com/" target="_blank" class="card-logo-title">
+              Pagadito
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
+
   </div>
   <!-- /.row -->
 </div>
