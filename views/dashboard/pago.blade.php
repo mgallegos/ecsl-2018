@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <div id="pay-payment-amount-row" class="row">
+          <div id="pay-payment-amount-row" class="row" style="display:none;">
             <div class="col-md-5">
               <div class="form-group mg-hm">
                 <label for="pay-payment-amount">Paquete ECSL 2018 (en US$)</label>
@@ -67,7 +67,7 @@
               </div>
             </div>
           </div>
-          <div id="pay-payment-amount-row" class="row">
+          <div id="pay-payment-commission-row" class="row" style="display:none;">
             <div class="col-md-5">
               <div class="form-group mg-hm">
                 <label for="pay-payment-amount">Comisión por pago en línea (en US$)</label>
@@ -134,18 +134,6 @@
     {!! Form::close() !!}
   </div>
 </div>
-<!-- Información bancaria detallada
-Nombre del banco: Banco Nacional de Costa Rica
-Dialogía de Información y Comunicación S.C.
-Cuenta IBAN (Internacional): CR38015109620020034632
-Cuenta Banco Nacional (CR): 200-02-096-003463-0
-Cuenta Cliente (CR): 15109620020034632
-Cédula jurídica: 3-106-562299
-Cuenta a nombre de: Dialogía de Información y Comunicación SC
-Dirección postal de la o cina principal del banco: Avenidas 1 y 3, calle 3. San José, Costa Rica. SWIFT bic: BNCRCRSJ
-Datos del banco corresponsal o intermediario en USA
-Nombre del Banco corresponsal: Citibank
-Dirección del banco corresponsal: New York 339 Park Avenue New York, NY 10022. USA Código ABA del corresponsal: CITIUS33 -->
 {!! Form::open(array('id' => 'pay-op-form', 'url' => URL::to('cms/dashboard/payment'), 'role'  =>  'form')) !!}
 	{!! Form::hidden('payment_type_id', 0, array('id' => 'pay-op-payment-type-id')) !!}
 	{!! Form::hidden('payment_form_type', 'G', array('id' => 'pay-op-payment-form-type')) !!}

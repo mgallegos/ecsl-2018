@@ -364,7 +364,7 @@
 			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
 
 			$('#pay-btn-pay').show();
-			$('#pay-payment-amount-row, #pay-payment-amount-row').show();
+			// $('#pay-payment-amount-row, #pay-payment-commission-row').show();
 			$('#pay-btn-send, #pay-bank-sv-information, #pay-bank-cr-information, #pay-bank-files').hide();
 		});
 
@@ -386,7 +386,8 @@
 			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
 
 			$('#pay-btn-send, #pay-bank-sv-information, #pay-bank-files').show();
-			$('#pay-payment-amount-row, #pay-payment-amount-row, #pay-bank-cr-information').hide();
+			// $('#pay-payment-amount-row, #pay-payment-commission-row, #pay-bank-cr-information').hide();
+			$('#pay-bank-cr-information').hide();
 			$('#pay-btn-pay').hide();
 		});
 
@@ -408,7 +409,8 @@
 			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
 
 			$('#pay-btn-send, #pay-bank-cr-information, #pay-bank-files').show();
-			$('#pay-payment-amount-row, #pay-payment-amount-row, #pay-bank-sv-information').hide();
+			// $('#pay-payment-amount-row, #pay-payment-commission-row, #pay-bank-sv-information').hide();
+			$('#pay-bank-sv-information').hide();
 			$('#pay-btn-pay').hide();
 		});
 

@@ -1054,20 +1054,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				$this->virtualAssistantId // $loggedUserId = null,
 			);
 
-			$this->SaleManager->createOrderDetail(
-				array(
-					'quantity' => '1',
-					'price_without_discount' => $paymentCommissionAmount,
-					'price' => $paymentCommissionAmount,
-					'subject_amount' => $paymentCommissionAmount,
-					'order_id' => $response['id'],
-					'article_id' => 193//comisión
-				),
-				false,// $openTransaction = true,
-				$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
-				$this->organizationId,// $organizationId = null,
-				$this->virtualAssistantId // $loggedUserId = null,
-			);
+			// $this->SaleManager->createOrderDetail(
+			// 	array(
+			// 		'quantity' => '1',
+			// 		'price_without_discount' => $paymentCommissionAmount,
+			// 		'price' => $paymentCommissionAmount,
+			// 		'subject_amount' => $paymentCommissionAmount,
+			// 		'order_id' => $response['id'],
+			// 		'article_id' => 193//comisión
+			// 	),
+			// 	false,// $openTransaction = true,
+			// 	$this->cmsDatabaseConnectionName,//$databaseConnectionName = null,
+			// 	$this->organizationId,// $organizationId = null,
+			// 	$this->virtualAssistantId // $loggedUserId = null,
+			// );
 
 			$this->commit($openTransaction);
 		}
