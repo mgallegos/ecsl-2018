@@ -131,7 +131,33 @@
                 @if (!Agent::isMobile())
                   {!! Form::autocomplete('reg-country', array('Argentina','Belize','Bolivia','Brazil','Chile','Cuba','Costa Rica','Colombia','Ecuador','Estados Unidos de América','El Salvador','French Guiana','Guyana','Guatemala','Honduras','Mexico','Nicaragua','Panama','Paraguay','Peru','Suriname','Uruguay','Venezuela'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
-                  {!! Form::select('reg-country', array('Argentina','Belize','Bolivia','Brazil','Chile','Cuba','Costa Rica','Colombia','Ecuador','Estados Unidos de América','El Salvador','French Guiana','Guyana','Guatemala','Honduras','Mexico','Nicaragua','Panama','Paraguay','Peru','Suriname','Uruguay','Venezuela'), null, array('id'=>'reg-country', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::select('reg-country', array(
+                    'Argentina' => 'Argentina',
+                    'Belize'  => 'Belize',
+                    'Bolivia' => 'Bolivia',
+                    'Brazil' => 'Brazil',
+                    'Chile' => 'Chile',
+                    'Cuba' => 'Cuba',
+                    'Costa Rica' => 'Costa Rica',
+                    'Colombia' => 'Colombia',
+                    'Ecuador' => 'Ecuador',
+                    'Estados Unidos de América' => 'Estados Unidos de América',
+                    'El Salvador' => 'El Salvador',
+                    'French Guiana' => 'French Guiana',
+                    'Guyana' => 'Guyana',
+                    'Guatemala' => 'Guatemala',
+                    'Honduras' => 'Honduras',
+                    'Mexico' => 'Mexico',
+                    'Nicaragua' => 'Nicaragua',
+                    'Panama' => 'Panama',
+                    'Paraguay' => 'Paraguay',
+                    'Peru' => 'Peru',
+                    'Suriname' => 'Suriname',
+                    'Uruguay' => 'Uruguay',
+                    'Venezuela' => 'Venezuela')
+                    , null,
+                    array('id'=>'reg-country', 'class'=>'form-control', 'data-mg-required'=>''))
+                  !!}
             		@endif
               </div>
             </div>
@@ -199,7 +225,7 @@
                 @if (!Agent::isMobile())
                   {!! Form::autocomplete('reg-shirt-size', array('S', 'M', 'L', 'XL', 'XXL'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
-                  {!! Form::select('reg-shirt-size', array('S', 'M', 'L', 'XL', 'XXL'), null, array('id'=>'reg-shirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+                  {!! Form::select('reg-shirt-size', array('S' => 'S', 'M' => 'M', 'L' => 'L', 'XL' => 'XL', 'XXL' => 'XXL'), null, array('id'=>'reg-shirt-size', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
             		@endif
               </div>
             </div>
