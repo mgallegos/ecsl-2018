@@ -1881,7 +1881,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			$this->Mailer->queue('ecsl-2018::emails.confirmacion-registo-comprobante', $data, function($message) use ($data, $subject, $replyToEmail, $replyToName)
 			{
 				$message->to($data['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
-					->cc('ecsl2018@softwarelibre.ca')
+					// ->cc('ecsl2018@softwarelibre.ca')
 					->bcc('mgallegos@decimaerp.com');
 			});
 
