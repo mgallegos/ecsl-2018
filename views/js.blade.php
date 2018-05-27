@@ -342,6 +342,7 @@
 
 					$('#pay-op-amount').val(parseFloat($(this).attr('data-amount')) + commissionAmount);
 					$('#pay-amount-label').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount')) + commissionAmount, $.fn.jqMgVal.defaults.validators.money.formatter));
+					$('#pay-amount-cr-label').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount-cr')), $.fn.jqMgVal.defaults.validators.money.formatter));
 				});
 			}
 		});
@@ -365,7 +366,7 @@
 
 			$('#pay-btn-pay').show();
 			// $('#pay-payment-amount-row, #pay-payment-commission-row').show();
-			$('#pay-bank-sv-information, #pay-bank-cr-information, #pay-bank-files').hide();
+			$('#pay-bank-sv-information, #pay-amount-cr-label-row, #pay-bank-cr-information, #pay-bank-files').hide();
 		});
 
 		$('#pay-bank-transfer-slsv-payment-form').click(function()
@@ -389,7 +390,7 @@
 
 			$('#pay-bank-sv-information, #pay-bank-files').show();
 			// $('#pay-payment-amount-row, #pay-payment-commission-row, #pay-bank-cr-information').hide();
-			$('#pay-bank-cr-information').hide();
+			$('#pay-bank-cr-information, #pay-amount-cr-label-row').hide();
 			$('#pay-btn-pay').hide();
 		});
 
@@ -412,7 +413,7 @@
 
 			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
 
-			$('#pay-bank-cr-information, #pay-bank-files').show();
+			$('#pay-bank-cr-information, #pay-amount-cr-label-row, #pay-bank-files').show();
 			// $('#pay-payment-amount-row, #pay-payment-commission-row, #pay-bank-sv-information').hide();
 			$('#pay-bank-sv-information').hide();
 			$('#pay-btn-pay').hide();
@@ -855,16 +856,19 @@
 								$('#pay-type-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
 								$('#pay-commission-amount-label').val($.fmatter.NumberFormat($(this).attr('data-payment-commission-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
 								$('#pay-amount-label').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount')) + parseFloat($(this).attr('data-payment-commission-amount')), $.fn.jqMgVal.defaults.validators.money.formatter));
+								$('#pay-amount-label-cr').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount-cr')), $.fn.jqMgVal.defaults.validators.money.formatter));
 							}
 							else if(payment.payment_form_type == 'H')
 							{
 								$('#pay-bank-transfer-slsv-payment-form').click();
 								$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+								$('#pay-amount-label-cr').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount-cr')), $.fn.jqMgVal.defaults.validators.money.formatter));
 							}
 							else if(payment.payment_form_type == 'I')
 							{
 								$('#pay-bank-transfer-cr-payment-form').click();
 								$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
+								$('#pay-amount-label-cr').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount-cr')), $.fn.jqMgVal.defaults.validators.money.formatter));
 							}
 						}
 					});

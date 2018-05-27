@@ -91,10 +91,19 @@
                   {!! Form::text('pay-amount-label', '0.00', array('id'=>'pay-amount-label', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
                 </div>
               </div>
+              <div id="pay-amount-cr-label-row" class="form-group mg-hm" style="display:none;">
+                <label for="pay-payment-amount">Monto a pagar (en CRC₡)</label>
+                <div class="input-group">
+                  <span class="input-group-prepend">
+                    <div class="input-group-text">CRC₡</i></div>
+                  </span>
+                  {!! Form::text('pay-amount-cr-label', '0.00', array('id'=>'pay-amount-cr-label', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+                </div>
+              </div>
             </div>
           </div>
           <div id="pay-bank-sv-information" style="display:none;">
-            <label>A continuación se detalla la información bancaria para puedas realizar el depósito/transferencia, una vez realizada, adjunte el comprobante que le entregó el banco poder verificar la operación:</label>
+            <label>A continuación se detalla la información bancaria para que pueda realizar el depósito/transferencia, una vez realizada, adjunte el comprobante que le entregó el banco poder verificar la operación:</label>
             <ul>
               <li><strong>Nombre del banco:</strong> Banco de América Central</li>
               <li><strong>Dirección del banco:</strong> 55 Av. Entre Calle Roosevelt y Avenida Olimpica, San Salvador, El Salvador</li>
@@ -112,7 +121,7 @@
             </ul>
           </div>
           <div id="pay-bank-cr-information" style="display:none;">
-            <label>A continuación se detalla la información bancaria para puedas realizar el depósito/transferencia, una vez realizada, adjunte el comprobante que le entregó el banco poder verificar la operación:</label>
+            <label>A continuación se detalla la información bancaria para que pueda realizar el depósito/transferencia, una vez realizada, adjunte el comprobante que le entregó el banco poder verificar la operación:</label>
             <ul>
               <li><strong>Nombre del banco:</strong> Banco Nacional de Costa Rica</li>
               <li><strong>Cuenta a nombre de:</strong> Carlos Juan Martín Pérez</li>

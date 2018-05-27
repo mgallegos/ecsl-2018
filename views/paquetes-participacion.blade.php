@@ -1,7 +1,7 @@
 <div class="card-deck">
 
   <!-- Paquete Básico -->
-  <div class="card" data-type="A" data-payment-type-id="190" data-payment-commission-amount="0" data-amount="10" data-description="Paquete básico ECSL 2018">
+  <div class="card" data-type="A" data-payment-type-id="190" data-payment-commission-amount="0" data-amount="10" data-amount-cr="6000" data-description="Paquete básico ECSL 2018">
     <h3 class="card-header text-center">Básico</h3>
     <div class="card-body m-0 px-0 pb-0">
       <h2 class="text-center font-weight-bold">US$ 10.00</h2>
@@ -18,7 +18,7 @@
   </div>
 
   <!-- Paquete Parcial -->
-  <div class="card" data-type="B" data-payment-type-id="191" data-payment-commission-amount="0" data-amount="40" data-description="Paquete parcial ECSL 2018">
+  <div class="card" data-type="B" data-payment-type-id="191" data-payment-commission-amount="0" data-amount="40" data-amount-cr="23000" data-description="Paquete parcial ECSL 2018">
     <h3 class="card-header text-center">Parcial</h3>
     <div class="card-body m-0 px-0 pb-0">
       <h2 class="text-center font-weight-bold">US$ 40.00</h2>
@@ -35,7 +35,7 @@
   </div>
 
   <!-- Paquete Completo -->
-  <div class="card" data-type="C" data-payment-type-id="192" data-payment-commission-amount="0" data-amount="150" data-description="Paquete completo ECSL 2018">
+  <div class="card" data-type="C" data-payment-type-id="192" data-payment-commission-amount="0" data-amount="150" data-amount-cr="86000" data-description="Paquete completo ECSL 2018">
     <h3 class="card-header text-center">Completo</h3>
     <div class="card-body m-0 px-0 pb-0">
       <h2 class="text-center font-weight-bold">US$ 150.00</h2>
