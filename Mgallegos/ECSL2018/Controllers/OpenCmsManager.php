@@ -14,6 +14,8 @@ use Mgallegos\DecimaOpenCms\OpenCms\Services\PaymentManagement\PaymentManagement
 
 use Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface;
 
+use Mgallegos\DecimaFile\File\Services\FileManagement\FileManagementInterface;
+
 use Illuminate\Foundation\Application;
 
 use Illuminate\Session\SessionManager;
@@ -53,13 +55,20 @@ class OpenCmsManager extends Controller {
 	protected $PresentationManagerService;
 
 	/**
+	 * File Manager Service
+	 *
+	 * @var Mgallegos\DecimaFile\File\Services\FileManagement\FileManagementInterface
+	 *
+	 */
+	protected $FileManagerService;
+
+	/**
 	 * Open Cms Manager Service
 	 *
 	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\OpenCmsManagement\OpenCmsManagementInterface
 	 *
 	 */
 	protected $OpenCmsManagerService;
-
 
 	/**
 	 * View
@@ -105,6 +114,7 @@ class OpenCmsManager extends Controller {
 		TransportationRequestManagementInterface $TransportationRequestManagerService,
 		PaymentManagementInterface $PaymentManagerService,
 		PresentationManagementInterface $PresentationManagerService,
+		FileManagementInterface $FileManagerService,
 		Application $App,
 		Factory $View,
 		Request $Input,
@@ -117,6 +127,8 @@ class OpenCmsManager extends Controller {
 		$this->PaymentManagerService = $PaymentManagerService;
 
 		$this->PresentationManagerService = $PresentationManagerService;
+
+		$this->FileManagerService = $FileManagerService;
 
 		$this->App = $App;
 
@@ -148,6 +160,7 @@ class OpenCmsManager extends Controller {
 			$loggedUserDisabledInputAttribute = '';
 			$registroLabel = 'Registrarse';
 			$cmsLoggedUser = array();
+			$cmsLoggedUserName = '';
 		}
 		else
 		{
@@ -159,6 +172,7 @@ class OpenCmsManager extends Controller {
 			$loggedUserDisabledInputAttribute = 'disabled="disabled"';
 			$registroLabel = 'Actualizar mis datos';
 			$cmsLoggedUser['birth_date'] = \Carbon\Carbon::createFromFormat('Y-m-d', $cmsLoggedUser['birth_date'])->format($this->Lang->get('form.phpShortDateFormat'));
+			$cmsLoggedUserName = $cmsLoggedUser['firstname'] . ' ' . $cmsLoggedUser['lastname'];
 			$payment = $this->PaymentManagerService->getPayment($cmsLoggedUser['payment_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
 			$arrivingTransportationRequest = $this->TransportationRequestManagerService->getTransportationRequest($cmsLoggedUser['arriving_transportation_request_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
 			$leavingTransportationRequest = $this->TransportationRequestManagerService->getTransportationRequest($cmsLoggedUser['leaving_transportation_request_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
@@ -203,6 +217,7 @@ class OpenCmsManager extends Controller {
 			->with('loggedUserDisabledCssClass', $loggedUserDisabledCssClass)
 			->with('loggedUserDisabledInputAttribute', $loggedUserDisabledInputAttribute)
 			->with('cmsLoggedUser', $cmsLoggedUser)
+			->with('cmsLoggedUserName', $cmsLoggedUserName)
 			->with('registroLabel', $registroLabel)
 			->with('token', $token)
 			->with('ern', $ern)
@@ -217,9 +232,7 @@ class OpenCmsManager extends Controller {
 				)
 			)
 			->with('status', $this->OpenCmsManagerService->getDefaultStatus())
-			->with('places', $this->OpenCmsManagerService->getPlaces())
-			->with('prefix', 'pay-')
-			->with('appInfo', array('id' => 'dashboard'));
+			->with('places', $this->OpenCmsManagerService->getPlaces());
 	}
 
 	/**
@@ -330,4 +343,41 @@ class OpenCmsManager extends Controller {
 	{
 		return $this->OpenCmsManagerService->generateInvoice( $this->Input->all() );
 	}
+
+	/**
+	 * Handle a POST request for uploading a file.
+	 *
+	 * @return Response
+	 */
+	public function postUpload()
+	{
+		return $this->OpenCmsManagerService->uploadFile($this->Input->all(), $this->Input->file('file-uploader-file'));
+	}
+
+	/**
+	 * Handle a POST request for getting element files
+	 *
+	 * @return Response
+	 */
+	 public function postElementFiles()
+ 	{
+ 		return $this->FileManagerService->getElementFiles( $this->Input->json('systemReferences'), false, $this->OpenCmsManagerService->getCmsDatabaseConnectionName(), $this->OpenCmsManagerService->getCmsOrganizationId());
+ 	}
+
+	/**
+	 * Handle a POST request for deleting a file
+	 *
+	 * @return Response
+	 */
+	 public function postDeleteFile()
+ 	{
+ 		return $this->FileManagerService->delete(
+			$this->Input->json()->all(),
+			true,
+			$this->OpenCmsManagerService->getCmsDatabaseConnectionName(),
+			$this->OpenCmsManagerService->getCmsOrganizationId(),
+			$this->OpenCmsManagerService->getCmsVirtualAssistantId(),
+			$this->OpenCmsManagerService->getCmsOrganizationId()
+		);
+ 	}
 }

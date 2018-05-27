@@ -119,16 +119,10 @@
               <li><strong>Número de cuenta:</strong> 200-01-114-020530-0</li>
             </ul>
           </div>
-          <div id="pay-bank-files" class="card card-files mb-3" style="display:none;">
-            <div class="card-header">
-              <i class="fa fa-files-o"></i> Archivos asociados
-            </div>
-            <div class="card-body">
-              <a href="#" class="btn btn-dark">Adjuntar archivo</a>
-            </div>
+          <div id="pay-bank-files" class="mb-3" style="display:none;">
+            @include('decima-file::file-cms-viewer')
           </div>
           {!! Form::button('Realizar pago', array('id'=>'pay-btn-pay', 'class'=>'btn btn-dark', 'style' => 'display:block;')) !!}
-          {!! Form::button('Enviar', array('id'=>'pay-btn-send', 'class'=>'btn btn-dark', 'style' => 'display:none;')) !!}
         </div>
       </div>
     {!! Form::close() !!}

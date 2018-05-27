@@ -365,7 +365,7 @@
 
 			$('#pay-btn-pay').show();
 			// $('#pay-payment-amount-row, #pay-payment-commission-row').show();
-			$('#pay-btn-send, #pay-bank-sv-information, #pay-bank-cr-information, #pay-bank-files').hide();
+			$('#pay-bank-sv-information, #pay-bank-cr-information, #pay-bank-files').hide();
 		});
 
 		$('#pay-bank-transfer-slsv-payment-form').click(function()
@@ -374,6 +374,8 @@
 			{
 				return;
 			}
+
+			getElementFiles('pay-', {{ isset($cmsLoggedUser['payment_id'])?$cmsLoggedUser['payment_id']:'0'}}, [], '/cms/dashboard');
 
 			$('.card-payment-deck').find('.card').each(function()
 			{
@@ -385,7 +387,7 @@
 
 			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
 
-			$('#pay-btn-send, #pay-bank-sv-information, #pay-bank-files').show();
+			$('#pay-bank-sv-information, #pay-bank-files').show();
 			// $('#pay-payment-amount-row, #pay-payment-commission-row, #pay-bank-cr-information').hide();
 			$('#pay-bank-cr-information').hide();
 			$('#pay-btn-pay').hide();
@@ -398,6 +400,8 @@
 				return;
 			}
 
+			getElementFiles('pay-', {{ isset($cmsLoggedUser['payment_id'])?$cmsLoggedUser['payment_id']:'0'}}, [], '/cms/dashboard');
+
 			$('.card-payment-deck').find('.card').each(function()
 			{
 				if($(this).hasClass('bg-success'))
@@ -408,7 +412,7 @@
 
 			$('#pay-op-payment-form-type').val($(this).attr('data-type'));
 
-			$('#pay-btn-send, #pay-bank-cr-information, #pay-bank-files').show();
+			$('#pay-bank-cr-information, #pay-bank-files').show();
 			// $('#pay-payment-amount-row, #pay-payment-commission-row, #pay-bank-sv-information').hide();
 			$('#pay-bank-sv-information').hide();
 			$('#pay-btn-pay').hide();
@@ -434,6 +438,21 @@
 		$('#pay-generate-invoice').click(function()
 		{
 			$('#pay-inv-form').submit();
+		});
+
+		$('#pay-btn-file-upload').click(function()
+		{
+			openUploader('pay-', {{ isset($cmsLoggedUser['payment_id'])?$cmsLoggedUser['payment_id']:'0'}}, 'Comprobantes de pago/{{ !empty($cmsLoggedUserName)?$cmsLoggedUserName:'0'}} }}', [], '', '', [], 1, 1);
+		});
+
+		$('#pay-file-uploader-modal').on('hidden.bs.modal', function (e)
+		{
+		  dataFiles = $.parseJSON($("#pay-file-uploader-modal").attr('data-files'));
+
+			if(dataFiles.length > 0)
+			{
+				getElementFiles('pay-', {{ isset($cmsLoggedUser['payment_id'])?$cmsLoggedUser['payment_id']:'0'}}, [], '/cms/dashboard');
+			}
 		});
 
 		$('#dash-transporte-from').click(function()

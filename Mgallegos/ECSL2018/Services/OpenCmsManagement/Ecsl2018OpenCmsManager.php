@@ -59,6 +59,8 @@ use Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterfac
 
 use Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface;
 
+use Mgallegos\DecimaFile\File\Services\FileManagement\FileManagementInterface;
+
 use Mgallegos\DecimaOpenCms\OpenCms\Repositories\User\UserInterface;
 
 use Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface;
@@ -125,6 +127,14 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	protected $SaleManager;
 
   /**
+	 * File Manager Service
+	 *
+	 * @var use Mgallegos\DecimaFile\File\Services\FileManagement\FileManagementInterface
+	 *
+	 */
+	protected $FileManager;
+
+  /**
 	* Virtual assistant id
 	*
 	* @var Integer
@@ -182,7 +192,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		TransportationRequestManagementInterface $TransportationRequestManager,
 		PresentationManagementInterface $PresentationManager,
     ClientManagementInterface $ClientManager,
-    SaleOrderManagementInterface $SaleManager
+    SaleOrderManagementInterface $SaleManager,
+		FileManagementInterface $FileManager
 	)
 	{
     $this->AuthenticationManager = $AuthenticationManager;
@@ -237,6 +248,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->organizationId = 15;
 
+		$this->organizationName = 'ECSL 2018';
+
     $this->cmsDatabaseConnectionName = 'ecsl2018';
 
     $this->virtualAssistantId = 65;
@@ -254,6 +267,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		$this->ClientManager = $ClientManager;
 
 		$this->SaleManager = $SaleManager;
+
+		$this->FileManager = $FileManager;
 
 		$this->rules = array(
 			'kwaai_name' => 'honeypot',
@@ -280,6 +295,16 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	}
 
 	/**
+   * Get organization id
+   *
+   * @return integer
+   */
+  public function getCmsOrganizationName()
+	{
+		return $this->organizationName;
+	}
+
+	/**
    * Get CMS database connection
    *
    * @return string
@@ -287,6 +312,16 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
   public function getCmsDatabaseConnectionName()
 	{
 		return $this->cmsDatabaseConnectionName;
+	}
+
+	/**
+   * Get CMS virtual assistant ID
+   *
+   * @return string
+   */
+  public function getCmsVirtualAssistantId()
+	{
+		return $this->virtualAssistantId;
 	}
 
 	/**
@@ -1805,5 +1840,62 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			$this->organizationId,// $organizationId = null,
 			$this->getSessionOrganization()//$organization = null
 		);
+  }
+
+	/**
+   * Upload file
+   *
+   * @param array $input
+   * @param file $file
+   *
+   * @return JSON encoded string
+   *  A string as follows:
+   */
+  public function uploadFile(array $input, $file)
+  {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
+		$response = $this->FileManager->saveFile(
+			$input,
+			$file,
+			true,
+			$this->getCmsDatabaseConnectionName(),
+			$this->getCmsOrganizationId(),
+			$this->getCmsVirtualAssistantId(),
+			$this->getCmsOrganizationId(),
+			$this->getCmsOrganizationName()
+		);
+
+		$decodedResponse = json_decode($response, true);
+
+		if(!empty($decodedResponse['success']))
+		{
+			$data['url'] = $decodedResponse['dataFiles'][0]['url'];
+			$data['email'] = $cmsLoggedUser['email'];
+			$data['name'] = $cmsLoggedUser['firstname'] . ' ' . $cmsLoggedUser['lastname'];
+			$data['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+			$subject = '[ECSL 2018] Confirmación de subida de archivo ' . $data['datetime'];
+			$replyToEmail = 'ecsl2018@softwarelibre.ca';
+			$replyToName = 'Comité Organizador del ECSL 2018';
+
+			$this->Mailer->queue('ecsl-2018::emails.confirmacion-registo-comprobante', $data, function($message) use ($data, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to($data['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+					->cc('ecsl2018@softwarelibre.ca')
+					->bcc('mgallegos@decimaerp.com');
+			});
+
+			$this->Log->info(
+				'[SECURITY EVENT] A new file was upload from ECSL 2018',
+				array(
+					'firstname' => $cmsLoggedUser['firstname'],
+					'lastname' => $cmsLoggedUser['lastname'],
+					'email' => $cmsLoggedUser['email'],
+					'file' => $data['url']
+				)
+			);
+		}
+
+		return $response;
   }
 }
