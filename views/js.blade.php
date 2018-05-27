@@ -442,7 +442,7 @@
 
 		$('#pay-btn-file-upload').click(function()
 		{
-			openUploader('pay-', {{ isset($cmsLoggedUser['payment_id'])?$cmsLoggedUser['payment_id']:'0'}}, 'Comprobantes de pago/{{ !empty($cmsLoggedUserName)?$cmsLoggedUserName:'0'}} }}', [], '', '', [], 1, 1);
+			openUploader('pay-', {{ isset($cmsLoggedUser['payment_id'])?$cmsLoggedUser['payment_id']:'0'}}, 'Comprobantes de pago/{{ !empty($cmsLoggedUserName)?$cmsLoggedUserName:'0'}}', [], '', '', [], 1, 1);
 		});
 
 		$('#pay-file-uploader-modal').on('hidden.bs.modal', function (e)
