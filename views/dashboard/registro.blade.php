@@ -233,7 +233,7 @@
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
                 <label for="reg-birthdate">Fecha de nacimiento</label>
-                {!! Form::date('reg-birth-date', array('class' => 'form-control', 'data-mg-required'=>''), null, 'btn-outline-secondary', '4') !!}
+                {!! Form::date('reg-birth-date', array('class' => 'form-control', 'data-mg-required'=>''), null, 'btn-outline-secondary', '4', 'c-55:c') !!}
               </div>
             </div>
           </div>
