@@ -42,7 +42,7 @@
         usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
         la región.</p>
       <div id="btn-registration" class="text-center" style="margin:0 auto;">
-        <a class="btn btn-lg btn-secondary" href="{{ URL::to('/registro') }}">Registrarme</a>
+        <a class="btn btn-lg btn-secondary" href="{{ URL::to('/registro') }}">Registrarse</a>
       </div>
     </div>
   </div>
