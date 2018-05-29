@@ -5,13 +5,13 @@
 <div class="container">
 
   <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">Intinerario de Evento</h1>
+  <h1 class="mt-4 mb-3">Itinerario de Evento</h1>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="{{URL::to('cms/inicio')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
     </li>
-    <li class="breadcrumb-item active">Intinerario de Evento</li>
+    <li class="breadcrumb-item active">Itinerario de Evento</li>
   </ol>
 
 <h1>Opcion 1</h1>
