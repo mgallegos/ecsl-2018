@@ -65,7 +65,7 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::carta-invitacion-pdf');
 	});
 
-	Route::get('/cms/itinerario-de-evento', function()
+	Route::get('/cms/itinerario', function()
 	{
 		return View::make('ecsl-2018::itinerario');
 	});
