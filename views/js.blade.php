@@ -308,7 +308,9 @@
 			{
 				$(this).click(function()
 				{
-					var commissionAmount = '';
+					var commissionAmount = '', type = $(this).attr('data-type'), remark = $(this).attr('data-description');
+
+					console.log(type);
 
 					@if(isset($payment['status']) && $payment['status'] == 'X')
             return;
@@ -331,8 +333,8 @@
 					}
 
 					$('#pay-op-payment-type-id').val($(this).attr('data-payment-type-id'));
-					$('#pay-op-type').val($(this).attr('data-type'));
-					$('#pay-op-description').val($(this).attr('data-description'));
+					$('#pay-op-type').val(type);
+					$('#pay-op-description').val(remark);
 
 					$('#pay-op-payment-type-amount').val($(this).attr('data-amount'));
 					$('#pay-type-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
@@ -343,6 +345,29 @@
 					$('#pay-op-amount').val(parseFloat($(this).attr('data-amount')) + commissionAmount);
 					$('#pay-amount-label').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount')) + commissionAmount, $.fn.jqMgVal.defaults.validators.money.formatter));
 					$('#pay-amount-cr-label').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount-cr')), $.fn.jqMgVal.defaults.validators.money.formatter));
+
+					$.ajax(
+					{
+						type: 'POST',
+						data: JSON.stringify({'_token':$('#app-token').val(), 'type':type, 'remark':remark, 'amount': $('#pay-op-amount').val()}),
+						dataType : 'json',
+						url: $('#reg-form').attr('action') + '/payment-type',
+						error: function (jqXHR, textStatus, errorThrown)
+						{
+							handleServerExceptions(jqXHR, prefix + 'form');
+						},
+						beforeSend:function()
+						{
+							// $('#app-loader').removeClass('hidden-xs-up');
+							// disabledAll();
+						},
+						success:function(json)
+						{
+							console.log(json);
+							// $('#app-loader').addClass('hidden-xs-up');
+							// enableAll();
+						}
+					});
 				});
 			}
 		});

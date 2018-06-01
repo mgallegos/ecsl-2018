@@ -275,6 +275,16 @@ class OpenCmsManager extends Controller {
 	}
 
 	/**
+	 * Handle a POST request for updating a payment.
+	 *
+	 * @return Response
+	 */
+	public function postPaymentType()
+	{
+		return $this->OpenCmsManagerService->setPaymentType( $this->Input->json()->all() );
+	}
+
+	/**
 	 * Handle a POST request for a payment.
 	 *
 	 * @return Response

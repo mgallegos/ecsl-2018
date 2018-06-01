@@ -1124,6 +1124,60 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
   }
 
 	/**
+   * Set payment type
+   *
+   * @param array $input
+   *	An array as follows: array('firstname'=>$firstname, 'lastname'=>$lastname, 'email'=>$email);
+   *
+   * @return JSON encoded string
+   *  A string as follows:
+   */
+  public function setPaymentType($input, $openTransaction = true)
+  {
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
+		$this->beginTransaction($openTransaction, $this->cmsDatabaseConnectionName);
+
+		try
+		{
+			$Payment = $this->PaymentManager->getPayment(
+				$cmsLoggedUser['payment_id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+			$this->PaymentManager->update(
+				array(
+					'type' => $input['type'],
+					'remark' => $input['remark'],
+					'amount' => $input['amount'],
+				),
+				$Payment,
+				false,
+				false,
+				$this->cmsDatabaseConnectionName,
+				$this->organizationId,// $organizationId = null,
+				$this->virtualAssistantId // $loggedUserId = null,
+			);
+
+			$this->commit($openTransaction);
+		}
+		catch (\Exception $e)
+		{
+			$this->rollBack($openTransaction);
+
+			throw $e;
+		}
+		catch (\Throwable $e)
+		{
+			$this->rollBack($openTransaction);
+
+			throw $e;
+		}
+
+		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
+  }
+
+	/**
    * Confirm payment
    *
    * @param array $input
