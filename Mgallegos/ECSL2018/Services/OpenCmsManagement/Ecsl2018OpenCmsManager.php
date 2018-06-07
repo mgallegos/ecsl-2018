@@ -582,6 +582,18 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				->bcc('mgallegos@decimaerp.com');
 		});
 
+		$subject = '[ECSL 2018] Interesado en competencia de seguidores en línea ' . $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+
+		if(!empty($input['is_interested_in_competition']))
+		{
+			$this->Mailer->queue('ecsl-2018::emails.competencia', array('name' => $context['firstname'] . ' ' . $context['lastname'], 'email' => $context['email'], 'country' => $input['country']), function($message) use ($context, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to('karla.hdz4@gmail.com')->subject($subject)->replyTo($replyToEmail, $replyToName)
+					->cc('mario.gomez@teubi.co')
+					->bcc('mgallegos@decimaerp.com');
+			});
+		}
+
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
 	}
 
@@ -631,21 +643,23 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			return json_encode(array('validationFailed' => true , 'fieldValidationMessages' => array('email' => $this->Lang->get('security/user-management.UserExistsException'))));
 		}
 
+		$cmsLoggedUser = $this->getSessionLoggedUser();
+
     $this->beginTransaction($openTransaction, $this->cmsDatabaseConnectionName);
-
-		$userInput  = array(
-			'firstname' => $input['firstname'],
-			'lastname' => $input['lastname'],
-			'email' => $input['email']
-		);
-
-		if(isset($input['password']))
-		{
-			$userInput['password'] = bcrypt($input['password']);
-		}
 
 		try
 		{
+			$userInput  = array(
+				'firstname' => $input['firstname'],
+				'lastname' => $input['lastname'],
+				'email' => $input['email']
+			);
+
+			if(isset($input['password']))
+			{
+				$userInput['password'] = bcrypt($input['password']);
+			}
+
       $this->User->update(
 				$userInput,
 				$User,
@@ -704,6 +718,20 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				$this->rollBack($openTransaction);
 
 				throw $e;
+		}
+
+		$subject = '[ECSL 2018] Interesado en competencia de seguidores en línea ' . $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+		$replyToEmail = 'ecsl2018@softwarelibre.ca';
+		$replyToName = 'Comité Organizador del ECSL 2018';
+
+		if(empty($cmsLoggedUser['is_interested_in_competition']) && !empty($input['is_interested_in_competition']))
+		{
+			$this->Mailer->queue('ecsl-2018::emails.competencia', array('name' => $context['firstname'] . ' ' . $context['lastname'], 'email' => $context['email'], 'country' => $input['country']), function($message) use ($context, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to('karla.hdz4@gmail.com')->subject($subject)->replyTo($replyToEmail, $replyToName)
+					->cc('mario.gomez@teubi.co')
+					->bcc('mgallegos@decimaerp.com');
+			});
 		}
 
 		return json_encode(array('success' => $this->Lang->get('form.defaultSuccessSaveMessage')));
