@@ -76,7 +76,7 @@
 
       <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="Four">
         <div class="card-body">
-          El registro aún no está abierto.
+          Sí, puede registrarse <a href="{{ URL::to('/registro') }}">aquí</a>.
         </div>
       </div>
     </div>

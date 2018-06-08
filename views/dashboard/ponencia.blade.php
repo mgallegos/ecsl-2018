@@ -34,7 +34,7 @@
         <div class="col-lg-6 col-md-12">
           <div class="form-group mg-hm">
             <label for="pon-duration">Duración</label>
-            {!! Form::select('pon-duration', array('1' => '50 minutos','TwoHours' => '1 Hora y 50 minutos'), null, array('id'=>'pon-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
+            {!! Form::select('pon-duration', array('1' => '50 minutos', '2' => '1 Hora y 50 minutos'), null, array('id'=>'pon-duration', 'class'=>'form-control', 'data-mg-required'=>'')) !!}
           </div>
         </div>
         <!--Eje tematico -->
