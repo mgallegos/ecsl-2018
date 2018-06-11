@@ -886,12 +886,14 @@
 							else if(payment.payment_form_type == 'H')
 							{
 								$('#pay-bank-transfer-slsv-payment-form').click();
+								$('#pay-bank-transfer-slsv-payment-form').prop('checked', true);
 								$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
 								$('#pay-amount-label-cr').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount-cr')), $.fn.jqMgVal.defaults.validators.money.formatter));
 							}
 							else if(payment.payment_form_type == 'I')
 							{
 								$('#pay-bank-transfer-cr-payment-form').click();
+								$('#pay-bank-transfer-cr-payment-form').prop('checked', true);
 								$('#pay-amount-label').val($.fmatter.NumberFormat($(this).attr('data-amount'), $.fn.jqMgVal.defaults.validators.money.formatter));
 								$('#pay-amount-label-cr').val($.fmatter.NumberFormat(parseFloat($(this).attr('data-amount-cr')), $.fn.jqMgVal.defaults.validators.money.formatter));
 							}

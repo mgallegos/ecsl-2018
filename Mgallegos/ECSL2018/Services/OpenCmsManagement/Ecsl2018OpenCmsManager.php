@@ -1078,7 +1078,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			$this->PaymentManager->update(
 				array(
 					'order_id' => $response['id'],
-					'payment_form_label' => 'Pago en línea (pagadito)',
+					// 'payment_form_label' => 'Pago en línea (pagadito)',
 					'payment_form_type' => $paymentFormType,
 					'type' => $type,
 					'remark' => $description,
@@ -1288,7 +1288,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		$input['amount'] = $Payment->amount;
 		$input['type'] = $Payment->remark;
 		$input['reference'] = $reference;
-		$subject = '[ECSL 2018] Confirmación de repcepción de pago ' . $input['datetime'];
+		$subject = '[ECSL 2018] Confirmación de recepción de pago ' . $input['datetime'];
 		$replyToEmail = 'ecsl2018@softwarelibre.ca';
 		$replyToName = 'Comité Organizador del ECSL 2018';
 
@@ -1592,6 +1592,219 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 				)
 			);
     }
+  }
+
+	/**
+	 * Authorize payment
+	 *
+	 * @param array $input
+   * 	An array as follows: array('field0'=>$field0, 'field1'=>$field1
+   *                            );
+   *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *	In case of success: {"success" : form.defaultSuccessSaveMessage}
+	 */
+	public function authorizePayment(array $input, $openTransaction = true, $changeDateFormat = true)
+	{
+		$organizationId = $this->AuthenticationManager->getCurrentUserOrganizationId();
+		$loggedUserId = $this->AuthenticationManager->getLoggedUserId();
+
+		if(empty($loggedUserId))
+		{
+			return json_encode(array('info' => 'System user is not logged in'));
+		}
+
+    if(isset($input['record_datetime']) && !empty($input['record_datetime']) && $changeDateFormat)
+    {
+      $recordDatetime = $this->Carbon->createFromFormat($this->Lang->get('form.phpDateTimeFormat'), $input['record_datetime']);
+      $input['record_datetime'] = $recordDatetime->format('Y-m-d H:i:s');
+    }
+
+    $this->beginTransaction($openTransaction, $this->cmsDatabaseConnectionName);
+
+    try
+		{
+			$Payment = $this->PaymentManager->getPayment(
+				$input['id'],
+				$this->cmsDatabaseConnectionName
+			);
+      $User = $this->User->byId(
+				$Payment->user_id,
+				$this->cmsDatabaseConnectionName
+			);
+      $RegistrationForm = $this->RegistrationForm->byUserId(
+				$Payment->user_id,
+				$this->cmsDatabaseConnectionName
+			)->first();
+      $date = $this->Carbon->createFromFormat('Y-m-d', date('Y-m-d'), 'UTC')
+        ->setTimezone('America/El_Salvador')
+        ->format('Y-m-d');
+
+      $articlesId['A'] = 190;
+      $articlesId['B'] = 191;
+      $articlesId['C'] = 192;
+
+			if(empty($Payment->order_id))
+			{
+				$response = json_decode(
+					$this->SaleManager->create(
+						array(
+							'type' => 'O',
+							'status' => 'P',
+							'registration_date' => $date,
+							'emission_date' => $date,
+							'collection_date' => $recordDatetime->format('Y-m-d'),
+							'payment_date' => $recordDatetime->format('Y-m-d'),
+							'client_id' => $User->client_id,
+							'sale_point_id' => 1,
+              'document_type_id' => '7',
+    					'document_type_label' => 'Factura Comercial',
+							'payment_term_id' => 1,
+							'payment_form_id' => 2,
+							'bank_account_id' => 1,
+							'remark' => $input['remark'],
+              'document_number' => $this->SaleManager->getDocumentNumberByDocumentTypeId(
+    						array(
+    							'sale_point_id' => '1',
+    							'document_type_id' => '7',
+    							'organization_id' => $organizationId
+    						),
+    						$this->cmsDatabaseConnectionName,
+    						false
+    					)
+						),
+						false,
+						false,
+						$this->cmsDatabaseConnectionName,
+						$organizationId,// $organizationId = null,
+						$loggedUserId // $loggedUserId = null,
+					),
+					true
+				);
+			}
+			else
+			{
+        $response['id'] = $Payment->order_id;
+
+				$this->SaleManager->update(
+          array(
+            'id' => $response['id'],
+            'type' => 'O',
+            'status' => 'P',
+            'registration_date' => $date,
+            'emission_date' => $date,
+            'collection_date' => $recordDatetime->format('Y-m-d'),
+            'payment_date' => $recordDatetime->format('Y-m-d'),
+            'client_id' => $RegistrationForm->client_id,
+            'sale_point_id' => 1,
+            'sale_point_label' => 'Oficina central',
+            'document_type_id' => '7',
+            'document_type_label' => 'Factura Comercial',
+            'payment_term_id' => 1,
+            'payment_term_label' => 'Contado',
+            'payment_form_id' => 2,
+            'payment_form_label' => 'Transferencia bancaria',
+            'bank_account_id' => 1,
+            'bank_account_label' => 'Moisés Oswaldo Larín y Carlos Juan Martín Pérez (Banco de América Central)',
+            'remark' => $input['remark'],
+            'document_number' => $this->SaleManager->getDocumentNumberByDocumentTypeId(
+              array(
+                'sale_point_id' => '1',
+                'document_type_id' => '7',
+                'organization_id' => $organizationId
+              ),
+              $this->cmsDatabaseConnectionName,
+              false
+            )
+          ),
+					null,
+					null,
+					false,
+					false,
+					false,
+					$this->cmsDatabaseConnectionName,
+					$organizationId,// $organizationId = null,
+					$loggedUserId // $loggedUserId = null,
+				);
+
+        $this->SaleManager->deleteOrderDetails(
+  				$response['id'],
+  				$this->cmsDatabaseConnectionName
+  			);
+			}
+
+      $Sale = $this->SaleManager->getSaleOrder(
+				$response['id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+      $this->SaleManager->createOrderDetail(
+				array(
+					'quantity' => '1',
+					'price_without_discount' => $input['amount'],
+					'price' => $input['amount'],
+					'subject_amount' => $input['amount'],
+					'order_id' => $response['id'],
+					'article_id' => $articlesId[$input['type']]
+				),
+				false,// $openTransaction = true,
+        $this->cmsDatabaseConnectionName,
+        $organizationId,// $organizationId = null,
+        $loggedUserId // $loggedUserId = null,
+			);
+
+      // 'order_id' => $response['id'],
+
+      $input['status'] = 'X';
+      $input['order_id'] = $response['id'];
+
+      $this->PaymentManager->update(
+				$input,
+				$Payment,
+				false,
+				false,
+				$this->cmsDatabaseConnectionName,
+				$organizationId,// $organizationId = null,
+				$loggedUserId // $loggedUserId = null,
+			);
+
+      $Journal = $this->Journal->create(array('journalized_id' => $Payment->id, 'journalized_type' => $Payment->getTable(), 'user_id' => $loggedUserId, 'organization_id' => $organizationId));
+      $this->Journal->attachDetail($Journal->id, array('note' => $this->Lang->get('decima-open-cms::payment-management.authorizedJournal', array('name' => $User->firstname . ' ' . $User->lastname)), $Journal));
+
+      $this->commit($openTransaction);
+    }
+    catch (\Exception $e)
+    {
+      $this->rollBack($openTransaction);
+
+      throw $e;
+    }
+    catch (\Throwable $e)
+    {
+      $this->rollBack($openTransaction);
+
+      throw $e;
+    }
+
+    $input['email'] = $User->email;
+		$input['name'] = $User->firstname . ' ' . $User->lastname;
+		$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+		$input['amount'] = $input['amount'];
+		$input['type'] = $input['type_label'];
+		$input['reference'] = $input['approval_number'];
+		$subject = '[ECSL 2018] Confirmación de recepción de pago ' . $input['datetime'];
+		$replyToEmail = 'ecsl2018@softwarelibre.ca';
+		$replyToName = 'Comité Organizador del ECSL 2018';
+
+		$this->Mailer->queue('ecsl-2018::emails.confirmacion-pago', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+		{
+			$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+				->cc('ecsl2018@softwarelibre.ca')
+				->bcc('mgallegos@decimaerp.com');
+		});
+
+    return json_encode(array('success' => $this->Lang->get('form.defaultSuccessOperationMessage'), 'id' => $Payment->id));
   }
 
   /**

@@ -9,7 +9,7 @@
 			<li><strong>Fecha y hora:</strong> {{ $datetime }}</li>
 			<li><strong>Opción de pago:</strong> {{ $type }}</li>
 			<li><strong>Monto:</strong> ${{ $amount }}</li>
-			<li><strong>Número de aprobación de Pagadito es:</strong> {{ $reference }}</li>
+			<li><strong>Número de aprobación:</strong> {{ $reference }}</li>
 			<li><strong>Realizado por:</strong> {{ $name }}</li>
 		</ul>
 		<p>Puede descargar el comprobante de su pago en la sección “Realizar pago”, del sitio web oficial del evento.</p>
