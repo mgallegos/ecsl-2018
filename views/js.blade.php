@@ -170,7 +170,7 @@
 
 	$(document).ready(function()
 	{
-		$('#ob-fa-form, #login-form, #reg-form, #pay-form, #pon-form, #trans-from-form, #trans-to-form').jqMgVal('addFormFieldsValidations');
+		$('#ob-fa-form, #login-form, #pass-form, #reg-form, #pay-form, #pon-form, #trans-from-form, #trans-to-form').jqMgVal('addFormFieldsValidations');
 
 		$(window).bind('resize', function()
 		{
@@ -251,6 +251,20 @@
 			$(this).addClass('active');
 
 			$('#dash-login-container').show('fade');
+		});
+
+		$('#dash-pass').click(function()
+		{
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			hideDashboard();
+
+			$(this).addClass('active');
+
+			$('#dash-pass-container').show('fade');
 		});
 
 		$('#dash-registro').click(function()
@@ -565,7 +579,7 @@
 				url: $('#login-form').attr('action'),
 				error: function (jqXHR, textStatus, errorThrown)
 				{
-					handleServerExceptions(jqXHR, 'ob-fa-form');
+					handleServerExceptions(jqXHR, 'login-form');
 				},
 				beforeSend:function()
 				{
@@ -584,6 +598,58 @@
 					{
 						window.location.replace($('#app-url').val() + '/cms/dashboard');
 					}
+				}
+			});
+		});
+
+		$('#pass-btn').click(function()
+		{
+			$('#pass-form-alert').remove();
+
+			if(!$('#pass-form').jqMgVal('isFormValid'))
+			{
+				return;
+			}
+
+			$.ajax(
+			{
+				type: 'POST',
+				data: JSON.stringify($('#pass-form').formToObject('pass-')),
+				dataType : 'json',
+				url: $('#pass-form').attr('action'),
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					handleServerExceptions(jqXHR, 'pass-form');
+				},
+				beforeSend:function()
+				{
+					$('#app-loader').removeClass('hidden-xs-up');
+					disabledAll();
+				},
+				success:function(json)
+				{
+					if(json.success)
+					{
+						if(json.emailSent)
+						{
+							$('#pass-form').showAlertAsFirstChild('alert-success', json.message);
+						}
+						else
+						{
+							$('#pass-form').showAlertAsFirstChild('alert-success', 'El cambio se contraseña se realizó exitosamente. <a href="#" class="alert-link" onclick="$(\'#dash-login\').click();">Haga clic aquí para iniciar sesión</a>', 40000);
+						}
+					}
+					else if(json.info)
+					{
+						$('#pass-form').showAlertAsFirstChild('alert-info', json.info, 12000);
+					}
+					else if(json.validationFailed)
+	        {
+	          $('#pass-form').showServerErrorsByField(json.fieldValidationMessages, 'pass-');
+	        }
+
+					$('#app-loader').addClass('hidden-xs-up');
+					enableAll();
 				}
 			});
 		});

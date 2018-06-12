@@ -147,6 +147,7 @@ class OpenCmsManager extends Controller {
 	{
 		$redirectToLogin = $this->Session->get('ecsl2018login', false);
 		$redirectToRegistro = $this->Session->get('ecsl2018registro', false);
+		$rememberToken = $this->Input->get('rptoken', false);
 		$redirectToPago = false;
 		$payment = $arrivingTransportationRequest = $leavingTransportationRequest = array();
 		$cmsLoggedUser = $this->OpenCmsManagerService->getSessionLoggedUser();
@@ -165,6 +166,7 @@ class OpenCmsManager extends Controller {
 		else
 		{
 			$redirectToLogin = false;
+			$rememberToken = false;
 			$redirectToRegistro = true;
 			$guestUserDisabledCssClass = '';
 			$guestUserDisabledInputAttribute = '';
@@ -200,6 +202,7 @@ class OpenCmsManager extends Controller {
 		{
 			$redirectToLogin = false;
 			$redirectToRegistro = false;
+			$rememberToken = false;
 			$redirectToPago = true;
 			$transactionStatusMessage = $this->OpenCmsManagerService->getTransactionStatus($token);
 			$payment = $this->PaymentManagerService->getPayment($cmsLoggedUser['payment_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
@@ -210,6 +213,7 @@ class OpenCmsManager extends Controller {
 
 		return $this->View->make('ecsl-2018::dashboard')
 			->with('login', $redirectToLogin)
+			->with('rememberToken', $rememberToken)
 			->with('registro', $redirectToRegistro)
 			->with('pago', $redirectToPago)
 			->with('guestUserDisabledCssClass', $guestUserDisabledCssClass)
@@ -262,6 +266,26 @@ class OpenCmsManager extends Controller {
 	public function postLogin()
 	{
 		return $this->OpenCmsManagerService->attemptLogin( $this->Input->json()->all() );
+	}
+
+	/**
+	 * Handle a POST request for user login.
+	 *
+	 * @return Response
+	 */
+	public function postPasswordReminder()
+	{
+		return $this->OpenCmsManagerService->remindPassword( $this->Input->json()->all() );
+	}
+
+	/**
+	 * Handle a POST request for user login.
+	 *
+	 * @return Response
+	 */
+	public function postPasswordReset()
+	{
+		return $this->OpenCmsManagerService->resetPassword( $this->Input->json()->all() );
 	}
 
 	/**

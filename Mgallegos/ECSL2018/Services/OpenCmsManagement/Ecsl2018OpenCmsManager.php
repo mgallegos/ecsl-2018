@@ -258,6 +258,16 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     $this->eventPrefix = 'ecsl2018slca';
 
+		$this->eventName = 'ECSL 2018';
+
+		$this->replyToEmail = 'ecsl2018@softwarelibre.ca';
+
+		$this->replyToName = 'Comité Organizador del ECSL 2018';
+
+		$this->adminEmail = 'mgallegos@decimaerp.com';
+
+		$this->timezone = 'America/El_Salvador';
+
 		$this->PaymentManager = $PaymentManager;
 
 		$this->TransportationRequestManager = $TransportationRequestManager;
