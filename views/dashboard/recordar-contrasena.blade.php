@@ -1,5 +1,5 @@
 <div class="card">
-  <h4 class="card-header">Recordar contraseña</h4>
+  <h4 class="card-header">Recuperar contraseña</h4>
   <div class="card-body">
     @if(empty($rememberToken))
       {!! Form::open(array('id'=>'pass-form', 'role' => 'form', 'onsubmit'=>'return false;', 'url'=>URL::to('cms/dashboard/password-reminder'))) !!}

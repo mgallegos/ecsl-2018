@@ -18,7 +18,7 @@
       <!-- <h2 class="my-4">Opciones</h2> -->
       <ul class="list-group dashboard-list-group">
         <a id="dash-login" href="#" class="list-group-item {{ !empty($login)?'active':'' }} {{ $loggedUserDisabledCssClass }}" {{ $loggedUserDisabledInputAttribute }} data-guest-user="{{ $loggedUserDisabledCssClass }}">Iniciar sesión</a>
-        <a id="dash-pass" href="#" class="list-group-item {{ !empty($rememberToken)?'active':'' }} {{ $loggedUserDisabledCssClass }}" {{ $loggedUserDisabledInputAttribute }} data-guest-user="{{ $loggedUserDisabledCssClass }}">Recordar contraseña</a>
+        <a id="dash-pass" href="#" class="list-group-item {{ !empty($rememberToken)?'active':'' }} {{ $loggedUserDisabledCssClass }}" {{ $loggedUserDisabledInputAttribute }} data-guest-user="{{ $loggedUserDisabledCssClass }}">Recuperar contraseña</a>
         <a id="dash-registro" href="#" class="list-group-item {{ !empty($registro)?'active':'' }}">{{ $registroLabel }}</a>
         <a id="dash-pago" href="#" class="list-group-item {{ !empty($pago)?'active':'' }} {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Realizar pago</a>
         <a id="dash-transporte-from" href="#" class="list-group-item {{ $guestUserDisabledCssClass }}" {{ $guestUserDisabledInputAttribute }} data-guest-user="{{ $guestUserDisabledCssClass }}">Solicitar transporte a su llegada <i class="fa fa-plane"></i> / <i class="fa fa-bus"></i></a>
