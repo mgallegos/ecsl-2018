@@ -14,198 +14,163 @@
     <li class="breadcrumb-item active">Itinerario de Evento</li>
   </ol>
 
-<h1>Opcion 1</h1>
-  <div class="card-deck">
 
-    <!-- Dia #1-->
-    <div class="card card border-dark">
-      <h3 class="card-header text-center">12 de Julio</h3>
-      <div class="card-body m-0 px-0 pb-0">
-        <h2 class="text-center font-weight-bold mb-4">Dia #1</h2>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Actividad #1</li>
-          <li class="list-group-item">Actividad #2</li>
-          <li class="list-group-item">Actividad #3</li>
-          <li class="list-group-item">Actividad #4</li>
-          <li class="list-group-item">Actividad #5</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Dia #2-->
-    <div class="card card border-primary">
-      <h3 class="card-header text-center">13 de Julio</h3>
-      <div class="card-body m-0 px-0 pb-0">
-        <h2 class="text-center font-weight-bold mb-4">Dia #2</h2>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Actividad #1</li>
-          <li class="list-group-item">Actividad #2</li>
-          <li class="list-group-item">Actividad #3</li>
-          <li class="list-group-item">Actividad #4</li>
-          <li class="list-group-item">Actividad #5</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Dia #2-->
-    <div class="card card border-success">
-      <h3 class="card-header text-center">14 de Julio</h3>
-      <div class="card-body m-0 px-0 pb-0">
-        <h2 class="text-center font-weight-bold mb-4">Dia #3</h2>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Actividad #1</li>
-          <li class="list-group-item">Actividad #2</li>
-          <li class="list-group-item">Actividad #3</li>
-          <li class="list-group-item">Actividad #4</li>
-          <li class="list-group-item">Actividad #5</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-
-<br><br>
-
-<h1>Opcion 2</h1>
 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="uno-tab" data-toggle="tab" href="#uno" role="tab" aria-controls="uno" aria-selected="true">12 de Julio</a>
+    <a class="nav-link active" id="julio-11-tab" data-toggle="tab" href="#julio-11" role="tab" aria-controls="julio-11" aria-selected="false">11 de Julio</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="dos-tab" data-toggle="tab" href="#dos" role="tab" aria-controls="dos" aria-selected="false">13 de Julio</a>
+    <a class="nav-link" id="julio-12-tab" data-toggle="tab" href="#julio-12" role="tab" aria-controls="julio-12" aria-selected="true">12 de Julio</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="tres-tab" data-toggle="tab" href="#tres" role="tab" aria-controls="tres" aria-selected="false">14 de Julio</a>
+    <a class="nav-link" id="julio-13-tab" data-toggle="tab" href="#julio-13" role="tab" aria-controls="julio-13" aria-selected="false">13 de Julio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="julio-14-tab" data-toggle="tab" href="#julio-14" role="tab" aria-controls="julio-14" aria-selected="false">14 de Julio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="julio-15-tab" data-toggle="tab" href="#julio-15" role="tab" aria-controls="julio-15" aria-selected="false">15 de Julio</a>
   </li>
 </ul>
+
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="uno" role="tabpanel" aria-labelledby="uno-tab">
+  <div class="tab-pane fade show active" id="julio-11" role="tabpanel" aria-labelledby="julio-11-tab">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Actividades</th>
+          <th scope="col" class= "text-center" width ="150">Horario</th>
+          <th scope="col" class= "text-center">Actividades (Bienvenida)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Actividad #1</td>
-        </tr>
-        <tr>
-          <td>Actividad #2</td>
-        </tr>
-        <tr>
-          <td>Actividad #3</td>
+          <td class= "text-center"  width ="250">8:00 A.M. - 8:00 P.M. </td>
+          <td>Recibimiento en aeropuertos y estaciones de autobus y traslado hacia hotel de participantes que lo solicitaron.</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="tab-pane fade" id="dos" role="tabpanel" aria-labelledby="dos-tab">
+  <div class="tab-pane fade" id="julio-12" role="tabpanel" aria-labelledby="julio-12-tab">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Actividades</th>
+          <th scope="col" class= "text-center" width ="150">Horario</th>
+          <th scope="col" class= "text-center">Actividades (Dia #1)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Actividad #1</td>
+          <td class= "text-center"  width ="250">9:00 A.M. - 9:30 A.M. </td>
+          <td>Bienvenida y apertura del X Encuentro Centroamericano de Software Libre 2018.</td>
         </tr>
         <tr>
-          <td>Actividad #2</td>
+          <td class= "text-center" width ="250">9:30 A.M. - 10:00 A.M.</td>
+          <td>Saludo de los panelistas</td>
         </tr>
         <tr>
-          <td>Actividad #3</td>
+          <td class= "text-center"  width ="250" >10:10 A.M. - 12:00 M.D.</td>
+          <td>Charlas y Talleres simultaneos.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" >12:10 M.D. - 1:20 P.M.</td>
+          <td>Receso para Almuerzo.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" > 1:30 P.M. - 2:30 P.M.</td>
+          <td>Charlas y Talleres simultaneos.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" > 2:40 P.M. - 3:40 P.M.</td>
+          <td>Charlas y Talleres simultaneos.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" > 3:50 P.M. - 4:50 P.M.</td>
+          <td>Charlas y Talleres simultaneos.</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="tab-pane fade" id="tres" role="tabpanel" aria-labelledby="tres-tab">
+  <div class="tab-pane fade" id="julio-13" role="tabpanel" aria-labelledby="julio-13-tab">
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">Actividades</th>
+          <th scope="col" class= "text-center" width ="150">Horario</th>
+          <th scope="col" class= "text-center">Actividades (Día #2)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Actividad #1</td>
+          <td class= "text-center"  width ="250">8:30 A.M. - 9:30 A.M. </td>
+          <td>Charlas y Talleres simultaneos.</td>
         </tr>
         <tr>
-          <td>Actividad #2</td>
+          <td class= "text-center" width ="250">9:40 A.M. - 10:40 A.M.</td>
+          <td>Charlas y Talleres simultaneos.</td>
         </tr>
         <tr>
-          <td>Actividad #3</td>
+          <td class= "text-center"  width ="250" >10:50 A.M. - 11:50 M.D.</td>
+          <td>Charlas y Talleres simultaneos.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" >12:10 M.D. - 1:20 P.M.</td>
+          <td>Receso para Almuerzo.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" > 1:30 P.M. - 2:30 P.M.</td>
+          <td>Charlas y Talleres simultaneos.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" > 2:40 P.M. - 3:40 P.M.</td>
+          <td>Charlas y Talleres simultaneos.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" > 3:50 P.M. - 4:50 P.M.</td>
+          <td>Charlas y Talleres simultaneos.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250" > 5:00 P.M. - 6:00 P.M.</td>
+          <td>Cierre del X Encuentro Centroamericano de Software Libre 2018.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="julio-14" role="tabpanel" aria-labelledby="julio-14-tab">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class= "text-center" width ="150">Horario</th>
+          <th scope="col" class= "text-center">Actividades (Dia Social)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class= "text-center"  width ="250">8:00 A.M. - 8:00 P.M. </td>
+          <td>Traslado hacia aeropuertos y estaciones de autobus de los participantes que lo solicitaron.</td>
+        </tr>
+        <tr>
+          <td class= "text-center"  width ="250">8:00 A.M. - 4:00 P.M. </td>
+          <td>Día social en la playa El Amatal (Opcional)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="julio-15" role="tabpanel" aria-labelledby="julio-15-tab">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col" class= "text-center" width ="150">Horario</th>
+          <th scope="col" class= "text-center">Actividades (Despedida)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class= "text-center"  width ="250">8:00 A.M. - 8:00 P.M. </td>
+          <td>Traslado hacia aeropuertos y estaciones de autobus de los participantes que lo solicitaron.</td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-
-<br><br>
-<h1>Opcion 3</h1>
-
-<div class="row bg-light font-weight-bold text-center align-middle" >
-  <div class="col-md-12 border p-3">12 de Julio</div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2 mb-0"> #1</div>
-  <div class="col-11 align-middle border-top border-right py-2">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2 mb-0"> #2</div>
-  <div class="col-11 align-middle border-top border-right  py-2">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2"> #3</div>
-  <div class="col-11 align-middle border-top border-right py-2 mb-0">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row bg-light font-weight-bold text-center align-middle" >
-  <div class="col-md-12 border p-3">13 de Julio</div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2 mb-0"> #1</div>
-  <div class="col-11 align-middle border-top border-right py-2">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2 mb-0"> #2</div>
-  <div class="col-11 align-middle border-top border-right  py-2">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2"> #3</div>
-  <div class="col-11 align-middle border-top border-right py-2 mb-0">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row bg-light font-weight-bold text-center align-middle" >
-  <div class="col-md-12 border p-3">14 de Julio</div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2 mb-0"> #1</div>
-  <div class="col-11 align-middle border-top border-right py-2">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2 mb-0"> #2</div>
-  <div class="col-11 align-middle border-top border-right  py-2">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
-</div>
-<div class="row">
-  <div class="col-1 align-middle text-center border-top border-right py-2"> #3</div>
-  <div class="col-11 align-middle border-top border-right py-2 mb-0">
-    <p class="text-justify mb-0">Descripcion de Actividad</p>
-  </div>
 
 <br><br>
 </div>
