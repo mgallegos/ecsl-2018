@@ -70,6 +70,11 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::itinerario');
 	});
 
+	Route::get('/cms/agenda', function()
+	{
+		return View::make('ecsl-2018::agenda');
+	});
+
 	Route::post('/cms/presentaciones', function()
 	{
 		$app = $this->app;
