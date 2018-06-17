@@ -60,8 +60,12 @@
       </thead>
       <tbody>
         <tr>
+          <td class= "text-center"  width ="250">8:30 A.M. - 8:50 A.M. </td>
+          <td>Registro y acreditacion</td>
+        </tr>
+        <tr>
           <td class= "text-center"  width ="250">9:00 A.M. - 9:30 A.M. </td>
-          <td>Bienvenida y apertura del X Encuentro Centroamericano de Software Libre 2018.</td>
+          <td>Apertura del X Encuentro Centroamericano de Software Libre 2018.</td>
         </tr>
         <tr>
           <td class= "text-center" width ="250">9:30 A.M. - 10:00 A.M.</td>
