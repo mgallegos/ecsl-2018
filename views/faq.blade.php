@@ -12,6 +12,7 @@
     <li class="breadcrumb-item">
       <a href="{{URL::to('cms/inicio')}}"> <i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
     </li>
+    <li class="breadcrumb-item">Información general</li>
     <li class="breadcrumb-item active">FAQ</li>
   </ol>
 

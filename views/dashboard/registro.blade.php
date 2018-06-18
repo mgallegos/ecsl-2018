@@ -243,7 +243,7 @@
             <!-- Gender -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-gender">Sexo</label>
+                <label for="reg-gender">Género</label>
                 @if (!Agent::isMobile())
                   {!! Form::autocomplete('reg-gender', array('Mujer','Hombre', 'Deseo especificarlo', 'Prefiero no decirlo'), array('class' => 'form-control', 'data-mg-required'=>''), null, null, null, null, null, null, 'btn-outline-secondary', '4') !!}
             		@else
@@ -255,7 +255,7 @@
             <!-- Gender -->
             <div class="col-lg-6 col-md-12">
               <div class="form-group mg-hm">
-                <label for="reg-birthdate">Mi sexo está mejor representado como</label>
+                <label for="reg-birthdate">Mi género está mejor representado como</label>
                 {!! Form::text('reg-custom-gender', null, array('id'=>'reg-custom-gender', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
               </div>
             </div>
@@ -486,7 +486,7 @@
               <div class="col-12">
                 <div class="form-check">
                   <label class="form-check-label">
-                    <input id='reg-is-gender-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el sexo que especifiqué forme parte de las estadísticas del evento.
+                    <input id='reg-is-gender-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que el género que especifiqué forme parte de las estadísticas del evento.
                   </label>
                   <label class="form-check-label">
                     <input id='reg-is-general-information-visible' class="form-check-input" type="checkbox" value="" checked> Autorizo que mi país, edad, institución que represento, eventos anteriores que he participado y distribuciones Linux de mi preferencia, formen parte de las estadísticas del evento.

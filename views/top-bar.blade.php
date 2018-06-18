@@ -26,6 +26,7 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarEvento">
             <!-- <a class="dropdown-item" href="{{URL::to('cms/inicio/registro')}}"><i class="fa fa-address-card-o" aria-hidden="true"></i> Registro</a> -->
             <a class="dropdown-item" href="{{URL::to('cms/ejes-tematicos')}}"><i class="fa fa-list-ul" aria-hidden="true"></i> Ejes Temáticos</a>
+            <a class="dropdown-item" href="{{URL::to('cms/becas')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Becas</a>
             <!-- <a class="dropdown-item" href="{{URL::to('cms/inicio/agenda')}}"><i class="fa fa-calendar" aria-hidden="true"></i>  Agenda</a> -->
           </div>
         </li>
@@ -46,6 +47,10 @@
             <a class="dropdown-item" id='cms-dashboard' href="{{URL::to('cms/dashboard')}}">Dashboard</a>
             <a class="dropdown-item fake-link" id='cms-logout'>Salir</a>
           </div>
+        </li>
+        @else
+        <li class="nav-item">
+          <a class="nav-link" href="{{URL::to('/login')}}"><strong>Iniciar sesión</strong></a>
         </li>
       	@endif
       </ul>

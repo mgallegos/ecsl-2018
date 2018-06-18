@@ -36,19 +36,21 @@ $ecslsv =  function ()
 			->with('ern', Request::get('ern', ''));
 	});
 
-	// Route::get('/cms/ecsl/logistica', function()
 	Route::get('/cms/logistica', function()
 	{
 		return View::make('ecsl-2018::logistica');
 	});
 
-	// Route::get('/cms/ecsl/ejes-tematicos', function()
 	Route::get('/cms/ejes-tematicos', function()
 	{
 		return View::make('ecsl-2018::ejes-tematicos');
 	});
 
-	// Route::get('/cms/ecsl/faq', function()
+	Route::get('/cms/becas', function()
+	{
+		return View::make('ecsl-2018::becas');
+	});
+
 	Route::get('/cms/faq', function()
 	{
 		return View::make('ecsl-2018::faq');

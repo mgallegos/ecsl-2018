@@ -12,6 +12,7 @@
       <li class="breadcrumb-item">
         <a href="{{URL::to('cms/inicio')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
       </li>
+      <li class="breadcrumb-item">Información general</li>
       <li class="breadcrumb-item active">Logística</li>
     </ol>
   </div>
@@ -330,7 +331,7 @@
             <br><br> Estas son algunas de las características del alojamiento:
             <ul>
               <li>Acceso a internet por medio de red wifi.</li>
-              <li>Habitaciones y baños compartidos.</li>
+              <li>Ocupación doble o triple, con baño propio.</li>
               <li>Espacios comunes para socializar.</li>
               <li>Ubicación en una zona tranquila y segura.</li>
             </ul>
@@ -343,7 +344,8 @@
           </div>
           <br>
           <p>
-            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2273-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br>
+            Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2273-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a>
+            <!-- Si desea más detalles, puede utilizar esta información de contacto:<br><br> Teléfono: (+503) 2273-3803 <br> Correo electrónico: <a href="mailto:cloyolasj@gmail.com">cloyolasj@gmail.com</a><br> Sitio web: <a target="_blank" href="http://centroloyolasj.blogspot.com/">Centro Loyola El Salvador</a>              <br> Fans Page: <a target="_blank" href="https://www.facebook.com/Centro-Loyola-El-Salvador-499360376842971/">Centro Loyola El Salvador</a> <br> -->
           </p>
           @if (!Agent::isMobile())
             <div class="row">
@@ -352,8 +354,8 @@
                   <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
                       <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid">
                   </a>
-                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
-                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones.jpg" class="img-fluid">
+                  <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
+                      <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid">
                   </a>
                   <!-- <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-hotel" class="col-sm-3 px-1">
                       <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid">
