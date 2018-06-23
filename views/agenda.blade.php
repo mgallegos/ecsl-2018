@@ -5,19 +5,23 @@
 <div class="container">
 
   <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">Agenda del Evento</h1>
+  <h1 class="mt-4 mb-3">Agenda</h1>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <a href="{{URL::to('cms/inicio')}}"><i class="fa fa-home" aria-hidden="true"></i> Inicio</a>
     </li>
-    <li class="breadcrumb-item active">Agenda del Evento</li>
+    <li class="breadcrumb-item">Evento</li>
+    <li class="breadcrumb-item active">Agenda</li>
   </ol>
 
 
 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="julio-12-tab" data-toggle="tab" href="#julio-12" role="tab" aria-controls="julio-12" aria-selected="true">12 de Julio</a>
+    <a class="nav-link active" id="por-confirmar-tab" data-toggle="tab" href="#por-confirmar" role="tab" aria-controls="por-confirmar" aria-selected="true">Por confirmar</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="julio-12-tab" data-toggle="tab" href="#julio-12" role="tab" aria-controls="julio-12" aria-selected="true">12 de Julio</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="julio-13-tab" data-toggle="tab" href="#julio-13" role="tab" aria-controls="julio-13" aria-selected="false">13 de Julio</a>
@@ -25,7 +29,47 @@
 </ul>
 
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="julio-12" role="tabpanel" aria-labelledby="julio-12-tab">
+  <div class="tab-pane fade show active" id="por-confirmar" role="tabpanel" aria-labelledby="por-confirmar-tab">
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <tr>
+          <td class= "text-center">PONENCIAS POR CONFIRMAR</td>
+        </tr>
+        <tr>
+          <td class= "text-center table-info">
+            <div class="row">
+              <div class="col-lg-3 col-sm-6">
+                <p class="badge badge-warning my-2">Sin aula asignada</p>
+                <h5 class="font-weight-bold mb-2">DESARROLLO WEB</h5>
+                <p class="font-weight-light font-italic">Alvaro Garcia</p>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                <p class="badge badge-warning my-2">Sin aula asignada</p>
+                <h6 class="font-weight-bold mb-2">DESARROLLO WEB</h6>
+                <p class="font-weight-light font-italic">Alvaro Garcia</p>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                <p class="badge badge-warning my-2">Sin aula asignada</p>
+                <h5 class="font-weight-bold mb-2">DESARROLLO WEB</h5>
+                <p class="font-weight-light font-italic">Alvaro Garcia</p>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                <p class="badge badge-warning my-2">Sin aula asignada</p>
+                <h5 class="font-weight-bold mb-2">DESARROLLO WEB</h5>
+                <p class="font-weight-light font-italic">Alvaro Garcia</p>
+              </div>
+              <div class="col-lg-3 col-sm-6">
+                <p class="badge badge-warning my-2">Sin aula asignada</p>
+                <h5 class="font-weight-bold mb-2">DESARROLLO WEB</h5>
+                <p class="font-weight-light font-italic">Alvaro Garcia</p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab-pane fade" id="julio-12" role="tabpanel" aria-labelledby="julio-12-tab">
     <table class="table table-striped table-bordered">
       <tbody>
         <tr>
@@ -33,8 +77,8 @@
         </tr>
         <tr>
           <td class= "text-center py-4 table-success">
-            <p class="badge badge-success my-2">Edificio ICAS</p>
-            <h5 class="font-weight-bold mb-2">REGISTRO Y ACREDITACION</h5>
+            <p class="badge badge-success my-2">EDIFICIO ICAS</p>
+            <h5 class="font-weight-bold mb-2">REGISTRO Y ACREDITACIÓN</h5>
           </td>
         </tr>
         <tr>
@@ -42,7 +86,7 @@
         </tr>
         <tr>
           <td class= "text-center py-4 table-success">
-            <p class="badge badge-success my-2">Auditorio "Segundo Montes, S.J."</p>
+            <p class="badge badge-success my-2">AUDITORIO "SEGUNDO MONTES, S.J."</p>
             <h5 class="font-weight-bold mb-2">APERTURA DEL X ENCUENTRO CENTROAMERICANO DE SOFTWARE LIBRE</h5>
           </td>
         </tr>
@@ -51,7 +95,7 @@
         </tr>
         <tr>
           <td class= "text-center py-4 table-success">
-            <p class="badge badge-success my-2">Auditorio "Segundo Montes, S.J."</p>
+            <p class="badge badge-success my-2">AUDITORIO "SEGUNDO MONTES, S.J."</p>
             <h5 class="font-weight-bold mb-2">DISCURSO DE PANELISTAS</h5>
           </td>
         </tr>
@@ -375,7 +419,7 @@
         </tr>
         <tr>
           <td class= "text-center py-4 table-success">
-            <p class="badge badge-success my-2">Auditorio "Segundo Montes, S.J."</p>
+            <p class="badge badge-success my-2">AUDITORIO "SEGUNDO MONTES, S.J."</p>
             <h5 class="font-weight-bold mb-2">CIERRE DEL X ENCUENTRO CENTROAMERICANO DE SOFTWARE LIBRE</h5>
           </td>
         </tr>
