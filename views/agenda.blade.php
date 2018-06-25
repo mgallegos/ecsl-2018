@@ -127,7 +127,7 @@
         <tr>
           <td class="text-center py-4 table-info">
             <p class="badge badge-success my-2">AUDITORIO "SEGUNDO MONTES, S.J."</p>
-            <h5 class="font-weight-bold mb-2" style="text-transform: uppercase;">Panel de mujeres exitosas impulsando el Software Libre</h5>
+            <h5 class="font-weight-bold mb-2" style="text-transform: uppercase;">PANEL "Software Libre: Desafíos actuales de las mujeres en tecnología"</h5>
           </td>
         </tr>
         <tr>
