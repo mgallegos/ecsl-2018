@@ -72,9 +72,33 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::itinerario');
 	});
 
+
+	Route::get('/cms/agenda/{id}', function($id)
+	{
+		return Redirect::to('cms/agenda')->with('presentationId', $id);
+	});
+
 	Route::get('/cms/agenda', function()
 	{
-		return View::make('ecsl-2018::agenda');
+		$app = $this->app;
+		$presentationId = Session::get('presentationId', '');
+		$PresentationManagerService = $app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\PresentationManagementInterface');
+		$presentationTitle = $presentationDescription = '';
+
+		if(!empty($presentationId))
+		{
+			$Presentation = $PresentationManagerService->getPresentation($presentationId, 'ecsl2018');
+			$presentationTitle = $Presentation->name;
+			$presentationDescription = $Presentation->description;
+		}
+		// var_dump($PresentationManagerService->getPresentationsWithSpeaker(1, 15, true, 'ecsl2018', false));
+
+		return View::make('ecsl-2018::agenda')
+			->with('presentationId', $presentationId)
+			->with('ogTitle', $presentationTitle)
+			->with('ogDescription', $presentationDescription)
+			->with('presentationId', $presentationId)
+			->with('presentations', $PresentationManagerService->getPresentationsWithSpeaker(1, 15, true, 'ecsl2018', false));
 	});
 
 	Route::post('/cms/presentaciones', function()

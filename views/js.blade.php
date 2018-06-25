@@ -35,6 +35,8 @@
 		{'label':'Costa Rica 2017', 'value':'ECSL2017'}
 	];
 
+	var tempUrl;
+
 	function customGender(gender)
 	{
 		if(gender == 'Deseo especificarlo')
@@ -168,6 +170,31 @@
 		$('#pon-btn-group-2').enableButtonGroup();
 	}
 
+	function showBlogPost(element)
+	{
+		var blogUrl = 'https:\/\/ecsl2018.softwarelibre.ca\/cms\/agenda\/' + $(element).attr('data-insight');
+		// var blogUrl = 'http:\/\/localhost:8000\/cms\/agenda\/' + $(element).attr('data-insight');
+		tempUrl = History.getState().url;
+		History.pushState({load:false}, null, blogUrl);
+		$('#twitter-container').html('');
+		$('<a/>', {
+			'class': 'twitter-share-button',
+			'href': 'https://twitter.com/intent/tweet?url=' + blogUrl,
+			'html' : 'Tweet'
+		}).appendTo($('#twitter-container'));
+		twttr.widgets.load();
+		$('#fb-comments').attr('data-href', blogUrl);
+		$('#fb-share').attr('data-href', blogUrl);
+		FB.XFBML.parse();
+		// $('#blog-post-header-image').attr('src', $(element).attr('data-header-image'));
+		$('#blog-post-author-image').attr('src', $(element).attr('data-avatar'));
+		$('#blog-post-author').html($(element).attr('data-name'));
+		$('#blog-post-title').html($(element).attr('data-title'));
+		$('#blog-post-date').html($(element).attr('data-date'));
+		$('#blog-post-content').html($(element).attr('data-content'));
+		$('#blog-post-modal').modal('show');
+	}
+
 	$(document).ready(function()
 	{
 		$('#ob-fa-form, #login-form, #pass-form, #reg-form, #pay-form, #pon-form, #trans-from-form, #trans-to-form').jqMgVal('addFormFieldsValidations');
@@ -210,6 +237,10 @@
 		});
 
 		@endif
+
+		$('#blog-post-modal').on('hidden.bs.modal', function (e) {
+	  	History.pushState({load:false}, null, tempUrl);
+		});
 
 		$('[data-toggle="lightbox"]').click(function()
 		{
@@ -1007,33 +1038,11 @@
 					}
 				}
 			}
+
+			@if(!empty($presentationId))
+				showBlogPost($('#presentation-{{ $presentationId }}'));
+			@endif
+
 		}, 500);
-
-
-		// if ((window.location.href).split("action=")[1] == "DecimaERP-Cloud")
-		// {
-		// 		$('#dec-intro-op-modal').modal();
-		// }
-		// else if ((window.location.href).split("action=")[1] == "DecimaERP-WebSite")
-		// {
-		// 		$('#dec-intro-ws-modal').modal();
-		// }
-		// else if ((window.location.href).split("action=")[1] == "DecimaERP-Academic")
-		// {
-		// 		$('#dec-intro-ac-modal').modal();
-		// }
-		// else if ((window.location.href).split("action=")[1] == "DecimaERP-Customized")
-		// {
-		// 		$('#dec-intro-pd-modal').modal();
-		// }
-		// else if ((window.location.href).split("action=")[1] == "DecimaERP-Support")
-		// {
-		// 		$('#dec-intro-ps-modal').modal();
-		// }
-		// else
-		// {
-		// 	 // do nothing ...
-		// }
-
 	});
 </script>

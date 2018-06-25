@@ -145,6 +145,18 @@
       color: #fe0000;
       float:right;
     }
+
+    .share-buttons{
+  		text-align: left;
+  	}
+
+    .fb-share-button{
+  		float: left;
+  	}
+  	.twitter-share-button{
+  		float: left;
+  		margin-left: 5px;
+  	}
   }
 
   @media (min-width: 992px) {
@@ -195,6 +207,19 @@
     #rowContainer .m-2{
       margin: .0rem !important;
     }
+
+    .share-buttons{
+  		text-align: right;
+  	}
+
+    .fb-share-button{
+  		float: right;
+  	}
+
+  	.twitter-share-button{
+  		float: right;
+  		margin-right: 5px;
+  	}
 
   }
 

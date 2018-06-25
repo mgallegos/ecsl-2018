@@ -27,11 +27,12 @@
             <!-- <a class="dropdown-item" href="{{URL::to('cms/inicio/registro')}}"><i class="fa fa-address-card-o" aria-hidden="true"></i> Registro</a> -->
             <a class="dropdown-item" href="{{URL::to('cms/ejes-tematicos')}}"><i class="fa fa-list-ul" aria-hidden="true"></i> Ejes Temáticos</a>
             <a class="dropdown-item" href="{{URL::to('cms/becas')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Becas</a>
+            <a class="dropdown-item" href="{{URL::to('cms/eventos-anteriores')}}"><i class="fa fa-calendar" aria-hidden="true"></i> Eventos Anteriores</a>
             <!-- <a class="dropdown-item" href="{{URL::to('cms/inicio/agenda')}}"><i class="fa fa-calendar" aria-hidden="true"></i>  Agenda</a> -->
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{URL::to('cms/eventos-anteriores')}}">Eventos Anteriores</a>
+          <a class="nav-link" href="{{URL::to('cms/agenda')}}">Agenda</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link fake-link" data-toggle="modal" data-target="#Contact" role="button">Contacto</a>
