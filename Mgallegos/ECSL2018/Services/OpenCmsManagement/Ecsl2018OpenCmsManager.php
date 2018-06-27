@@ -57,7 +57,7 @@ use Mgallegos\DecimaOpenCms\OpenCms\Services\PresentationManagement\Presentation
 
 use Mgallegos\DecimaSale\Sale\Services\ClientManagement\ClientManagementInterface;
 
-use Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface;
+use Mgallegos\DecimaSale\Sale\Services\OrderManagement\SaleOrderManagementInterface;
 
 use Mgallegos\DecimaFile\File\Services\FileManagement\FileManagementInterface;
 
@@ -121,7 +121,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
   /**
 	 * Sale Order Manager Service
 	 *
-	 * @var Mgallegos\DecimaSale\Sale\Services\SaleOrderManagement\SaleOrderManagementInterface
+	 * @var Mgallegos\DecimaSale\Sale\Services\OrderManagement\SaleOrderManagementInterface
 	 *
 	 */
 	protected $SaleManager;
