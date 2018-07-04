@@ -42,7 +42,7 @@
     <table class="table table-striped table-bordered">
       <tbody>
         <tr>
-          <td class="text-center font-weight-bold">PONENCIAS POR CONFIRMAR</td>
+          <td class="text-center font-weight-bold">Agenda</td>
         </tr>
         <tr>
           <td class="text-center table-info">
