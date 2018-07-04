@@ -18,7 +18,7 @@
 
 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="por-confirmar-tab" data-toggle="tab" href="#por-confirmar" role="tab" aria-controls="por-confirmar" aria-selected="true">Ponencias por confirmar</a>
+    <a class="nav-link active" id="por-confirmar-tab" data-toggle="tab" href="#por-confirmar" role="tab" aria-controls="por-confirmar" aria-selected="true">Agenda</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="julio-11-tab" data-toggle="tab" href="#julio-11" role="tab" aria-controls="julio-11" aria-selected="true">11 de Julio</a>
