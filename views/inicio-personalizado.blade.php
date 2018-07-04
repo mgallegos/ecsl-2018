@@ -330,6 +330,22 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+      <div class="card card-logo">
+        <div class="card-header-logo">
+          <a href="http://www.sv" target="_blank">
+            <img class="card-img-top img-fluid" src="https://storage.googleapis.com/decimaerp/organizations/15/logo_svnet.jpg">
+          </a>
+        </div>
+        <div class="card-body">
+          <h6 class="card-title text-center">
+            <a href="http://www.sv" target="_blank" class="card-logo-title">
+              SVNet
+            </a>
+          </h6>
+        </div>
+      </div>
+    </div>
 
   </div>
   <!-- /.row -->
