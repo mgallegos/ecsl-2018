@@ -372,6 +372,24 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	}
 
 	/**
+   * Get user registration data
+   *
+   * @return array
+   *  An array of arrays as follows: array($userId0 => array('country'=>$country,…), $userId1 => array('country'=>$country,…),…)
+   */
+  public function getUsersRegistrationData()
+  {
+    $data = array();
+
+    $this->RegistrationForm->byOrganization($this->organizationId, $this->cmsDatabaseConnectionName)->each(function($RegistrationForm) use (&$data)
+    {
+      $data[$RegistrationForm->user_id] = array('country' => $RegistrationForm->country, 'institution' => $RegistrationForm->institution);
+    });
+
+    return $data;
+  }
+
+	/**
 	 * Create a new CMS User.
 	 *
 	 * @param array $input
@@ -1816,6 +1834,50 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
     return json_encode(array('success' => $this->Lang->get('form.defaultSuccessOperationMessage'), 'id' => $Payment->id));
   }
+
+	/**
+	 * Authorize presentation
+	 *
+	 * @param array $input
+   * 	An array as follows: array('field0'=>$field0, 'field1'=>$field1
+   *                            );
+   *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *	In case of success: {"success" : form.defaultSuccessSaveMessage}
+	 */
+	public function authorizePresentation(array $input, $openTransaction = true, $databaseConnectionName = null, $organizationId = null, $loggedUserId = null)
+	{
+		$response = $this->PresentationManager->authorize($input, true, $databaseConnectionName, $organizationId, $loggedUserId);
+
+		$decodedResponse = json_decode($response, true);
+
+		if(!empty($decodedResponse['success']))
+		{
+			$User = $this->User->byId(
+				$input['user_id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+			$input['email'] = $User->email;
+			$input['name'] = $User->firstname;
+			$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+			$subject = '[ECSL 2018] Confirmación de aceptación de ponencia ' . $input['datetime'];
+			$replyToEmail = 'ecsl2018@softwarelibre.ca';
+			$replyToName = 'Comité Organizador del ECSL 2018';
+
+			$input['email'] = 'mgallegos@decimaerp.com';
+
+			$this->Mailer->queue('ecsl-2018::emails.confirmacion-ponencia', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+					// ->cc('ecsl2018@softwarelibre.ca')
+					->bcc('mgallegos@decimaerp.com');
+			});
+		}
+
+		return $response;
+	}
 
   /**
    * Make payment

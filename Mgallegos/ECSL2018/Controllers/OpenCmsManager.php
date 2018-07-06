@@ -329,6 +329,16 @@ class OpenCmsManager extends Controller {
 	}
 
 	/**
+	 * Handle a POST request for a payment authorization.
+	 *
+	 * @return Response
+	 */
+	public function postAuthorizeEcsl2018Presentation()
+	{
+		return $this->OpenCmsManagerService->authorizePresentation( $this->Input->json()->all() );
+	}
+
+	/**
 	 * Handle a POST request for a payment.
 	 *
 	 * @return Response
