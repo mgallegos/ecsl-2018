@@ -1,8 +1,7 @@
 @extends('ecsl-2018::base')
 
 @section('container')
-<?php $prefix = 'pay-'; $fileInvertOrder = true; $fileShowUploadButton = true; $fileButtonClass = 'btn-dark'; $fileCustomUrl = URL::to('/cms/dashboard/upload'); $appInfo = array('id' => 'payment-management');?>
-@include('decima-file::file-uploader')
+<?php $fileInvertOrder = true; $fileShowUploadButton = true; $fileButtonClass = 'btn-dark'; $fileCustomUrl = URL::to('/cms/dashboard/upload');?>
 <div class="container">
   <br>
   <!-- Barra de Ubicacion -->

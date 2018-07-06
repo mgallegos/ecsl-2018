@@ -156,6 +156,8 @@
 
 		populateFormFields(rowData);
 
+		getElementFiles('pon-', $('#pon-id').val(), [], '/cms/dashboard');
+
 		$('#pon-btn-save').html('Guardar');
 
 		if(empty(rowData.pon_is_approved))
@@ -172,8 +174,8 @@
 
 	function showBlogPost(element)
 	{
-		var blogUrl = 'https:\/\/ecsl2018.softwarelibre.ca\/cms\/agenda\/' + $(element).attr('data-insight');
-		// var blogUrl = 'http:\/\/localhost:8000\/cms\/agenda\/' + $(element).attr('data-insight');
+		// var blogUrl = 'https:\/\/ecsl2018.softwarelibre.ca\/cms\/agenda\/' + $(element).attr('data-insight');
+		var blogUrl = 'http:\/\/localhost:8000\/cms\/agenda\/' + $(element).attr('data-insight');
 		tempUrl = History.getState().url;
 		History.pushState({load:false}, null, blogUrl);
 		$('#twitter-container').html('');
@@ -355,11 +357,17 @@
 				{
 					var commissionAmount = '', type = $(this).attr('data-type'), remark = $(this).attr('data-description');
 
-					console.log(type);
+					// console.log(type);
 
 					@if(isset($payment['status']) && $payment['status'] == 'X')
             return;
         	@endif
+
+					if($(this).hasClass('bg-danger'))
+					{
+						alert('Lo sentimos, este paquete ya no se encuentra disponible.');
+						return;
+					}
 
 					$('.card-payment-deck').find('.card').each(function()
 					{
@@ -523,6 +531,24 @@
 			if(dataFiles.length > 0)
 			{
 				getElementFiles('pay-', {{ isset($cmsLoggedUser['payment_id'])?$cmsLoggedUser['payment_id']:'0'}}, [], '/cms/dashboard');
+			}
+		});
+
+		$('#pon-btn-file-upload').click(function()
+		{
+			if(!$('#pon-id').isEmpty())
+			{
+				openUploader('pon-', $('#pon-id').val(), 'Ponencias', [], '', '', [], 1, 1);
+			}
+		});
+
+		$('#pon-file-uploader-modal').on('hidden.bs.modal', function (e)
+		{
+		  dataFiles = $.parseJSON($("#pon-file-uploader-modal").attr('data-files'));
+
+			if(dataFiles.length > 0)
+			{
+				getElementFiles('pon-', $('#pon-id').val(), [], '/cms/dashboard');
 			}
 		});
 
@@ -998,6 +1024,16 @@
 					});
 
 					$('#pay-btn-pay, #pay-online-payment-form, #pay-bank-transfer-slsv-payment-form, #pay-bank-transfer-cr-payment-form').attr('disabled', 'disabled');
+				}
+				else
+				{
+					$('.card-payment-deck').find('.card').each(function()
+					{
+						if($(this).attr('data-type') != undefined && $(this).attr('data-type') == 'B')
+						{
+							$(this).addClass('bg-danger');
+						}
+					});
 				}
 			}
 

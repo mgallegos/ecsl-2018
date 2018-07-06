@@ -1,3 +1,5 @@
+<?php $prefix = 'pay-'; $appInfo = array('id' => 'payment-management');?>
+@include('decima-file::file-uploader')
 <div class="card mb-3">
 <!-- <div class="card form-container-followed-by-grid-section"> -->
   <h4 class="card-header">Realizar pago</h4>

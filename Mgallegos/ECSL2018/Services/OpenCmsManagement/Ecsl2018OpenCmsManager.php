@@ -2235,7 +2235,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		$decodedResponse = json_decode($response, true);
 
-		if(!empty($decodedResponse['success']))
+		if(!empty($decodedResponse['success']) && $input['journal_id'] != 'presentation-management')
 		{
 			$data['url'] = $decodedResponse['dataFiles'][0]['url'];
 			$data['email'] = $cmsLoggedUser['email'];

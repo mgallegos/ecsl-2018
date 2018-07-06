@@ -1,3 +1,5 @@
+<?php $prefix = 'pon-'; $appInfo = array('id' => 'presentation-management');?>
+@include('decima-file::file-uploader')
 <div class="card form-container-followed-by-grid-section">
   <h4 class="card-header">Administrar mis ponencias</h4>
   <div class="card-body">
@@ -52,9 +54,10 @@
             <label for="pon-description">Descripción</label>
               {!! Form::textareacustom('pon-description', 3, 1500, array('class' => 'form-control', 'data-mg-required'=>'')) !!}
           </div>
+          @include('decima-file::file-cms-viewer')
         </div>
       </div>
-      <div class="row">
+      <div class="row mt-2">
         <!--Is Approved -->
         <div class="col-md-12">
           <h4>Información de su solicitud</h4>
