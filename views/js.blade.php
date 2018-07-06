@@ -174,8 +174,8 @@
 
 	function showBlogPost(element)
 	{
-		// var blogUrl = 'https:\/\/ecsl2018.softwarelibre.ca\/cms\/agenda\/' + $(element).attr('data-insight');
-		var blogUrl = 'http:\/\/localhost:8000\/cms\/agenda\/' + $(element).attr('data-insight');
+		var blogUrl = 'https:\/\/ecsl2018.softwarelibre.ca\/cms\/agenda\/' + $(element).attr('data-insight');
+		// var blogUrl = 'http:\/\/localhost:8000\/cms\/agenda\/' + $(element).attr('data-insight');
 		tempUrl = History.getState().url;
 		History.pushState({load:false}, null, blogUrl);
 		$('#twitter-container').html('');
@@ -190,10 +190,17 @@
 		FB.XFBML.parse();
 		// $('#blog-post-header-image').attr('src', $(element).attr('data-header-image'));
 		$('#blog-post-author-image').attr('src', $(element).attr('data-avatar'));
+
 		$('#blog-post-author').html($(element).attr('data-name'));
 		$('#blog-post-title').html($(element).attr('data-title'));
-		$('#blog-post-date').html($(element).attr('data-date'));
+		// $('#blog-post-date').html($(element).attr('data-date'));
+		$('#blog-topic').html($(element).attr('data-topic'));
+		$('#blog-space').html($(element).attr('data-space'));
+		$('#blog-date').html($(element).attr('data-date'));
 		$('#blog-post-content').html($(element).attr('data-content'));
+
+		getElementFiles('pon-', $(element).attr('data-insight'), [], '/cms/dashboard');
+
 		$('#blog-post-modal').modal('show');
 	}
 

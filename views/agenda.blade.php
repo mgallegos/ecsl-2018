@@ -1,6 +1,7 @@
 @extends('ecsl-2018::base')
 
 @section('container')
+<?php $prefix = 'pon-'; $appInfo = array('id' => 'presentation-management');?>
 <!-- Page Content -->
 <div class="container">
 
@@ -56,7 +57,7 @@
                       </a>
                     </div>
                     <p class="badge badge-warning my-2">Sin aula asignada</p>
-                    <h6 class="font-weight-bold mb-0" style="text-transform: uppercase;"><a id='presentation-{{ $presentation['id'] }}' href="#" onclick="showBlogPost(this)" data-insight="{{ $presentation['id'] }}" data-title="{{ $presentation['name'] }}" data-name="{{ $presentation['firstname'] . ' ' . $presentation['lastname'] }}" data-avatar="{{ $presentation['gravatar_url'] }}" data-date="" data-content="{{ $presentation['description'] }}">{{ $presentation['type'] }} "{{ $presentation['name'] }}"</a></h6>
+                    <h6 class="font-weight-bold mb-0" style="text-transform: uppercase;"><a id='presentation-{{ $presentation['id'] }}' href="#" onclick="showBlogPost(this)" data-insight="{{ $presentation['id'] }}" data-title="{{ $presentation['type'] . ' "' . $presentation['name'] . '"' }}" data-name="{{ $presentation['firstname'] . ' ' . $presentation['lastname'] }}" data-avatar="{{ $presentation['gravatar_url'] }}" data-topic="{{ $presentation['subtopic_label'] }}" data-date="" data-space="" data-content="{{ $presentation['description'] }}">{{ $presentation['type'] }} "{{ $presentation['name'] }}"</a></h6>
                     <p class="font-weight-normal font-italic mb-0" style="font-size: 0.9rem;">{{ $presentation['firstname'] . ' ' . $presentation['lastname'] }}</p>
                     <p class="font-weight-normal font-italic" style="font-size: 0.8rem;">{{ $usersData[$presentation['user_id']]['institution'] . ' / ' . $usersData[$presentation['user_id']]['country'] }}</p>
                   </div>
@@ -139,17 +140,7 @@
             <div class="row">
               @foreach ($presentationsBySchedule as $index => $presentation)
                 @if($presentation['schedule'] == '2018-07-12 10:10:00')
-                  <div class="col-lg-3 col-sm-6">
-                    <div>
-                      <a href="#" onclick="showBlogPost($('#presentation-{{ $presentation['id'] }}'))">
-                        <img class="rounded-circle" src="{{ $presentation['gravatar_url'] }}">
-                      </a>
-                    </div>
-                    <p class="badge badge-warning my-2">{{$presentation['space_label']}}</p>
-                    <h6 class="font-weight-bold mb-0" style="text-transform: uppercase;"><a id='presentation-{{ $presentation['id'] }}' href="#" onclick="showBlogPost(this)" data-insight="{{ $presentation['id'] }}" data-title="{{ $presentation['name'] }}" data-name="{{ $presentation['firstname'] . ' ' . $presentation['lastname'] }}" data-avatar="{{ $presentation['gravatar_url'] }}" data-date="" data-content="{{ $presentation['description'] }}">{{ $presentation['type'] }} "{{ $presentation['name'] }}"</a></h6>
-                    <p class="font-weight-normal font-italic mb-0" style="font-size: 0.9rem;">{{ $presentation['firstname'] . ' ' . $presentation['lastname'] }}</p>
-                    <p class="font-weight-normal font-italic" style="font-size: 0.8rem;">{{ $usersData[$presentation['user_id']]['institution'] . ' / ' . $usersData[$presentation['user_id']]['country'] }}</p>
-                  </div>
+                  @include('ecsl-2018::agenda-item')
                 @endif
               @endforeach
             </div>
@@ -161,7 +152,11 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-12 11:20:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -180,7 +175,11 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-12 13:30:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -190,9 +189,13 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-
-          </div>
-        </td>
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-12 14:40:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
+            </div>
+          </td>
         </tr>
         <tr>
           <td class="text-center font-weight-bold">3:50 P.M. - 4:50 P.M.</td>
@@ -200,7 +203,11 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-12 15:50:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -234,7 +241,11 @@
         <tr>
           <td class="text-center py-4 table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-13 08:30:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -244,7 +255,11 @@
         <tr>
           <td class="text-center py-4 table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-13 09:40:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -254,7 +269,11 @@
         <tr>
           <td class="text-center py-4 table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-13 10:50:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -273,7 +292,11 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-13 13:30:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -283,7 +306,11 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-13 14:40:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -293,7 +320,11 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-
+              @foreach ($presentationsBySchedule as $index => $presentation)
+                @if($presentation['schedule'] == '2018-07-13 15:50:00')
+                  @include('ecsl-2018::agenda-item')
+                @endif
+              @endforeach
             </div>
           </td>
         </tr>
@@ -374,7 +405,7 @@
     <div class="modal-content">
       <div class="modal-header" style="padding: 0.5rem;">
         <!-- <img id='blog-post-header-image' src="{{isset($ogImage)?$ogImage:'http://placehold.it/900x300'}}" class="img-responsive img-fluid" style="display:inline;"> -->
-        <h2 id='blog-post-title' class="modal-title"></h2>
+        <h3 id='blog-post-title' class="modal-title"></h3>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position: absolute;right: 11px;top: 5px;">
           <span aria-hidden="true">
             &times;
@@ -384,30 +415,36 @@
 		 	<div class="modal-body">
         <div>
           <div class="row">
-          <div class="col-md-7">
-            <h5 style="color:grey;font-size: 20px;">
-              <img id='blog-post-author-image' class="img-circle" src="" onerror="this.src='http://www.decimaerp.com/assets/kwaai/images/anonymous.png'" style="width: 40px;"></img>
-              <span>·</span>
-              <span id='blog-post-author'></span>
-              <!-- <span>·</span> -->
-              <span id='blog-post-date'></span>
-            </h5>
-          </div>
-          <div class="col-md-5 share-buttons">
-            <div style="display:  inline-block;">
-              <div id='fb-share' class="fb-share-button" data-href="" data-layout="button_count"></div>
+            <div class="col-md-7">
+              <h5 style="color:grey;font-size: 20px;">
+                <img id='blog-post-author-image' class="img-circle" src="" onerror="this.src='http://www.decimaerp.com/assets/kwaai/images/anonymous.png'" style="width: 40px;"></img>
+                <span>·</span>
+                <span id='blog-post-author'></span>
+                <!-- <span>·</span> -->
+                <!-- <span id='blog-post-date'></span> -->
+              </h5>
             </div>
-            <div style="display:inline-block;">
-              <div id="twitter-container" class="twitter-share-button"></div>
+            <div class="col-md-5 share-buttons">
+              <div style="display:  inline-block;">
+                <div id='fb-share' class="fb-share-button" data-href="" data-layout="button_count"></div>
+              </div>
+              <div style="display:inline-block;">
+                <div id="twitter-container" class="twitter-share-button"></div>
+              </div>
             </div>
-          </div>
           </div>
         </div>
-        <div id='blog-post-content'  class="text-justify">
+        <div class="mb-2">
+          <strong>Eje temático:</strong>&nbsp;<span id='blog-topic'></span><br>
+          <strong>Aula:</strong>&nbsp;<span id='blog-space'></span>&nbsp;&nbsp;
+          <strong>Fecha y hora:</strong>&nbsp;<span id='blog-date'></span>
+        </div>
+        <div id='blog-post-content'  class="text-justify mb-2">
           Este es un texto de ejemplo!!!
         </div>
+        @include('decima-file::file-cms-viewer')
         <!-- Comments -->
-        <div id='fb-comments' class="fb-comments" data-href="" data-numposts="10" width="100%"></div>
+        <div id='fb-comments' class="fb-comments mt-2" data-href="" data-numposts="10" width="100%"></div>
       </div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-undo"></i> Regresar</button>

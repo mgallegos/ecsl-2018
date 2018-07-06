@@ -69,6 +69,20 @@
 		padding-bottom: 3px
 	}
 
+  .file-footer-caption {
+    font-size: 8px !important;
+    padding-top: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .file-other-icon {
+    font-size: 3.0em !important;
+  }
+
+  #pon-file-body .kv-file-remove {
+    display: none;
+  }
+
   @media (max-width: 576px) {
     .card-header-logo {
       height: 192px;
