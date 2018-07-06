@@ -9,6 +9,7 @@
 		<ul>
 			<li><strong>Fecha y hora:</strong> {{ $schedule_label }}</li>
 			<li><strong>Aula:</strong> {{ $space_label }}</li>
+			<li><strong>Ponencia:</strong> {{ $title }}</li>
 		</ul>
 		<p>Por favor, tome en cuenta lo siguiente:</p>
 		<ul>
