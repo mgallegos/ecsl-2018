@@ -22,10 +22,10 @@
     <a class="nav-link active" id="por-confirmar-tab" data-toggle="tab" href="#por-confirmar" role="tab" aria-controls="por-confirmar" aria-selected="true">Agenda</a>
   </li> -->
   <li class="nav-item">
-    <a class="nav-link" id="julio-11-tab" data-toggle="tab" href="#julio-11" role="tab" aria-controls="julio-11" aria-selected="true">11 de Julio</a>
+    <a class="nav-link active" id="julio-11-tab" data-toggle="tab" href="#julio-11" role="tab" aria-controls="julio-11" aria-selected="true">11 de Julio</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="julio-12-tab" data-toggle="tab" href="#julio-12" role="tab" aria-controls="julio-12" aria-selected="true">12 de Julio</a>
+    <a class="nav-link" id="julio-12-tab" data-toggle="tab" href="#julio-12" role="tab" aria-controls="julio-12" aria-selected="false">12 de Julio</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="julio-13-tab" data-toggle="tab" href="#julio-13" role="tab" aria-controls="julio-13" aria-selected="false">13 de Julio</a>
