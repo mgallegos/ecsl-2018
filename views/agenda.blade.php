@@ -18,9 +18,9 @@
 
 
 <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-  <li class="nav-item">
+  <!-- <li class="nav-item">
     <a class="nav-link active" id="por-confirmar-tab" data-toggle="tab" href="#por-confirmar" role="tab" aria-controls="por-confirmar" aria-selected="true">Agenda</a>
-  </li>
+  </li> -->
   <li class="nav-item">
     <a class="nav-link" id="julio-11-tab" data-toggle="tab" href="#julio-11" role="tab" aria-controls="julio-11" aria-selected="true">11 de Julio</a>
   </li>
@@ -39,7 +39,7 @@
 </ul>
 
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="por-confirmar" role="tabpanel" aria-labelledby="por-confirmar-tab">
+  <!-- <div class="tab-pane fade show active" id="por-confirmar" role="tabpanel" aria-labelledby="por-confirmar-tab">
     <table class="table table-striped table-bordered">
       <tbody>
         <tr>
@@ -48,7 +48,7 @@
         <tr>
           <td class="text-center table-info">
             <div class="row">
-              @foreach ($presentations as $index => $presentation)
+              @foreach (array() as $index => $presentation)
                 @if(empty($presentation['space_id']))
                   <div class="col-lg-3 col-sm-6">
                     <div>
@@ -68,8 +68,8 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class="tab-pane fade" id="julio-11" role="tabpanel" aria-labelledby="julio-11-tab">
+  </div> -->
+  <div class="tab-pane fade show active" id="julio-11" role="tabpanel" aria-labelledby="julio-11-tab">
     <table class="table table-striped table-bordered">
       <tbody>
         <tr>

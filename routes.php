@@ -101,7 +101,7 @@ $ecslsv =  function ()
 			->with('ogDescription', $presentationDescription)
 			->with('presentationId', $presentationId)
 			->with('usersData', $OpenCmsManagerService->getUsersRegistrationData())
-			->with('presentations', $PresentationManagerService->getPresentationsWithSpeaker(1, 15, true, 'ecsl2018', false))
+			// ->with('presentations', $PresentationManagerService->getPresentationsWithSpeaker(1, 15, true, 'ecsl2018', false))
 			->with('presentationsBySchedule', $PresentationManagerService->getPresentationsWithSpeakerAndSchedule(1, 15, true, 'ecsl2018', false));
 	});
 
