@@ -1056,9 +1056,9 @@
 					{
 						$('#trans-from-enviar').attr('disabled', 'disabled');
 						$('#trans-from-status').val('Aprobada');
-						$('#trans-from-assigned-transport').val('');
-						$('#trans-from-responsable-user-name').val('');
-						$('#trans-from-contact-phone').val('');
+						$('#trans-from-assigned-transport').val(arrivingTransportationRequest.assigned_transport);
+						$('#trans-from-responsable-user-name').val('Manuel Flores <neozeroes@gmail.com>');
+						$('#trans-from-contact-phone').val('+503 78548471, telegram: @neozerosv');
 					}
 				}
 			}
@@ -1075,9 +1075,9 @@
 					{
 						$('#trans-to-enviar').attr('disabled', 'disabled');
 						$('#trans-to-status').val('Aprobada');
-						$('#trans-to-assigned-transport').val('');
-						$('#trans-to-responsable-user-name').val('');
-						$('#trans-to-contact-phone').val('');
+						$('#trans-to-assigned-transport').val(leavingTransportationRequest.assigned_transport);
+						$('#trans-to-responsable-user-name').val('Manuel Flores <neozeroes@gmail.com>');
+						$('#trans-to-contact-phone').val('+503 78548471, telegram: @neozerosv');
 					}
 				}
 			}

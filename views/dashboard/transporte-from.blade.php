@@ -129,7 +129,7 @@
             <span class="input-group-prepend">
               <div class="input-group-text"><i class="fa fa-phone"></i></div>
             </span>
-            {!! Form::text('trans-from-contact-phone', null, array('id'=>'trans-from-contact', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
+            {!! Form::text('trans-from-contact-phone', null, array('id'=>'trans-from-contact-phone', 'class'=>'form-control', 'disabled'=>'disabled')) !!}
           </div>
         </div>
       </div>
