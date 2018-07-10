@@ -1868,11 +1868,55 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			$replyToName = 'Comité Organizador del ECSL 2018';
 
 			// $input['email'] = 'mgallegos@decimaerp.com';
-			
+
 			$this->Mailer->queue('ecsl-2018::emails.confirmacion-ponencia', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
 			{
 				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
 					->cc('ecsl2018@softwarelibre.ca')
+					->bcc('mgallegos@decimaerp.com');
+			});
+		}
+
+		return $response;
+	}
+
+	/**
+	 * Authorize presentation
+	 *
+	 * @param array $input
+   * 	An array as follows: array('field0'=>$field0, 'field1'=>$field1
+   *                            );
+   *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *	In case of success: {"success" : form.defaultSuccessSaveMessage}
+	 */
+	public function authorizeTransportationRequest(array $input, $openTransaction = true, $databaseConnectionName = null, $organizationId = null, $loggedUserId = null)
+	{
+		$response = $this->TransportationRequestManager->authorize($input, true, $databaseConnectionName, $organizationId, $loggedUserId);
+
+		$decodedResponse = json_decode($response, true);
+
+		if(!empty($decodedResponse['success']))
+		{
+			$User = $this->User->byId(
+				$input['id'],
+				$this->cmsDatabaseConnectionName
+			);
+
+			$input['email'] = $User->email;
+			$input['name'] = $User->firstname;
+			$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+			$subject = '[ECSL 2018] Confirmación de asignación de transporte ' . $input['datetime'];
+			$replyToEmail = 'ecsl2018@softwarelibre.ca';
+			$replyToName = 'Comité Organizador del ECSL 2018';
+
+			$input['email'] = 'mgallegos@decimaerp.com';
+
+			$this->Mailer->queue('ecsl-2018::emails.confirmacion-transporte', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+					// ->cc('ecsl2018@softwarelibre.ca')
 					->bcc('mgallegos@decimaerp.com');
 			});
 		}
