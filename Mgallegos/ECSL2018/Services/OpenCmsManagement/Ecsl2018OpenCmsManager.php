@@ -2334,7 +2334,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     }
 
 		$users = $saoh = array();
-		$payments = $this->PaymentManager->getPaymentsData($this->cmsDatabaseConnectionName);
+		$payments = $this->PaymentManager->getPaymentsData($this->organizationId, $this->cmsDatabaseConnectionName);
 
 		$this->User->byOrganization($this->organizationId, $this->cmsDatabaseConnectionName)->each(function($User) use (&$users)
     {
