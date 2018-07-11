@@ -54,6 +54,8 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 
 		$this->registerRegistrationFormInterface();
 
+		$this->registerCardTouchInterface();
+
 		$this->registerOpenCmsManagementInterface();
 	}
 
@@ -94,6 +96,19 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 	}
 
 	/**
+	* Register a CardTouch interface instance.
+	*
+	* @return void
+	*/
+	protected function registerCardTouchInterface()
+	{
+		$this->app->bind('Ecsl2018CardTouchInterface', function($app)
+		{
+			return new \Mgallegos\ECSL2018\Repositories\CardTouch\EloquentCardTouch( new \Mgallegos\ECSL2018\CardTouch(), 'ecsl2018');
+		});
+	}
+
+	/**
 	 * Register a ... interface instance.
 	 *
 	 * @return void
@@ -112,6 +127,7 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\User\UserInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface'),
 					$app->make('Ecsl2018RegistrationFormInterface'),
+					$app->make('Ecsl2018CardTouchInterface'),
 					$app['translator'],
 					$app['url'],
 					$app['redirect'],

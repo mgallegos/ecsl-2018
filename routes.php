@@ -124,13 +124,23 @@ $ecslsv =  function ()
 		return $OpenCmsManagerService->saoh01(Request::json()->all());
 	});
 
-	Route::post('cms/post-card-touch', [
-	    'uses' => 'Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager@saoh02'
-	]);
+	Route::post('/cms/post-card-touch', function()
+	{
+		$app = $this->app;
 
-	Route::post('cms/post-share-info', [
-	    'uses' => 'Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager@saoh03'
-	]);
+		$OpenCmsManagerService = $app->make('Ecsl2018OpenCmsManagementInterface');
+
+		return $OpenCmsManagerService->saoh02(Request::json()->all());
+	});
+
+	Route::post('/cms/post-share-info', function()
+	{
+		$app = $this->app;
+
+		$OpenCmsManagerService = $app->make('Ecsl2018OpenCmsManagementInterface');
+
+		return $OpenCmsManagerService->saoh03(Request::json()->all());
+	});
 
 	// Route::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');
 };

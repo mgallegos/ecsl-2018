@@ -67,6 +67,8 @@ use Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface;
 
 use Mgallegos\ECSL2018\Repositories\RegistrationForm\RegistrationFormInterface;
 
+use Mgallegos\ECSL2018\Repositories\CardTouch\CardTouchInterface;
+
 use Mgallegos\DecimaOpenCms\OpenCms\Repositories\Payment\PaymentInterface;
 
 use App\Kwaai\System\Repositories\Currency\CurrencyInterface;
@@ -172,6 +174,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		UserInterface $User,
 		UserEventInterface $UserEvent,
 		RegistrationFormInterface $RegistrationForm,
+		CardTouchInterface $CardTouch,
 		// PaymentInterface $Payment,
 		TranslatorInterface $Lang,
 		UrlGenerator $Url,
@@ -211,6 +214,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     $this->UserEvent = $UserEvent;
 
 		$this->RegistrationForm = $RegistrationForm;
+
+		$this->CardTouch = $CardTouch;
 
 		// $this->Payment = $Payment;
 
@@ -1669,118 +1674,125 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         ->setTimezone('America/El_Salvador')
         ->format('Y-m-d');
 
-      $articlesId['A'] = 190;
-      $articlesId['B'] = 191;
-      $articlesId['C'] = 192;
-
-			if(empty($Payment->order_id))
+			if($input['payment_form_type'] != 'J')
 			{
-				$response = json_decode(
-					$this->SaleManager->create(
-						array(
-							'type' => 'O',
-							'status' => 'P',
-							'registration_date' => $date,
-							'emission_date' => $date,
-							'collection_date' => $recordDatetime->format('Y-m-d'),
-							'payment_date' => $recordDatetime->format('Y-m-d'),
-							'client_id' => $User->client_id,
-							'sale_point_id' => 1,
-              'document_type_id' => '7',
-    					'document_type_label' => 'Factura Comercial',
-							'payment_term_id' => 1,
-							'payment_form_id' => 2,
-							'bank_account_id' => 1,
-							'remark' => $input['remark'],
-              'document_number' => $this->SaleManager->getDocumentNumberByDocumentTypeId(
-    						array(
-    							'sale_point_id' => '1',
-    							'document_type_id' => '7',
-    							'organization_id' => $organizationId
-    						),
-    						$this->cmsDatabaseConnectionName,
-    						false
-    					)
+				$articlesId['A'] = 190;
+	      $articlesId['B'] = 191;
+	      $articlesId['C'] = 192;
+
+				if(empty($Payment->order_id))
+				{
+					$response = json_decode(
+						$this->SaleManager->create(
+							array(
+								'type' => 'O',
+								'status' => 'P',
+								'registration_date' => $date,
+								'emission_date' => $date,
+								'collection_date' => $recordDatetime->format('Y-m-d'),
+								'payment_date' => $recordDatetime->format('Y-m-d'),
+								'client_id' => $User->client_id,
+								'sale_point_id' => 1,
+	              'document_type_id' => '7',
+	    					'document_type_label' => 'Factura Comercial',
+								'payment_term_id' => 1,
+								'payment_form_id' => 2,
+								'bank_account_id' => 1,
+								'remark' => $input['remark'],
+	              'document_number' => $this->SaleManager->getDocumentNumberByDocumentTypeId(
+	    						array(
+	    							'sale_point_id' => '1',
+	    							'document_type_id' => '7',
+	    							'organization_id' => $organizationId
+	    						),
+	    						$this->cmsDatabaseConnectionName,
+	    						false
+	    					)
+							),
+							false,
+							false,
+							$this->cmsDatabaseConnectionName,
+							$organizationId,// $organizationId = null,
+							$loggedUserId // $loggedUserId = null,
 						),
+						true
+					);
+				}
+				else
+				{
+	        $response['id'] = $Payment->order_id;
+
+					$this->SaleManager->update(
+	          array(
+	            'id' => $response['id'],
+	            'type' => 'O',
+	            'status' => 'P',
+	            'registration_date' => $date,
+	            'emission_date' => $date,
+	            'collection_date' => $recordDatetime->format('Y-m-d'),
+	            'payment_date' => $recordDatetime->format('Y-m-d'),
+	            'client_id' => $RegistrationForm->client_id,
+	            'sale_point_id' => 1,
+	            'sale_point_label' => 'Oficina central',
+	            'document_type_id' => '7',
+	            'document_type_label' => 'Factura Comercial',
+	            'payment_term_id' => 1,
+	            'payment_term_label' => 'Contado',
+	            'payment_form_id' => 2,
+	            'payment_form_label' => 'Transferencia bancaria',
+	            'bank_account_id' => 1,
+	            'bank_account_label' => 'Moisés Oswaldo Larín y Carlos Juan Martín Pérez (Banco de América Central)',
+	            'remark' => $input['remark'],
+	            'document_number' => $this->SaleManager->getDocumentNumberByDocumentTypeId(
+	              array(
+	                'sale_point_id' => '1',
+	                'document_type_id' => '7',
+	                'organization_id' => $organizationId
+	              ),
+	              $this->cmsDatabaseConnectionName,
+	              false
+	            )
+	          ),
+						null,
+						null,
+						false,
 						false,
 						false,
 						$this->cmsDatabaseConnectionName,
 						$organizationId,// $organizationId = null,
 						$loggedUserId // $loggedUserId = null,
+					);
+
+	        $this->SaleManager->deleteOrderDetails(
+	  				$response['id'],
+	  				$this->cmsDatabaseConnectionName
+	  			);
+				}
+
+	      $Sale = $this->SaleManager->getSaleOrder(
+					$response['id'],
+					$this->cmsDatabaseConnectionName
+				);
+
+	      $this->SaleManager->createOrderDetail(
+					array(
+						'quantity' => '1',
+						'price_without_discount' => $input['amount'],
+						'price' => $input['amount'],
+						'subject_amount' => $input['amount'],
+						'order_id' => $response['id'],
+						'article_id' => $articlesId[$input['type']]
 					),
-					true
+					false,// $openTransaction = true,
+	        $this->cmsDatabaseConnectionName,
+	        $organizationId,// $organizationId = null,
+	        $loggedUserId // $loggedUserId = null,
 				);
 			}
 			else
 			{
-        $response['id'] = $Payment->order_id;
-
-				$this->SaleManager->update(
-          array(
-            'id' => $response['id'],
-            'type' => 'O',
-            'status' => 'P',
-            'registration_date' => $date,
-            'emission_date' => $date,
-            'collection_date' => $recordDatetime->format('Y-m-d'),
-            'payment_date' => $recordDatetime->format('Y-m-d'),
-            'client_id' => $RegistrationForm->client_id,
-            'sale_point_id' => 1,
-            'sale_point_label' => 'Oficina central',
-            'document_type_id' => '7',
-            'document_type_label' => 'Factura Comercial',
-            'payment_term_id' => 1,
-            'payment_term_label' => 'Contado',
-            'payment_form_id' => 2,
-            'payment_form_label' => 'Transferencia bancaria',
-            'bank_account_id' => 1,
-            'bank_account_label' => 'Moisés Oswaldo Larín y Carlos Juan Martín Pérez (Banco de América Central)',
-            'remark' => $input['remark'],
-            'document_number' => $this->SaleManager->getDocumentNumberByDocumentTypeId(
-              array(
-                'sale_point_id' => '1',
-                'document_type_id' => '7',
-                'organization_id' => $organizationId
-              ),
-              $this->cmsDatabaseConnectionName,
-              false
-            )
-          ),
-					null,
-					null,
-					false,
-					false,
-					false,
-					$this->cmsDatabaseConnectionName,
-					$organizationId,// $organizationId = null,
-					$loggedUserId // $loggedUserId = null,
-				);
-
-        $this->SaleManager->deleteOrderDetails(
-  				$response['id'],
-  				$this->cmsDatabaseConnectionName
-  			);
+				$response['id'] = null;
 			}
-
-      $Sale = $this->SaleManager->getSaleOrder(
-				$response['id'],
-				$this->cmsDatabaseConnectionName
-			);
-
-      $this->SaleManager->createOrderDetail(
-				array(
-					'quantity' => '1',
-					'price_without_discount' => $input['amount'],
-					'price' => $input['amount'],
-					'subject_amount' => $input['amount'],
-					'order_id' => $response['id'],
-					'article_id' => $articlesId[$input['type']]
-				),
-				false,// $openTransaction = true,
-        $this->cmsDatabaseConnectionName,
-        $organizationId,// $organizationId = null,
-        $loggedUserId // $loggedUserId = null,
-			);
 
       // 'order_id' => $response['id'],
 
@@ -1815,22 +1827,27 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
       throw $e;
     }
 
-    $input['email'] = $User->email;
-		$input['name'] = $User->firstname . ' ' . $User->lastname;
-		$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
-		$input['amount'] = $input['amount'];
-		$input['type'] = $input['type_label'];
-		$input['reference'] = $input['approval_number'];
-		$subject = '[ECSL 2018] Confirmación de recepción de pago ' . $input['datetime'];
-		$replyToEmail = 'ecsl2018@softwarelibre.ca';
-		$replyToName = 'Comité Organizador del ECSL 2018';
-
-		$this->Mailer->queue('ecsl-2018::emails.confirmacion-pago', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+		if($input['payment_form_type'] != 'J')
 		{
-			$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
-				->cc('ecsl2018@softwarelibre.ca')
-				->bcc('mgallegos@decimaerp.com');
-		});
+			$input['email'] = $User->email;
+			$input['name'] = $User->firstname . ' ' . $User->lastname;
+			$input['datetime'] = $this->Carbon->createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'), 'UTC')->setTimezone('America/El_Salvador')->format($this->Lang->get('form.phpDateFormat'));
+			$input['amount'] = $input['amount'];
+			$input['type'] = $input['type_label'];
+			$input['reference'] = $input['approval_number'];
+			$subject = '[ECSL 2018] Confirmación de recepción de pago ' . $input['datetime'];
+			$replyToEmail = 'ecsl2018@softwarelibre.ca';
+			$replyToName = 'Comité Organizador del ECSL 2018';
+
+			// $input['email'] = 'mgallegos@decimaerp.com';
+
+			$this->Mailer->queue('ecsl-2018::emails.confirmacion-pago', $input, function($message) use ($input, $subject, $replyToEmail, $replyToName)
+			{
+				$message->to($input['email'])->subject($subject)->replyTo($replyToEmail, $replyToName)
+					->cc('ecsl2018@softwarelibre.ca')
+					->bcc('mgallegos@decimaerp.com');
+			});
+		}
 
     return json_encode(array('success' => $this->Lang->get('form.defaultSuccessOperationMessage'), 'id' => $Payment->id));
   }
@@ -2380,6 +2397,26 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     {
      die('sorry!');
     }
+
+		$saoh = array();
+
+		foreach ($input['date'] as $key => $value)
+		{
+			$CardTouch = $this->CardTouch->create(
+				array(
+					'event_id' => $value['event_id'],
+					'event_type_id' => $value['event_type_id'],
+					'reader_id' => $value['reader_id'],
+					'reader_name' => $value['reader_name'],
+					'user_id' => $value['data'][0]['user_id'],
+					'timestamp' => $this->Carbon->createFromFormat('Y-m-d\TH:i:s\Z', $value['timestamp'])->format('Y-m-d H:i:s')
+				),
+				$this->cmsDatabaseConnectionName
+			);
+			$saoh[] = array('event_id' => $value['event_id']);
+		}
+
+		return json_encode($saoh);
   }
 
 	/**
