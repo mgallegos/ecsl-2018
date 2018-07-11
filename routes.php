@@ -116,7 +116,7 @@ $ecslsv =  function ()
 	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 
 	Route::post('cms/get-users', [
-	    'uses' => 'Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager@saoh01'
+	    'uses' => 'Ecsl2018OpenCmsManagementInterface@saoh01'
 	]);
 
 	Route::post('cms/post-card-touch', [
