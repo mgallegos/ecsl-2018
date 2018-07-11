@@ -2310,4 +2310,98 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		return $response;
   }
+
+	/**
+   * SAOH 01
+   *
+   * @param array $input
+   *
+   * @return JSON encoded string
+   *  A string as follows: []
+   */
+  public function saoh01(array $input)
+  {
+		$Organization = $this->AuthenticationManager->getOrganizationByApiToken($input['token']);
+
+    if(empty($Organization))
+    {
+     die('sorry!');
+    }
+
+    if($Organization->database_connection_name != $this->cmsDatabaseConnectionName)
+    {
+     die('sorry!');
+    }
+
+		$users = $saoh = array();
+		$payments = $this->PaymentManager->getPaymentsData($this->cmsDatabaseConnectionName);
+
+		$this->User->byOrganization($this->organizationId, $this->cmsDatabaseConnectionName)->each(function($User) use (&$users)
+    {
+      $users[$User->id] = $User->firstname . ' ' . $User->lastname;
+    });
+
+		foreach ($payments as $key => $payment)
+		{
+			if($payment['status'] == 'X')
+			{
+				if($payment['type'] == 'A')
+				{
+					$saoh[] = array('id' => $payment['user_id'], 'class' => 2, 'name' => $users[$payment['user_id']]);
+				}
+				else
+				{
+					$saoh[] = array('id' => $payment['user_id'], 'class' => 1, 'name' => $users[$payment['user_id']]);
+				}
+			}
+		}
+
+		return json_encode($saoh);
+  }
+
+	/**
+   * SAOH 02
+   *
+   * @param array $input
+   *
+   * @return JSON encoded string
+   *  A string as follows: []
+   */
+  public function saoh02(array $input)
+  {
+		$Organization = $this->AuthenticationManager->getOrganizationByApiToken($input['token']);
+
+    if(empty($Organization))
+    {
+     die('sorry!');
+    }
+
+    if($Organization->database_connection_name != $this->cmsDatabaseConnectionName)
+    {
+     die('sorry!');
+    }
+  }
+
+	/**
+   * SAOH 03
+   *
+   * @param array $input
+   *
+   * @return JSON encoded string
+   *  A string as follows: []
+   */
+  public function saoh03(array $input)
+  {
+		$Organization = $this->AuthenticationManager->getOrganizationByApiToken($input['token']);
+
+    if(empty($Organization))
+    {
+     die('sorry!');
+    }
+
+    if($Organization->database_connection_name != $this->cmsDatabaseConnectionName)
+    {
+     die('sorry!');
+    }
+  }
 }

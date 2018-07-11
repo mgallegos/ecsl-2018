@@ -115,6 +115,18 @@ $ecslsv =  function ()
 	Route::controller('/cms/dashboard', 'Mgallegos\ECSL2018\Controllers\OpenCmsManager');
 	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 
+	Route::post('cms/get-users', [
+	    'uses' => 'Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager@saoh01'
+	]);
+
+	Route::post('cms/post-card-touch', [
+	    'uses' => 'Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager@saoh02'
+	]);
+
+	Route::post('cms/post-share-info', [
+	    'uses' => 'Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager@saoh03'
+	]);
+
 	// Route::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');
 };
 
