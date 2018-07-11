@@ -90,6 +90,19 @@
             <h5 class="font-weight-bold mb-2">CENA</h5>
           </td>
         </tr>
+        <tr>
+          <td class="text-center font-weight-bold">8:30 P.M. - 10:00 P.M. </td>
+        </tr>
+        <tr>
+          <td class="text-center py-4 table-success">
+            <p class="badge badge-success my-2">EVENTO SOCIAL</p>
+            <h5 class="font-weight-bold mb-2" style="text-transform: uppercase;">Conociendo Antiguo Cuscatlán</h5>
+            <h6 class="mb-2">
+              Una caminata nocturna conociendo el centro de Antiguo Cuscatlán donde puedes degustar platillos típicos Salvadoreños, al finalizar la caminata podemos brindar en Súper Nova Pizzería.<br>
+              Puedes preguntar más detalles en el grupo <a href="https://t.me/joinchat/AAAAAEc7J24xaZp0Ub_mfg" target="_blank"><i class="fa fa-telegram" aria-hidden="true"> Social ECSL 2018</i></a>
+            </h6>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -212,12 +225,25 @@
           </td>
         </tr>
         <tr>
-          <td class="text-center font-weight-bold">7:00 P.M. - 8:00 P.M. </td>
+          <td class="text-center font-weight-bold">6:00 P.M. - 7:00 P.M.</td>
         </tr>
         <tr>
           <td class="text-center py-4 table-success">
             <p class="badge badge-success my-2">CENTRO LOYOLA</p>
             <h5 class="font-weight-bold mb-2">CENA</h5>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-center font-weight-bold">7:30 P.M. - 10:00 P.M.</td>
+        </tr>
+        <tr>
+          <td class="text-center py-4 table-success">
+            <p class="badge badge-success my-2">EVENTO SOCIAL</p>
+            <h5 class="font-weight-bold mb-2" style="text-transform: uppercase;">Tour Centro Histórico</h5>
+            <h6 class="mb-2">
+              Caminata nocturna para conocer el Centro de San Salvador, tour guiado por <a href="https://www.facebook.com/espiral.elsalvador/" target="_blank">Espiral de El Salvador</a>, al finalizar brindaremos, cantaremos y bailaremos en la residencia.<br>
+              Puedes preguntar más detalles en el grupo <a href="https://t.me/joinchat/AAAAAEc7J24xaZp0Ub_mfg" target="_blank"><i class="fa fa-telegram" aria-hidden="true"> Social ECSL 2018</i></a>
+            </h6>
           </td>
         </tr>
       </tbody>
@@ -227,7 +253,7 @@
     <table class="table table-striped">
       <tbody>
         <tr>
-          <td class="text-center font-weight-bold">7:00 A.M. - 8:00 A.M. </td>
+          <td class="text-center font-weight-bold">7:00 A.M. - 8:00 A.M.</td>
         </tr>
         <tr>
           <td class="text-center py-4 table-success">
@@ -329,7 +355,16 @@
           </td>
         </tr>
         <tr>
-          <td class="text-center font-weight-bold">5:00 P.M. - 6:00 P.M. </td>
+          <td class="text-center font-weight-bold">5:00 P.M. - 5:15 P.M.</td>
+        </tr>
+        <tr>
+          <td class="text-center py-4 table-success">
+            <p class="badge badge-success my-2">AUDITORIO "SEGUNDO MONTES, S.J."</p>
+            <h5 class="font-weight-bold mb-2">FOTO GRUPAL</h5>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-center font-weight-bold">5:20 P.M. - 6:30 P.M.</td>
         </tr>
         <tr>
           <td class="text-center py-4 table-success">
@@ -338,12 +373,25 @@
           </td>
         </tr>
         <tr>
-          <td class="text-center font-weight-bold">7:00 P.M. - 8:00 P.M. </td>
+          <td class="text-center font-weight-bold">7:00 P.M. - 8:00 P.M.</td>
         </tr>
         <tr>
           <td class="text-center py-4 table-success">
             <p class="badge badge-success my-2">CENTRO LOYOLA</p>
             <h5 class="font-weight-bold mb-2">CENA</h5>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-center font-weight-bold">9:00 P.M. - 12:00 P.M.</td>
+        </tr>
+        <tr>
+          <td class="text-center py-4 table-success">
+            <p class="badge badge-success my-2">EVENTO SOCIAL</p>
+            <h5 class="font-weight-bold mb-2">CIERRE FIESTERO EN LA RESIDENCIA</h5>
+            <h6 class="mb-2">
+              Brindaremos y nos enfiestamos en la residencia, donde también habrá muestra del talento artístico de integrantes de la comunidad.
+              Puedes preguntar más detalles en el grupo <a href="https://t.me/joinchat/AAAAAEc7J24xaZp0Ub_mfg" target="_blank"><i class="fa fa-telegram" aria-hidden="true"> Social ECSL 2018</i></a>
+            </h6>
           </td>
         </tr>
       </tbody>
@@ -366,8 +414,12 @@
         </tr>
         <tr>
           <td class="text-center py-4 table-success">
-            <p class="badge badge-success my-2" style="text-transform: uppercase;">Playa el Amatal</p>
+            <p class="badge badge-success my-2">EVENTO SOCIAL</p>
             <h5 class="font-weight-bold mb-2" style="text-transform: uppercase;">Día social (opcional)</h5>
+            <h6 class="mb-2">
+              Nos vamos a la playa El Amatal en la Libertad, a disfrutar las olas y el rico clima salvadoreño.
+              Puedes preguntar más detalles en el grupo <a href="https://t.me/joinchat/AAAAAEc7J24xaZp0Ub_mfg" target="_blank"><i class="fa fa-telegram" aria-hidden="true"> Social ECSL 2018</i></a>
+            </h6>
           </td>
         </tr>
         <tr>
