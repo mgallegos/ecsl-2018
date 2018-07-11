@@ -2400,7 +2400,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 
 		$saoh = array();
 
-		foreach ($input['date'] as $key => $value)
+		foreach ($input['data'] as $key => $value)
 		{
 			$CardTouch = $this->CardTouch->create(
 				array(
