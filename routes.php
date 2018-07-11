@@ -115,9 +115,14 @@ $ecslsv =  function ()
 	Route::controller('/cms/dashboard', 'Mgallegos\ECSL2018\Controllers\OpenCmsManager');
 	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 
-	Route::post('cms/get-users', [
-	    'uses' => 'Ecsl2018OpenCmsManagementInterface@saoh01'
-	]);
+	Route::post('/cms/get-users', function()
+	{
+		$app = $this->app;
+
+		$OpenCmsManagerService = $app->make('Ecsl2018OpenCmsManagementInterface');
+
+		return $OpenCmsManagerService->saoh01(Request::json()->all());
+	});
 
 	Route::post('cms/post-card-touch', [
 	    'uses' => 'Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager@saoh02'
