@@ -2462,7 +2462,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 			$this->UserContact->create(
         array(
           'user_id' => $value['data'][1]['user_id'],
-          'contact_id' => $value['data'][0]['user_id'],
+          'user_contact_id' => $value['data'][0]['user_id'],
           'organization_id' => $this->organizationId,
         ),
         $this->cmsDatabaseConnectionName
