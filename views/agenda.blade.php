@@ -134,7 +134,7 @@
           <td class="text-center py-4 table-success">
             <p class="badge badge-success my-2">AUDITORIO "SEGUNDO MONTES, S.J."</p>
             <h5 class="font-weight-bold mb-2">APERTURA DEL X ENCUENTRO CENTROAMERICANO DE SOFTWARE LIBRE</h5>
-            <a href="https://bbb.salud.gob.sv/bbb/publico/create.jsp?action=invite&meetingID=APERTURA+X+ECSL" target="_blank">Ver tranmisión en línea</a>
+            <a href="https://bbb.salud.gob.sv/bbb/publico/create.jsp?action=invite&meetingID=APERTURA+X+ECSL" target="_blank">Ver transmisión en línea</a>
           </td>
         </tr>
         <tr>
@@ -144,7 +144,7 @@
           <td class="text-center py-4 table-info">
             <p class="badge badge-success my-2">AUDITORIO "SEGUNDO MONTES, S.J."</p>
             <h5 class="font-weight-bold mb-2" style="text-transform: uppercase;">PANEL "Software Libre: Desafíos actuales de las mujeres en tecnología"</h5>
-            <a href="https://bbb.salud.gob.sv/bbb/publico/create.jsp?action=invite&meetingID=APERTURA+X+ECSL" target="_blank">Ver tranmisión en línea</a>
+            <a href="https://bbb.salud.gob.sv/bbb/publico/create.jsp?action=invite&meetingID=APERTURA+X+ECSL" target="_blank">Ver transmisión en línea</a>
           </td>
         </tr>
         <tr>
