@@ -126,6 +126,7 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 					$app->make('App\Kwaai\System\Repositories\Currency\CurrencyInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\User\UserInterface'),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface'),
+					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserContact\UserContactInterface'),
 					$app->make('Ecsl2018RegistrationFormInterface'),
 					$app->make('Ecsl2018CardTouchInterface'),
 					$app['translator'],

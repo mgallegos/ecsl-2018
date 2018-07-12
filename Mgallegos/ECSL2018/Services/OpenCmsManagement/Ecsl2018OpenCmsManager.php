@@ -65,6 +65,8 @@ use Mgallegos\DecimaOpenCms\OpenCms\Repositories\User\UserInterface;
 
 use Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserEvent\UserEventInterface;
 
+use Mgallegos\DecimaOpenCms\OpenCms\Repositories\UserContact\UserContactInterface;
+
 use Mgallegos\ECSL2018\Repositories\RegistrationForm\RegistrationFormInterface;
 
 use Mgallegos\ECSL2018\Repositories\CardTouch\CardTouchInterface;
@@ -173,6 +175,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		CurrencyInterface $Currency,
 		UserInterface $User,
 		UserEventInterface $UserEvent,
+		UserContactInterface $UserContact,
 		RegistrationFormInterface $RegistrationForm,
 		CardTouchInterface $CardTouch,
 		// PaymentInterface $Payment,
@@ -212,6 +215,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 		$this->User = $User;
 
     $this->UserEvent = $UserEvent;
+
+    $this->UserContact = $UserContact;
 
 		$this->RegistrationForm = $RegistrationForm;
 
@@ -2440,5 +2445,32 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     {
      die('sorry!');
     }
+
+		$saoh = array();
+
+		foreach ($input['data'] as $key => $value)
+		{
+			$this->UserContact->create(
+        array(
+          'user_id' => $value['data'][0]['user_id'],
+          'contact_id' => $value['data'][1]['user_id'],
+          'organization_id' => $this->organizationId,
+        ),
+        $this->cmsDatabaseConnectionName
+      );
+
+			$this->UserContact->create(
+        array(
+          'user_id' => $value['data'][1]['user_id'],
+          'contact_id' => $value['data'][0]['user_id'],
+          'organization_id' => $this->organizationId,
+        ),
+        $this->cmsDatabaseConnectionName
+      );
+
+			$saoh[] = array('event_id' => $value['event_id']);
+		}
+
+		return json_encode($saoh);
   }
 }
