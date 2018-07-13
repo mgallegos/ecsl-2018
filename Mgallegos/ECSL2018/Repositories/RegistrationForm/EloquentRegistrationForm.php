@@ -236,7 +236,7 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
       $this->DB->connection($databaseConnectionName)
         ->table('ECSL_Registration_Form as rf')
         ->join('OCMS_Payment as p', 'rf.user_id', '=', 'p.user_id' )
-        ->where('rf.is_gender_visible', '=', 1)
+        // ->where('rf.is_gender_visible', '=', 1)
         ->where('rf.is_general_information_visible', '=', 1)
         ->where('p.status', '=', 'X')
         ->whereNotNull('institution')
