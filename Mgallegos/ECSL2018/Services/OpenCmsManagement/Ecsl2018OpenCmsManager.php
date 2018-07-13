@@ -2478,7 +2478,6 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
    */
   public function saoh03(array $input)
   {
-    var_dump($input);die();
 		$Organization = $this->AuthenticationManager->getOrganizationByApiToken($input['token']);
 
     if(empty($Organization))
