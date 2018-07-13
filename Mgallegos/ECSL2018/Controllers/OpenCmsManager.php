@@ -160,7 +160,7 @@ class OpenCmsManager extends Controller {
 			$loggedUserDisabledCssClass = '';
 			$loggedUserDisabledInputAttribute = '';
 			$registroLabel = 'Registrarse';
-			$cmsLoggedUser = array();
+			$cmsLoggedUser = $contacts = array();
 			$cmsLoggedUserName = '';
 		}
 		else
@@ -178,6 +178,7 @@ class OpenCmsManager extends Controller {
 			$payment = $this->PaymentManagerService->getPayment($cmsLoggedUser['payment_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
 			$arrivingTransportationRequest = $this->TransportationRequestManagerService->getTransportationRequest($cmsLoggedUser['arriving_transportation_request_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
 			$leavingTransportationRequest = $this->TransportationRequestManagerService->getTransportationRequest($cmsLoggedUser['leaving_transportation_request_id'], $this->OpenCmsManagerService->getCmsDatabaseConnectionName())->toArray();
+			$contacts = $this->OpenCmsManagerService->getUserContacts($cmsLoggedUser['user_id'], false);
 
 			if(!empty($arrivingTransportationRequest['pickup_datetime']))
 			{
@@ -236,7 +237,8 @@ class OpenCmsManager extends Controller {
 				)
 			)
 			->with('status', $this->OpenCmsManagerService->getDefaultStatus())
-			->with('places', $this->OpenCmsManagerService->getPlaces());
+			->with('places', $this->OpenCmsManagerService->getPlaces())
+			->with('contacts', $contacts);
 	}
 
 	/**

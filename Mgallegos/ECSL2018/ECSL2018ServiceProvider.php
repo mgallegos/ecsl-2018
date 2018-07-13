@@ -91,7 +91,7 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind('Ecsl2018RegistrationFormInterface', function($app)
 		{
-			return new \Mgallegos\ECSL2018\Repositories\RegistrationForm\EloquentRegistrationForm( new \Mgallegos\ECSL2018\RegistrationForm(), 'ecsl2018');
+			return new \Mgallegos\ECSL2018\Repositories\RegistrationForm\EloquentRegistrationForm( new \Mgallegos\ECSL2018\RegistrationForm(), $app['db'], 'ecsl2018');
 		});
 	}
 
@@ -120,6 +120,7 @@ class ECSL2018ServiceProvider extends ServiceProvider {
 			return new \Mgallegos\ECSL2018\Services\OpenCmsManagement\Ecsl2018OpenCmsManager(
 					$app->make('App\Kwaai\Security\Services\AuthenticationManagement\AuthenticationManagementInterface'),
 					$app->make('App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface'),
+					new \App\Kwaai\Helpers\Gravatar(),
 					$app->make('Mgallegos\DecimaOpenCms\OpenCms\Services\SettingManagement\SettingManagementInterface'),
 					$app->make('App\Kwaai\Security\Repositories\Journal\JournalInterface'),
 					$app->make('App\Kwaai\Organization\Repositories\Organization\OrganizationInterface'),

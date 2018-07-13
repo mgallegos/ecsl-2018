@@ -606,6 +606,24 @@
 			}, 100);
 		});
 
+		$('#dash-contactos').click(function()
+		{
+			if($(this).hasClass('active') || $(this).hasAttr('disabled'))
+			{
+				return;
+			}
+
+			hideDashboard();
+
+			$(this).addClass('active');
+
+			$('#dash-contactos-container').show('fade');
+
+			setTimeout(function()
+			{
+				$('#pon-grid').setGridWidth($('.dashboard-elements').width());
+			}, 100);
+		});
 
 		$('#trans-to-date').change(function()
 		{

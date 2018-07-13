@@ -13,6 +13,10 @@ use Illuminate\Database\Eloquent\Model;
 
 use Mgallegos\ECSL2018\RegistrationForm;
 
+use Illuminate\Database\DatabaseManager;
+
+use Illuminate\Database\Eloquent\Collection;
+
 class EloquentRegistrationForm implements RegistrationFormInterface {
 
   /**
@@ -24,6 +28,14 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
   protected $RegistrationForm;
 
   /**
+   * DB
+   *
+   * @var Illuminate\Database\DatabaseManager
+   *
+   */
+  protected $DB;
+
+  /**
    * Database Connection
    *
    * @var string
@@ -31,13 +43,15 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
    */
   protected $databaseConnectionName;
 
-  public function __construct(Model $RegistrationForm, $databaseConnectionName)
+  public function __construct(Model $RegistrationForm, DatabaseManager $DB, $databaseConnectionName)
   {
-      $this->RegistrationForm = $RegistrationForm;
+    $this->RegistrationForm = $RegistrationForm;
 
-      $this->databaseConnectionName = $databaseConnectionName;
+    $this->DB = $DB;
 
-      $this->RegistrationForm->setConnection($databaseConnectionName);
+    $this->databaseConnectionName = $databaseConnectionName;
+
+    $this->RegistrationForm->setConnection($databaseConnectionName);
   }
 
   /**
@@ -99,6 +113,42 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
     }
 
     return $this->RegistrationForm->setConnection($databaseConnectionName)->where('user_id', '=', $id)->get();
+  }
+
+  /**
+   * Retrieve SubTopic SubTopics by event and by organization
+   *
+   * @param  int $id Organization id
+   *
+   * @return Illuminate\Database\Eloquent\Collection
+   */
+  public function contactsByUserIdByEventIdAndByOrganizationId($userId, $eventId, $organizationId, $databaseConnectionName = null)
+  {
+    if(empty($databaseConnectionName))
+    {
+      $databaseConnectionName = $this->databaseConnectionName;
+    }
+
+    return new Collection(
+      $this->DB->connection($databaseConnectionName)
+        ->table('OCMS_User_Contact as uc')
+        ->join('OCMS_User as u', 'uc.user_contact_id', '=', 'u.id' )
+        ->join('ECSL_Registration_Form as rf', 'uc.user_contact_id', '=', 'rf.user_id')
+        ->where('uc.user_id', '=', $userId)
+        ->where('uc.event_id', '=', $eventId)
+        ->where('uc.organization_id', '=', $organizationId)
+        ->distinct()
+        ->get(
+          array(
+            'u.id',
+            'u.firstname',
+            'u.lastname',
+            'u.email',
+            'rf.country',
+            'rf.institution'
+          )
+        )
+    );
   }
 
   /**

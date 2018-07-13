@@ -79,9 +79,19 @@ use App\Kwaai\Organization\Repositories\Organization\OrganizationInterface;
 
 use App\Kwaai\Security\Services\JournalManagement\JournalManagementInterface;
 
+use App\Kwaai\Helpers\Gravatar;
+
 use App\Kwaai\Security\Repositories\Journal\JournalInterface;
 
 class Ecsl2018OpenCmsManager extends OpenCmsManager {
+
+	/**
+   * Gravatar instance
+   *
+   * @var App\Kwaai\Helpers\Gravatar
+   *
+   */
+  protected $Gravatar;
 
 	/**
 	 * PDF Creator
@@ -169,6 +179,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
 	public function __construct(
     AuthenticationManagementInterface $AuthenticationManager,
 		JournalManagementInterface $JournalManager,
+		Gravatar $Gravatar,
 		SettingManagementInterface $SettingManager,
 		JournalInterface $Journal,
 		OrganizationInterface $Organization,
@@ -205,6 +216,8 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     $this->AuthenticationManager = $AuthenticationManager;
 
 		$this->JournalManager = $JournalManager;
+
+		$this->Gravatar = $Gravatar;
 
     $this->SettingManager = $SettingManager;
 
@@ -397,6 +410,37 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     });
 
     return $data;
+  }
+
+	/**
+   * Get user contacts
+   *
+   * @return array
+   *  An array of arrays as follows: array( array('label'=>$name0, 'value'=>$id0), array('label'=>$name1, 'value'=>$id1),…)
+   */
+  public function getUserContacts($userId, $returnJson = true)
+  {
+		$contacts = array();
+
+    $this->RegistrationForm->contactsByUserIdByEventIdAndByOrganizationId($userId, $this->eventId, $this->organizationId, $this->cmsDatabaseConnectionName)->each(function($Contact) use (&$contacts)
+    {
+      array_push($contacts, array(
+        'id' => $Contact->id,
+        'firstname' => $Contact->firstname,
+        'lastname' => $Contact->lastname,
+        'email' => $Contact->email,
+        'country' => $Contact->country,
+        'institution' => $Contact->institution,
+        'gravatar_url' => $this->Gravatar->buildGravatarURL($Contact->email, 75)
+      ));
+    });
+
+    if($returnJson)
+    {
+      return json_encode($contacts);
+    }
+
+    return $contacts;
   }
 
 	/**
@@ -2454,6 +2498,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         array(
           'user_id' => $value['data'][0]['user_id'],
           'user_contact_id' => $value['data'][1]['user_id'],
+          'event_id' => 1,
           'organization_id' => $this->organizationId,
         ),
         $this->cmsDatabaseConnectionName
@@ -2463,6 +2508,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         array(
           'user_id' => $value['data'][1]['user_id'],
           'user_contact_id' => $value['data'][0]['user_id'],
+					'event_id' => 1,
           'organization_id' => $this->organizationId,
         ),
         $this->cmsDatabaseConnectionName
