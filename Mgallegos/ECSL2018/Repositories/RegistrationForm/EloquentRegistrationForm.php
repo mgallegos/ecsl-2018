@@ -152,6 +152,105 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
   }
 
   /**
+   * Retrieve gender stats
+   *
+   * @param  int $id Organization id
+   *
+   * @return Illuminate\Database\Eloquent\Collection
+   */
+  public function genderStats($databaseConnectionName = null)
+  {
+    if(empty($databaseConnectionName))
+    {
+      $databaseConnectionName = $this->databaseConnectionName;
+    }
+
+    return new Collection(
+      $this->DB->connection($databaseConnectionName)
+        ->table('ECSL_Registration_Form as rf')
+        ->join('OCMS_Payment as p', 'rf.user_id', '=', 'p.user_id' )
+        ->where('rf.is_gender_visible', '=', 1)
+        ->where('rf.is_general_information_visible', '=', 1)
+        ->where('p.status', '=', 'X')
+        ->groupBy('genero')
+        ->get(
+          array(
+            $this->DB->raw('
+              CASE
+        			WHEN custom_gender IS NOT NULL THEN custom_gender
+              ELSE gender
+              END AS genero
+            '),
+            $this->DB->raw('COUNT(1) AS value')
+          )
+        )
+    );
+  }
+
+  /**
+   * Retrieve country stats
+   *
+   * @param  int $id Organization id
+   *
+   * @return Illuminate\Database\Eloquent\Collection
+   */
+  public function countriesStats($databaseConnectionName = null)
+  {
+    if(empty($databaseConnectionName))
+    {
+      $databaseConnectionName = $this->databaseConnectionName;
+    }
+
+    return new Collection(
+      $this->DB->connection($databaseConnectionName)
+        ->table('ECSL_Registration_Form as rf')
+        ->join('OCMS_Payment as p', 'rf.user_id', '=', 'p.user_id' )
+        ->where('rf.is_gender_visible', '=', 1)
+        ->where('rf.is_general_information_visible', '=', 1)
+        ->where('p.status', '=', 'X')
+        ->groupBy('country')
+        ->get(
+          array(
+            'country',
+            $this->DB->raw('COUNT(1) AS value')
+          )
+        )
+    );
+  }
+
+  /**
+   * Retrieve country stats
+   *
+   * @param  int $id Organization id
+   *
+   * @return Illuminate\Database\Eloquent\Collection
+   */
+  public function institutionsStats($databaseConnectionName = null)
+  {
+    if(empty($databaseConnectionName))
+    {
+      $databaseConnectionName = $this->databaseConnectionName;
+    }
+
+    return new Collection(
+      $this->DB->connection($databaseConnectionName)
+        ->table('ECSL_Registration_Form as rf')
+        ->join('OCMS_Payment as p', 'rf.user_id', '=', 'p.user_id' )
+        ->where('rf.is_gender_visible', '=', 1)
+        ->where('rf.is_general_information_visible', '=', 1)
+        ->where('p.status', '=', 'X')
+        ->whereNotNull('institution')
+        ->groupBy('institution')
+        ->get(
+          array(
+            'institution',
+            $this->DB->raw('COUNT(1) AS value')
+          )
+        )
+    );
+  }
+
+  /**
    * Create a new ...
    *
    * @param array $data

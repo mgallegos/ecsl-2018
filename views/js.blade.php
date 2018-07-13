@@ -978,6 +978,88 @@
 			$('#pon-grid').trigger('reloadGrid');
 		});
 
+		@if(!empty($charts))
+			var chartGenero = AmCharts.makeChart( "chartGenero", {
+				"type": "pie",
+				"theme": "light",
+				"dataProvider": {!! json_encode($genderStats) !!},
+				"valueField": "value",
+				"titleField": "genero",
+				"outlineAlpha": 0.4,
+				"depth3D": 15,
+				"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+				"angle": 30,
+				"export": {
+					"enabled": true
+				}
+			} );
+
+			var chartNacionalidad = AmCharts.makeChart("chartNacionalidad", {
+				"theme": "light",
+				"type": "serial",
+				"startDuration": 2,
+				"dataProvider": {!! json_encode($countriesStats) !!},
+				"valueAxes": [{
+						"position": "left",
+						"title": "Nacionalidades"
+				}],
+				"graphs": [{
+						"balloonText": "[[category]]: <b>[[value]]</b>",
+						// "fillColorsField": "color",
+						"fillAlphas": 1,
+						"lineAlpha": 0.1,
+						"type": "column",
+						"valueField": "value"
+				}],
+				"depth3D": 20,
+				"angle": 30,
+				"chartCursor": {
+						"categoryBalloonEnabled": false,
+						"cursorAlpha": 0,
+						"zoomable": false
+				},
+				"categoryField": "country",
+				"categoryAxis": {
+						"gridPosition": "start",
+						"labelRotation": 90
+				},
+				"export": {
+					"enabled": true
+				 }
+			});
+
+
+			var chartInstitucion = AmCharts.makeChart("chartInstitucion", {
+				"theme": "light",
+				"type": "serial",
+				"startDuration": 2,
+				"dataProvider": {!! json_encode($institutionsStats) !!},
+				"graphs": [{
+						"balloonText": "[[category]]: <b>[[value]]</b>",
+						// "fillColorsField": "color",
+						"fillAlphas": 1,
+						"lineAlpha": 0.1,
+						"type": "column",
+						"valueField": "value"
+				}],
+				"depth3D": 20,
+				"angle": 30,
+				"chartCursor": {
+						"categoryBalloonEnabled": false,
+						"cursorAlpha": 0,
+						"zoomable": false
+				},
+				"categoryField": "institution",
+				"categoryAxis": {
+						"gridPosition": "start",
+						"labelRotation": 90
+				},
+				"export": {
+					"enabled": true
+				 }
+			});
+		@endif
+
 		setTimeout(function ()
 		{
 			// $('#reg-previous-ecsl').tokenfield({beautify:false});
