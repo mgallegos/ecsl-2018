@@ -72,6 +72,17 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::itinerario');
 	});
 
+	Route::get('/cms/estadisticas', function()
+	{
+		$app = $this->app;
+		$OpenCmsManagerService = $app->make('Ecsl2018OpenCmsManagementInterface');
+
+		return View::make('ecsl-2018::estadisticas')
+			->with('charts', true)
+			->with('genderStats', $OpenCmsManagerService->getGenderStats())
+			->with('countriesStats', $OpenCmsManagerService->getCountriesStats())
+			->with('institutionsStats', $OpenCmsManagerService->getInstitutionsStats());
+	});
 
 	Route::get('/cms/agenda/{id}', function($id)
 	{

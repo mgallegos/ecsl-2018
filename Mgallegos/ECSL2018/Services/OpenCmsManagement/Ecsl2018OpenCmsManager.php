@@ -413,6 +413,61 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
   }
 
 	/**
+   * Get gender stats
+   *
+   * @return array
+   *  An array of arrays as follows: array($userId0 => array('country'=>$country,…), $userId1 => array('country'=>$country,…),…)
+   */
+  public function getGenderStats()
+  {
+    $data = array();
+
+    $this->RegistrationForm->genderStats($this->cmsDatabaseConnectionName)->each(function($RegistrationForm) use (&$data)
+    {
+      $data[] = (array)$RegistrationForm;
+    });
+
+    return $data;
+  }
+
+	/**
+   * Get countries stats
+   *
+   * @return array
+   *  An array of arrays as follows: array($userId0 => array('country'=>$country,…), $userId1 => array('country'=>$country,…),…)
+   */
+  public function getCountriesStats()
+  {
+    $data = array();
+
+    $this->RegistrationForm->countriesStats($this->cmsDatabaseConnectionName)->each(function($RegistrationForm) use (&$data)
+    {
+      $data[] = (array)$RegistrationForm;
+    });
+
+    return $data;
+  }
+
+	/**
+   * Get institutions stats
+   *
+   * @return array
+   *  An array of arrays as follows: array($userId0 => array('country'=>$country,…), $userId1 => array('country'=>$country,…),…)
+   */
+  public function getInstitutionsStats()
+  {
+    $data = array();
+
+    $this->RegistrationForm->institutionsStats($this->cmsDatabaseConnectionName)->each(function($RegistrationForm) use (&$data)
+    {
+      $data[] = (array)$RegistrationForm;
+    });
+
+    // var_dump($data);
+    return $data;
+  }
+
+	/**
    * Get user contacts
    *
    * @return array
