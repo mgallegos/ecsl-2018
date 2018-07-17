@@ -41,6 +41,11 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::logistica');
 	});
 
+	Route::get('/cms/inicio-cierre', function()
+	{
+		return View::make('ecsl-2018::inicio-cierre');
+	});
+
 	Route::get('/cms/ejes-tematicos', function()
 	{
 		return View::make('ecsl-2018::ejes-tematicos');

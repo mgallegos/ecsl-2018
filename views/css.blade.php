@@ -83,15 +83,23 @@
     display: none;
   }
 
-  @media (max-width: 576px) {
-    .card-header-logo {
-      height: 192px;
-    }
+  .collage{
+    line-height: 0;
 
-    .footer {
-      line-height: 30px !important;
-    }
+    -webkit-column-count: 4;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    4;
+    -moz-column-gap:      0px;
+    column-count:         4;
+    column-gap:           0px;
   }
+
+  .collage-img{
+    width: 100% !important;
+    height: auto !important;
+  }
+
+
 
   @media (min-width: 576px) and (max-width: 767.98px) {
     .card-header-logo {
@@ -107,6 +115,14 @@
     .footer {
       height: 112px;
     }
+
+    .collage {
+      -moz-column-count:    3;
+      -webkit-column-count: 3;
+      column-count:         3;
+    }
+
+
   }
 
   @media (min-width: 768px) {
@@ -121,6 +137,12 @@
 
     .card-header-logo {
       height: 152px;
+    }
+
+    .collage{
+      -moz-column-count:    3;
+      -webkit-column-count: 3;
+      column-count:         3;
     }
   }
 
@@ -171,6 +193,8 @@
   		float: left;
   		margin-left: 5px;
   	}
+
+
   }
 
   @media (min-width: 992px) {
@@ -241,6 +265,12 @@
     #btn-registration {
       width: 45%;
     }
+
+    .collage{
+      -moz-column-count:    4;
+      -webkit-column-count: 4;
+      column-count:         4;
+    }
   }
 
   @media (min-width: 1200px) {
@@ -252,6 +282,29 @@
     .card-header-logo {
       height: 213px;
     }
+
+    .collage{
+      -moz-column-count:    4;
+      -webkit-column-count: 4;
+      column-count:         4;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .card-header-logo {
+      height: 192px;
+    }
+
+    .footer {
+      line-height: 30px !important;
+    }
+
+    .collage {
+      -moz-column-count:    2;
+      -webkit-column-count: 2;
+      column-count:         2;
+    }
+
   }
 
   .carousel-item {
@@ -297,8 +350,9 @@
     visibility: hidden;
   }
 
-.bg-gray{
-  background-color: #f2f2f2;
-}
+  .bg-gray{
+    background-color: #f2f2f2;
+  }
+
 
 </style>
