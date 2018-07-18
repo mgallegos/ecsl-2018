@@ -11,31 +11,33 @@
           <a id="top-navbar-menu" href="#body" style="display: none;" class="sr-only">Scroll to navbar</a>
         </li>
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarinfo" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Información General
+              </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarinfo">
+            <a class="dropdown-item" href="{{URL::to('cms/logistica')}}"><i class="fa fa-info-circle" aria-hidden="true"></i> Logística</a>
+            <a class="dropdown-item" href="{{URL::to('cms/faq')}}"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Preguntas Frecuentes</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle " href="#" id="navbarEvento" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Evento
               </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarEvento">
             <!-- <a class="dropdown-item" href="{{URL::to('cms/inicio/registro')}}"><i class="fa fa-address-card-o" aria-hidden="true"></i> Registro</a> -->
-            <a class="dropdown-item" href="{{URL::to('cms/logistica')}}"><i class="fa fa-info-circle" aria-hidden="true"></i> Logística</a>
-            <a class="dropdown-item" href="{{URL::to('cms/agenda')}}"><i class="fa fa-calendar-check-o" aria-hidden="true"></i> Agenda</a>
+            <a class="dropdown-item" href="{{URL::to('cms/estadisticas')}}"><i class="fa fa-bar-chart" aria-hidden="true"></i> Estadísticas</a>
             <a class="dropdown-item" href="{{URL::to('cms/ejes-tematicos')}}"><i class="fa fa-list-ul" aria-hidden="true"></i> Ejes Temáticos</a>
             <a class="dropdown-item" href="{{URL::to('cms/becas')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Becas</a>
             <a class="dropdown-item" href="{{URL::to('cms/eventos-anteriores')}}"><i class="fa fa-calendar" aria-hidden="true"></i> Eventos Anteriores</a>
-            <a class="dropdown-item" href="{{URL::to('cms/faq')}}"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Preguntas Frecuentes</a>
-            <a class="dropdown-item fake-link" data-toggle="modal" data-target="#Contact" role="button"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Contacto</a>
             <!-- <a class="dropdown-item" href="{{URL::to('cms/inicio/agenda')}}"><i class="fa fa-calendar" aria-hidden="true"></i>  Agenda</a> -->
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{URL::to('cms/estadisticas')}}">Galeria</a>
+          <a class="nav-link" href="{{URL::to('cms/agenda')}}">Agenda</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{URL::to('cms/estadisticas')}}">Ponencias</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link fake-link" data-toggle="modal" data-target="#Contact" role="button">Contacto</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{URL::to('cms/estadisticas')}}">Estadísticas</a>
-        </li>
-
       </ul>
       <ul class="navbar-nav">
         @if(!AuthManager::isCmsUserGuest('ecsl2018slca'))
