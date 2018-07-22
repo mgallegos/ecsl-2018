@@ -99,6 +99,38 @@
     height: auto !important;
   }
 
+  header.masthead {
+    height: 435px;
+    text-align: center;
+    color: white;
+    background-image: url("https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_OFICIAL.jpg");
+    background-repeat: no-repeat;
+    background-position: top center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  header.masthead .intro-lead-in {
+    font-size: 20px;
+    text-shadow: 3px 3px 2px #696;
+    font-style: italic;
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+
+  header.masthead .intro-heading {
+    font-size: 30px;
+    text-shadow: 3px 3px 2px #696;
+    line-height: 30px;
+    margin-bottom: 15px;
+  }
+
 
 
   @media (min-width: 576px) and (max-width: 767.98px) {
@@ -121,7 +153,20 @@
       -webkit-column-count: 3;
       column-count:         3;
     }
+    header.masthead .intro-lead-in {
+      font-size: 15px;
+      text-shadow: 3px 3px 2px #696;
+      font-style: italic;
+      line-height: 15px;
+      margin-bottom: 10px;
+    }
 
+    header.masthead .intro-heading {
+      font-size: 20px;
+      text-shadow: 3px 3px 2px #696;
+      line-height: 20px;
+      margin-bottom: 15px;
+    }
 
   }
 
@@ -352,6 +397,9 @@
 
   .bg-gray{
     background-color: #f2f2f2;
+  }
+  .shadow{
+    text-shadow: 3px 3px 2px #696;
   }
 
 

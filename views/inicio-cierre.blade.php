@@ -1,34 +1,13 @@
 @extends('ecsl-2018::base')
 
 @section('container')
-<!-- CARRUSEL-->
-<header>
-  <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselIndicators" data-slide-to="1"></li>
-      <!-- <li data-target="#carouselIndicators" data-slide-to="2"></li> -->
-    </ol>
-
-    <div class="carousel-inner" role="listbox">
-      <!-- Slide One-->
-      <div class="carousel-item active" style="background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/carousel2.jpg')"></div>
-
-      <!-- Slide Two-->
-      <div class="carousel-item" style="background-image: url('https://storage.googleapis.com/decimaerp/organizations/15/carousel3.jpg')"></div>
-
-    </div>
 
 
-
-    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+<!-- Header -->
+<header class="masthead">
+  <div class="container ">
+      <div class="intro-heading text-uppercase"><strong>X Encuentro Centroamericano de Software Libre</strong></div>
+      <div class="intro-lead-in font-weight-bold">El X Encuentro Centroamericano de Software Libre (ECSL) fue realizado los dias 12, 13 y 14 de julio del 2018 en la ciudad de San Salvador, El Salvador.</div>
   </div>
 </header>
 
@@ -36,14 +15,34 @@
 <section class="">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
-      <h2 class="text-center text-white"><strong>X Encuentro Centroamericano de Software Libre</strong></h2>
-      <h4 class="text-center text-white font-weight-bold">12, 13 y 14 de julio del 2018</h4>
-      <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
-        usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
-        la región.</p>
-      <!-- <div id="btn-registration" class="text-center" style="margin:0 auto;">
-        <a class="btn btn-lg btn-secondary" href="{{ URL::to('/registro') }}">Registrarse</a>
-      </div> -->
+      <h2 class="display-5 text-center text-white shadow">Resumen del Evento</h2><br>
+      <div class="row">
+        <div class="col-12 col-sm-6 text-center col-md-3">
+          <a href="{{URL::to('cms/logistica')}}" class="text-white">
+                  <i class="fa fa-users main-icons" aria-hidden="true"></i> <h3>Participantes</h3>
+                </a>
+        </div>
+
+
+        <div class="col-12 col-sm-6 text-center col-md-3">
+          <a href="{{URL::to('cms/logistica')}}" class="text-white">
+                <i class="fa fa-picture-o main-icons" aria-hidden="true"></i><h3>Galeria</h3>
+              </a>
+        </div>
+
+
+        <div class="col-12 col-sm-6 text-center col-md-3">
+          <a href="{{URL::to('cms/logistica')}}" class="text-white">
+                <i class="fa fa-video-camera main-icons" aria-hidden="true"></i><h3>Ponencias</h3>
+                </a>
+        </div>
+
+        <div class="col-12 col-sm-6 text-center col-md-3">
+          <a href="{{URL::to('cms/estadisticas')}}" class="text-white">
+              <i class="fa fa-bar-chart main-icons" aria-hidden="true"></i><h3>Estadísticas</h3>
+            </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -130,33 +129,41 @@
 <section class="about-us section-padding">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
-      <h2 class="display-5 text-center text-white">Resumen del Evento</h2><br>
-      <div class="row">
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/logistica')}}" class="text-white">
-                  <i class="fa fa-users main-icons" aria-hidden="true"></i> <h3>Participantes</h3>
-                </a>
-        </div>
-
-
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/logistica')}}" class="text-white">
-                <i class="fa fa-picture-o main-icons" aria-hidden="true"></i><h3>Galeria</h3>
-              </a>
-        </div>
-
-
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/logistica')}}" class="text-white">
-                <i class="fa fa-video-camera main-icons" aria-hidden="true"></i><h3>Ponencias</h3>
-                </a>
-        </div>
-
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/estadisticas')}}" class="text-white">
-              <i class="fa fa-bar-chart main-icons" aria-hidden="true"></i><h3>Estadísticas</h3>
+      <h2 class="text-center display-5 text-white shadow">Galeria del evento</h2><br>
+      <div class="collage">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid collage-img">
             </a>
-        </div>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
+            </a>
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
+            </a>
       </div>
     </div>
   </div>
@@ -164,43 +171,6 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h2 class="text-center display-5">Galeria del evento</h2><br>
-  <div class="collage">
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
-        </a>
-        <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-            <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
-        </a>
-  </div>
-  <hr>
   <!-- Portfolio Section -->
   <h2 class="text-center display-5">Patrocinadores</h2><br>
 
@@ -399,6 +369,7 @@
       </div>
     </div>
 
+  </div>
   </div>
   <!-- /.row -->
 </div>

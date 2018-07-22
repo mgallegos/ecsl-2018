@@ -16,7 +16,7 @@
   </ol>
 
   <div class="collage">
-    @for ($i = 1; $i < 93; $i++)
+    @for ($i = 1; $i < 94; $i++)
       @if ($i < 10)
         <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
             <img src="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00'.$i.'.jpg'}}" class="img-fluid collage-img">
