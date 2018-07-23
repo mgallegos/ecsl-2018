@@ -11,103 +11,75 @@
   </div>
 </header>
 
-<!--Acerca de-->
-<section class="">
+<section id="facts"  class="wow fadeIn">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
-      <h2 class="display-5 text-center text-white shadow">Resumen del Evento</h2><br>
-      <div class="row">
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/logistica')}}" class="text-white">
-                  <i class="fa fa-users main-icons" aria-hidden="true"></i> <h3>Participantes</h3>
-                </a>
+      <header class="">
+        <h2 class="display-5 text-center text-white shadow">Resumen del Evento</h2><br>
+        <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
+          usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
+          la región.</p>
+      </header>
+
+      <div class="row counters">
+
+        <div class="col-lg-3 col-6 text-center">
+          <span data-toggle="counter-up">274</span>
+          <p class="lead text-center text-white">Participantes</p>
         </div>
 
-
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/fotografias')}}" class="text-white">
-                <i class="fa fa-picture-o main-icons" aria-hidden="true"></i><h3>Fotografias</h3>
-              </a>
+        <div class="col-lg-3 col-6 text-center">
+          <span data-toggle="counter-up">50</span>
+          <p class="lead text-center text-white">Ponencias</p>
         </div>
 
-
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/ponencias')}}" class="text-white">
-                <i class="fa fa-video-camera main-icons" aria-hidden="true"></i><h3>Ponencias</h3>
-                </a>
+        <div class="col-lg-3 col-6 text-center">
+          <span data-toggle="counter-up">10</span>
+          <p class="lead text-center text-white">Instituciones</p>
         </div>
 
-        <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/estadisticas')}}" class="text-white">
-              <i class="fa fa-bar-chart main-icons" aria-hidden="true"></i><h3>Estadísticas</h3>
-            </a>
+        <div class="col-lg-3 col-6 text-center">
+          <span data-toggle="counter-up">6</span>
+          <p class="lead text-center text-white">Paises</p>
         </div>
+
       </div>
     </div>
   </div>
-</section>
+</section><!-- #facts -->
 
 <!-- Page Content -->
 <div class="container">
   <h2 class="text-center display-5">Ponencias</h2><br>
   <div class="row">
-    <div class="col-lg-4 mb-4">
-      <div class="card">
-        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
-          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
-        </a> -->
-        <a href="http://ecsl2017.softwarelibre.ca/" target="_blank">
-          <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="card-img-top img-fluid">
-        </a>
-        <div class="card-body">
-          <h5 id="ecsl-2017-card-title" class="card-title text-center">IX ECSL 2017 <br> San José, Costa Rica</h5>
-          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <a href="http://ecsl2017.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
-          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
-        </div>
-      </div>
-    </div>
+    @for($i = 1; $i <= 3; $i++)
+    <!--Ponencia 1-->
     <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card">
+      <div class="card text-center">
+        <div class="card-header font-weight-bold">
+          Taller "Desarrollo de videojuegos para la web"
+        </div>
+
         <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="card-img-top img-fluid">
         </a>
+
         <div class="card-body">
-          <h5 class="card-title text-center">VIII ECSL 2016 <br> Managua, Nicaragua</h5>
-          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <a href="http://encuentro.softwarelibre.ca/2016/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
-          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card">
-        <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
-          <img src="http://i3.ytimg.com/vi/gY9b9RMMqCU/mqdefault.jpg" class="card-img-top img-fluid">
-        </a> -->
-        <a href="http://ecsl2015.softwarelibre.ca/" target="_blank">
-          <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="card-img-top img-fluid">
-        </a>
-        <div class="card-body">
-          <h5 class="card-title text-center">VII ECSL 2015 <br> San Pedro Sula, Honduras</h5>
-          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-          <a href="http://ecsl2015.softwarelibre.ca/" target="_blank" class="btn btn-secondary">Ver sitio web</a>
-          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a> -->
-        </div>
-      </div>
-    </div>
-    <!-- <div class="col-lg-4 mb-4">
-      <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
-        <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+
+              <!-- <img class="btn rounded-circle" src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80"> -->
+
+
+              <h5 class="card-title">Alvaro García</h5>
+              <!-- <small><<a class="card-subtitle" href="mailto:alvarogarcia1010@gmail.com">alvarogarcia1010@gmail.com</a>></small> -->
+              <h6 class="card-subtitle mb-2 text-muted">DecimaERP / El Salvador</h6>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
+          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
+          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary">Más información</a>
         </div>
       </div>
-    </div> -->
-
+    </div>
+    @endfor
   </div>
 
   <!-- /.row -->
@@ -131,19 +103,13 @@
     <div class="container">
       <h2 class="text-center display-5 text-white shadow">Galeria del evento</h2><br>
       <div class="collage">
-        @php ($galeria = array(33,36,1,13,57,44,18,43,24,28,29,45,30,70,82))
+        @php ($galeria = array(33,36,1,44,18,43,24,28,29,45,30,70,57,82,13))
         @foreach ($galeria as $i)
           @if ($i < 10)
             <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
                 <img src="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00'.$i.'.jpg'}}" class="img-fluid collage-img">
             </a>
-          @elseif($i == 13)
-            <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}} " class="img-fluid collage-img">
-            </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/ECSL_OFICIAL_2018.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/ECSL_OFICIAL_2018.jpg" class="img-fluid collage-img">
-            </a>
+
           @else
             <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
                 <img src="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}} " class="img-fluid collage-img">
@@ -158,6 +124,13 @@
 <!-- Page Content -->
 <div class="container">
   <!-- Portfolio Section -->
+
+  <h2 class="text-center display-5">Participantes</h2><br>
+
+  @for ($i=1; $i < 50; $i++)
+  <img class="rounded-circle " src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80">
+  @endfor
+  <hr>
   <h2 class="text-center display-5">Patrocinadores</h2><br>
 
   <div class="row">

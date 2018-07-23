@@ -23,6 +23,8 @@
 		var leavingTransportationRequest = {};
 	@endif
 
+	@yield('global-js')
+
 	var dashPreviousEcsl = [
 		{'label':'Nicaragua 2009', 'value':'ECSL2009'},
 		{'label':'Costa Rica 2010', 'value':'ECSL2010'},
@@ -246,6 +248,8 @@
 		});
 
 		@endif
+
+		@yield('page-js')
 
 		$('#blog-post-modal').on('hidden.bs.modal', function (e) {
 	  	History.pushState({load:false}, null, tempUrl);
@@ -1059,6 +1063,7 @@
 				 }
 			});
 		@endif
+
 
 		setTimeout(function ()
 		{
