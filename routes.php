@@ -82,6 +82,11 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::fotografias');
 	});
 
+	Route::get('/cms/ponencias', function()
+	{
+		return View::make('ecsl-2018::ponencias');
+	});
+
 	Route::get('/cms/estadisticas', function()
 	{
 		$app = $this->app;

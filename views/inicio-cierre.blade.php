@@ -25,14 +25,14 @@
 
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/logistica')}}" class="text-white">
-                <i class="fa fa-picture-o main-icons" aria-hidden="true"></i><h3>Galeria</h3>
+          <a href="{{URL::to('cms/fotografias')}}" class="text-white">
+                <i class="fa fa-picture-o main-icons" aria-hidden="true"></i><h3>Fotografias</h3>
               </a>
         </div>
 
 
         <div class="col-12 col-sm-6 text-center col-md-3">
-          <a href="{{URL::to('cms/logistica')}}" class="text-white">
+          <a href="{{URL::to('cms/ponencias')}}" class="text-white">
                 <i class="fa fa-video-camera main-icons" aria-hidden="true"></i><h3>Ponencias</h3>
                 </a>
         </div>
@@ -131,39 +131,25 @@
     <div class="container">
       <h2 class="text-center display-5 text-white shadow">Galeria del evento</h2><br>
       <div class="collage">
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid collage-img">
+        @php ($galeria = array(33,36,1,13,57,44,18,43,24,28,29,45,30,70,82))
+        @foreach ($galeria as $i)
+          @if ($i < 10)
+            <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00'.$i.'.jpg'}}" class="img-fluid collage-img">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
+          @elseif($i == 13)
+            <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}} " class="img-fluid collage-img">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
+            <a href="https://storage.googleapis.com/decimaerp/organizations/15/ECSL_OFICIAL_2018.jpg" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="https://storage.googleapis.com/decimaerp/organizations/15/ECSL_OFICIAL_2018.jpg" class="img-fluid collage-img">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
+          @else
+            <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
+                <img src="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0'.$i.'.jpg'}} " class="img-fluid collage-img">
             </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/comedor.jpg" class="img-fluid collage-img">
-            </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
-            </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
-            </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
-            </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/habitaciones2.jpg" class="img-fluid collage-img">
-            </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/honduras_thumbnail.jpg" class="img-fluid collage-img">
-            </a>
-            <a href="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" data-toggle="lightbox" data-gallery="gallery-one">
-                <img src="https://storage.googleapis.com/decimaerp/organizations/15/costarica_thumbnail.jpg" class="img-fluid collage-img">
-            </a>
+          @endif
+        @endforeach
       </div>
     </div>
   </div>

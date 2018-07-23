@@ -30,7 +30,7 @@
           <a class="nav-link" href="{{URL::to('cms/fotografias')}}">Fotografias</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{URL::to('cms/estadisticas')}}">Ponencias</a>
+          <a class="nav-link" href="{{URL::to('cms/ponencias')}}">Ponencias</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{URL::to('cms/estadisticas')}}">Estadísticas</a>
