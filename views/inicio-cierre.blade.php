@@ -1,5 +1,30 @@
 @extends('ecsl-2018::base')
 
+@section ('counter-js')
+$('.counter').each(function() {
+  var $this = $(this),
+      countTo = $this.attr('data-count');
+
+  $({ countNum: $this.text()}).animate({
+    countNum: countTo
+  },
+
+  {
+
+    duration: 8000,
+    easing:'linear',
+    step: function() {
+      $this.text(Math.floor(this.countNum));
+    },
+    complete: function() {
+      $this.text(this.countNum);
+
+    }
+
+  });
+});
+@stop
+
 @section('container')
 
 
@@ -22,27 +47,25 @@
       </header>
 
       <div class="row counters">
-
         <div class="col-lg-3 col-6 text-center">
-          <span data-toggle="counter-up">274</span>
-          <p class="lead text-center text-white">Participantes</p>
+          <span class="counter text-success" data-count="150">0</span>
+          <p class="lead text-center text-white shadow">Participantes</p>
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span data-toggle="counter-up">50</span>
-          <p class="lead text-center text-white">Ponencias</p>
+          <span class="counter text-success" data-count="50">0</span>
+          <p class="lead text-center text-white shadow">Ponencias</p>
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span data-toggle="counter-up">10</span>
-          <p class="lead text-center text-white">Instituciones</p>
+          <span class="counter text-success" data-count="12">0</span>
+          <p class="lead text-center text-white shadow">Instituciones</p>
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span data-toggle="counter-up">6</span>
-          <p class="lead text-center text-white">Paises</p>
+          <span class="counter text-success" data-count="6">0</span>
+          <p class="lead text-center text-white shadow">Paises</p>
         </div>
-
       </div>
     </div>
   </div>
@@ -74,8 +97,8 @@
               <h6 class="card-subtitle mb-2 text-muted">DecimaERP / El Salvador</h6>
         </div>
         <div class="card-footer">
-          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary" data-toggle="lightbox">Ver video</a>
-          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-secondary">Más información</a>
+          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-success" data-toggle="lightbox">Ver video</a>
+          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-success">Más información</a>
         </div>
       </div>
     </div>
@@ -85,11 +108,12 @@
   <!-- /.row -->
   <div class="row mb-4">
     <div class="col-md-8">
-      <p class="text-center">El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
-</p>
+      <p class="text-center">
+        El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
+      </p>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-lg btn-secondary btn-block disabled" href="{{URL::to('cms/eventos-anteriores')}}">Ir a ECSL-Guatemala-2019</a>
+      <a class="btn btn-lg btn-success btn-block" href="{{URL::to('cms/ponencias')}}">Ver todas las ponencias</a>
     </div>
   </div>
 
@@ -97,13 +121,13 @@
 </div>
 <!-- /.container -->
 
-<!--Resumen del evento-->
+<!--Fotografias-->
 <section class="about-us section-padding">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
-      <h2 class="text-center display-5 text-white shadow">Galeria del evento</h2><br>
+      <h2 class="text-center display-5 text-white shadow">Fotografías</h2><br>
       <div class="collage">
-        @php ($galeria = array(33,36,1,44,18,43,24,28,29,45,30,70,57,82,13))
+        @php ($galeria = array(33,70,44,1,18,24,29,45,36,57,82))
         @foreach ($galeria as $i)
           @if ($i < 10)
             <a href="{{'https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00'.$i.'.jpg'}}" data-toggle="lightbox" data-gallery="gallery-one">
@@ -117,20 +141,56 @@
           @endif
         @endforeach
       </div>
+      <br><br>
+      <!-- /.row -->
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <p class="text-center text-white">
+            El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-lg btn-success btn-block " href="{{URL::to('cms/fotografias')}}">Ver todas las fotografías</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Page Content -->
-<div class="container">
-  <!-- Portfolio Section -->
-
+<!-- Participantes -->
+<div class="container-fluid">
   <h2 class="text-center display-5">Participantes</h2><br>
 
-  @for ($i=1; $i < 50; $i++)
-  <img class="rounded-circle " src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80">
+  @for ($i=1; $i < 150; $i++)
+  <img class="rounded-circle" style="height: 40px;" src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80">
   @endfor
-  <hr>
+  <br><br>
+</div>
+
+<!--Estadisticas-->
+<section class="about-us section-padding">
+  <div class="jumbotron jumbotron-fluid bg-dark">
+    <div class="container">
+      <h2 class="text-center display-5 text-white shadow">Estadísticas</h2><br>
+
+      <!-- /.row -->
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <p class="text-center text-white">
+            El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
+          </p>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-lg btn-success btn-block " href="{{URL::to('cms/estadisticas')}}">Ver estadísticas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Patrocinadores -->
+<div class="container">
+
   <h2 class="text-center display-5">Patrocinadores</h2><br>
 
   <div class="row">
@@ -327,11 +387,7 @@
         </div>
       </div>
     </div>
-
   </div>
-  </div>
-  <!-- /.row -->
 </div>
-<!-- /.container -->
 @parent
 @stop

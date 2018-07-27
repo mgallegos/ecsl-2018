@@ -3,14 +3,10 @@
 @section('global-js')
   var iterator = 1
   var imagesToShow = 20
-  var maxTop = 93
+  var maxTop = 110
 @stop
 
 @section('page-js')
-
-  var iterator = 1
-  var imagesToShow = 20
-  var maxTop = 93
 
   if (iterator == 1) {
     renderImages(imagesToShow, 1)
@@ -35,6 +31,8 @@
     for (var i = initialValue; i <= top && i <= maxTop; i++) {
       if (i < 10) {
         $(".collage").append("<a href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' data-toggle='lightbox' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' class='img-fluid collage-img'></a>")
+      }else if (i > 99) {
+        $(".collage").append("<a href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' data-toggle='lightbox' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_" + i + ".jpg' class='img-fluid collage-img'></a>")
       }else {
         $(".collage").append("<a href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' data-toggle='lightbox' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' class='img-fluid collage-img'></a>")
       }
@@ -48,7 +46,7 @@
 <div class="container">
 
   <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">Galeria de fotos</h1>
+  <h1 class="mt-4 mb-3">Fotografías</h1>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">

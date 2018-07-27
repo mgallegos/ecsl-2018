@@ -133,20 +133,13 @@
 
 
   #facts .counters span {
-    font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    font-size: 48px;
+    font-size: 55px;
     display: block;
-    color: #18d26e;
+
   }
 
-  #facts .counters p {
-    padding: 0;
-    margin: 0 0 20px 0;
-    font-family: "Montserrat", sans-serif;
-    font-size: 14px;
-    color: #111;
-  }
+
 
   @media (min-width: 576px) and (max-width: 767.98px) {
     .card-header-logo {

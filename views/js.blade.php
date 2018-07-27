@@ -250,6 +250,7 @@
 		@endif
 
 		@yield('page-js')
+		@yield('counter-js')
 
 		$('#blog-post-modal').on('hidden.bs.modal', function (e) {
 	  	History.pushState({load:false}, null, tempUrl);
