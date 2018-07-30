@@ -517,7 +517,7 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
         'email' => $Participant->email,
         'country' => $Participant->country,
         'institution' => $Participant->institution,
-        'gravatar_url' => $this->Gravatar->buildGravatarURL($Participant->email, 25)
+        'gravatar_url' => $this->Gravatar->buildGravatarURL($Participant->email, 40)
       ));
     });
 
