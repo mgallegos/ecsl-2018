@@ -43,7 +43,11 @@ $ecslsv =  function ()
 
 	Route::get('/cms/inicio-cierre', function()
 	{
-		return View::make('ecsl-2018::inicio-cierre');
+		$app = $this->app;
+		$OpenCmsManagerService = $app->make('Ecsl2018OpenCmsManagementInterface');
+
+		return View::make('ecsl-2018::inicio-cierre')
+			->with('participants', $OpenCmsManagerService->getParticipantsInformation());
 	});
 
 	Route::get('/cms/ejes-tematicos', function()

@@ -37,7 +37,7 @@ $(window).bind('scroll', function() {
 
 
 <!-- Header -->
-<header class="masthead portada">
+<header class="masthead">
   <div class="container ">
       <div class="intro-heading text-uppercase"><strong>X Encuentro Centroamericano de Software Libre</strong></div>
       <div class="intro-lead-in font-weight-bold">El X Encuentro Centroamericano de Software Libre (ECSL) se realizó los días 12, 13 y 14 de julio del 2018 en la ciudad de San Salvador, El Salvador.</div>
@@ -167,31 +167,43 @@ $(window).bind('scroll', function() {
 
 <!-- Participantes -->
 <div class="container">
-  <h2 class="text-center display-5">Participantes</h2><br>
-
-  @for ($i=1; $i < 150; $i++)
-  <img class="rounded-circle" style="height: 40px;" src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80">
-  @endfor
+  <h2 class="text-center display-5 ">Estadísticas</h2><br>
+  <div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+      <a href="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaGenero.jpg" data-toggle="lightbox" data-gallery="estadistica">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaGenero.jpg" class="img-fluid">
+      </a>
+    </div>
+    <div class="col-md-6">
+      <a href="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaInsitucion1.png" data-toggle="lightbox" data-gallery="estadistica">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaInsitucion1.png" class="img-fluid">
+      </a>
+    </div>
+  </div>
   <br><br>
+  <!-- /.row -->
+  <div class="row mb-4">
+    <div class="col-md-8">
+      <p class="text-center">
+        El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
+      </p>
+    </div>
+    <div class="col-md-4">
+      <a class="btn btn-lg btn-success btn-block " href="{{URL::to('cms/estadisticas')}}">Ver estadísticas</a>
+    </div>
+  </div>
 </div>
+
 
 <!--Estadisticas-->
 <section class="about-us section-padding">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
-      <h2 class="text-center display-5 text-white shadow">Estadísticas</h2><br>
-
-      <!-- /.row -->
-      <div class="row mb-4">
-        <div class="col-md-8">
-          <p class="text-center text-white">
-            El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
-          </p>
-        </div>
-        <div class="col-md-4">
-          <a class="btn btn-lg btn-success btn-block " href="{{URL::to('cms/estadisticas')}}">Ver estadísticas</a>
-        </div>
-      </div>
+      <h2 class="text-center display-5 text-white shadow">Participantes</h2><br>
+        @foreach ($participants as $index => $participant)
+          <img class="rounded-circle" src="{{ $participant['gravatar_url'] }}">
+        @endforeach
+      <br><br>
     </div>
   </div>
 </section>

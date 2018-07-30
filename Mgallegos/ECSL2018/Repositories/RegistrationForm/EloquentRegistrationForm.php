@@ -158,7 +158,7 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
    *
    * @return Illuminate\Database\Eloquent\Collection
    */
-  public function contactsByOrganizationId($userId, $eventId, $organizationId, $databaseConnectionName = null)
+  public function participantsByOrganizationId($organizationId, $databaseConnectionName = null)
   {
     if(empty($databaseConnectionName))
     {
@@ -167,13 +167,10 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
 
     return new Collection(
       $this->DB->connection($databaseConnectionName)
-        ->table('OCMS_User_Contact as uc')
-        ->join('OCMS_User as u', 'uc.user_contact_id', '=', 'u.id' )
-        ->join('ECSL_Registration_Form as rf', 'uc.user_contact_id', '=', 'rf.user_id')
-        ->where('uc.user_id', '=', $userId)
-        ->where('uc.event_id', '=', $eventId)
-        ->where('uc.organization_id', '=', $organizationId)
-        ->distinct()
+        ->table('OCMS_User as u')
+        ->join('ECSL_Registration_Form as rf', 'u.id', '=', 'rf.user_id')
+        ->where('u.organization_id', '=', $organizationId)
+        ->where('u.is_photo_visible', '=', 1)
         ->get(
           array(
             'u.id',

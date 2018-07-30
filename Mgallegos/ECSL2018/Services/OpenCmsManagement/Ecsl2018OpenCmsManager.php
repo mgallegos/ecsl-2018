@@ -498,6 +498,38 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     return $contacts;
   }
 
+  /**
+   * Get participant contacts
+   *
+   * @return array
+   *  An array of arrays as follows: array( array('label'=>$name0, 'value'=>$id0), array('label'=>$name1, 'value'=>$id1),…)
+   */
+  public function getParticipantsInformation($returnJson = true)
+  {
+		$participants = array();
+
+    $this->RegistrationForm->participantsByOrganizationId($this->organizationId, $this->cmsDatabaseConnectionName)->each(function($Participant) use (&$participants)
+    {
+      array_push($participants, array(
+        'id' => $Participant->id,
+        'firstname' => $Participant->firstname,
+        'lastname' => $Participant->lastname,
+        'email' => $Participant->email,
+        'country' => $Participant->country,
+        'institution' => $Participant->institution,
+        'gravatar_url' => $this->Gravatar->buildGravatarURL($Participant->email, 25)
+      ));
+    });
+
+    if($returnJson)
+    {
+      return json_encode($participants);
+    }
+
+    return $participants;
+  }
+
+
 	/**
 	 * Create a new CMS User.
 	 *
