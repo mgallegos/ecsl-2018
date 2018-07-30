@@ -201,7 +201,7 @@ $(window).bind('scroll', function() {
     <div class="container">
       <h2 class="text-center display-5 text-white shadow">Participantes</h2><br>
         @foreach ($participants as $index => $participant)
-          <img class="rounded-circle" src="{{ $participant['gravatar_url'] }}">
+          <img class="rounded-circle" src="{{ $participant['gravatar_url'] }}" style="margin-top: 10px;">
         @endforeach
       <br><br>
     </div>
