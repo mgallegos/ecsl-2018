@@ -152,6 +152,42 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
   }
 
   /**
+   * Retrieve contact information by organization
+   *
+   * @param  int $id Organization id
+   *
+   * @return Illuminate\Database\Eloquent\Collection
+   */
+  public function contactsByOrganizationId($userId, $eventId, $organizationId, $databaseConnectionName = null)
+  {
+    if(empty($databaseConnectionName))
+    {
+      $databaseConnectionName = $this->databaseConnectionName;
+    }
+
+    return new Collection(
+      $this->DB->connection($databaseConnectionName)
+        ->table('OCMS_User_Contact as uc')
+        ->join('OCMS_User as u', 'uc.user_contact_id', '=', 'u.id' )
+        ->join('ECSL_Registration_Form as rf', 'uc.user_contact_id', '=', 'rf.user_id')
+        ->where('uc.user_id', '=', $userId)
+        ->where('uc.event_id', '=', $eventId)
+        ->where('uc.organization_id', '=', $organizationId)
+        ->distinct()
+        ->get(
+          array(
+            'u.id',
+            'u.firstname',
+            'u.lastname',
+            'u.email',
+            'rf.country',
+            'rf.institution'
+          )
+        )
+    );
+  }
+
+  /**
    * Retrieve gender stats
    *
    * @param  int $id Organization id

@@ -1,37 +1,35 @@
 @extends('ecsl-2018::base')
-
+@section ('global-js')
+  var prev_id;
+@stop
 @section ('counter-js')
-$(window).scroll(function(event) {
-  console.log($(window).scrollTop() >= 450);
-  console.log($("#facts").is(":visible"));
 
-  if ($(window).scrollTop() >= 450) {
-    $('.counter').each(function() {
-      var $this = $(this),
-          countTo = $this.attr('data-count');
+$(window).bind('scroll', function() {
+    if ( Math.abs($('#facts').offset().top) + $('#facts').height() + $('#facts').offset().top >= $('#facts').outerHeight() ) {
+      $('.counter').each(function() {
+        var $this = $(this),
+            countTo = $this.attr('data-count');
 
-      $({ countNum: $this.text()}).animate({
-        countNum: countTo
-      },
-
-      {
-
-        duration: 8000,
-        easing:'linear',
-        step: function() {
-          $this.text(Math.floor(this.countNum));
+        $({ countNum: $this.text()}).animate({
+          countNum: countTo
         },
-        complete: function() {
-          $this.text(this.countNum);
 
-        }
+        {
 
+          duration: 7000,
+          easing:'linear',
+          step: function() {
+            $this.text(Math.floor(this.countNum));
+          },
+          complete: function() {
+            $this.text(this.countNum);
+
+          }
+
+        });
       });
-    });
-  }
+    }
 });
-
-
 
 @stop
 
@@ -39,7 +37,7 @@ $(window).scroll(function(event) {
 
 
 <!-- Header -->
-<header class="masthead">
+<header class="masthead portada">
   <div class="container ">
       <div class="intro-heading text-uppercase"><strong>X Encuentro Centroamericano de Software Libre</strong></div>
       <div class="intro-lead-in font-weight-bold">El X Encuentro Centroamericano de Software Libre (ECSL) se realizó los días 12, 13 y 14 de julio del 2018 en la ciudad de San Salvador, El Salvador.</div>
@@ -50,7 +48,7 @@ $(window).scroll(function(event) {
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
       <header class="">
-        <h2 class="display-5 text-center text-white shadow">Resumen del Evento</h2><br>
+        <!-- <h2 class="display-5 text-center text-white shadow">Resumen del Evento</h2><br> -->
         <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
           usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
           la región.</p>
@@ -63,7 +61,7 @@ $(window).scroll(function(event) {
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span class="counter text-success" data-count="50">0</span>
+          <span class="counter text-success" data-count="56">0</span>
           <p class="lead text-center text-white shadow">Ponencias</p>
         </div>
 
@@ -168,7 +166,7 @@ $(window).scroll(function(event) {
 </section>
 
 <!-- Participantes -->
-<div class="container-fluid">
+<div class="container">
   <h2 class="text-center display-5">Participantes</h2><br>
 
   @for ($i=1; $i < 150; $i++)
