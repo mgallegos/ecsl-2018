@@ -8,7 +8,6 @@
 	@include('layouts.header-javascript-cdn-b4-latest')
 	@include('ecsl-2018::css')
 	@include('ecsl-2018::js')
-	<script src="www.amcharts.com/lib/3/amcharts.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 	<script src="https://www.amcharts.com/lib/3/serial.js"></script>

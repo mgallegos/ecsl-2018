@@ -28,6 +28,11 @@ class CreateEcslTablePartOne extends Migration
         $table->string('institution', 100)->nullable();
         $table->text('health_condition')->nullable();
         $table->text('specific_needs')->nullable();
+        $table->boolean('is_vegetarian')->default(false);
+        $table->boolean('is_gender_visible')->default(false);
+        $table->boolean('is_general_information_visible')->default(false);
+        $table->boolean('is_photo_visible')->default(false);
+
         $table->boolean('participated_in_ecsl2009')->default(false);
         $table->boolean('participated_in_ecsl2010')->default(false);
         $table->boolean('participated_in_ecsl2011')->default(false);
@@ -52,12 +57,8 @@ class CreateEcslTablePartOne extends Migration
         $table->boolean('is_gentoo_linux_user')->default(false);
         $table->boolean('is_antergos_linux_user')->default(false);
         $table->string('custom_distribution', 60)->nullable();
-        $table->boolean('is_vegetarian')->default(false);
         $table->boolean('is_interested_in_competition')->default(false);
         $table->boolean('is_interested_in_social_day')->default(false);
-        $table->boolean('is_gender_visible')->default(false);
-        $table->boolean('is_general_information_visible')->default(false);
-        $table->boolean('is_photo_visible')->default(false);
 
         //foreign Keys
         $table->unsignedInteger('user_id')->index();
