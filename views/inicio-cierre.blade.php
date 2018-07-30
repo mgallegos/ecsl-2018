@@ -1,28 +1,38 @@
 @extends('ecsl-2018::base')
 
 @section ('counter-js')
-$('.counter').each(function() {
-  var $this = $(this),
-      countTo = $this.attr('data-count');
+$(window).scroll(function(event) {
+  console.log($(window).scrollTop() >= 450);
+  console.log($("#facts").is(":visible"));
 
-  $({ countNum: $this.text()}).animate({
-    countNum: countTo
-  },
+  if ($(window).scrollTop() >= 450) {
+    $('.counter').each(function() {
+      var $this = $(this),
+          countTo = $this.attr('data-count');
 
-  {
+      $({ countNum: $this.text()}).animate({
+        countNum: countTo
+      },
 
-    duration: 8000,
-    easing:'linear',
-    step: function() {
-      $this.text(Math.floor(this.countNum));
-    },
-    complete: function() {
-      $this.text(this.countNum);
+      {
 
-    }
+        duration: 8000,
+        easing:'linear',
+        step: function() {
+          $this.text(Math.floor(this.countNum));
+        },
+        complete: function() {
+          $this.text(this.countNum);
 
-  });
+        }
+
+      });
+    });
+  }
 });
+
+
+
 @stop
 
 @section('container')
@@ -32,7 +42,7 @@ $('.counter').each(function() {
 <header class="masthead">
   <div class="container ">
       <div class="intro-heading text-uppercase"><strong>X Encuentro Centroamericano de Software Libre</strong></div>
-      <div class="intro-lead-in font-weight-bold">El X Encuentro Centroamericano de Software Libre (ECSL) fue realizado los dias 12, 13 y 14 de julio del 2018 en la ciudad de San Salvador, El Salvador.</div>
+      <div class="intro-lead-in font-weight-bold">El X Encuentro Centroamericano de Software Libre (ECSL) se realizó los días 12, 13 y 14 de julio del 2018 en la ciudad de San Salvador, El Salvador.</div>
   </div>
 </header>
 
@@ -48,7 +58,7 @@ $('.counter').each(function() {
 
       <div class="row counters">
         <div class="col-lg-3 col-6 text-center">
-          <span class="counter text-success" data-count="150">0</span>
+          <span class="counter text-success" data-count="130">0</span>
           <p class="lead text-center text-white shadow">Participantes</p>
         </div>
 
@@ -58,12 +68,12 @@ $('.counter').each(function() {
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span class="counter text-success" data-count="12">0</span>
+          <span class="counter text-success" data-count="39">0</span>
           <p class="lead text-center text-white shadow">Instituciones</p>
         </div>
 
         <div class="col-lg-3 col-6 text-center">
-          <span class="counter text-success" data-count="6">0</span>
+          <span class="counter text-success" data-count="7">0</span>
           <p class="lead text-center text-white shadow">Paises</p>
         </div>
       </div>
