@@ -170,7 +170,7 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
         ->table('OCMS_User as u')
         ->join('ECSL_Registration_Form as rf', 'u.id', '=', 'rf.user_id')
         ->where('u.organization_id', '=', $organizationId)
-        ->where('u.is_photo_visible', '=', 1)
+        ->where('rf.is_photo_visible', '=', 1)
         ->get(
           array(
             'u.id',
