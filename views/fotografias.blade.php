@@ -13,7 +13,6 @@
   }
 
   $(window).scroll(function(event) {
-    debugger
     var flag = document.documentElement.scrollHeight - document.documentElement.scrollTop === document.documentElement.clientHeight
     var top = iterator * imagesToShow
     console.log(flag)
@@ -27,18 +26,31 @@
     }
   })
 
+  function showLightbox(a) {
+    //event.preventDefault();
+    $(a).ekkoLightbox();
+    return false;
+  }
+
   function renderImages (top, initialValue) {
     for (var i = initialValue; i <= top && i <= maxTop; i++) {
       if (i < 10) {
-        $(".collage").append("<a href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' data-toggle='lightbox' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' class='img-fluid collage-img'></a>")
+        $(".collage").append("<a id ='ecsl-photo-" + i + "' href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg'  data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' class='img-fluid collage-img'></a>")
       }else if (i > 99) {
-        $(".collage").append("<a href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' data-toggle='lightbox' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_" + i + ".jpg' class='img-fluid collage-img'></a>")
+        $(".collage").append("<a id ='ecsl-photo-" + i + "' href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg'  data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_" + i + ".jpg' class='img-fluid collage-img'></a>")
       }else {
-        $(".collage").append("<a href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' data-toggle='lightbox' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' class='img-fluid collage-img'></a>")
+        $(".collage").append("<a id ='ecsl-photo-" + i + "' href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' class='img-fluid collage-img'></a>")
       }
+
+      $('#ecsl-photo-' + i).click(function()
+  		{
+  			event.preventDefault();
+   			$(this).ekkoLightbox();
+  		});
 
     }
   }
+
 @stop
 
 @section('container')
