@@ -16,7 +16,7 @@ $(window).bind('scroll', function() {
 
         {
 
-          duration: 7000,
+          duration: 1000,
           easing:'linear',
           step: function() {
             $this.text(Math.floor(this.countNum));
@@ -200,9 +200,9 @@ $(window).bind('scroll', function() {
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
       <h2 class="text-center display-5 text-white shadow">Participantes</h2><br>
-      @foreach ($participants as $index => $participant)
-        <img class="rounded-circle" data-toggle="tooltip" data-placement="top"  data-html="true" title="<p class='font-weight-normal mb-0' style='font-size:10px;'>{{ $participant['firstname'] . ' ' . $participant['lastname'] }}<br>$usersData[$participant['id']]['country'] }}</p>" src="{{ $participant['gravatar_url'] }}" style="margin-top: 10px;">
-      @endforeach
+        @foreach ($participants as $index => $participant)
+          <img class="rounded-circle" data-toggle="tooltip" data-placement="top"  data-html="true" title="<p class='font-weight-normal mb-0' style='font-size:10px;'>{{ $participant['firstname'] . ' ' . $participant['lastname'] }}<br>{{$usersData[$participant['id']]['country'] }}</p>" src="{{ $participant['gravatar_url'] }}" style="margin-top: 10px;">
+        @endforeach
       <br><br>
     </div>
   </div>

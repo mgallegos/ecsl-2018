@@ -22,7 +22,7 @@
       var top = iterator * imagesToShow
       var initialValue = Math.abs(imagesToShow - top) + 1
 
-      if (!(initialValue + 21 > maxTop)) {
+      if (!(initialValue > maxTop)) {
         renderImages (top, initialValue);
 
         $('#app-loader').removeClass('hidden-xs-up');
@@ -50,7 +50,7 @@
       if (i < 10) {
         $(".collage").append("<a id ='ecsl-photo-" + i + "' href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg'  data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg' class='img-fluid collage-img'></a>")
       }else if (i > 99) {
-        $(".collage").append("<a id ='ecsl-photo-" + i + "' href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_00" + i + ".jpg'  data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_" + i + ".jpg' class='img-fluid collage-img'></a>")
+        $(".collage").append("<a id ='ecsl-photo-" + i + "' href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_" + i + ".jpg'  data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_" + i + ".jpg' class='img-fluid collage-img'></a>")
       }else {
         $(".collage").append("<a id ='ecsl-photo-" + i + "' href='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' data-gallery='gallery-one'><img src='https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_0" + i + ".jpg' class='img-fluid collage-img'></a>")
       }
