@@ -6,16 +6,18 @@
 	<meta charset="utf-8">
 	@include('layouts.header-css-cdn-b4-latest')
 	@include('layouts.header-javascript-cdn-b4-latest')
-	@include('ecsl-2018::css')
-	@include('ecsl-2018::js')
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<link  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet"></link>
 	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 	<script src="https://www.amcharts.com/lib/3/serial.js"></script>
 	<script src="https://www.amcharts.com/lib/3/pie.js"></script>
 	<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
 	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+	@include('ecsl-2018::css')
+	@include('ecsl-2018::js')
 
 	<script>
 	  window.dataLayer = window.dataLayer || [];

@@ -1,4 +1,6 @@
 <script>
+
+
 	@if(isset($cmsLoggedUser))
 		var loggedUser = {!! json_encode($cmsLoggedUser) !!};
 	@else
@@ -208,6 +210,18 @@
 
 	$(document).ready(function()
 	{
+
+		var wow = new WOW(
+		{
+		boxClass:     'wow',      // default
+		animateClass: 'animated', // default
+		offset:       10,          // default
+		mobile:       true,       // default
+		live:         true        // default
+		});
+
+		wow.init();
+
 		$('#ob-fa-form, #login-form, #pass-form, #reg-form, #pay-form, #pon-form, #trans-from-form, #trans-to-form').jqMgVal('addFormFieldsValidations');
 
 		$(window).bind('resize', function()

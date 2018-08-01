@@ -169,8 +169,10 @@ class EloquentRegistrationForm implements RegistrationFormInterface {
       $this->DB->connection($databaseConnectionName)
         ->table('OCMS_User as u')
         ->join('ECSL_Registration_Form as rf', 'u.id', '=', 'rf.user_id')
+        ->join('OCMS_Payment as p', 'rf.user_id', '=', 'p.user_id' )
         ->where('u.organization_id', '=', $organizationId)
         ->where('rf.is_photo_visible', '=', 1)
+        ->where('p.status', '=', 'X')
         ->get(
           array(
             'u.id',

@@ -37,40 +37,40 @@ $(window).bind('scroll', function() {
 
 
 <!-- Header -->
-<header class="masthead">
+<header class="masthead wow animated fadeInUp">
   <div class="container ">
       <div class="intro-heading text-uppercase"><strong>X Encuentro Centroamericano de Software Libre</strong></div>
       <div class="intro-lead-in font-weight-bold">El X Encuentro Centroamericano de Software Libre (ECSL) se realizó los días 12, 13 y 14 de julio del 2018 en la ciudad de San Salvador, El Salvador.</div>
   </div>
 </header>
 
-<section id="facts"  class="wow fadeIn">
+<section id="facts"  class="">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
       <header class="">
         <!-- <h2 class="display-5 text-center text-white shadow">Resumen del Evento</h2><br> -->
-        <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
+        <p class="lead text-center text-white wow animated fadeInUp">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
           usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
           la región.</p>
       </header>
 
       <div class="row counters">
-        <div class="col-lg-3 col-6 text-center">
+        <div class="col-lg-3 col-6 text-center wow animated fadeInLeft">
           <span class="counter text-success" data-count="130">0</span>
           <p class="lead text-center text-white shadow">Participantes</p>
         </div>
 
-        <div class="col-lg-3 col-6 text-center">
+        <div class="col-lg-3 col-6 text-center wow animated fadeInLeft">
           <span class="counter text-success" data-count="56">0</span>
           <p class="lead text-center text-white shadow">Ponencias</p>
         </div>
 
-        <div class="col-lg-3 col-6 text-center">
+        <div class="col-lg-3 col-6 text-center wow animated fadeInRight">
           <span class="counter text-success" data-count="39">0</span>
           <p class="lead text-center text-white shadow">Instituciones</p>
         </div>
 
-        <div class="col-lg-3 col-6 text-center">
+        <div class="col-lg-3 col-6 text-center wow animated fadeInRight">
           <span class="counter text-success" data-count="7">0</span>
           <p class="lead text-center text-white shadow">Paises</p>
         </div>
@@ -80,13 +80,13 @@ $(window).bind('scroll', function() {
 </section><!-- #facts -->
 
 <!-- Page Content -->
-<div class="container">
+<div class="container wow animated fadeInUp" data-wow-delay="0.5s">
   <h2 class="text-center display-5">Ponencias</h2><br>
   <div class="row">
     @for($i = 1; $i <= 3; $i++)
     <!--Ponencia 1-->
     <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card text-center">
+      <div class="card text-center" >
         <div class="card-header font-weight-bold">
           Taller "Desarrollo de videojuegos para la web"
         </div>
@@ -114,7 +114,7 @@ $(window).bind('scroll', function() {
   </div>
 
   <!-- /.row -->
-  <div class="row mb-4">
+  <div class="row mb-4 wow animated fadeInUp" data-wow-delay="0.5s">
     <div class="col-md-8">
       <p class="text-center">
         El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
@@ -130,7 +130,7 @@ $(window).bind('scroll', function() {
 <!-- /.container -->
 
 <!--Fotografias-->
-<section class="about-us section-padding">
+<section class="about-us section-padding wow animated fadeInUp" data-wow-delay="0.5s">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
       <h2 class="text-center display-5 text-white shadow">Fotografías</h2><br>
@@ -167,14 +167,14 @@ $(window).bind('scroll', function() {
 
 <!-- Participantes -->
 <div class="container">
-  <h2 class="text-center display-5 ">Estadísticas</h2><br>
+  <h2 class="text-center display-5 wow animated fadeInUp" data-wow-delay="0.5s">Estadísticas</h2><br>
   <div class="row d-flex align-items-center justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-6 wow animated fadeInLeft" data-wow-delay="0.5s">
       <a href="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaGenero.jpg" data-toggle="lightbox" data-gallery="estadistica">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaGenero.jpg" class="img-fluid">
       </a>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 wow animated fadeInRight" data-wow-delay="0.5s">
       <a href="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaInsitucion1.png" data-toggle="lightbox" data-gallery="estadistica">
           <img src="https://storage.googleapis.com/decimaerp/organizations/15/estadisticaInsitucion1.png" class="img-fluid">
       </a>
@@ -182,7 +182,7 @@ $(window).bind('scroll', function() {
   </div>
   <br><br>
   <!-- /.row -->
-  <div class="row mb-4">
+  <div class="row mb-4 wow animated fadeInUp" data-wow-delay="0.5s">
     <div class="col-md-8">
       <p class="text-center">
         El 10mo ECSL se llevó a cabo durante las fechas 12, 13, 14 de Julio del 2018. Ahora la sapa pasa a ser de nuestros hermanos guatemantecos en el 11vo ECSL en Guatemala.
@@ -196,20 +196,20 @@ $(window).bind('scroll', function() {
 
 
 <!--Estadisticas-->
-<section class="about-us section-padding">
+<section class="about-us section-padding wow animated fadeInUp" data-wow-delay="0.5s">
   <div class="jumbotron jumbotron-fluid bg-dark">
     <div class="container">
       <h2 class="text-center display-5 text-white shadow">Participantes</h2><br>
-        @foreach ($participants as $index => $participant)
-          <img class="rounded-circle" data-toggle="tooltip" data-placement="top"  data-html="true" title="<p class='font-weight-normal mb-0' style='font-size:10px;'>{{ $participant['firstname'] . ' ' . $participant['lastname'] }}<br>{{$usersData[$participant['id']]['country'] }}</p>" src="{{ $participant['gravatar_url'] }}" style="margin-top: 10px;">
-        @endforeach
+      @foreach ($participants as $index => $participant)
+      <img class="rounded-circle" data-toggle="tooltip" data-placement="top" data-html="true" title="<p class='font-weight-normal mb-0' style='font-size:10px;'>{{ $participant['firstname'] . ' ' . $participant['lastname'] }}<br>{{$usersData[$participant['id']]['country'] }}</p>" src="{{ $participant['gravatar_url'] }}" style="margin-top: 10px;">
+      @endforeach
       <br><br>
     </div>
   </div>
 </section>
 
 <!-- Patrocinadores -->
-<div class="container">
+<div class="container wow animated fadeInUp" data-wow-delay="0.5s">
 
   <h2 class="text-center display-5">Patrocinadores</h2><br>
 
