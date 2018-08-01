@@ -189,7 +189,7 @@ $(window).bind('scroll', function() {
       </p>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-lg btn-success btn-block " href="{{URL::to('cms/estadisticas')}}">Ver estadísticas</a>
+      <a class="btn btn-lg btn-success btn-block " href="{{URL::to('cms/estadisticas')}}">Ver todas las estadísticas</a>
     </div>
   </div>
 </div>
