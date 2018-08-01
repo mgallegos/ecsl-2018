@@ -37,7 +37,7 @@ $(window).bind('scroll', function() {
 
 
 <!-- Header -->
-<header class="masthead wow animated fadeInUp">
+<header class="masthead">
   <div class="container ">
       <div class="intro-heading text-uppercase"><strong>X Encuentro Centroamericano de Software Libre</strong></div>
       <div class="intro-lead-in font-weight-bold">El X Encuentro Centroamericano de Software Libre (ECSL) se realizó los días 12, 13 y 14 de julio del 2018 en la ciudad de San Salvador, El Salvador.</div>
@@ -49,28 +49,28 @@ $(window).bind('scroll', function() {
     <div class="container">
       <header class="">
         <!-- <h2 class="display-5 text-center text-white shadow">Resumen del Evento</h2><br> -->
-        <p class="lead text-center text-white wow animated fadeInUp">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
+        <p class="lead text-center text-white">El Encuentro Centroamericano de Software Libre (ECSL) es un evento anual organizado desde el año 2009 por y para la comunidad  de Software Libre Centroamérica (SLCA). El ECSL es una reunión de activistas e integrantes de comunidades y grupos de
           usuarios/as que sirve como punto de encuentro y espacio de articulación, educación, coordinación e intercambio de ideas para fortalecer acuerdos y formas de trabajo conjuntas que faciliten la promoción del uso y desarrollo del Software Libre en
           la región.</p>
       </header>
 
       <div class="row counters">
-        <div class="col-lg-3 col-6 text-center wow animated fadeInLeft">
+        <div class="col-lg-3 col-6 text-center">
           <span class="counter text-success" data-count="130">0</span>
           <p class="lead text-center text-white shadow">Participantes</p>
         </div>
 
-        <div class="col-lg-3 col-6 text-center wow animated fadeInLeft">
+        <div class="col-lg-3 col-6 text-center">
           <span class="counter text-success" data-count="56">0</span>
           <p class="lead text-center text-white shadow">Ponencias</p>
         </div>
 
-        <div class="col-lg-3 col-6 text-center wow animated fadeInRight">
+        <div class="col-lg-3 col-6 text-center">
           <span class="counter text-success" data-count="39">0</span>
           <p class="lead text-center text-white shadow">Instituciones</p>
         </div>
 
-        <div class="col-lg-3 col-6 text-center wow animated fadeInRight">
+        <div class="col-lg-3 col-6 text-center">
           <span class="counter text-success" data-count="7">0</span>
           <p class="lead text-center text-white shadow">Paises</p>
         </div>
