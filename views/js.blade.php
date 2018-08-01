@@ -262,6 +262,11 @@
  			$(this).ekkoLightbox();
 		});
 
+		$(function ()
+		{
+	  $('[data-toggle="tooltip"]').tooltip()
+		})
+
 		$('#cms-logout').click(function()
 		{
 			$.ajax(

@@ -22,7 +22,15 @@
       var top = iterator * imagesToShow
       var initialValue = Math.abs(imagesToShow - top) + 1
 
-      renderImages (top, initialValue)
+      if (!(initialValue + 21 > maxTop)) {
+        renderImages (top, initialValue);
+
+        $('#app-loader').removeClass('hidden-xs-up');
+        disabledAll();
+
+        setTimeout(loading, 4500);
+      }
+
     }
   })
 
@@ -30,6 +38,11 @@
     //event.preventDefault();
     $(a).ekkoLightbox();
     return false;
+  }
+
+  function loading () {
+    $('#app-loader').addClass('hidden-xs-up');
+    enableAll();
   }
 
   function renderImages (top, initialValue) {
