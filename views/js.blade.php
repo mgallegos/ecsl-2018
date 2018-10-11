@@ -233,12 +233,12 @@
 
 		$('#ver-ponencias').click(function()
 		{
-			alertify.alert("¡Proximamente!", "Las ponencias estarán listas muy pronto, esperalo...");
+			alertify.alert("¡Próximamente!", "Las ponencias estarán listas muy pronto, espéralo...");
 		});
 
 		$('#nav-ponencias').on("click", function()
 		{
-			alertify.alert("¡Proximamente!", "Las ponencias estarán listas muy pronto, esperalo...");
+			alertify.alert("¡Próximamente!", "Las ponencias estarán listas muy pronto, espéralo...");
 		});
 
 		@if (!Agent::isMobile())
