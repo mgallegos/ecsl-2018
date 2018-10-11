@@ -27,7 +27,8 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{URL::to('cms/ponencias')}}">Ponencias</a>
+          <!-- <a class="nav-link" href="URL::to('cms/ponencias')">Ponencias</a> -->
+          <a class="nav-link" id="nav-ponencias" href="javascript:void(0)">Ponencias</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{URL::to('cms/fotografias')}}">Fotografías</a>

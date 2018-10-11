@@ -83,7 +83,29 @@ $(window).bind('scroll', function() {
 <div class="container wow animated fadeInUp" data-wow-delay="0.5s">
   <h2 class="text-center display-5">Ponencias</h2><br>
   <div class="row">
-    @for($i = 1; $i <= 3; $i++)
+    <!--Ponencia 1-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card text-center" >
+        <div class="card-header font-weight-bold">
+          Apertura ECSL 2018
+        </div>
+
+        <a href="https://www.youtube.com/watch?v=1pnB9bb7MvE&t=100s" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_002.jpg" class="card-img-top img-fluid same-height">
+        </a>
+
+        <div class="card-body">
+              <!-- <img class="btn rounded-circle" src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80"> -->
+              <h5 class="card-title">X Encuentro Centroamericano de Software Libre</h5>
+              <!-- <small><<a class="card-subtitle" href="mailto:alvarogarcia1010@gmail.com">alvarogarcia1010@gmail.com</a>></small> -->
+              <h6 class="card-subtitle mb-2 text-muted">12, 13 y 14 de julio del 2018</h6>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.youtube.com/watch?v=1pnB9bb7MvE&t=100s" class="btn btn-success" data-toggle="lightbox">Ver video</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-success">Más información</a> -->
+        </div>
+      </div>
+    </div>
     <!--Ponencia 1-->
     <div class="col-lg-4 col-md-6 mb-4">
       <div class="card text-center" >
@@ -91,26 +113,47 @@ $(window).bind('scroll', function() {
           Taller "Desarrollo de videojuegos para la web"
         </div>
 
-        <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" data-toggle="lightbox" data-gallery="youtubevideos">
-          <img src="https://storage.googleapis.com/decimaerp/organizations/15/nicaragua_thumbnail.jpg" class="card-img-top img-fluid">
+        <a href="https://www.youtube.com/watch?v=hPVRG--mDd8" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_053.jpg" class="card-img-top img-fluid same-height">
         </a>
 
         <div class="card-body">
-
               <!-- <img class="btn rounded-circle" src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80"> -->
-
-
-              <h5 class="card-title">Alvaro García</h5>
+              <h5 class="card-title">Jorge Mizrain Aguilar Pérez</h5>
               <!-- <small><<a class="card-subtitle" href="mailto:alvarogarcia1010@gmail.com">alvarogarcia1010@gmail.com</a>></small> -->
-              <h6 class="card-subtitle mb-2 text-muted">DecimaERP / El Salvador</h6>
+              <h6 class="card-subtitle mb-2 text-muted">Mozilla / Honduras</h6>
         </div>
         <div class="card-footer">
-          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-success" data-toggle="lightbox">Ver video</a>
-          <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-success">Más información</a>
+          <a href="https://www.youtube.com/watch?v=hPVRG--mDd8" class="btn btn-success" data-toggle="lightbox">Ver video</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-success">Más información</a> -->
         </div>
       </div>
     </div>
-    @endfor
+
+    <!--Ponencia 2-->
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card text-center" >
+        <div class="card-header font-weight-bold">
+          Charla "GRAPHQL, adiós al restful en webservices"
+        </div>
+
+        <a href="https://www.youtube.com/watch?v=a_6zsGWGcZQ" data-toggle="lightbox" data-gallery="youtubevideos">
+          <img src="https://storage.googleapis.com/decimaerp/organizations/15/ECSL_2018_063.jpg" class="card-img-top img-fluid same-height">
+        </a>
+
+        <div class="card-body">
+              <!-- <img class="btn rounded-circle" src="https://s.gravatar.com/avatar/47dc454dc555e624caf972e9ecb3a67c?s=80"> -->
+              <h5 class="card-title">Omar Berroterán S.</h5>
+              <!-- <small><<a class="card-subtitle" href="mailto:alvarogarcia1010@gmail.com">alvarogarcia1010@gmail.com</a>></small> -->
+              <h6 class="card-subtitle mb-2 text-muted">Java User Group y Fedora / Nicaragua</h6>
+        </div>
+        <div class="card-footer">
+          <a href="https://www.youtube.com/watch?v=a_6zsGWGcZQ" class="btn btn-success" data-toggle="lightbox">Ver video</a>
+          <!-- <a href="https://www.youtube.com/watch?v=gY9b9RMMqCU" class="btn btn-success">Más información</a> -->
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- /.row -->
@@ -121,7 +164,7 @@ $(window).bind('scroll', function() {
       </p>
     </div>
     <div class="col-md-4">
-      <a class="btn btn-lg btn-success btn-block" href="{{URL::to('cms/ponencias')}}">Ver todas las ponencias</a>
+      <button class="btn btn-lg btn-success btn-block" id="ver-ponencias">Ver todas las ponencias</button>
     </div>
   </div>
 

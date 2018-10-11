@@ -15,6 +15,12 @@
     border: 0 !important;
   }
 
+  .same-height{
+    height: 230px;
+    width: 100%;
+    object-fit: cover;
+  }
+
   .card-logo .card-body{
     display: none;
     /* padding: .4rem !important; */

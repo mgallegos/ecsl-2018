@@ -231,6 +231,16 @@
 			//$('#lgp-community-support-group').attr('width', $('.tab-content').width());
 		});
 
+		$('#ver-ponencias').click(function()
+		{
+			alertify.alert("¡Proximamente!", "Las ponencias estarán listas muy pronto, esperalo...");
+		});
+
+		$('#nav-ponencias').on("click", function()
+		{
+			alertify.alert("¡Proximamente!", "Las ponencias estarán listas muy pronto, esperalo...");
+		});
+
 		@if (!Agent::isMobile())
 
 		$('#reg-gender').on('autocompleteselect', function( event, ui )
