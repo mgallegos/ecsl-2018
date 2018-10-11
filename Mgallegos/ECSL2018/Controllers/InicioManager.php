@@ -33,6 +33,10 @@ use Mgallegos\LaravelJqgrid\Facades\GridEncoder;
 
 use App\Http\Controllers\Controller;
 
+use Mgallegos\DecimaOpenCms\OpenCms\Services\OpenCmsManagement\OpenCmsManagementInterface;
+
+use Illuminate\Foundation\Application;
+
 class InicioManager extends Controller {
 
 	/**
@@ -42,6 +46,22 @@ class InicioManager extends Controller {
 	 *
 	 */
 	protected $ClientManagerService;
+
+	/**
+	 * Open Cms Manager Service
+	 *
+	 * @var Mgallegos\DecimaOpenCms\OpenCms\Services\OpenCmsManagement\OpenCmsManagementInterface;
+	 *
+	 */
+	protected $OpenCmsManagerService;
+
+	/**
+	 * View
+	 *
+	 * @var Illuminate\Foundation\Application
+	 *
+	 */
+	protected $App;
 
 	/**
 	 * View
@@ -97,7 +117,7 @@ class InicioManager extends Controller {
 	 */
 	protected $Url;
 
-	public function __construct(ClientManagementInterface $ClientManagerService, Factory $View, Request $Input, SessionManager $Session, Filesystem $File, Excel $Excel, DatabaseManager $DB, Mailer $Mailer, UrlGenerator $Url)
+	public function __construct(ClientManagementInterface $ClientManagerService, Factory $View, Request $Input, SessionManager $Session, Filesystem $File, Excel $Excel, DatabaseManager $DB, Mailer $Mailer, UrlGenerator $Url, Application $App)
 	{
 		$this->ClientManagerService = $ClientManagerService;
 
@@ -116,10 +136,17 @@ class InicioManager extends Controller {
 		$this->Mailer = $Mailer;
 
 		$this->Url = $Url;
+
+		$this->App = $App;
+
+		$this->OpenCmsManagerService = $App->make('Ecsl2018OpenCmsManagementInterface');
+
 	}
 
 	public function getIndex()
 	{
-		return $this->View->make('ecsl-2018::inicio-personalizado');
+		return $this->View->make('ecsl-2018::inicio-cierre')
+			->with('usersData', $this->OpenCmsManagerService->getUsersRegistrationData())
+			->with('participants', $this->OpenCmsManagerService->getParticipantsInformation(false));
 	}
 }

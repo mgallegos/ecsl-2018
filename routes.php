@@ -41,20 +41,22 @@ $ecslsv =  function ()
 		return View::make('ecsl-2018::logistica');
 	});
 
-	Route::get('/cms/cierre', function()
-	{
-		return View::make('ecsl-2018::inicio-cierre');
-	});
-
-	Route::get('/cms/inicio-cierre', function()
-	{
-		$app = $this->app;
-		$OpenCmsManagerService = $app->make('Ecsl2018OpenCmsManagementInterface');
-
-		return View::make('ecsl-2018::inicio-cierre')
-			->with('usersData', $OpenCmsManagerService->getUsersRegistrationData())
-			->with('participants', $OpenCmsManagerService->getParticipantsInformation(false));
-	});
+	//Rutas para el desarrollador
+	
+	// Route::get('/cms/cierre', function()
+	// {
+	// 	return View::make('ecsl-2018::inicio-cierre');
+	// });
+	//
+	// Route::get('/cms/inicio-cierre', function()
+	// {
+	// 	$app = $this->app;
+	// 	$OpenCmsManagerService = $app->make('Ecsl2018OpenCmsManagementInterface');
+	//
+	// 	return View::make('ecsl-2018::inicio-cierre')
+	// 		->with('usersData', $OpenCmsManagerService->getUsersRegistrationData())
+	// 		->with('participants', $OpenCmsManagerService->getParticipantsInformation(false));
+	// });
 
 	Route::get('/cms/ejes-tematicos', function()
 	{
