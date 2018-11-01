@@ -42,7 +42,7 @@ $ecslsv =  function ()
 	});
 
 	//Rutas para el desarrollador
-	
+
 	// Route::get('/cms/cierre', function()
 	// {
 	// 	return View::make('ecsl-2018::inicio-cierre');
@@ -146,8 +146,8 @@ $ecslsv =  function ()
     return GridEncoder::encodeRequestedData(new \Mgallegos\ECSL2018\Repositories\Presentation\EloquentPresentationGridRepository($app['db']), Request::all());
 	});
 
-	Route::controller('/cms/dashboard', 'Mgallegos\ECSL2018\Controllers\OpenCmsManager');
-	Route::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
+	AdvancedRoute::controller('/cms/dashboard', 'Mgallegos\ECSL2018\Controllers\OpenCmsManager');
+	AdvancedRoute::controller('/cms/inicio', 'Mgallegos\ECSL2018\Controllers\InicioManager');
 
 	Route::post('/cms/get-users', function()
 	{
@@ -176,7 +176,7 @@ $ecslsv =  function ()
 		return $OpenCmsManagerService->saoh03(Request::json()->all());
 	});
 
-	// Route::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');
+	// AdvancedRoute::controller('/cms/ecsl-2018', 'Mgallegos\ECSL2018\Controllers\GestorCms');
 };
 
 Route::group(['domain' => 'localhost'], $ecslsv);
