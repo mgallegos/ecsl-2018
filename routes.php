@@ -180,5 +180,5 @@ $ecslsv =  function ()
 };
 
 // Route::group(['domain' => 'localhost'], $ecslsv);
-Route::group(['domain' => 'app.decimaerp.com'], $ecslsv);
+// Route::group(['domain' => 'app.decimaerp.com'], $ecslsv);
 Route::group(['domain' => 'ecsl2018.softwarelibre.ca'], $ecslsv);
