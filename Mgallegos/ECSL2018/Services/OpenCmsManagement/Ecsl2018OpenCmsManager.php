@@ -529,6 +529,70 @@ class Ecsl2018OpenCmsManager extends OpenCmsManager {
     return $participants;
   }
 
+  /**
+	 * CMS User login authentication attempt
+	 *
+	 * @param array $input
+	 * 	An array as array('email' => $email, 'password' => $password)
+	 *
+	 * @return JSON encoded string
+	 *  A string as follows:
+	 *  In case of success: {"message":"success","url":"$url"}
+	 *  In case of failure: {"message":"$failAuthAttemptMessage"}
+	 */
+	public function attemptLogin(array $input)
+	{
+		if (!isset($input['kwaai_name'])) {
+				$this->Log->warning('[SECURITY EVENT] CMS kwaai_name not set', array('url' => ''));
+			}
+
+		$this->rules = array(
+			'kwaai_name' => 'honeypot',
+			'kwaai_time' => 'required|honeytime:2'
+		);
+
+		$data = array(
+			'kwaai_name' => $input['kwaai_name'],
+			'kwaai_time' => $input['kwaai_time'],
+		);
+
+		if ($this->with($data)->fails()) {
+				$this->Log->warning('[SECURITY EVENT] CMS kwaai_time validation failed!', array('url' => ''));
+			}
+
+		$User = $this->User->byEmail($input['email'], $this->cmsDatabaseConnectionName)->first();
+
+		if (!empty($User) && $this->Hash->check($input['password'], $User->password))
+		{
+			if(!empty($this->eventId) && $this->UserEvent->byUserIdByEventIdByOrganizationId($User->id, $this->eventId, $this->organizationId, $this->cmsDatabaseConnectionName)->isEmpty())
+			{
+				$this->Log->info('[SECURITY EVENT] CMS Failed Login Attempt', array('email' => $input['email']));
+
+				return json_encode(array('message' => $this->Lang->get('security/login.failAuthAttempt')));
+			}
+
+			$RegistrationForm = $this->RegistrationForm->byUserId($User->id, $this->cmsDatabaseConnectionName)->first();
+			$registrationForm = $RegistrationForm->toArray();
+			$registrationForm['registration_form_id'] = $registrationForm['id'];
+			$user = $User->toArray();
+
+			unset($user['password']);
+
+			// $this->Session->put($this->eventPrefix . 'CmsLoggedUser', json_encode(array_merge($registrationForm, $user)));
+			// $this->Session->put($this->eventPrefix . 'CmsCurrentOrganization', json_encode($this->Organization->byId($this->organizationId)));
+
+			$this->setCache(array_merge($user, $registrationForm));
+
+			$this->Log->info('[SECURITY EVENT] CMS User logged in', array('email' => $input['email']));
+
+			return json_encode(array('message' => 'success'));
+		}
+
+		$this->Log->info('[SECURITY EVENT] CMS Failed Login Attempt', array('email' => $input['email']));
+
+		return json_encode(array('message' => $this->Lang->get('security/login.failAuthAttempt')));
+	}
+
 
 	/**
 	 * Create a new CMS User.
